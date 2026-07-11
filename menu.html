@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title data-i18n="seo_menu_title">Felek Mangalbaşı | Menü</title>
+    <meta name="description" id="meta-description" content="Felek Mangalbaşı menüsü. Etler, mezeler ve daha fazlası.">
+    <link rel="canonical" href="https://www.felekmangalbasi.com/menu.html">
+    <link rel="help" type="text/plain" href="llms.txt">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Felek Mangalbaşı | Menü">
+    <meta property="og:description" content="Felek Mangalbaşı menüsü. Etler, mezeler ve daha fazlası.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.felekmangalbasi.com/menu.html">
+    <meta property="og:image" content="https://www.felekmangalbasi.com/assets/images/SnapInsta.to_613647466_18491576731072243_8360769828246837946_n.webp">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://efltjgimkjjtagfebmha.supabase.co">
+    <link rel="preconnect" href="https://efltjgimkjjtagfebmha.supabase.co">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+    
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+    <!-- Fast Loader Bypass -->
+    <script>
+        if (localStorage.getItem('felek_categories') && localStorage.getItem('felek_menu_items')) {
+            document.documentElement.classList.add('menu-cached');
+        }
+    </script>
+</head>
+<body>
+
+    <!-- LOADING OVERLAY -->
+    <div class="page-loading-overlay" id="page-loading-overlay">
+        <div class="page-loader-spinner"></div>
+        <span class="page-loader-text" data-i18n="menu_loading">Menü Yükleniyor</span>
+    </div>
+
+    <!-- NAV -->
+    <nav id="header" style="background-color: rgba(14, 12, 10, 0.95); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">Felek</a>
+            <ul class="nav-links" id="nav">
+                <li><a href="index.html#hakkinda" data-i18n="nav_about">Hakkında</a></li>
+                <li><a href="index.html#deneyim" data-i18n="nav_experience">Deneyim</a></li>
+                <li><a href="index.html#etkinlikler" data-i18n="nav_venue">Etkinlikler</a></li>
+                <li><a href="menu.html" data-i18n="nav_menu">Menü</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-right">
+            <select id="lang-switcher" class="lang-select" aria-label="Select Language">
+                <option value="tr">TR</option>
+                <option value="en">EN</option>
+                <option value="ar">AR</option>
+                <option value="ru">RU</option>
+            </select>
+            <a href="https://wa.me/905397776067" target="_blank" rel="noopener noreferrer" class="nav-reserve" data-i18n="nav_reservation">Rezervasyon</a>
+            
+            <button class="menu-toggle" id="menu-toggle" aria-label="Menüyü aç" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="menu-page">
+        <div class="menu-container">
+            <div class="qr-menu-header reveal">
+                <h1 class="cta-title" data-i18n="menu_title" style="margin-bottom: 0.5rem;">Menü</h1>
+                <p class="cta-eyebrow" data-i18n="menu_subtitle" style="margin-bottom: 2rem;">Ateşin lezzetle buluştuğu nokta</p>
+                <a href="#feedback" onclick="document.getElementById('feedback').scrollIntoView({behavior:'smooth'}); return false;" style="display:inline-block; font-size:12px; color:var(--muted); letter-spacing:0.15em; text-transform:uppercase; text-decoration:none; border-bottom: 1px solid var(--muted); padding-bottom: 2px;" data-i18n="feedback_hint">Görüş &amp; önerileriniz için ↓</a>
+            </div>
+            
+            <div class="qr-category-nav" id="category-nav">
+                <!-- Kategoriler JS ile yüklenecek (Eğer eski nav sistemi kalırsa) -->
+            </div>
+
+            <div class="qr-menu-grid reveal reveal-delay-1" id="qr-menu-grid">
+                <!-- Ürünler JS ile yüklenecek -->
+            </div>
+            
+            <!-- Görüş ve Öneriler Section -->
+            <div id="feedback" class="feedback-section reveal reveal-delay-2">
+                <h2 class="events-title text-center" data-i18n="feedback_section_title">Görüş ve Önerileriniz</h2>
+                <p class="events-body text-center" style="margin: 0 auto 3rem auto; max-width: 500px;" data-i18n="feedback_section_desc">Felek Mangalbaşı deneyiminizi paylaşın. Mesajınız direkt işletme sahibine ulaşır.</p>
+                <form id="feedback-form" class="feedback-form">
+                    <input
+                        id="feedback-name"
+                        type="text"
+                        data-i18n="feedback_name_placeholder"
+                        placeholder="Adınız (isteğe bağlı)"
+                        class="feedback-input"
+                    />
+                    <textarea
+                        id="feedback-msg"
+                        data-i18n="feedback_msg_placeholder"
+                        placeholder="Mesajınızı buraya yazın..."
+                        required
+                        maxlength="2000"
+                        class="feedback-input feedback-textarea"
+                    ></textarea>
+                    <div id="feedback-char-count" class="feedback-char-count">2000 / 2000</div>
+                    <label class="feedback-kvkk">
+                        <input type="checkbox" id="feedback-kvkk" required>
+                        <span data-i18n="feedback_kvkk">Kişisel verilerimin işlenmesini ve tarafıma iletişim kurulmasını kabul ediyorum. (<a href="#" style="color: var(--accent);">KVKK Aydınlatma Metni</a>)</span>
+                    </label>
+                    <button
+                        type="submit"
+                        id="feedback-submit"
+                        data-i18n="feedback_btn"
+                        class="feedback-submit-btn"
+                    >
+                        Gönder
+                    </button>
+                    <p id="feedback-status" class="feedback-status"></p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div>
+            <div class="footer-logo">Felek Mangalbaşı</div>
+            <p class="footer-text" style="margin-top: 1rem;" data-i18n="footer_brand">Modern Mangalbaşı Deneyimi. Bakırköy'de deniz havasıyla birinci sınıf et keyfi.</p>
+        </div>
+        <div>
+            <p class="footer-label" data-i18n="footer_contact_title">İletişim & Saatler</p>
+            <p class="footer-text" data-i18n="footer_address">
+                Sakızağacı, Kennedy Cad. No:29<br>
+                34142 Bakırköy / İstanbul
+            </p>
+            <p class="footer-text" style="margin-top:0.5rem;" data-i18n="res_hours">Her gün 12:00 – 02:00</p>
+            <a href="tel:+902125439248" class="footer-link">+90 (212) 543 92 48</a>
+        </div>
+        <div>
+            <p class="footer-label" data-i18n="res_serv_title">Hizmetler</p>
+            <p class="footer-text" data-i18n="res_serv">
+                Otopark · Vale hizmeti<br>Açık hava bahçesi<br>Mama sandalyesi<br>Patili dostlarınız da aramızda
+            </p>
+            <a href="https://www.instagram.com/felekmangalbasi/" target="_blank" rel="noopener noreferrer" class="footer-link" style="margin-top: 0.75rem; display: inline-block;">📸 Instagram</a>
+        </div>
+    </footer>
+
+    <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 Felek Mangalbaşı. <span data-i18n="footer_rights">Tüm hakları saklıdır.</span></span>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Felek+Mangalbaşı+Bakırköy+İstanbul" target="_blank" rel="noopener noreferrer" class="footer-copy" style="color: var(--accent);" data-i18n="view_on_map">Haritada Gör</a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/translations.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // ─── Feedback Formu ─────────────────────────
+        const msgInput = document.getElementById('feedback-msg');
+        const charCount = document.getElementById('feedback-char-count');
+        if (msgInput && charCount) {
+            msgInput.addEventListener('input', () => {
+                const remaining = 2000 - msgInput.value.length;
+                charCount.textContent = `${remaining} / 2000`;
+            });
+        }
+
+        document.getElementById('feedback-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const name   = document.getElementById('feedback-name').value.trim();
+            const msg    = document.getElementById('feedback-msg').value.trim();
+            const status = document.getElementById('feedback-status');
+            const btn    = document.getElementById('feedback-submit');
+
+            if (!msg) return;
+
+            const lang = localStorage.getItem('siteLang') || 'tr';
+            const getTranslation = (key) => (window.translations && window.translations[lang] && window.translations[lang][key]) ? window.translations[lang][key] : key;
+
+            btn.disabled = true;
+            btn.textContent = getTranslation('feedback_sending');
+            status.style.color = 'var(--muted)';
+            status.textContent = '';
+
+            try {
+                const res = await fetch('/api/feedback', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: name || '', message: msg })
+                });
+                const data = await res.json();
+                if (data.ok) {
+                    status.style.color = '#c8923a'; // Accent color for success
+                    status.textContent = getTranslation('feedback_success');
+                    this.reset();
+                    if (charCount) {
+                        charCount.textContent = '2000 / 2000';
+                    }
+                } else {
+                    throw new Error(data.error || 'Gönderim hatası');
+                }
+            } catch (err) {
+                status.style.color = '#ff6b6b'; // Redish for error
+                status.textContent = getTranslation('feedback_error');
+                console.error(err);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = getTranslation('feedback_btn');
+            }
+        });
+    </script>
+</body>
+</html>
