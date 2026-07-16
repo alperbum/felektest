@@ -987,13 +987,27 @@ document.addEventListener('DOMContentLoaded', () => {
                             image: c.image || ''
                         }));
                         
-                        const newMenuData = itemData.map(item => ({
-                            categoryId: item.category_id,
-                            title: { tr: item.name_tr, en: item.name_en, ar: item.name_ar, ru: item.name_ru },
-                            price: item.price ? new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(item.price) : '',
-                            extras: { tr: item.extras_tr, en: item.extras_en, ar: item.extras_ar, ru: item.extras_ru },
-                            image: item.image || ''
-                        }));
+                        const newMenuData = itemData.map(item => {
+                            let nameTr = item.name_tr || '';
+                            let nameEn = item.name_en || '';
+                            let nameAr = item.name_ar || '';
+                            let nameRu = item.name_ru || '';
+
+                            if (item.category_id === 'ana_yemekler') {
+                                if (nameTr && !nameTr.includes('1 Kg') && !nameTr.includes('1 kg')) nameTr += ' (1 Kg)';
+                                if (nameEn && !nameEn.includes('1 Kg') && !nameEn.includes('1 kg')) nameEn += ' (1 Kg)';
+                                if (nameAr && !nameAr.includes('1') && !nameAr.includes('كجم')) nameAr += ' (1 كجم)';
+                                if (nameRu && !nameRu.includes('1') && !nameRu.includes('кг')) nameRu += ' (1 кг)';
+                            }
+
+                            return {
+                                categoryId: item.category_id,
+                                title: { tr: nameTr, en: nameEn, ar: nameAr, ru: nameRu },
+                                price: item.price ? new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(item.price) : '',
+                                extras: { tr: item.extras_tr, en: item.extras_en, ar: item.extras_ar, ru: item.extras_ru },
+                                image: item.image || ''
+                            };
+                        });
 
                         const catsStr = JSON.stringify(newCategories);
                         const itemsStr = JSON.stringify(newMenuData);
