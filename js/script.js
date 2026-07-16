@@ -225,10 +225,10 @@ document.addEventListener('DOMContentLoaded', () => {
     {"categoryId":"mezeler","title":{"tr":"Çiğköfte","en":"Steak Tartar a la Turca (Cigkofte)","ar":"كبة نية (تشي كوفته)","ru":"Чи кёфте (вегетарианские острые котлеты)"},"price":"₺300,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/cigkofte.webp"},
     {"categoryId":"mezeler","title":{"tr":"Havuç Tarator","en":"Carrot Tarator (Carrot Yogurt Dip)","ar":"سلطة الجزر بالزبادي (تاراتور)","ru":"Морковный таратор (йогуртовый соус с морковью)"},"price":"₺320,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/havuc_tarator.webp"},
     {"categoryId":"mezeler","title":{"tr":"Manda Yoğurdu","en":"Buffalo Yogurt","ar":"زبادي حليب الجواميس","ru":"Йогурт из буйволиного молока"},"price":"₺200,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/manda_yogurdu.webp"},
-    {"categoryId":"ana_yemekler","title":{"tr":"Pirzola","en":"Lamb Chops","ar":"ريش الغنم","ru":"Бараньи отбивные"},"price":"₺3.200,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/1779227559639_74pzq0t5r.webp"},
+    {"categoryId":"ana_yemekler","title":{"tr":"Pirzola (1 Kg)","en":"Lamb Chops (1 Kg)","ar":"ريş الغنم (1 كجم)","ru":"Бараньи отбивные (1 кг)"},"price":"₺3.200,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/1779227559639_74pzq0t5r.webp"},
     {"categoryId":"mezeler","title":{"tr":"Sarımsak","en":"Garlic (Portion)","ar":"ثوم","ru":"Чеснок (порция)"},"price":"₺75,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/1779227493729_5foumyvk8.webp"},
-    {"categoryId":"ana_yemekler","title":{"tr":"Bonfile","en":"Beef Tenderloin (Steak)","ar":"شريحة لحم بقري (بونفيليه)","ru":"Говяжье филе (Стейк)"},"price":"₺3.750,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/1779227547438_jzw12uts3.webp"},
-    {"categoryId":"ana_yemekler","title":{"tr":"Kırmızı Et","en":"Red Meat Assortment (for Grill)","ar":"تشكيلة اللحوم الحمراء (للشواء)","ru":"Ассорти из красного мяса (для гриля)"},"price":"₺2.950,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/kirmizi_et.webp"},
+    {"categoryId":"ana_yemekler","title":{"tr":"Bonfile (1 Kg)","en":"Beef Tenderloin (1 Kg)","ar":"شريحة لحم بقري (بونفيليه - 1 كجم)","ru":"Говяжье филе (1 кг)"},"price":"₺3.750,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/1779227547438_jzw12uts3.webp"},
+    {"categoryId":"ana_yemekler","title":{"tr":"Kırmızı Et (1 Kg)","en":"Red Meat Assortment (1 Kg)","ar":"تشكيلة اللحوم الحمراء (للشواء - 1 كجم)","ru":"Ассорти из красного мяса (для гриля - 1 кг)"},"price":"₺2.950,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/kirmizi_et.webp"},
     {"categoryId":"mezeler","title":{"tr":"Haydari","en":"Haydari (Thick Yogurt Dip with Herbs)","ar":"حيداري (زبادي بالأعشاب)","ru":"Хайдари (густой йогурт с зеленью)"},"price":"₺290,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/1781181361729_ct0z394n3.png"},
     {"categoryId":"mezeler","title":{"tr":"Süzme yogurt","en":"Strained Yogurt","ar":"لبنة (زبادي مصفى)","ru":"Сузьме йогурт (процеженный йогурт)"},"price":"₺240,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/suzme_yogurt.webp"},
     {"categoryId":"salatalar","title":{"tr":"İstanbul Salata","en":"Istanbul Salad","ar":"سلطة اسطنبول","ru":"Стамбульский салат"},"price":"₺350,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/salatalar/istanbul_salata.webp","extras":{"tr":"+₺100,00 Duble Porsiyon","en":"+₺100,00 Double Portion","ar":"+₺100,00 وجبة مزدوجة","ru":"+₺100,00 Двойная порция"}},
@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {"categoryId":"sarap","title":{"tr":"Sarafin 75 cl (Kırmızı/Beyaz/Blush)","en":"Sarafin 75 cl (Red/White/Blush)","ar":"نبيذ سارافين 75 سل (أحمر/أبيض/روز)","ru":"Вино Сарафин 75 сл (Красное/Белое/Розе)"},"price":"₺4.300,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/sarap/76.webp"},
     {"categoryId":"viski","title":{"tr":"Chivas 12 70 cl","en":"Chivas Regal 12 Years Old 70 cl","ar":"شيفاز ريغال 12 سنة 70 سل","ru":"Чивас Ригал 12 лет 70 сл"},"price":"₺5.700,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/viski/59.webp"},
     {"categoryId":"sarap","title":{"tr":"Buzbağ 37,5 cl (Kırmızı/Beyaz)","en":"Buzbag 37.5 cl (Red/White)","ar":"نبيذ بوزباغ 37.5 سل (أحمر/أبيض)","ru":"Вино Бузбаг 37.5 сл (Красное/Белое)"},"price":"₺900,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/sarap/buzbag_kirmizi.webp"},
-    {"categoryId":"ana_yemekler","title":{"tr":"Beyaz Et","en":"Chicken Assortment (for Grill)","ar":"تشكيلة اللحوم البيضاء (الدجاج للشواء)","ru":"Ассорти из белого мяса (курица для гриля)"},"price":"₺1.800,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/beyaz_et.webp"},
+    {"categoryId":"ana_yemekler","title":{"tr":"Beyaz Et (1 Kg)","en":"Chicken Assortment (1 Kg)","ar":"تشكيلة اللحوم البيضاء (الدجاج للشواء - 1 كجم)","ru":"Ассорти из белого мяса (курица для гриля - 1 кг)"},"price":"₺1.800,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/beyaz_et.webp"},
     {"categoryId":"biralar","title":{"tr":"Cips","en":"Potato Chips","ar":"رقائق بطاطس (شيبس)","ru":"Чипсы"},"price":"₺300,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/biralar/cips.webp"},
     {"categoryId":"alkolsuz","title":{"tr":"Ayran","en":"Ayran (Traditional Salty Yogurt Drink)","ar":"عيران (لبن مالح)","ru":"Айран (турецкий йогуртовый напиток)"},"price":"₺100,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/ayran.webp"},
     {"categoryId":"alkolsuz","title":{"tr":"Ice Tea Limon / Şeftali","en":"Ice Tea (Lemon / Peach)","ar":"آيس تي (ليمون / خوخ)","ru":"Холодный чай (лимон / персик)"},"price":"₺130,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/ice_tea.webp"},
@@ -321,6 +321,81 @@ document.addEventListener('DOMContentLoaded', () => {
     {"categoryId":"mezeler","title":{"tr":"Soğan Dolması","en":"Stuffed Onion in Olive Oil","ar":"محشي بصل بزيت الزيتون","ru":"Фаршированный лук в оливковом масле"},"price":"₺330,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/sogan_dolmasi.webp"},
     {"categoryId":"mezeler","title":{"tr":"Pembe Sultan","en":"Pembe Sultan (Beetroot Yogurt Dip)","ar":"بيمبه سلطان","ru":"Пембе Султан (йогурт со свеклой)"},"price":"₺300,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/pembe_sultan.webp"}
 ];
+
+    // --- Generate and Append JSON-LD Restaurant Menu Schema ---
+    function generateMenuSchema() {
+        const categoriesMap = {
+            "mezeler": "Mezeler",
+            "salatalar": "Salatalar",
+            "ana_yemekler": "Et Çeşitleri",
+            "tatli_meyve": "Tatlılar",
+            "alkolsuz": "Alkolsüz İçecekler",
+            "raki": "Rakılar",
+            "viski": "Viskiler",
+            "sarap": "Şaraplar",
+            "biralar": "Biralar & Atıştırmalıklar",
+            "votka_cin": "Votka & Cin"
+        };
+
+        const schema = {
+            "@context": "https://schema.org",
+            "@type": "Menu",
+            "name": "Felek Mangalbaşı Menüsü",
+            "description": "Felek Mangalbaşı'nın eşsiz et çeşitleri, özenle hazırlanan mezeleri, salataları ve içecek çeşitlerini içeren zengin menüsü.",
+            "inLanguage": "tr",
+            "hasMenuSection": []
+        };
+
+        const sections = {};
+        for (const [key, value] of Object.entries(categoriesMap)) {
+            sections[key] = {
+                "@type": "MenuSection",
+                "name": value,
+                "hasMenuItem": []
+            };
+        }
+
+        menuData.forEach(item => {
+            const catId = item.categoryId;
+            if (sections[catId]) {
+                let rawPrice = item.price.replace(/[^\d,]/g, '').replace(',', '.');
+                let parsedPrice = parseFloat(rawPrice);
+                
+                const menuItem = {
+                    "@type": "MenuItem",
+                    "name": item.title.tr || item.title
+                };
+
+                if (item.image) {
+                    menuItem.image = item.image;
+                }
+
+                if (!isNaN(parsedPrice)) {
+                    menuItem.offers = {
+                        "@type": "Offer",
+                        "price": parsedPrice.toFixed(2),
+                        "priceCurrency": "TRY"
+                    };
+                }
+                
+                sections[catId].hasMenuItem.push(menuItem);
+            }
+        });
+
+        schema.hasMenuSection = Object.values(sections).filter(sec => sec.hasMenuItem.length > 0);
+
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.id = 'restaurant-menu-jsonld';
+        script.text = JSON.stringify(schema, null, 2);
+        document.head.appendChild(script);
+    }
+    
+    try {
+        generateMenuSchema();
+    } catch (e) {
+        console.error("Schema generation error:", e);
+    }
 
     const menuGrid = document.getElementById('qr-menu-grid');
 
