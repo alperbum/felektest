@@ -133,7 +133,23 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     });
 });
 
+// ─── ÜRÜN MODALI: DİL SEKMESİ GEÇİŞİ ─────────────────────────────────
+// NOT: Bu fonksiyon HTML'de ve closeModal/openItemModal içinde çağrılıyordu
+// ama hiçbir yerde tanımlı değildi — dil sekmeleri (EN/AR/RU) bu yüzden
+// çalışmıyordu ve modal açma/kapama bu hatadan dolayı yarıda kesiliyordu.
+window.switchLangTab = function (lang) {
+    document.querySelectorAll('.lang-tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    document.querySelectorAll('.lang-pane').forEach(pane => {
+        const isActive = pane.classList.contains('lang-pane-' + lang);
+        pane.style.display = isActive ? 'block' : 'none';
+        pane.classList.toggle('active', isActive);
+    });
+};
+
 // ─── DATA FETCHING ───────────────────────────────────────────────────
+// ─── DATA FETCHING & STATS ───────────────────────────────────────────
 async function loadData() {
     if (!sb) return;
 
@@ -143,30 +159,60 @@ async function loadData() {
     const { data: itemData } = await sb.from('menu_items').select('*').order('sort_order', { ascending: true });
     items = itemData || [];
 
+    updateStats();
+
     const filterSelect = document.getElementById('filter-category');
+    const searchInput = document.getElementById('search-input');
     const currentFilter = filterSelect ? filterSelect.value : '';
+    const currentSearch = searchInput ? searchInput.value : '';
 
     renderCategoriesList();
     updateCategorySelects(currentFilter);
-    renderItemsList(currentFilter);
+    renderItemsList(currentFilter, currentSearch);
+}
+
+function updateStats() {
+    const totalEl = document.getElementById('stat-total-items');
+    const activeEl = document.getElementById('stat-active-items');
+    const variantEl = document.getElementById('stat-variant-items');
+    const catsEl = document.getElementById('stat-total-cats');
+
+    if (totalEl) totalEl.textContent = items.length;
+    if (activeEl) activeEl.textContent = items.filter(i => i.is_active).length;
+    if (catsEl) catsEl.textContent = categories.length;
+
+    if (variantEl) {
+        // Count items with CL / size indicators
+        const variantCount = items.filter(i => i.name_tr && /\b\d+(?:,\d+)?\s*(?:cl|kg)\b/i.test(i.name_tr)).length;
+        variantEl.textContent = variantCount;
+    }
 }
 
 // ─── RENDER: ÜRÜN KARTLARI ──────────────────────────────────────────
-function renderItemsList(filterCatId = '') {
+function renderItemsList(filterCatId = '', searchQuery = '') {
     const container = document.getElementById('items-list');
     const countEl = document.getElementById('items-count');
     if (!container) return;
 
     let filtered = items;
-    if (filterCatId) filtered = items.filter(i => i.category_id === filterCatId);
+    if (filterCatId) filtered = filtered.filter(i => i.category_id === filterCatId);
+    
+    if (searchQuery && searchQuery.trim() !== '') {
+        const queryLower = searchQuery.trim().toLowerCase();
+        filtered = filtered.filter(i => 
+            (i.name_tr && i.name_tr.toLowerCase().includes(queryLower)) ||
+            (i.name_en && i.name_en.toLowerCase().includes(queryLower)) ||
+            (i.extras_tr && i.extras_tr.toLowerCase().includes(queryLower))
+        );
+    }
 
-    countEl.textContent = `${filtered.length} ürün${filterCatId ? ' (filtrelenmiş)' : ''}`;
+    countEl.textContent = `${filtered.length} ürün${(filterCatId || searchQuery) ? ' (filtrelenmiş)' : ''}`;
 
     if (filtered.length === 0) {
         container.innerHTML = `
             <div class="empty-state">
-                <div class="empty-icon">🍽️</div>
-                <p>${filterCatId ? 'Bu kategoride ürün yok.' : 'Henüz ürün eklenmemiş.'}</p>
+                <div class="empty-icon">🔍</div>
+                <p>${(filterCatId || searchQuery) ? 'Aramaya veya filtreye uygun ürün bulunamadı.' : 'Henüz ürün eklenmemiş.'}</p>
             </div>`;
         return;
     }
@@ -179,20 +225,26 @@ function renderItemsList(filterCatId = '') {
             ? new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(item.price)
             : '—';
 
+        // Detect if item is formatted as a Variant or Extra
+        const clMatch = item.name_tr ? item.name_tr.match(/\s+(\d+(?:,\d+)?\s*(?:cl|kg)\.?)\b/i) : null;
+        const variantBadge = clMatch ? `<span class="badge badge-variant" title="Sitede varyantlı kart olarak gösterilir">🏷️ ${esc(clMatch[1])} Varyant</span>` : '';
+
         const card = document.createElement('div');
-        card.className = 'item-card';
+        card.className = `item-card ${!item.is_active ? 'item-card-inactive' : ''}`;
         card.innerHTML = `
             ${item.image
                 ? `<img src="${escapeAttr(item.image)}" class="item-thumb" alt="" loading="lazy">`
                 : `<div class="item-thumb-empty">🍖</div>`
             }
             <div class="item-info">
-                <div class="item-name">${esc(item.name_tr)}</div>
+                <div class="item-name">${esc(item.name_tr)} ${variantBadge}</div>
                 <div class="item-meta">
-                    <span>${esc(catName)}</span>
+                    <span class="cat-pill">${esc(catName)}</span>
                     <span>·</span>
-                    <span class="badge ${item.is_active ? 'badge-active' : 'badge-inactive'}">${item.is_active ? 'Aktif' : 'Pasif'}</span>
-                    ${item.extras_tr ? `<span class="badge badge-extras" style="margin-left: 5px;" title="${esc(item.extras_tr)}">Ekstra: ${esc(item.extras_tr)}</span>` : ''}
+                    <button type="button" class="badge-toggle ${item.is_active ? 'badge-active' : 'badge-inactive'}" onclick="toggleItemActive('${escapeAttr(item.id)}')" title="Tıklayarak durumu değiştirin">
+                        ${item.is_active ? '🟢 Aktif' : '🔴 Pasif'}
+                    </button>
+                    ${item.extras_tr ? `<span class="badge badge-extras" style="margin-left: 5px;" title="${esc(item.extras_tr)}">📝 ${esc(item.extras_tr)}</span>` : ''}
                 </div>
             </div>
             <span class="item-price">${priceText}</span>
@@ -204,6 +256,155 @@ function renderItemsList(filterCatId = '') {
         container.appendChild(card);
     });
 }
+
+// ─── 1-CLICK ACTIVE TOGGLE ──────────────────────────────────────────
+window.toggleItemActive = async function(id) {
+    const item = items.find(i => i.id === id);
+    if (!item || !sb) return;
+
+    const newStatus = !item.is_active;
+    item.is_active = newStatus; // optimistic UI update
+    renderItemsList(
+        document.getElementById('filter-category')?.value || '',
+        document.getElementById('search-input')?.value || ''
+    );
+    updateStats();
+
+    const { error } = await sb.from('menu_items').update({ is_active: newStatus }).eq('id', id);
+    if (error) {
+        showToast('Durum güncellenemedi: ' + error.message, 'error');
+        item.is_active = !newStatus; // revert
+        loadData();
+    } else {
+        showToast(`"${item.name_tr}" ${newStatus ? 'Aktif yapıldı 🟢' : 'Pasife alındı 🔴'}`);
+    }
+};
+
+// ─── SEARCH INPUT LISTENER ──────────────────────────────────────────
+document.getElementById('search-input')?.addEventListener('input', (e) => {
+    const filterCatId = document.getElementById('filter-category')?.value || '';
+    renderItemsList(filterCatId, e.target.value);
+});
+
+// ─── HIZLI VARYANT & EKSTRA ASİSTANI ───────────────────────────────
+window.applySizeChip = function(sizeStr) {
+    const input = document.getElementById('item-name-tr');
+    if (!input) return;
+
+    let val = input.value.trim();
+
+    // Mevcut cl/kg ifadesi varsa temizle
+    val = val.replace(/\s+\d+(?:,\d+)?\s*(?:cl|kg)\.?\b/gi, '').trim();
+
+    // Yeni boyutu ekle
+    input.value = val ? `${val} ${sizeStr}` : sizeStr;
+    updateVariantPreview();
+};
+
+window.clearSizeChip = function() {
+    const input = document.getElementById('item-name-tr');
+    if (!input) return;
+
+    let val = input.value.trim();
+    input.value = val.replace(/\s+\d+(?:,\d+)?\s*(?:cl|kg)\.?\b/gi, '').trim();
+    updateVariantPreview();
+};
+
+// ─── DİNAMİK EKSTRA SATIRLARI (Multi-Extra Manager) ────────────────
+// HTML "+ Ekstra Ekle" ve hızlı şablon butonları addExtraRow / addPresetExtra
+// çağırıyordu ama bu fonksiyonlar hiç yazılmamıştı — o yüzden bu bölüm
+// tamamen görünmez ve işlevsizdi. Aşağıdaki fonksiyonlar bunu tamamlıyor.
+let extraRowSeq = 0;
+
+window.addExtraRow = function (tr = '', en = '', ar = '', ru = '') {
+    const container = document.getElementById('extras-container');
+    if (!container) return;
+    extraRowSeq += 1;
+    const rowId = 'xrow' + extraRowSeq;
+    const hasTranslations = !!(en || ar || ru);
+
+    const row = document.createElement('div');
+    row.className = 'extra-row-card';
+    row.dataset.rowId = rowId;
+    row.innerHTML = `
+        <div class="extra-row-main">
+            <input type="text" class="extra-field extra-field-tr" placeholder="Örn: Tek Rakı: ₺240,00" value="${escapeAttr(tr)}">
+            <button type="button" class="btn-icon danger" onclick="removeExtraRow('${rowId}')" title="Bu satırı sil">🗑️</button>
+        </div>
+        <div class="extra-translations-toggle">
+            <button type="button" class="btn-ghost-sm" onclick="toggleExtraTranslations('${rowId}')">🌐 EN / AR / RU çevirisi ekle</button>
+        </div>
+        <div class="extra-row-details${hasTranslations ? ' open' : ''}" id="details-${rowId}">
+            <input type="text" class="extra-field extra-field-en" placeholder="English" value="${escapeAttr(en)}">
+            <input type="text" class="extra-field extra-field-ar" placeholder="العربية" dir="rtl" value="${escapeAttr(ar)}">
+            <input type="text" class="extra-field extra-field-ru" placeholder="Русский" value="${escapeAttr(ru)}">
+        </div>
+    `;
+    container.appendChild(row);
+};
+
+window.removeExtraRow = function (rowId) {
+    const row = document.querySelector(`.extra-row-card[data-row-id="${rowId}"]`);
+    if (row) row.remove();
+};
+
+window.toggleExtraTranslations = function (rowId) {
+    const details = document.getElementById('details-' + rowId);
+    if (details) details.classList.toggle('open');
+};
+
+// Hızlı şablon butonları — artık mevcut alanı EZMEK yerine YENİ bir satır ekliyor,
+// böylece birden fazla şablonu (Tek Rakı + Duble Porsiyon gibi) yan yana kullanabilirsiniz.
+window.addPresetExtra = function (tr, en, ar, ru) {
+    addExtraRow(tr, en, ar, ru);
+};
+
+// Form kaydedilmeden hemen önce çağrılır: ekrandaki tüm ekstra satırlarını
+// toplayıp gizli input'lara (item-extras-tr/en/ar/ru) yazar.
+function collectExtrasPayload() {
+    const rows = document.querySelectorAll('#extras-container .extra-row-card');
+    const parts = { tr: [], en: [], ar: [], ru: [] };
+
+    rows.forEach(row => {
+        const tr = row.querySelector('.extra-field-tr')?.value.trim() || '';
+        const en = row.querySelector('.extra-field-en')?.value.trim() || '';
+        const ar = row.querySelector('.extra-field-ar')?.value.trim() || '';
+        const ru = row.querySelector('.extra-field-ru')?.value.trim() || '';
+        if (!tr && !en && !ar && !ru) return; // tamamen boş satırı atla
+        if (tr) parts.tr.push(tr);
+        if (en) parts.en.push(en);
+        if (ar) parts.ar.push(ar);
+        if (ru) parts.ru.push(ru);
+    });
+
+    document.getElementById('item-extras-tr').value = parts.tr.join(', ');
+    document.getElementById('item-extras-en').value = parts.en.join(', ');
+    document.getElementById('item-extras-ar').value = parts.ar.join(', ');
+    document.getElementById('item-extras-ru').value = parts.ru.join(', ');
+}
+
+function updateVariantPreview() {
+    const input = document.getElementById('item-name-tr');
+    const preview = document.getElementById('variant-preview');
+    if (!input || !preview) return;
+
+    const val = input.value.trim();
+    const clMatch = val.match(/\s+(\d+(?:,\d+)?\s*(?:cl|kg)\.?)\b/i);
+
+    if (clMatch) {
+        const sizeStr = clMatch[1].trim();
+        const baseName = val.replace(clMatch[0], '').replace(/\s+/g, ' ').trim();
+        preview.innerHTML = `✨ <strong>Canlı Menü Önizlemesi:</strong> Ana Başlık: <span style="color:var(--accent);">${esc(baseName)}</span> | Buton Varyantı: <span style="color:#2ecc71;">[ ${esc(sizeStr)} ]</span>`;
+        preview.style.background = 'rgba(46, 204, 113, 0.1)';
+        preview.style.borderColor = 'rgba(46, 204, 113, 0.3)';
+    } else {
+        preview.innerHTML = `💡 <em>Ürün ismine cl/kg eklendiğinde menüde şık bir varyant butonu olarak görünecektir. Unutmayın: her boyut kendi başına ayrı bir üründür.</em>`;
+        preview.style.background = 'rgba(212, 163, 85, 0.05)';
+        preview.style.borderColor = 'rgba(212, 163, 85, 0.2)';
+    }
+}
+
+document.getElementById('item-name-tr')?.addEventListener('input', updateVariantPreview);
 
 // ─── RENDER: KATEGORİ KARTLARI ──────────────────────────────────────
 function renderCategoriesList() {
@@ -406,6 +607,8 @@ function closeModal(id) {
         document.getElementById('item-extras-en').value = '';
         document.getElementById('item-extras-ar').value = '';
         document.getElementById('item-extras-ru').value = '';
+        document.getElementById('extras-container').innerHTML = '';
+        switchLangTab('tr');
         resetImagePreview('item-image-preview', 'item-upload-placeholder');
         document.getElementById('itemModalTitle').textContent = 'Yeni Ürün Ekle';
     }
@@ -430,7 +633,9 @@ window.addEventListener('click', function (event) {
 window.openItemModal = function () {
     closeModal('itemModal'); // reset first
     document.getElementById('item-is-active').checked = true;
+    switchLangTab('tr');
     openModal('itemModal');
+    updateVariantPreview();
 };
 
 window.openCategoryModal = function () {
@@ -525,9 +730,14 @@ document.getElementById('item-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!sb) return showToast('Bağlantı yok.', 'error');
 
+    collectExtrasPayload(); // Gather dynamic extra rows into hidden payload inputs
+
     const id = document.getElementById('item-id').value;
     const category_id = document.getElementById('item-category').value;
     const name_tr = document.getElementById('item-name-tr').value.trim();
+    const name_en = document.getElementById('item-name-en')?.value.trim() || null;
+    const name_ar = document.getElementById('item-name-ar')?.value.trim() || null;
+    const name_ru = document.getElementById('item-name-ru')?.value.trim() || null;
     const price = document.getElementById('item-price').value;
     const sort_order = parseInt(document.getElementById('item-sort-order').value) || 0;
     const is_active = document.getElementById('item-is-active').checked;
@@ -552,7 +762,10 @@ document.getElementById('item-form')?.addEventListener('submit', async (e) => {
 
     const payload = { 
         category_id, 
-        name_tr, 
+        name_tr,
+        name_en,
+        name_ar,
+        name_ru,
         price: parseFloat(price), 
         sort_order, 
         is_active, 
@@ -585,6 +798,9 @@ window.editItem = function (id) {
     document.getElementById('item-id').value = item.id;
     document.getElementById('item-category').value = item.category_id;
     document.getElementById('item-name-tr').value = item.name_tr;
+    if (document.getElementById('item-name-en')) document.getElementById('item-name-en').value = item.name_en || '';
+    if (document.getElementById('item-name-ar')) document.getElementById('item-name-ar').value = item.name_ar || '';
+    if (document.getElementById('item-name-ru')) document.getElementById('item-name-ru').value = item.name_ru || '';
     document.getElementById('item-price').value = item.price || '';
     document.getElementById('item-sort-order').value = item.sort_order || 0;
     document.getElementById('item-is-active').checked = item.is_active;
@@ -594,6 +810,13 @@ window.editItem = function (id) {
     document.getElementById('item-extras-ar').value = item.extras_ar || '';
     document.getElementById('item-extras-ru').value = item.extras_ru || '';
     document.getElementById('itemModalTitle').textContent = 'Ürün Düzenle';
+
+    // Mevcut ekstraları düzenlenebilir satır olarak göster
+    document.getElementById('extras-container').innerHTML = '';
+    if (item.extras_tr || item.extras_en || item.extras_ar || item.extras_ru) {
+        addExtraRow(item.extras_tr || '', item.extras_en || '', item.extras_ar || '', item.extras_ru || '');
+    }
+
     // Mevcut görseli önizle
     if (item.image) {
         const preview = document.getElementById('item-image-preview');
@@ -602,7 +825,9 @@ window.editItem = function (id) {
         preview.style.display = 'block';
         placeholder.style.display = 'none';
     }
+    switchLangTab('tr');
     openModal('itemModal');
+    updateVariantPreview();
 };
 
 window.handleDeleteItem = async function (id) {

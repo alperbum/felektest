@@ -20,4 +20,12 @@ User-agent: Google-Extended
 Allow: /llms.txt
 Allow: /
 
+User-agent: PerplexityBot
+Allow: /llms.txt
+Allow: /
+
+User-agent: Bytespider
+Allow: /llms.txt
+Allow: /
+
 Sitemap: https://www.felekmangalbasi.com/sitemap.xml

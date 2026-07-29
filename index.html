@@ -9,6 +9,7 @@
     <meta name="description" id="meta-description"
         content="Bakırköy Sahil'de deniz manzaralı ferah bahçede, rakı ve taze meze eşliğinde zahmetsiz masada mangalbaşı deneyimi sunan modern meyhane.">
     <meta name="keywords" content="rakı mangal, modern meyhane, mangalbaşı, bakırköy restoran, deniz manzaralı meyhane, felek mangalbaşı, zahmetsiz mangal">
+    <meta name="google-site-verification" content="google815b56b5875fd4cb">
     <link rel="canonical" href="https://www.felekmangalbasi.com/">
     <link rel="help" type="text/plain" href="llms.txt">
     <link rel="icon" type="image/png" href="/favicon.png">
@@ -20,65 +21,93 @@
     <meta property="og:url" content="https://www.felekmangalbasi.com">
     <meta property="og:image" content="https://www.felekmangalbasi.com/assets/images/SnapInsta.to_613647466_18491576731072243_8360769828246837946_n.webp">
 
-    <!-- JSON-LD LocalBusiness Schema -->
+    <!-- JSON-LD LocalBusiness & FAQ Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Restaurant",
-      "name": "Felek Mangalbaşı",
-      "image": "https://www.felekmangalbasi.com/assets/images/SnapInsta.to_613647466_18491576731072243_8360769828246837946_n.webp",
-      "url": "https://www.felekmangalbasi.com",
-      "telephone": "+902125439248",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Sakızağacı, Kennedy Cad. No:29",
-        "addressLocality": "Bakırköy",
-        "addressRegion": "İstanbul",
-        "postalCode": "34142",
-        "addressCountry": "TR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 40.9791,
-        "longitude": 28.8726
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        "opens": "12:00",
-        "closes": "02:00"
-      },
-      "servesCuisine": "Modern Meyhane, Rakı & Mangal, Turkish Grill",
-      "hasMenu": "https://www.felekmangalbasi.com/menu.html",
-      "priceRange": "$$$",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.2",
-        "reviewCount": "500"
-      },
-      "sameAs": [
-        "https://www.instagram.com/felekmangalbasi/"
-      ],
-      "amenityFeature": [
+      "@graph": [
         {
-          "@type": "LocationFeatureSpecification",
-          "name": "Serves Alcohol",
-          "value": true
+          "@type": "Restaurant",
+          "@id": "https://www.felekmangalbasi.com/#restaurant",
+          "name": "Felek Mangalbaşı",
+          "alternateName": ["Felek Meyhane", "Felek Kendin Pişir Kendin Ye", "Bakırköy Mangalbaşı"],
+          "image": "https://www.felekmangalbasi.com/assets/images/SnapInsta.to_613647466_18491576731072243_8360769828246837946_n.webp",
+          "url": "https://www.felekmangalbasi.com",
+          "telephone": "+902125439248",
+          "acceptsReservations": "True",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Sakızağacı, Kennedy Cad. No:29",
+            "addressLocality": "Bakırköy",
+            "addressRegion": "İstanbul",
+            "postalCode": "34142",
+            "addressCountry": "TR"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 40.9791,
+            "longitude": 28.8726
+          },
+          "areaServed": [
+            "Bakırköy", "Ataköy", "Yeşilyurt", "Yeşilköy", "Florya", "Yenikapı", "Fatih", "Sultanahmet", "Tarihi Yarımada", "Zeytinburnu", "Bahçelievler", "Avrupa Yakası", "İstanbul"
+          ],
+          "knowsAbout": [
+            "Mangalbaşı", "Kendin Pişir Kendin Ye", "Modern Meyhane", "Rakı Meze", "Kuzu Pirzola", "Adana Kebap", "Şirket Yemekleri", "Doğum Günü Kutlamaları", "Deniz Manzaralı Restoran", "Tarihi Yarımada Restoranları", "Yenikapı Mangalbaşı", "مطعم مشاوي"
+          ],
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "12:00",
+            "closes": "02:00"
+          },
+          "servesCuisine": "Modern Meyhane, Rakı & Mangal, Kendin Pişir Kendin Ye, Turkish BBQ Grill",
+          "hasMenu": "https://www.felekmangalbasi.com/menu.html",
+          "priceRange": "$$$",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.2",
+            "reviewCount": "500"
+          },
+          "sameAs": [
+            "https://www.instagram.com/felekmangalbasi/"
+          ],
+          "amenityFeature": [
+            { "@type": "LocationFeatureSpecification", "name": "Serves Alcohol", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "Outdoor Seating", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "Tabletop Charcoal Grill", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "Valet Parking", "value": true },
+            { "@type": "LocationFeatureSpecification", "name": "Sea View Garden", "value": true }
+          ]
         },
         {
-          "@type": "LocationFeatureSpecification",
-          "name": "Outdoor Seating",
-          "value": true
-        },
-        {
-          "@type": "LocationFeatureSpecification",
-          "name": "Tabletop Charcoal Grill",
-          "value": true
-        },
-        {
-          "@type": "LocationFeatureSpecification",
-          "name": "Valet Parking",
-          "value": true
+          "@type": "FAQPage",
+          "@id": "https://www.felekmangalbasi.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Bakırköy, Ataköy veya Florya yakınlarında alkollü deniz manzaralı mangal mekanı neresidir?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Felek Mangalbaşı, Bakırköy Kennedy Caddesi üzerinde, Ataköy ve Florya'ya birkaç dakika mesafede, deniz manzaralı ferah açık bahçesi, zengin meze dolabı ve dumansız fındık kömüründe masada mangal hizmeti sunan öncü restorandır."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Felek Mangalbaşı'nda doğum günü, şirket yemeği veya grup organizasyonu yapılabilir mi?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Evet, Felek Mangalbaşı geniş bahçe ve iç mekan kapasitesiyle doğum günü, kurumsal şirket yemekleri, nikah sonrası yemek ve grup davetleri için özel esnek menü ve rezervasyon seçenekleri sunar."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Felek Mangalbaşı'nda mangal yakma stresi veya duman kokusu var mıdır?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Hayır. Felek Mangalbaşı 'Zahmetsiz Mangal' konseptiyle kokusuz fındık kömürü kullanır. Ateşin yönetimi ve pişirme servisi garsonlar tarafından desteklenir; kokusuz ve keyifli bir akşam geçirirsiniz."
+              }
+            }
+          ]
         }
       ]
     }
@@ -257,6 +286,61 @@
         </div>
     </section>
 
+    <!-- ELEGANT EXPERIENCE & LOCATION HUB -->
+    <section class="features" style="border-top: 1px solid var(--border); background: var(--bg2); padding: 7rem 3rem;">
+        <div class="features-header">
+            <div>
+                <p class="features-label reveal" data-i18n="nav_experience">Deneyim & Konum Rehberi</p>
+                <h2 class="features-title reveal reveal-delay-1" style="margin-top: 0.5rem;">
+                    Ateşin Ritmi,<br>Meze Kültürü ve Sahil.
+                </h2>
+            </div>
+            <p class="reveal reveal-delay-2" style="color: var(--muted); max-width: 420px; font-size: 0.95rem; line-height: 1.7; font-weight: 300;">
+                Bakırköy sahil şeridinde, Kennedy Caddesi üzerinde meyhane geleneklerini masada mangal konsepti ve özel garson servisiyle sunuyoruz.
+            </p>
+        </div>
+
+        <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem 2rem;">
+            
+            <div class="feature-item reveal" style="padding: 0; border: none;">
+                <div class="feature-num">01</div>
+                <h3 class="feature-title">Zahmetsiz Mangalbaşı</h3>
+                <p class="feature-desc">
+                    Masada fındık kömürü ateşi ve garson desteğiyle duman stresi olmadan kendin pişir kendin ye deneyimi. Balıkesir kuzu pirzola ve özel etler.
+                </p>
+                <a href="zahmetsiz-mangal.html" style="display: inline-block; margin-top: 1.25rem; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);">Detaylı İncele &rarr;</a>
+            </div>
+
+            <div class="feature-item reveal reveal-delay-1" style="padding: 0; border: none;">
+                <div class="feature-num">02</div>
+                <h3 class="feature-title">Modern Meyhane & Meze</h3>
+                <p class="feature-desc">
+                    Günlük taze meze dolabı, sıcak-soğuk ara sıcaklar ve zengin zeytinyağlı seçkisi eşliğinde Marmara rüzgarlı sahil meyhanesi atmosferi.
+                </p>
+                <a href="raki-mangal-meyhane.html" style="display: inline-block; margin-top: 1.25rem; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);">Meze Kültürü &rarr;</a>
+            </div>
+
+            <div class="feature-item reveal reveal-delay-2" style="padding: 0; border: none;">
+                <div class="feature-num">03</div>
+                <h3 class="feature-title">Grup & Kutlama Yemekleri</h3>
+                <p class="feature-desc">
+                    Şirket buluşmaları, doğum günü kutlamaları ve özel davetler için esnek fiks menü seçenekleri ve deniz manzaralı ferah masa düzeni.
+                </p>
+                <a href="https://wa.me/905397776067" target="_blank" rel="noopener" style="display: inline-block; margin-top: 1.25rem; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);">Rezervasyon Yapın &rarr;</a>
+            </div>
+
+            <div class="feature-item reveal reveal-delay-3" style="padding: 0; border: none;">
+                <div class="feature-num">04</div>
+                <h3 class="feature-title">Kennedy Cad. & Tarihi Yarımada</h3>
+                <p class="feature-desc">
+                    Ataköy, Florya, Yenikapı, Fatih ve Sultanahmet'ten sahil yolundan 10-15 dakikada direkt erişim. Vale ve özel otopark imkanıyla.
+                </p>
+                <a href="kennedy-sahil-konum.html" style="display: inline-block; margin-top: 1.25rem; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);">Konum & Ulaşım &rarr;</a>
+            </div>
+
+        </div>
+    </section>
+
     <!-- CTA -->
     <section class="cta-section" id="rezervasyon">
         <p class="cta-eyebrow reveal" data-i18n="nav_reservation">Rezervasyon</p>
@@ -299,9 +383,13 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/translations.js"></script>
+    <script src="js/translations.js?v=3.0"></script>
     <script src="js/config.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=3.0"></script>
+
+    <!-- Cloudflare Web Analytics -->
+    <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a651b2f264914f7bb022a4a79dff8e55"}'></script>
+    <!-- End Cloudflare Web Analytics -->
 
 </body>
 </html>

@@ -17,3 +17,7 @@
 
 /js/*
   Cache-Control: public, max-age=86400
+
+/menu.html
+  Link: <https://efltjgimkjjtagfebmha.supabase.co>; rel=preconnect; crossorigin
+

@@ -51,13 +51,36 @@
         <header class="admin-header">
             <div class="header-brand">
                 <span class="header-logo">🔥</span>
-                <h1>Felek Yönetim</h1>
+                <div>
+                    <h1>Felek Yönetim Paneli</h1>
+                    <span class="header-subtitle-tag">Dijital Menü & Veritabanı Yönetimi</span>
+                </div>
             </div>
             <div class="header-right">
-                <a href="../menu.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">🌐 Siteyi Gör</a>
-                <button id="logout-btn" class="btn btn-outline btn-sm">Çıkış</button>
+                <a href="../menu.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">🌐 Menüyü Gör</a>
+                <button id="logout-btn" class="btn btn-outline btn-sm btn-logout">Çıkış</button>
             </div>
         </header>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar" id="stats-bar">
+            <div class="stat-card">
+                <span class="stat-label">Toplam Ürün</span>
+                <span class="stat-val" id="stat-total-items">0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Aktif Menü Ürünü</span>
+                <span class="stat-val text-success" id="stat-active-items">0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Varyantlı Şişe / Boyut</span>
+                <span class="stat-val text-gold" id="stat-variant-items">0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Kategoriler</span>
+                <span class="stat-val" id="stat-total-cats">0</span>
+            </div>
+        </div>
 
         <div class="tab-bar">
             <button class="tab-btn active" data-tab="items">🍖 Menü Ürünleri</button>
@@ -73,9 +96,13 @@
                         <h2>Menü Ürünleri</h2>
                         <p class="header-subtitle" id="items-count">Yükleniyor...</p>
                     </div>
-                    <button class="btn btn-primary" onclick="openItemModal()">＋ Yeni Ürün</button>
+                    <button class="btn btn-primary" onclick="openItemModal()">＋ Yeni Ürün Ekle</button>
                 </div>
-                <div class="filters">
+                <div class="filters-row">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="search-input" class="search-input" placeholder="Ürün veya marka ara... (Örn: Chivas, Rakı, Meze, Efes)">
+                    </div>
                     <select id="filter-category" class="select-input">
                         <option value="">Tüm Kategoriler</option>
                     </select>
@@ -104,77 +131,133 @@
 
     <!-- Item Modal -->
     <div id="itemModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content modal-lg">
             <div class="modal-header">
-                <h3 id="itemModalTitle">Yeni Ürün Ekle</h3>
-                <button class="close-modal" onclick="closeModal('itemModal')">&times;</button>
-            </div>
-            <form id="item-form">
-                <input type="hidden" id="item-id">
-                <div class="input-group">
-                    <label>Kategori</label>
-                    <select id="item-category" required class="select-input"></select>
+                <div class="modal-header-left">
+                    <h3 id="itemModalTitle">Yeni Ürün Ekle</h3>
                 </div>
-                <div class="input-group">
-                    <label>Ürün Adı</label>
-                    <input type="text" id="item-name-tr" required placeholder="Örn: Adana Kebap">
-                </div>
-                <div class="input-row">
-                    <div class="input-group">
-                        <label>Fiyat (₺)</label>
-                        <input type="number" step="0.01" id="item-price" required placeholder="320">
-                    </div>
-                    <div class="input-group">
-                        <label>Sıralama</label>
-                        <input type="number" id="item-sort-order" value="0" placeholder="0">
-                        <span class="input-hint">Küçük numara önce çıkar</span>
-                    </div>
-                </div>
-                <div style="margin-top: 1.2rem; margin-bottom: 0.6rem; border-top: 1px dashed var(--border); padding-top: 1rem;">
-                    <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary);">İlave Seçenekler (Ekstralar)</span>
-                    <span class="input-hint">Boş bırakırsanız ekstra gösterilmez. Örn: +₺50,00 Göbek</span>
-                </div>
-                <div class="input-row">
-                    <div class="input-group">
-                        <label>Ekstra (TR)</label>
-                        <input type="text" id="item-extras-tr" placeholder="Örn: +₺50,00 Göbek">
-                    </div>
-                    <div class="input-group">
-                        <label>Ekstra (EN)</label>
-                        <input type="text" id="item-extras-en" placeholder="Örn: +₺50,00 Double">
-                    </div>
-                </div>
-                <div class="input-row">
-                    <div class="input-group">
-                        <label>Ekstra (AR)</label>
-                        <input type="text" id="item-extras-ar" placeholder="Örn: +₺50,00 مضاعف">
-                    </div>
-                    <div class="input-group">
-                        <label>Ekstra (RU)</label>
-                        <input type="text" id="item-extras-ru" placeholder="Örn: +₺50,00 Двойной">
-                    </div>
-                </div>
-                <div class="input-group toggle-group">
-                    <label class="toggle-label">
+                <div class="modal-header-right">
+                    <label class="toggle-label-top">
                         <input type="checkbox" id="item-is-active" checked>
                         <span class="toggle-switch"></span>
-                        <span>Menüde göster</span>
+                        <span class="toggle-text">Menüde Göster</span>
                     </label>
+                    <button type="button" class="close-modal" onclick="closeModal('itemModal')">&times;</button>
                 </div>
-                <div class="input-group">
+            </div>
+
+            <!-- Language Tabs Bar -->
+            <div class="modal-lang-bar">
+                <button type="button" class="lang-tab-btn active" data-lang="tr" onclick="switchLangTab('tr')">🇹🇷 Türkçe</button>
+                <button type="button" class="lang-tab-btn" data-lang="en" onclick="switchLangTab('en')">🇬🇧 English</button>
+                <button type="button" class="lang-tab-btn" data-lang="ar" onclick="switchLangTab('ar')">🇸🇦 العربية</button>
+                <button type="button" class="lang-tab-btn" data-lang="ru" onclick="switchLangTab('ru')">🇷🇺 Русский</button>
+            </div>
+
+            <form id="item-form">
+                <input type="hidden" id="item-id">
+                
+                <!-- COMMON FIELDS -->
+                <div class="input-row">
+                    <div class="input-group flex-2">
+                        <label>Kategori <span class="required-star">*</span></label>
+                        <select id="item-category" required class="select-input"></select>
+                    </div>
+                    <div class="input-group flex-1">
+                        <label>Fiyat (₺) <span class="required-star">*</span></label>
+                        <input type="number" step="0.01" id="item-price" required placeholder="0.00">
+                    </div>
+                    <div class="input-group flex-1">
+                        <label>Sıralama</label>
+                        <input type="number" id="item-sort-order" value="0" placeholder="0">
+                    </div>
+                </div>
+
+                <!-- 🇹🇷 TÜRKÇE PANE (Default) -->
+                <div class="lang-pane lang-pane-tr active">
+                    <div class="input-group">
+                        <label>Ürün Adı (TR) <span class="required-star">*</span></label>
+                        <input type="text" id="item-name-tr" required placeholder="Ürün adı girin...">
+                    </div>
+
+                    <!-- HIZLI VARYANT / BOYUT ASİSTANI -->
+                    <div class="variant-assistant-box">
+                        <div class="assistant-header">
+                            <span class="assistant-title">Boyut / Hacim Ekle</span>
+                        </div>
+                        <div class="size-chips">
+                            <button type="button" class="chip-btn" onclick="applySizeChip('20 cl')">+ 20 cl</button>
+                            <button type="button" class="chip-btn" onclick="applySizeChip('33 cl')">+ 33 cl</button>
+                            <button type="button" class="chip-btn" onclick="applySizeChip('35 cl')">+ 35 cl</button>
+                            <button type="button" class="chip-btn" onclick="applySizeChip('50 cl')">+ 50 cl</button>
+                            <button type="button" class="chip-btn" onclick="applySizeChip('70 cl')">+ 70 cl</button>
+                            <button type="button" class="chip-btn" onclick="applySizeChip('75 cl')">+ 75 cl</button>
+                            <button type="button" class="chip-btn" onclick="applySizeChip('100 cl')">+ 100 cl</button>
+                            <button type="button" class="chip-btn" onclick="applySizeChip('1 Kg')">+ 1 Kg</button>
+                            <button type="button" class="chip-btn chip-btn-clear" onclick="clearSizeChip()">✕ Temizle</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🇬🇧 ENGLISH PANE -->
+                <div class="lang-pane lang-pane-en" style="display:none;">
+                    <div class="input-group">
+                        <label>Product Name (EN)</label>
+                        <input type="text" id="item-name-en" placeholder="Product name (English)...">
+                    </div>
+                </div>
+
+                <!-- 🇸🇦 ARABIC PANE -->
+                <div class="lang-pane lang-pane-ar" style="display:none;">
+                    <div class="input-group">
+                        <label>اسم المنتج (AR)</label>
+                        <input type="text" id="item-name-ar" placeholder="اسم المنتج...">
+                    </div>
+                </div>
+
+                <!-- 🇷🇺 RUSSIAN PANE -->
+                <div class="lang-pane lang-pane-ru" style="display:none;">
+                    <div class="input-group">
+                        <label>Название (RU)</label>
+                        <input type="text" id="item-name-ru" placeholder="Название...">
+                    </div>
+                </div>
+
+                <!-- EKSTRALARI YÖNET (MULTI-EXTRA MANAGER) -->
+                <div class="extras-section">
+                    <div class="section-title-bar">
+                        <div class="title-with-btn">
+                            <span>Ekstralar &amp; Alt Notlar</span>
+                            <button type="button" class="btn btn-outline btn-xs" onclick="addExtraRow()">＋ Ekstra Ekle</button>
+                        </div>
+                    </div>
+
+                    <div id="extras-container" class="extras-container">
+                        <!-- Dynamic Extra Rows injected by JS -->
+                    </div>
+
+                    <!-- Hidden actual input fields sent to Supabase -->
+                    <input type="hidden" id="item-extras-tr">
+                    <input type="hidden" id="item-extras-en">
+                    <input type="hidden" id="item-extras-ar">
+                    <input type="hidden" id="item-extras-ru">
+                </div>
+
+                <div class="input-group" style="margin-top: 1rem;">
                     <label>Fotoğraf</label>
                     <div class="image-upload-area" id="item-upload-area">
                         <input type="file" id="item-image-file" accept="image/*" class="file-input-hidden">
                         <input type="hidden" id="item-image">
                         <div class="upload-placeholder" id="item-upload-placeholder">
                             <span class="upload-icon">📷</span>
-                            <span>Fotoğraf seçmek için tıklayın</span>
+                            <span>Fotoğraf Seç</span>
                         </div>
                         <img id="item-image-preview" class="image-preview" style="display:none;">
                     </div>
                 </div>
+
                 <div class="modal-actions">
-                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                    <button type="submit" class="btn btn-primary btn-save">Kaydet</button>
                     <button type="button" class="btn btn-outline" onclick="closeModal('itemModal')">İptal</button>
                 </div>
             </form>

@@ -226,10 +226,10 @@ document.addEventListener('DOMContentLoaded', () => {
     {"categoryId":"mezeler","title":{"tr":"Çiğköfte","en":"Steak Tartar a la Turca (Cigkofte)","ar":"كبة نية (تشي كوفته)","ru":"Чи кёфте (вегетарианские острые котлеты)"},"price":"₺300,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/cigkofte.webp"},
     {"categoryId":"mezeler","title":{"tr":"Havuç Tarator","en":"Carrot Tarator (Carrot Yogurt Dip)","ar":"سلطة الجزر بالزبادي","ru":"Морковный таратор"},"price":"₺320,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/havuc_tarator.webp"},
     {"categoryId":"mezeler","title":{"tr":"Manda Yoğurdu","en":"Buffalo Yogurt","ar":"زبادي حليب الجواميس","ru":"Йогурт из буйволиного молока"},"price":"₺200,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/manda_yogurdu.webp"},
-    {"categoryId":"ana_yemekler","title":{"tr":"Pirzola (1 Kg)","en":"Lamb Chops (1 Kg)","ar":"ريش الغنم (1 كجم)","ru":"Бараньи отбивные (1 кг)"},"price":"₺3.200,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/1779227559639_74pzq0t5r.webp"},
+    {"categoryId":"ana_yemekler","title":{"tr":"Pirzola (Kg)","en":"Lamb Chops (Kg)","ar":"ريش الغنم (كجم)","ru":"Бараньи отбивные (кг)"},"price":"₺3.200,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/1779227559639_74pzq0t5r.webp"},
     {"categoryId":"mezeler","title":{"tr":"Sarımsak","en":"Garlic (Portion)","ar":"ثوم","ru":"Чеснок (порция)"},"price":"₺75,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/1779227493729_5foumyvk8.webp"},
-    {"categoryId":"ana_yemekler","title":{"tr":"Bonfile (1 Kg)","en":"Beef Tenderloin (1 Kg)","ar":"فيليه البقر (1 كجم)","ru":"Говяжье филе (1 кг)"},"price":"₺3.750,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/1779227547438_jzw12uts3.webp"},
-    {"categoryId":"ana_yemekler","title":{"tr":"Kırmızı Et Çeşitleri (1 Kg)","en":"Red Meat Varieties (1 Kg)","ar":"تشكيلة اللحوم الحمراء (1 كجم)","ru":"Ассорти из красного мяса (1 кг)"},"price":"₺2.950,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/kirmizi_et.webp"},
+    {"categoryId":"ana_yemekler","title":{"tr":"Bonfile (Kg)","en":"Beef Tenderloin (Kg)","ar":"فيليه البقر (كجم)","ru":"Говяжье филе (кг)"},"price":"₺3.750,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/1779227547438_jzw12uts3.webp"},
+    {"categoryId":"ana_yemekler","title":{"tr":"Kırmızı Et Çeşitleri (Kg)","en":"Red Meat Varieties (Kg)","ar":"تشكيلة اللحوم الحمراء (كجم)","ru":"Ассорти из красного мяса (кг)"},"price":"₺2.950,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/kirmizi_et.webp"},
     {"categoryId":"mezeler","title":{"tr":"Haydari","en":"Haydari (Thick Yogurt Dip with Herbs)","ar":"حيداري (زبادي بالأعشاب)","ru":"Хайдари (густой йогурт с зеленью)"},"price":"₺290,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/1781181361729_ct0z394n3.png"},
     {"categoryId":"mezeler","title":{"tr":"Süzme yogurt","en":"Strained Yogurt","ar":"لبنة (زبادي مصفى)","ru":"Сузьме йогурт (процеженный йогурт)"},"price":"₺240,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/suzme_yogurt.webp"},
     {"categoryId":"salatalar","title":{"tr":"İstanbul Salata","en":"Istanbul Salad","ar":"سلطة اسطنبول","ru":"Стамбульский салат"},"price":"₺350,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/salatalar/istanbul_salata.webp","extras":{"tr":"+₺100,00 Duble Porsiyon","en":"+₺100,00 Double Portion","ar":"+₺100,00 وجبة مزدوجة","ru":"+₺100,00 Двойная порция"}},
@@ -239,14 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {"categoryId":"mezeler","title":{"tr":"Cacık","en":"Tzatziki","ar":"جاجيك","ru":"Джаджик (турецкий йогурт с огурцами)"},"price":"₺260,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/1779227204013_0ksqu421u.webp"},
     {"categoryId":"mezeler","title":{"tr":"Pancar Turşusu","en":"Pickled Beetroot","ar":"مخلل الشمندر","ru":"Маринованная свёкла"},"price":"₺300,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/1779227427869_35s4bnpjb.webp"},
     {"categoryId":"mezeler","title":{"tr":"Atom","en":"Atom (Spicy Mixed Dip)","ar":"أتوم (مقبلات حارة)","ru":"Атом (острая закуска)"},"price":"₺330,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/1779227158927_mvagodo4a.webp"},
-    {"categoryId":"mezeler","title":{"tr":"Muhammara","en":"Muhammara (Walnut & Red Pepper Dip)","ar":"محمرة","ru":"Мухаммара (острая закуска из перца и орехов)"},"price":"₺320,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/1779227262603_tbx4s7kre.webp"},
-    {"categoryId":"sarap","title":{"tr":"Buzbağ 75 cl (Kırmızı/Beyaz)","en":"Buzbag 75 cl (Red/White)","ar":"نبيذ بوزباغ 75 سل (أحمر/أبيض)","ru":"Вино Бузбаг 75 сл (Красное/Белое)"},"price":"₺1.950,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/sarap/buzbag_kirmizi.webp"},
-    {"categoryId":"sarap","title":{"tr":"Sarafin 75 cl (Kırmızı/Beyaz/Blush)","en":"Sarafin 75 cl (Red/White/Blush)","ar":"نبيذ سارافين 75 سل (أحمر/أبيض/روز)","ru":"Вино Сарафин 75 сл (Красное/Белое/Розе)"},"price":"₺4.300,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/sarap/76.webp"},
-    {"categoryId":"viski","title":{"tr":"Chivas 12 70 cl","en":"Chivas Regal 12 Years Old 70 cl","ar":"شيفاز ريغال 12 سنة 70 سل","ru":"Чивас Ригал 12 лет 70 сл"},"price":"₺5.700,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/viski/59.webp"},
-    {"categoryId":"sarap","title":{"tr":"Buzbağ 37,5 cl (Kırmızı/Beyaz)","en":"Buzbag 37.5 cl (Red/White)","ar":"نبيذ بوزباغ 37.5 سل (أحمر/أبيض)","ru":"Вино Бузбаг 37.5 сл (Красное/Белое)"},"price":"₺900,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/sarap/buzbag_kirmizi.webp"},
-    {"categoryId":"ana_yemekler","title":{"tr":"Tavuk Çeşitleri (1 Kg)","en":"Chicken Varieties (1 Kg)","ar":"تشكيلة الدجاج (1 كجم)","ru":"Ассорти из курицы (1 кг)"},"price":"₺1.800,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/ana_yemekler/beyaz_et.webp"},
-    {"categoryId":"biralar","title":{"tr":"Cips","en":"Potato Chips","ar":"رقائق بطاطس (شيبس)","ru":"Чипсы"},"price":"₺300,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/biralar/cips.webp"},
-    {"categoryId":"alkolsuz","title":{"tr":"Ayran","en":"Ayran (Traditional Salty Yogurt Drink)","ar":"عيران (لبن مالح)","ru":"Айран (турецкий йогуртовый напиток)"},"price":"₺100,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/ayran.webp"},
+    {"categoryId":"alkolsuz","title":{"tr":"Ayran","en":"Ayran (Traditional Salty Yogurt Drink)","ar":"عيران (لبن مالح)","ru":"آйран (турецкий йогуртовый напиток)"},"price":"₺100,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/ayran.webp"},
     {"categoryId":"alkolsuz","title":{"tr":"Ice Tea Limon / Şeftali","en":"Ice Tea (Lemon / Peach)","ar":"آيس تي (ليمون / خوخ)","ru":"Холодный чай (лимон / персик)"},"price":"₺130,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/ice_tea.webp"},
     {"categoryId":"sarap","title":{"tr":"Versus Beyaz 75 cl","en":"Kayra Versus White Wine 75 cl","ar":"نبيذ كايرا فيرسوس أبيض 75 سل","ru":"Белое вино Kayra Versus 75 сл"},"price":"₺2.900,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/sarap/versus_beyaz.webp"},
     {"categoryId":"sarap","title":{"tr":"Kadeh Şarap","en":"Glass of Wine (Red/White)","ar":"كأس نبيذ","ru":"Бокал вина"},"price":"₺450,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/sarap/kirmizi_kadeh_sarap.webp"},
@@ -255,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {"categoryId":"votka_cin","title":{"tr":"Smirnoff 70 cl","en":"Smirnoff Vodka 70 cl","ar":"فودكا سميرنوف 70 سل","ru":"Водка Смирнофф 70 сл"},"price":"₺4.200,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/votka_cin/smirnoff_70cl.webp"},
     {"categoryId":"votka_cin","title":{"tr":"Duble Cin","en":"Double Gin","ar":"جين دبل","ru":"Двойной джин"},"price":"₺470,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/votka_cin/duble_cin.webp"},
     {"categoryId":"alkolsuz","title":{"tr":"Tonik","en":"Tonic","ar":"تونيك","ru":"Тоник"},"price":"₺140,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/tonik.webp","extras":{"tr":"+₺260,00 1 Litre","en":"+₺260,00 1 Liter","ar":"+₺260,00 1 لتر","ru":"+₺260,00 1 литр"}},
-    {"categoryId":"viski","title":{"tr":"Viski Tek","en":"Whiskey","ar":"ويسكي","ru":"Viski"},"price":"₺450,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/viski/duble_viski.webp","extras":{"tr":"+₺200,00 Duble","en":"+₺200,00 Double","ar":"+₺200,00 مضاعф","ru":"+₺200,00 Двойной"}},
+    {"categoryId":"viski","title":{"tr":"Duble Viski","en":"Double Whiskey","ar":"ويسكي دبل","ru":"Двойной Виски"},"price":"₺650,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/viski/duble_viski.webp","extras":{"tr":"Tek Viski: ₺450,00","en":"Single Whiskey: ₺450.00","ar":"ويسكي مفرد: ₺450,00","ru":"Одинарный Виски: ₺450,00"}},
     {"categoryId":"mezeler","title":{"tr":"Zeytinyağlı Enginar","en":"Artichoke in Olive Oil","ar":"أرضي شوكي بزيت الزيتون","ru":"Артишоки в оливковом масле"},"price":"₺340,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/1779227416849_c5ax66k9y.webp"},
     {"categoryId":"sarap","title":{"tr":"Leona Blush 75 cl","en":"Leona Blush Wine 75 cl","ar":"نبيذ ليونا روزيه 75 سل","ru":"Розовое вино Leona Blush 75 сл"},"price":"₺2.300,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/sarap/75.webp"},
     {"categoryId":"raki","title":{"tr":"Kulüp Rakı 70 cl","en":"Kulup Raki 70 cl","ar":"كولوب راكي 70 سل","ru":"Кулюп Ракы 70 сл"},"price":"₺3.400,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/raki/79.webp"},
@@ -263,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {"categoryId":"mezeler","title":{"tr":"Zeytinyağlı Yaprak Sarma","en":"Stuffed Grape Leaves in Olive Oil (Sarma)","ar":"ورق عنب بالزيت","ru":"Сарма (фаршированные виноградные листья)"},"price":"₺340,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/1779227457903_dh9v7oic7.webp"},
     {"categoryId":"raki","title":{"tr":"Beylerbeyi Göbek 35 cl","en":"Beylerbeyi Gobek Raki 35 cl","ar":"بيلربيي غوبيك راكي 35 سل","ru":"Бейlerbeyi Gobek Raki 35 cl"},"price":"₺1.950,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/raki/beylerbeyi_gobek.webp"},
     {"categoryId":"mezeler","title":{"tr":"Kuru Domates","en":"Sun-Dried Tomatoes","ar":"طماطم مجففة","ru":"Вяленые томаты"},"price":"₺330,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/1781181314329_aux5wmuu3.png"},
-    {"categoryId":"biralar","title":{"tr":"Efes Pilsen","en":"Efes Pilsen Beer 50 cl","ar":"بيرة إيفيس بيلسن 50 سل","ru":"Пиво Эфес Пилсен 50 сл"},"price":"₺250,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/biralar/64.webp"},
+    {"categoryId":"biralar","title":{"tr":"Efes Pilsen 33 cl","en":"Efes Pilsen Beer 33 cl","ar":"بيرة إيفيس بيلسن 33 سل","ru":"Пиво Эфес Пилсен 33 сл"},"price":"₺250,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/biralar/64.webp"},
     {"categoryId":"raki","title":{"tr":"Altın Seri 70 cl","en":"Yeni Raki Altin Seri 70 cl","ar":"يني راكي ألتين سيري 70 سل","ru":"Йени Ракы Алтын Сери 70 сл"},"price":"₺3.600,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/raki/80.webp"},
     {"categoryId":"raki","title":{"tr":"Sarı Zeybek 70 cl","en":"Sari Zeybek Raki 70 cl","ar":"ساري زيبك راكي 70 سل","ru":"Сары Зейбек Ракы 70 сл"},"price":"₺3.800,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/raki/81.webp"},
     {"categoryId":"raki","title":{"tr":"Efe Gold 35 cl","en":"Efe Gold Raki 35 cl","ar":"إيفي جولد راكي 35 سل","ru":"Эфе Голд Ракы 35 сл"},"price":"₺1.850,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/raki/83.webp"},
@@ -272,7 +265,8 @@ document.addEventListener('DOMContentLoaded', () => {
     {"categoryId":"tatli_meyve","title":{"tr":"Ayva Tatlısı","en":"Quince Dessert","ar":"حلوى السفرجل","ru":"Десерт из айвы (Айva tatlisi)"},"price":"₺330,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/tatli_meyve/30.webp"},
     {"categoryId":"tatli_meyve","title":{"tr":"Tekli Karışık Meyve","en":"Mixed Fruit Salad (Single)","ar":"سلطة فواكه مشكلة (فردية)","ru":"Смешанные фрукты (индивидуальное ассорти)"},"price":"₺350,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/tatli_meyve/tekli_karisik_meyve.webp"},
     {"categoryId":"tatli_meyve","title":{"tr":"Serpme Meyve","en":"Assorted Fruit Platter","ar":"طبق فواكه مشكلة","ru":"Большое фруктовое ассорти"},"price":"₺450,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/tatli_meyve/32.webp"},
-    {"categoryId":"raki","title":{"tr":"Duble Rakı","en":"Double Raki","ar":"راكي مزدوج","ru":"Двойная Ракы"},"price":"₺380,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/raki/duble_raki.webp","extras":{"tr":"+₺50,00 Göbek","en":"+₺50,00 Gobek","ar":"+₺50,00 غوبيك","ru":"+₺50,00 Гёбек"}},
+    {"categoryId":"raki","title":{"tr":"Duble Rakı","en":"Double Raki","ar":"راكي مزدوج","ru":"Двойная Ракы"},"price":"₺380,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/raki/duble_raki.webp","extras":{"tr":"Tek Rakı: ₺240,00","en":"Single Raki: ₺240.00","ar":"راكي مفرد: ₺240,00","ru":"Одинарная Ракы: ₺240,00"}},
+    {"categoryId":"raki","title":{"tr":"Duble Göbek","en":"Double Gobek","ar":"غوبيك مزدوج","ru":"Двойная Гёбек"},"price":"₺430,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/raki/duble_raki.webp","extras":{"tr":"Tek Göbek: ₺290,00","en":"Single Gobek: ₺290.00","ar":"غوبيك مفرد: ₺290,00","ru":"Одинарная Гёбек: ₺290,00"}},
     {"categoryId":"mezeler","title":{"tr":"Acılı Ezme","en":"Spicy Turkish Tomato Dip (Acili Ezme)","ar":"سلطة حارة (إزمي)","ru":"Аджика по-турецки (Аджилы эзме)"},"price":"₺290,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/1779227283165_jff5xuqx0.webp"},
     {"categoryId":"biralar","title":{"tr":"Patates Tava","en":"French Fries","ar":"بطاطس مقلية","ru":"Картофель фри"},"price":"₺240,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/biralar/patates_tava.webp"},
     {"categoryId":"alkolsuz","title":{"tr":"Acılı / Acısız Şalgam","en":"Turnip Juice (Spicy / Mild)","ar":"عصير اللفت (حار / بارد)","ru":"Шалгам (Острый / Мягкий)"},"price":"₺110,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/salgam.webp","extras":{"tr":"+₺290,00 1 Litre","en":"+₺290,00 1 Liter","ar":"+₺290,00 1 لتر","ru":"+₺290,00 1 литр"}},
@@ -284,13 +278,12 @@ document.addEventListener('DOMContentLoaded', () => {
     {"categoryId":"tatli_meyve","title":{"tr":"İncir Tatlısı","en":"Fig Dessert (Incir Tatlisi)","ar":"حلوى التين","ru":"Десерт из инжира (Инджир татлысы)"},"price":"₺330,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/tatli_meyve/28.webp"},
     {"categoryId":"tatli_meyve","title":{"tr":"Dondurma (Porsiyon)","en":"Ice Cream (Portion)","ar":"آيس كريم (حصة)","ru":"Мороженое (порция)"},"price":"₺150,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/tatli_meyve/dondurma.webp"},
     {"categoryId":"mezeler","title":{"tr":"Fava","en":"Fava (Broad Bean Puree)","ar":"فافا (متبل الفول)","ru":"Фава (пюре из бобов)"},"price":"₺300,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/1779227239999_5pf93q7r8.webp"},
-    {"categoryId":"raki","title":{"tr":"Tek Rakı","en":"Single Raki","ar":"راكي مفرد","ru":"Одинарная Ракы"},"price":"₺240,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/raki/duble_raki.webp","extras":{"tr":"+₺50,00 Göbek","en":"+₺50,00 Gobek","ar":"+₺50,00 غوبيك","ru":"+₺50,00 Гёбек"}},
     {"categoryId":"biralar","title":{"tr":"Tuborg 50 cl","en":"Tuborg Beer 50 cl","ar":"بيرة توبورج 50 سل","ru":"Пиво Туборг 50 сл"},"price":"₺420,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/biralar/63.webp"},
     {"categoryId":"votka_cin","title":{"tr":"Absolut 70 cl","en":"Absolut Vodka 70 cl","ar":"فودكا أبسولوت 70 سل","ru":"Водка Абсолют 70 сл"},"price":"₺4.200,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/votka_cin/57.webp"},
     {"categoryId":"viski","title":{"tr":"Chivas 12 35 cl","en":"Chivas Regal 12 Years Old 35 cl","ar":"شيفاز ريغال 12 سنة 35 سل","ru":"Чивас Ригал 12 лет 35 сл"},"price":"₺2.900,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/viski/59.webp"},
     {"categoryId":"biralar","title":{"tr":"Tuborg 33 cl","en":"Tuborg Beer 33 cl","ar":"بيرة توبورج 33 سل","ru":"Пиво Туборг 33 сл"},"price":"₺250,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/biralar/63.webp"},
-    {"categoryId":"biralar","title":{"tr":"Efes 50 cl","en":"Efes Beer 50 cl","ar":"بيرة إيفيس 50 سل","ru":"Пиво Эфес 50 сл"},"price":"₺420,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/biralar/64.webp"},
-    {"categoryId":"biralar","title":{"tr":"Miller","en":"Miller Beer 33 cl","ar":"بيرة ميلر 33 سل","ru":"Пиво Миллер 33 сл"},"price":"₺275,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/biralar/65.webp"},
+    {"categoryId":"biralar","title":{"tr":"Efes Pilsen 50 cl","en":"Efes Beer 50 cl","ar":"بيرة إيفيس 50 سل","ru":"Пиво Эфес 50 сл"},"price":"₺420,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/biralar/64.webp"},
+    {"categoryId":"biralar","title":{"tr":"Miller 33 cl","en":"Miller Beer 33 cl","ar":"بيرة ميلر 33 سل","ru":"Пиво Миллер 33 сл"},"price":"₺275,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/biralar/65.webp"},
     {"categoryId":"biralar","title":{"tr":"Antep Çerez","en":"Antep Style Mixed Nuts","ar":"مكسرات مشكلة على طريقة عنتاب","ru":"Ассорти из орехов (по-антепски)"},"price":"₺245,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/biralar/antep_cerez.webp"},
     {"categoryId":"raki","title":{"tr":"Kulüp Rakı 35 cl","en":"Kulup Raki 35 cl","ar":"كولوب راكي 35 سل","ru":"Кулюп Ракы 35 сл"},"price":"₺1.750,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/raki/79.webp"},
     {"categoryId":"raki","title":{"tr":"Altın Seri 35 cl","en":"Yeni Raki Altin Seri 35 cl","ar":"يني راكي ألتين سيري 35 سل","ru":"Йени Ракы Алтын Сери 35 сл"},"price":"₺1.850,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/raki/80.webp"},
@@ -300,20 +293,20 @@ document.addEventListener('DOMContentLoaded', () => {
     {"categoryId":"raki","title":{"tr":"Beylerbeyi Göbek 20 cl","en":"Beylerbeyi Gobek Raki 20 cl","ar":"بيلربيي غوبيك راكي 20 سل","ru":"Бейлербейи Гёбек Ракы 20 сл"},"price":"₺1.100,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/raki/beylerbeyi_gobek.webp"},
     {"categoryId":"sarap","title":{"tr":"Vintage Beyaz 75 cl","en":"Kayra Vintage White Wine 75 cl","ar":"نبيذ كايرا فينتاج أبيض 75 سل","ru":"Белое вино Kayra Vintage 75 сл"},"price":"₺3.000,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/sarap/77.webp"},
     {"categoryId":"alkolsuz","title":{"tr":"Sprite","en":"Sprite","ar":"سبرايت","ru":"Спрайт"},"price":"₺145,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/69.webp"},
-    {"categoryId":"sarap","title":{"tr":"Ruffino Prosecco 75cl","en":"Prosecco / Sparkling Wine","ar":"بروسيكو / نبيذ فوار","ru":"Просекко / Игристое вино"},"price":"₺5.000,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/sarap/74.webp"},
+    {"categoryId":"sarap","title":{"tr":"Ruffino Prosecco 75 cl","en":"Prosecco / Sparkling Wine 75 cl","ar":"بروسيكو / نبيذ فوار 75 سل","ru":"Просекко / Игристое вино 75 сл"},"price":"₺5.000,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/sarap/74.webp"},
     {"categoryId":"alkolsuz","title":{"tr":"Fanta","en":"Fanta","ar":"فانتا","ru":"Фанта"},"price":"₺145,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/70.webp"},
     {"categoryId":"alkolsuz","title":{"tr":"Kola","en":"Coca-Cola","ar":"كولا","ru":"Кола"},"price":"₺145,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/71.webp"},
     {"categoryId":"alkolsuz","title":{"tr":"Kola (Zero)","en":"Coca-Cola Zero Sugar","ar":"كولا زيرو","ru":"Кола Зеро"},"price":"₺145,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/71.webp"},
-    {"categoryId":"viski","title":{"tr":"Johnnie Walker Black Label","en":"Johnnie Walker Black Label","ar":"جوني ووكر بلاك ليبل","ru":"Джонни Уокер Блэк Лейбл"},"price":"Fiyat Sorunuz","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/viski/60.webp"},
-    {"categoryId":"votka_cin","title":{"tr":"Belvedere Votka","en":"Belvedere Vodka","ar":"فودكا بيلفيدير","ru":"Водка Бельведер"},"price":"₺8.500,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/votka_cin/56.webp"},
+    {"categoryId":"viski","title":{"tr":"Black Label 70 cl","en":"Black Label 70 cl","ar":"بلاك ليبل 70 سل","ru":"Блэк Лейбл 70 сл"},"price":"₺5.700,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/viski/60.webp"},
+    {"categoryId":"votka_cin","title":{"tr":"Belvedere 70 cl","en":"Belvedere 70 cl","ar":"بيلفيدير 70 سل","ru":"Бельведер 70 сл"},"price":"₺8.500,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/votka_cin/56.webp"},
     {"categoryId":"alkolsuz","title":{"tr":"Kayısı Suyu","en":"Apricot Juice","ar":"عصير المشمش","ru":"Абрикосовый сок"},"price":"₺130,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/72.webp"},
     {"categoryId":"alkolsuz","title":{"tr":"Vişne Suyu","en":"Sour Cherry Juice","ar":"عصير الكرز","ru":"Вишневый сок"},"price":"₺130,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/73.webp"},
     {"categoryId":"raki","title":{"tr":"Beylerbeyi Teragold 35 cl","en":"Beylerbeyi Teragold Raki 35 cl","ar":"بيلربيي تيراغولد راكي 35 سل","ru":"Бейлербейи Тераголд Ракы 35 сл"},"price":"₺1.850,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/raki/78.webp"},
     {"categoryId":"alkolsuz","title":{"tr":"Şeftali Suyu","en":"Peach Juice","ar":"عصير الخوخ","ru":"Персиковый сок"},"price":"₺130,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/cappy_seftali.webp"},
-    {"categoryId":"votka_cin","title":{"tr":"Tanqueray No. TEN Cin","en":"Tanqueray No. TEN Gin","ar":"جين تانكيراي رقم 10","ru":"Джин Танкерей №10"},"price":"₺5.500,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/votka_cin/58.webp"},
-    {"categoryId":"viski","title":{"tr":"Chivas 18 Yıllık","en":"Chivas Regal 18 Years Old","ar":"شيفاز ريغال 18 سنة","ru":"Чивас Ригал 18 лет"},"price":"Fiyat Sorunuz","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/viski/61.webp"},
+    {"categoryId":"votka_cin","title":{"tr":"Tanqueray No. TEN 70 cl","en":"Tanqueray No. TEN 70 cl","ar":"تانكيراي رقم 10 70 سل","ru":"Танкерей №10 70 сл"},"price":"₺5.500,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/votka_cin/58.webp"},
+    {"categoryId":"viski","title":{"tr":"Chivas 18 70 cl","en":"Chivas 18 70 cl","ar":"شيفاز 18 70 سل","ru":"Чивас 18 70 сл"},"price":"₺11.000,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/viski/61.webp"},
     {"categoryId":"alkolsuz","title":{"tr":"Portakal Suyu","en":"Orange Juice","ar":"عصير البرتقال","ru":"Апельсиновый сок"},"price":"₺130,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/alkolsuz/cappy_portakal.webp"},
-    {"categoryId":"votka_cin","title":{"tr":"Gordon's Cin","en":"Gordon's London Dry Gin","ar":"جين جوردونز","ru":"Джин Гордонс"},"price":"₺4.200,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/votka_cin/62.webp"},
+    {"categoryId":"votka_cin","title":{"tr":"Gordon's 70 cl","en":"Gordon's 70 cl","ar":"جوردونز 70 سل","ru":"Гордонс 70 сл"},"price":"₺4.200,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/votka_cin/62.webp"},
     {"categoryId":"sarap","title":{"tr":"La Sastreria 75 cl","en":"La Sastreria Garnacha Red Wine 75 cl","ar":"نبيذ لا ساستريرا غارناتشا أحمر 75 سل","ru":"Красное вино La Sastreria Garnacha 75 сл"},"price":"₺3.800,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/sarap/la_sastrera.webp"},
     {"categoryId":"mezeler","title":{"tr":"Köz Biber","en":"Roasted Red Peppers","ar":"فلفل أحمر مشوي","ru":"Жареный красный перец"},"price":"₺290,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/koz_biber.webp"},
     {"categoryId":"mezeler","title":{"tr":"Beyin Söğüş","en":"Cold Brain Salad","ar":"سلطة المخ الباردة","ru":"Холодный салат из мозгов"},"price":"₺340,00","image":"https://efltjgimkjjtagfebmha.supabase.co/storage/v1/object/public/images/mezeler/sogus_beyin.webp"},
@@ -685,7 +678,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Helper to remove CL size suffix from name in any language
                 function cleanClSuffix(name) {
                     if (!name) return '';
-                    return name.replace(/\s+\d+(?:,\d+)?\s*(?:cl|сл|سل)\.?\s*(?:\(.*\))?\s*$/i, '').trim();
+                    return name.replace(/\s+\d+(?:,\d+)?\s*(?:cl|сл|سل)\.?\s*/i, ' ').replace(/\s+/g, ' ').trim();
                 }
 
                 filteredItems.forEach(item => {
@@ -724,15 +717,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 for (let key in groups) {
                     let group = groups[key];
-                    if (group.variants.length > 1) {
+                    if (group.variants.length >= 1) {
                         group.variants.sort((a, b) => {
                             let aVal = parseFloat(a.size.replace(',', '.'));
                             let bVal = parseFloat(b.size.replace(',', '.'));
                             return bVal - aVal;
                         });
                         groupedItems.push(group);
-                    } else {
-                        groupedItems.push(group.variants[0].originalItem);
                     }
                 }
             } else {
@@ -950,14 +941,49 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        function hideLoadingOverlay() {
+            const overlay = document.getElementById('page-loading-overlay');
+            if (overlay) {
+                overlay.classList.add('hidden');
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 500);
+            }
+        }
+
+        function triggerIdlePrefetch() {
+            if ('requestIdleCallback' in window && Array.isArray(menuData)) {
+                requestIdleCallback(() => {
+                    menuData.forEach(item => {
+                        if (item && item.image) {
+                            const img = new Image();
+                            img.src = item.image;
+                        }
+                    });
+                });
+            }
+        }
+
         // Initialize with Supabase (if configured) or fallback to static with caching (Stale-While-Revalidate)
         async function initMenuData() {
-            const cachedCats = localStorage.getItem('felek_categories');
-            const cachedItems = localStorage.getItem('felek_menu_items');
+            // Clean up legacy cache keys to prevent stale menu presentation
+            ['felek_categories', 'felek_menu_items', 'felek_categories_v2', 'felek_menu_items_v2', 'felek_categories_v3', 'felek_menu_items_v3'].forEach(k => localStorage.removeItem(k));
+
+            const cachedCats = localStorage.getItem('felek_categories_v4');
+            const cachedItems = localStorage.getItem('felek_menu_items_v4');
             if (cachedCats && cachedItems) {
                 try {
                     categories = JSON.parse(cachedCats);
                     menuData = JSON.parse(cachedItems);
+                    // Ana yemekler için tekrarlanan (Kg) veya (1 Kg) takılarını temizle
+                    menuData.forEach(item => {
+                        if (item.categoryId === 'ana_yemekler' && item.title) {
+                            if (item.title.tr) item.title.tr = item.title.tr.replace(/\s*\(\s*(?:1\s*)?kg\s*\)/gi, '').trim() + ' (Kg)';
+                            if (item.title.en) item.title.en = item.title.en.replace(/\s*\(\s*(?:1\s*)?kg\s*\)/gi, '').trim() + ' (Kg)';
+                            if (item.title.ar) item.title.ar = item.title.ar.replace(/\s*\(\s*(?:1\s*)?كجم\s*\)/gi, '').trim() + ' (كجم)';
+                            if (item.title.ru) item.title.ru = item.title.ru.replace(/\s*\(\s*(?:1\s*)?кг\s*\)/gi, '').trim() + ' (кг)';
+                        }
+                    });
                 } catch(e) {
                     console.error('Error loading cached data:', e);
                 }
@@ -995,10 +1021,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             let nameRu = item.name_ru || '';
 
                             if (item.category_id === 'ana_yemekler') {
-                                if (nameTr && !nameTr.includes('1 Kg') && !nameTr.includes('1 kg')) nameTr += ' (1 Kg)';
-                                if (nameEn && !nameEn.includes('1 Kg') && !nameEn.includes('1 kg')) nameEn += ' (1 Kg)';
-                                if (nameAr && !nameAr.includes('1') && !nameAr.includes('كجم')) nameAr += ' (1 كجم)';
-                                if (nameRu && !nameRu.includes('1') && !nameRu.includes('кг')) nameRu += ' (1 кг)';
+                                if (nameTr) nameTr = nameTr.replace(/\s*\(\s*(?:1\s*)?kg\s*\)/gi, '').trim() + ' (Kg)';
+                                if (nameEn) nameEn = nameEn.replace(/\s*\(\s*(?:1\s*)?kg\s*\)/gi, '').trim() + ' (Kg)';
+                                if (nameAr) nameAr = nameAr.replace(/\s*\(\s*(?:1\s*)?كجم\s*\)/gi, '').trim() + ' (كجم)';
+                                if (nameRu) nameRu = nameRu.replace(/\s*\(\s*(?:1\s*)?кг\s*\)/gi, '').trim() + ' (кг)';
                             }
 
                             return {
@@ -1016,8 +1042,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (catsStr !== cachedCats || itemsStr !== cachedItems) {
                             categories = newCategories;
                             menuData = newMenuData;
-                            localStorage.setItem('felek_categories', catsStr);
-                            localStorage.setItem('felek_menu_items', itemsStr);
+                            localStorage.setItem('felek_categories_v4', catsStr);
+                            localStorage.setItem('felek_menu_items_v4', itemsStr);
                             
                             if (window.translations) {
                                 catData.forEach(c => {
