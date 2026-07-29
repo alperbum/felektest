@@ -188,7 +188,23 @@ function updateStats() {
     }
 }
 
-// ─── RENDER: ÜRÜN KARTLARI ──────────────────────────────────────────
+// ─── RENDER: ÜRÜN KARTLARI (ÜRÜN AĞACI DESTEKLİ) ────────────────────
+window.toggleProductTree = function(treeId) {
+    const el = document.getElementById(treeId);
+    const btn = document.getElementById('btn-' + treeId);
+    if (!el) return;
+    const isOpen = el.style.display !== 'none';
+    el.style.display = isOpen ? 'none' : 'block';
+    if (btn) btn.textContent = isOpen ? '▼ Boyutları Göster' : '▲ Gizle';
+};
+
+window.addVariantToParent = function(baseName, categoryId) {
+    openItemModal();
+    document.getElementById('item-category').value = categoryId;
+    document.getElementById('item-name-tr').value = baseName + ' ';
+    document.getElementById('item-name-tr').focus();
+};
+
 function renderItemsList(filterCatId = '', searchQuery = '') {
     const container = document.getElementById('items-list');
     const countEl = document.getElementById('items-count');
@@ -217,17 +233,116 @@ function renderItemsList(filterCatId = '', searchQuery = '') {
         return;
     }
 
-    container.innerHTML = '';
+    // ─── GRUPLAMA MANTIĞI (ÜRÜN AĞACI) ─────────────────────────────
+    const groups = {};
+    const standaloneItems = [];
+
     filtered.forEach(item => {
+        const clMatch = item.name_tr ? item.name_tr.match(/\s+(\d+(?:,\d+)?\s*(?:cl|kg)\.?)\b/i) : null;
+        if (clMatch) {
+            const baseName = item.name_tr.replace(clMatch[0], '').replace(/\s+/g, ' ').trim();
+            const groupKey = `${item.category_id}_${baseName.toLowerCase()}`;
+            if (!groups[groupKey]) {
+                groups[groupKey] = {
+                    baseName: baseName,
+                    categoryId: item.category_id,
+                    image: item.image,
+                    variants: []
+                };
+            }
+            groups[groupKey].variants.push({
+                sizeStr: clMatch[1].trim(),
+                item: item
+            });
+        } else {
+            standaloneItems.push(item);
+        }
+    });
+
+    container.innerHTML = '';
+    let treeSeq = 0;
+
+    // 1. Ağaç Tipi Varyantlı Ürün Kartları (Örn: Yeni Rakı, Beylerbeyi Göbek...)
+    Object.keys(groups).forEach(key => {
+        const group = groups[key];
+        treeSeq++;
+        const treeId = 'tree-group-' + treeSeq;
+        const cat = categories.find(c => c.id === group.categoryId);
+        const catName = cat ? cat.name_tr : '—';
+        
+        // Boyut sırasına göre diz
+        group.variants.sort((a, b) => {
+            const aVal = parseFloat(a.sizeStr.replace(',', '.'));
+            const bVal = parseFloat(b.sizeStr.replace(',', '.'));
+            return (bVal || 0) - (aVal || 0);
+        });
+
+        const activeCount = group.variants.filter(v => v.item.is_active).length;
+        const minPrice = Math.min(...group.variants.map(v => v.item.price || 0));
+        const maxPrice = Math.max(...group.variants.map(v => v.item.price || 0));
+        const priceRange = minPrice === maxPrice 
+            ? new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(minPrice)
+            : `${new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(minPrice)} - ${new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(maxPrice)}`;
+
+        const parentCard = document.createElement('div');
+        parentCard.className = 'product-tree-card';
+        parentCard.innerHTML = `
+            <div class="tree-header">
+                ${group.image
+                    ? `<img src="${escapeAttr(group.image)}" class="item-thumb" alt="" loading="lazy">`
+                    : `<div class="item-thumb-empty">🍾</div>`
+                }
+                <div class="tree-info">
+                    <div class="tree-title">${esc(group.baseName)} <span class="badge badge-variant">${group.variants.length} Boyut Ağacı</span></div>
+                    <div class="item-meta">
+                        <span class="cat-pill">${esc(catName)}</span>
+                        <span>·</span>
+                        <span class="text-success">${activeCount}/${group.variants.length} Aktif</span>
+                    </div>
+                </div>
+                <div class="tree-price-box">
+                    <span class="item-price">${priceRange}</span>
+                </div>
+                <div class="tree-actions">
+                    <button type="button" class="btn btn-outline btn-xs" id="btn-${treeId}" onclick="toggleProductTree('${treeId}')">▼ Boyutları Göster</button>
+                    <button type="button" class="btn btn-primary btn-xs" onclick="addVariantToParent('${escapeAttr(group.baseName)}', '${escapeAttr(group.categoryId)}')">＋ Boyut Ekle</button>
+                </div>
+            </div>
+            <div class="tree-children" id="${treeId}" style="display:none;">
+                ${group.variants.map(v => {
+                    const subItem = v.item;
+                    const priceFormatted = subItem.price
+                        ? new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(subItem.price)
+                        : '—';
+                    return `
+                        <div class="variant-subrow ${!subItem.is_active ? 'item-card-inactive' : ''}">
+                            <div class="subrow-left">
+                                <span class="badge badge-variant">🏷️ ${esc(v.sizeStr)}</span>
+                                <span class="subrow-name">${esc(subItem.name_tr)}</span>
+                            </div>
+                            <div class="subrow-right">
+                                <span class="item-price">${priceFormatted}</span>
+                                <button type="button" class="badge-toggle ${subItem.is_active ? 'badge-active' : 'badge-inactive'}" onclick="toggleItemActive('${escapeAttr(subItem.id)}')" title="Tıklayarak durumu değiştirin">
+                                    ${subItem.is_active ? '🟢 Aktif' : '🔴 Pasif'}
+                                </button>
+                                <button class="btn-icon" onclick="editItem('${escapeAttr(subItem.id)}')" title="Düzenle">✏️</button>
+                                <button class="btn-icon danger" onclick="handleDeleteItem('${escapeAttr(subItem.id)}')" title="Sil">🗑️</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+        `;
+        container.appendChild(parentCard);
+    });
+
+    // 2. Tekil Ürün Kartları (Örn: Adana Kebap, Salatalar...)
+    standaloneItems.forEach(item => {
         const cat = categories.find(c => c.id === item.category_id);
         const catName = cat ? cat.name_tr : '—';
         const priceText = item.price
             ? new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(item.price)
             : '—';
-
-        // Detect if item is formatted as a Variant or Extra
-        const clMatch = item.name_tr ? item.name_tr.match(/\s+(\d+(?:,\d+)?\s*(?:cl|kg)\.?)\b/i) : null;
-        const variantBadge = clMatch ? `<span class="badge badge-variant" title="Sitede varyantlı kart olarak gösterilir">🏷️ ${esc(clMatch[1])} Varyant</span>` : '';
 
         const card = document.createElement('div');
         card.className = `item-card ${!item.is_active ? 'item-card-inactive' : ''}`;
@@ -237,7 +352,7 @@ function renderItemsList(filterCatId = '', searchQuery = '') {
                 : `<div class="item-thumb-empty">🍖</div>`
             }
             <div class="item-info">
-                <div class="item-name">${esc(item.name_tr)} ${variantBadge}</div>
+                <div class="item-name">${esc(item.name_tr)}</div>
                 <div class="item-meta">
                     <span class="cat-pill">${esc(catName)}</span>
                     <span>·</span>
