@@ -212,116 +212,116 @@ export async function fetchProductsFromSupabase(): Promise<Product[]> {
     return [];
   }
 
-  const groups: Record<string, {
+  const groupCandidates: Record<string, {
     baseName: string;
-    name_en?: string;
-    name_ar?: string;
-    name_ru?: string;
-    categoryId: string;
-    image: string;
-    active: boolean;
-    sort_order: number;
-    variants: Variant[];
-    extras: Extra[];
-    extras_en: Extra[];
-    extras_ar: Extra[];
-    extras_ru: Extra[];
+    rows: any[];
   }> = {};
 
-  const standaloneProducts: Product[] = [];
+  const standaloneRows: any[] = [];
 
+  // Pass 1: Identify items with size patterns
   data.forEach((row) => {
     const rawName = row.name_tr || "";
-    const priceVal = parseFloat(row.price) || 0;
     const clMatch = rawName.match(/\s+(\d+(?:,\d+)?\s*(?:cl|kg)\.?)\b/i);
 
-    const extrasTrList = parseExtrasString(row.extras_tr, `tr-${row.id}`);
-    const extrasEnList = parseExtrasString(row.extras_en, `en-${row.id}`);
-    const extrasArList = parseExtrasString(row.extras_ar, `ar-${row.id}`);
-    const extrasRuList = parseExtrasString(row.extras_ru, `ru-${row.id}`);
-
     if (clMatch) {
-      const sizeStr = clMatch[1].trim();
       const baseName = stripSizeFromName(rawName);
       const groupKey = `${row.category_id}_${baseName.toLowerCase()}`;
 
-      if (!groups[groupKey]) {
-        groups[groupKey] = {
+      if (!groupCandidates[groupKey]) {
+        groupCandidates[groupKey] = {
           baseName,
-          name_en: stripSizeFromName(row.name_en || ""),
-          name_ar: stripSizeFromName(row.name_ar || ""),
-          name_ru: stripSizeFromName(row.name_ru || ""),
-          categoryId: row.category_id,
-          image: row.image || "",
-          active: row.is_active ?? true,
-          sort_order: row.sort_order ?? 0,
-          variants: [],
-          extras: extrasTrList,
-          extras_en: extrasEnList,
-          extras_ar: extrasArList,
-          extras_ru: extrasRuList,
+          rows: [],
         };
       }
+      groupCandidates[groupKey].rows.push(row);
+    } else {
+      standaloneRows.push(row);
+    }
+  });
 
-      groups[groupKey].variants.push({
-        id: row.id,
-        label: sizeStr,
-        price: priceVal,
+  const products: Product[] = [];
+
+  // Pass 2: Process group candidates (only group if count >= 2)
+  Object.keys(groupCandidates).forEach((groupKey) => {
+    const candidate = groupCandidates[groupKey];
+    if (candidate.rows.length >= 2) {
+      // Multiple items share baseName -> Form a Variant Product
+      const firstRow = candidate.rows[0];
+      const extrasTrList = parseExtrasString(firstRow.extras_tr, `tr-${firstRow.id}`);
+      const extrasEnList = parseExtrasString(firstRow.extras_en, `en-${firstRow.id}`);
+      const extrasArList = parseExtrasString(firstRow.extras_ar, `ar-${firstRow.id}`);
+      const extrasRuList = parseExtrasString(firstRow.extras_ru, `ru-${firstRow.id}`);
+
+      let groupImage = "";
+      let groupActive = false;
+
+      const variants: Variant[] = candidate.rows.map((r) => {
+        if (r.is_active) groupActive = true;
+        if (r.image && !groupImage) groupImage = r.image;
+
+        const sizeMatch = r.name_tr.match(/\s+(\d+(?:,\d+)?\s*(?:cl|kg)\.?)\b/i);
+        const sizeStr = sizeMatch ? sizeMatch[1].trim() : r.name_tr;
+        return {
+          id: r.id,
+          label: sizeStr,
+          price: parseFloat(r.price) || 0,
+        };
       });
 
-      if (row.is_active) groups[groupKey].active = true;
-      if (row.image && !groups[groupKey].image) groups[groupKey].image = row.image;
-    } else {
-      standaloneProducts.push({
-        id: row.id,
-        name: rawName,
-        name_en: row.name_en || "",
-        name_ar: row.name_ar || "",
-        name_ru: row.name_ru || "",
-        categoryId: row.category_id,
-        image: row.image || "",
-        active: row.is_active ?? true,
-        priceMode: "single",
-        price: priceVal,
-        variants: [],
+      variants.sort((a, b) => {
+        const aVal = parseFloat(a.label.replace(",", "."));
+        const bVal = parseFloat(b.label.replace(",", "."));
+        return (aVal || 0) - (bVal || 0);
+      });
+
+      products.push({
+        id: `group_${groupKey}`,
+        name: candidate.baseName,
+        name_en: stripSizeFromName(firstRow.name_en || ""),
+        name_ar: stripSizeFromName(firstRow.name_ar || ""),
+        name_ru: stripSizeFromName(firstRow.name_ru || ""),
+        categoryId: firstRow.category_id,
+        image: groupImage || firstRow.image || "",
+        active: groupActive,
+        priceMode: "variants",
+        price: null,
+        variants,
         extras: extrasTrList,
         extras_en: extrasEnList,
         extras_ar: extrasArList,
         extras_ru: extrasRuList,
-        sort_order: row.sort_order ?? 0,
+        sort_order: firstRow.sort_order ?? 0,
       });
+    } else {
+      // Only 1 item had size pattern (e.g., "Corona 33 cl") -> Keep as Standalone Single Price Product
+      candidate.rows.forEach((r) => standaloneRows.push(r));
     }
   });
 
-  const groupedProducts: Product[] = Object.keys(groups).map((key) => {
-    const g = groups[key];
-    g.variants.sort((a, b) => {
-      const aVal = parseFloat(a.label.replace(",", "."));
-      const bVal = parseFloat(b.label.replace(",", "."));
-      return (aVal || 0) - (bVal || 0);
+  // Pass 3: Process standalone single price products (preserve full name_tr as-is)
+  standaloneRows.forEach((row) => {
+    products.push({
+      id: row.id,
+      name: row.name_tr || "", // PRESERVE FULL NAME AS IS (e.g. "Corona 33 cl", "X Rakı 70 cl")
+      name_en: row.name_en || "",
+      name_ar: row.name_ar || "",
+      name_ru: row.name_ru || "",
+      categoryId: row.category_id,
+      image: row.image || "",
+      active: row.is_active ?? true,
+      priceMode: "single",
+      price: parseFloat(row.price) || 0,
+      variants: [],
+      extras: parseExtrasString(row.extras_tr, `tr-${row.id}`),
+      extras_en: parseExtrasString(row.extras_en, `en-${row.id}`),
+      extras_ar: parseExtrasString(row.extras_ar, `ar-${row.id}`),
+      extras_ru: parseExtrasString(row.extras_ru, `ru-${row.id}`),
+      sort_order: row.sort_order ?? 0,
     });
-
-    return {
-      id: `group_${key}`,
-      name: g.baseName,
-      name_en: g.name_en,
-      name_ar: g.name_ar,
-      name_ru: g.name_ru,
-      categoryId: g.categoryId,
-      image: g.image,
-      active: g.active,
-      priceMode: "variants",
-      price: null,
-      variants: g.variants,
-      extras: g.extras,
-      extras_en: g.extras_en,
-      extras_ar: g.extras_ar,
-      extras_ru: g.extras_ru,
-      sort_order: g.sort_order,
-    };
   });
 
-  return [...groupedProducts, ...standaloneProducts];
+  return products;
 }
 
 export async function saveProductToSupabase(product: Product): Promise<boolean> {
@@ -340,10 +340,11 @@ export async function saveProductToSupabase(product: Product): Promise<boolean> 
       : null;
 
     if (product.priceMode === "single") {
+      // Single price mode: Preserve product.name EXACTLY as entered by user (e.g. "X Rakı 70 cl")
       const isExistingUuid = product.id && !product.id.startsWith("product-") && !product.id.startsWith("group_");
       const payload: any = {
         category_id: product.categoryId,
-        name_tr: product.name,
+        name_tr: product.name, // NO STRIPPING FOR SINGLE PRICE!
         name_en: product.name_en || null,
         name_ar: product.name_ar || null,
         name_ru: product.name_ru || null,
@@ -366,6 +367,7 @@ export async function saveProductToSupabase(product: Product): Promise<boolean> 
         if (error) throw error;
       }
     } else {
+      // Variant mode: Base name is stripped of size, variants get "${cleanName} ${v.label}"
       const cleanNameTr = stripSizeFromName(product.name);
       const cleanNameEn = product.name_en ? stripSizeFromName(product.name_en) : null;
       const cleanNameAr = product.name_ar ? stripSizeFromName(product.name_ar) : null;

@@ -718,13 +718,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 for (let key in groups) {
                     let group = groups[key];
-                    if (group.variants.length >= 1) {
+                    if (group.variants.length >= 2) {
                         group.variants.sort((a, b) => {
                             let aVal = parseFloat(a.size.replace(',', '.'));
                             let bVal = parseFloat(b.size.replace(',', '.'));
                             return bVal - aVal;
                         });
                         groupedItems.push(group);
+                    } else if (group.variants.length === 1) {
+                        groupedItems.push(group.variants[0].originalItem);
                     }
                 }
             } else {
