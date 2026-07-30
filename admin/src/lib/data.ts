@@ -21,6 +21,13 @@ export function createId(prefix: string) {
   return `${prefix}-${Date.now()}-${Math.round(Math.random() * 10000)}`;
 }
 
+export function stripSizeFromName(name: string): string {
+  if (!name) return "";
+  let cleaned = name.replace(/\s*\b(?:\(?\d+(?:,\d+)?\s*(?:cl|kg|l|litre)\.?\)?)\b/gi, "");
+  cleaned = cleaned.replace(/\s*\(\s*Kg\s*\)/gi, "");
+  return cleaned.replace(/\s+/g, " ").trim();
+}
+
 export function formatPrice(value: number) {
   return new Intl.NumberFormat("tr-TR", {
     style: "currency",
@@ -235,15 +242,15 @@ export async function fetchProductsFromSupabase(): Promise<Product[]> {
 
     if (clMatch) {
       const sizeStr = clMatch[1].trim();
-      const baseName = rawName.replace(clMatch[0], "").replace(/\s+/g, " ").trim();
+      const baseName = stripSizeFromName(rawName);
       const groupKey = `${row.category_id}_${baseName.toLowerCase()}`;
 
       if (!groups[groupKey]) {
         groups[groupKey] = {
           baseName,
-          name_en: row.name_en || "",
-          name_ar: row.name_ar || "",
-          name_ru: row.name_ru || "",
+          name_en: stripSizeFromName(row.name_en || ""),
+          name_ar: stripSizeFromName(row.name_ar || ""),
+          name_ru: stripSizeFromName(row.name_ru || ""),
           categoryId: row.category_id,
           image: row.image || "",
           active: row.is_active ?? true,
@@ -359,11 +366,17 @@ export async function saveProductToSupabase(product: Product): Promise<boolean> 
         if (error) throw error;
       }
     } else {
+      const cleanNameTr = stripSizeFromName(product.name);
+      const cleanNameEn = product.name_en ? stripSizeFromName(product.name_en) : null;
+      const cleanNameAr = product.name_ar ? stripSizeFromName(product.name_ar) : null;
+      const cleanNameRu = product.name_ru ? stripSizeFromName(product.name_ru) : null;
+
       for (const v of product.variants) {
-        const sizeNameTr = `${product.name} ${v.label}`.trim();
-        const sizeNameEn = product.name_en ? `${product.name_en} ${v.label}`.trim() : null;
-        const sizeNameAr = product.name_ar ? `${product.name_ar} ${v.label}`.trim() : null;
-        const sizeNameRu = product.name_ru ? `${product.name_ru} ${v.label}`.trim() : null;
+        const cleanVariantLabel = stripSizeFromName(v.label) || v.label;
+        const sizeNameTr = `${cleanNameTr} ${cleanVariantLabel}`.trim();
+        const sizeNameEn = cleanNameEn ? `${cleanNameEn} ${cleanVariantLabel}`.trim() : null;
+        const sizeNameAr = cleanNameAr ? `${cleanNameAr} ${cleanVariantLabel}`.trim() : null;
+        const sizeNameRu = cleanNameRu ? `${cleanNameRu} ${cleanVariantLabel}`.trim() : null;
 
         const isExistingUuid = v.id && !v.id.startsWith("variant-") && !v.id.startsWith("v");
         const payload: any = {

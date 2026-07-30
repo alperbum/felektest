@@ -675,10 +675,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (groupableCategories.includes(activeCategory)) {
                 let groups = {};
                 
-                // Helper to remove CL size suffix from name in any language
                 function cleanClSuffix(name) {
                     if (!name) return '';
-                    return name.replace(/\s+\d+(?:,\d+)?\s*(?:cl|сл|سل)\.?\s*/i, ' ').replace(/\s+/g, ' ').trim();
+                    let cleaned = name.replace(/\s*\b(?:\(?\d+(?:,\d+)?\s*(?:cl|kg|l|litre|сл|سل)\.?\)?)\b/gi, '');
+                    cleaned = cleaned.replace(/\s*\(\s*Kg\s*\)/gi, '');
+                    return cleaned.replace(/\s+/g, ' ').trim();
                 }
 
                 filteredItems.forEach(item => {
@@ -687,7 +688,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     if (clMatch) {
                         const sizeStr = clMatch[1].trim();
-                        const baseName = titleTr.replace(clMatch[0], '').replace(/\s+/g, ' ').trim();
+                        const baseName = cleanClSuffix(titleTr);
                         
                         if (!groups[baseName]) {
                             groups[baseName] = {
