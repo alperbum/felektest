@@ -12,20 +12,31 @@ export type Extra = {
 
 export type Product = {
   id: string;
-  name: string;
+  name: string; // name_tr
+  name_en?: string;
+  name_ar?: string;
+  name_ru?: string;
   categoryId: string;
   image: string;
   active: boolean;
   priceMode: "single" | "variants";
   price: number | null;
   variants: Variant[];
-  extras: Extra[];
+  extras: Extra[]; // extras_tr
+  extras_en?: Extra[];
+  extras_ar?: Extra[];
+  extras_ru?: Extra[];
+  sort_order?: number;
 };
 
 export type Category = {
   id: string;
-  name: string;
+  name: string; // name_tr
+  name_en?: string;
+  name_ar?: string;
+  name_ru?: string;
   image: string;
+  sort_order?: number;
 };
 
 export type Toast = {

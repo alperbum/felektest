@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   Check,
   ChevronDown,
+  Globe,
   Image as ImageIcon,
   ImagePlus,
   Plus,
@@ -17,9 +18,10 @@ import {
   parsePrice,
   uploadImageToStorage,
 } from "../lib/data";
-import type { Category, Product } from "../lib/types";
+import type { Category, Extra, Product } from "../lib/types";
 
 type DraftRow = { id: string; label: string; price: string };
+type Lang = "tr" | "en" | "ar" | "ru";
 
 type Errors = {
   name?: string;
@@ -30,6 +32,28 @@ type Errors = {
 
 function toDraftPrice(value: number | null) {
   return value === null ? "" : String(value).replace(".", ",");
+}
+
+function extrasToDraft(list?: Extra[]): DraftRow[] {
+  if (!list || list.length === 0) return [];
+  return list.map((extra) => ({
+    id: extra.id,
+    label: extra.label,
+    price: toDraftPrice(extra.price),
+  }));
+}
+
+function draftToExtras(rows: DraftRow[]): Extra[] {
+  return rows
+    .filter((row) => row.label.trim())
+    .map((row) => {
+      const value = parsePrice(row.price);
+      return {
+        id: row.id,
+        label: row.label.trim(),
+        price: value !== null && value > 0 ? value : null,
+      };
+    });
 }
 
 export default function ProductEditor({
@@ -45,15 +69,23 @@ export default function ProductEditor({
   onClose: () => void;
   onSave: (product: Product) => void;
 }) {
-  const [name, setName] = useState(product?.name ?? "");
+  const [lang, setLang] = useState<Lang>("tr");
+
+  // Multi-language names
+  const [nameTr, setNameTr] = useState(product?.name ?? "");
+  const [nameEn, setNameEn] = useState(product?.name_en ?? "");
+  const [nameAr, setNameAr] = useState(product?.name_ar ?? "");
+  const [nameRu, setNameRu] = useState(product?.name_ru ?? "");
+
   const [categoryId, setCategoryId] = useState(
-    product?.categoryId ?? defaultCategoryId ?? categories[0]?.id ?? "",
+    product?.categoryId ?? defaultCategoryId ?? categories[0]?.id ?? ""
   );
+  const [sortOrder, setSortOrder] = useState<number>(product?.sort_order ?? 0);
   const [image, setImage] = useState(product?.image ?? "");
   const [uploading, setUploading] = useState(false);
   const [active, setActive] = useState(product?.active ?? true);
   const [priceMode, setPriceMode] = useState<"single" | "variants">(
-    product?.priceMode ?? "single",
+    product?.priceMode ?? "single"
   );
   const [price, setPrice] = useState(toDraftPrice(product?.price ?? null));
   const [variants, setVariants] = useState<DraftRow[]>(
@@ -63,41 +95,19 @@ export default function ProductEditor({
           label: variant.label,
           price: toDraftPrice(variant.price),
         }))
-      : [{ id: createId("variant"), label: "", price: "" }],
+      : [{ id: createId("variant"), label: "", price: "" }]
   );
-  const [extras, setExtras] = useState<DraftRow[]>(
-    product?.extras.map((extra) => ({
-      id: extra.id,
-      label: extra.label,
-      price: toDraftPrice(extra.price),
-    })) ?? [],
+
+  // Multi-language extras
+  const [extrasTr, setExtrasTr] = useState<DraftRow[]>(extrasToDraft(product?.extras));
+  const [extrasEn, setExtrasEn] = useState<DraftRow[]>(extrasToDraft(product?.extras_en));
+  const [extrasAr, setExtrasAr] = useState<DraftRow[]>(extrasToDraft(product?.extras_ar));
+  const [extrasRu, setExtrasRu] = useState<DraftRow[]>(extrasToDraft(product?.extras_ru));
+
+  const [extrasOpen, setExtrasOpen] = useState(
+    Boolean(product?.extras.length || product?.extras_en?.length || product?.extras_ar?.length || product?.extras_ru?.length)
   );
-  const [extrasOpen, setExtrasOpen] = useState(Boolean(product?.extras.length));
   const [errors, setErrors] = useState<Errors>({});
-
-  const previewVariants = useMemo(
-    () =>
-      variants
-        .filter((row) => row.label.trim() || row.price.trim())
-        .map((row) => ({
-          label: row.label.trim() || "Boyut",
-          price: parsePrice(row.price),
-        })),
-    [variants],
-  );
-
-  const previewExtras = useMemo(
-    () =>
-      extras
-        .filter((row) => row.label.trim())
-        .map((row) => {
-          const value = parsePrice(row.price);
-          return value !== null && value > 0
-            ? `${row.label.trim()}: ${formatPrice(value)}`
-            : row.label.trim();
-        }),
-    [extras],
-  );
 
   const handleImage = async (file?: File) => {
     if (!file || !file.type.startsWith("image/")) return;
@@ -114,13 +124,13 @@ export default function ProductEditor({
   };
 
   const updateRow = (
-    setter: typeof setVariants,
+    setter: React.Dispatch<React.SetStateAction<DraftRow[]>>,
     id: string,
     field: "label" | "price",
-    value: string,
+    value: string
   ) => {
     setter((current) =>
-      current.map((row) => (row.id === id ? { ...row, [field]: value } : row)),
+      current.map((row) => (row.id === id ? { ...row, [field]: value } : row))
     );
   };
 
@@ -132,8 +142,22 @@ export default function ProductEditor({
     setErrors((current) => ({ ...current, variants: undefined }));
   };
 
+  const currentExtrasSetter = () => {
+    if (lang === "en") return setExtrasEn;
+    if (lang === "ar") return setExtrasAr;
+    if (lang === "ru") return setExtrasRu;
+    return setExtrasTr;
+  };
+
+  const currentExtrasList = () => {
+    if (lang === "en") return extrasEn;
+    if (lang === "ar") return extrasAr;
+    if (lang === "ru") return extrasRu;
+    return extrasTr;
+  };
+
   const addExtra = (label = "") => {
-    setExtras((current) => [...current, { id: createId("extra"), label, price: "" }]);
+    currentExtrasSetter()((current) => [...current, { id: createId("extra"), label, price: "" }]);
     setExtrasOpen(true);
   };
 
@@ -141,7 +165,7 @@ export default function ProductEditor({
     event.preventDefault();
     const nextErrors: Errors = {};
 
-    if (!name.trim()) nextErrors.name = "Ürün adını yazın.";
+    if (!nameTr.trim()) nextErrors.name = "Türkçe ürün adını yazın.";
     if (!categoryId) nextErrors.category = "Bir kategori seçin.";
 
     let singlePrice: number | null = null;
@@ -161,7 +185,7 @@ export default function ProductEditor({
           (row) =>
             !row.label.trim() ||
             parsePrice(row.price) === null ||
-            (parsePrice(row.price) ?? 0) <= 0,
+            (parsePrice(row.price) ?? 0) <= 0
         )
       ) {
         nextErrors.variants = "Her boyutun adı ve fiyatı dolu olmalı.";
@@ -181,23 +205,21 @@ export default function ProductEditor({
 
     onSave({
       id: product?.id ?? createId("product"),
-      name: name.trim(),
+      name: nameTr.trim(),
+      name_en: nameEn.trim() || undefined,
+      name_ar: nameAr.trim() || undefined,
+      name_ru: nameRu.trim() || undefined,
       categoryId,
       image,
       active,
       priceMode,
       price: priceMode === "single" ? singlePrice : null,
       variants: priceMode === "variants" ? cleanVariants : [],
-      extras: extras
-        .filter((row) => row.label.trim())
-        .map((row) => {
-          const value = parsePrice(row.price);
-          return {
-            id: row.id,
-            label: row.label.trim(),
-            price: value !== null && value > 0 ? value : null,
-          };
-        }),
+      extras: draftToExtras(extrasTr),
+      extras_en: draftToExtras(extrasEn),
+      extras_ar: draftToExtras(extrasAr),
+      extras_ru: draftToExtras(extrasRu),
+      sort_order: sortOrder,
     });
   };
 
@@ -236,6 +258,42 @@ export default function ProductEditor({
             </button>
           </header>
 
+          {/* ─── DİL SEKMELERİ (LANG TABS) ───────────────────────────────── */}
+          <div style={{ display: "flex", gap: "6px", background: "var(--sidebar)", padding: "8px 24px", borderBottom: "1px solid var(--line)" }}>
+            <button
+              type="button"
+              className={`button ${lang === "tr" ? "button-primary" : "button-secondary"}`}
+              onClick={() => setLang("tr")}
+              style={{ height: "34px", padding: "0 12px", fontSize: "12px" }}
+            >
+              🇹🇷 Türkçe
+            </button>
+            <button
+              type="button"
+              className={`button ${lang === "en" ? "button-primary" : "button-secondary"}`}
+              onClick={() => setLang("en")}
+              style={{ height: "34px", padding: "0 12px", fontSize: "12px" }}
+            >
+              🇬🇧 English {nameEn && "✓"}
+            </button>
+            <button
+              type="button"
+              className={`button ${lang === "ar" ? "button-primary" : "button-secondary"}`}
+              onClick={() => setLang("ar")}
+              style={{ height: "34px", padding: "0 12px", fontSize: "12px" }}
+            >
+              🇸🇦 العربية {nameAr && "✓"}
+            </button>
+            <button
+              type="button"
+              className={`button ${lang === "ru" ? "button-primary" : "button-secondary"}`}
+              onClick={() => setLang("ru")}
+              style={{ height: "34px", padding: "0 12px", fontSize: "12px" }}
+            >
+              🇷🇺 Русский {nameRu && "✓"}
+            </button>
+          </div>
+
           <div className="drawer-body">
             <div className="photo-field">
               <div className="photo-preview">
@@ -250,7 +308,7 @@ export default function ProductEditor({
                 <span>İsteğe bağlı</span>
                 <label className="text-button file-button">
                   <ImagePlus size={15} />
-                  {image ? "Değiştir" : "Fotoğraf seç"}
+                  {uploading ? "Yükleniyor..." : image ? "Değiştir" : "Fotoğraf seç"}
                   <input
                     type="file"
                     accept="image/*"
@@ -270,43 +328,99 @@ export default function ProductEditor({
               )}
             </div>
 
-            <div className="field-group">
-              <label htmlFor="product-name">1. Ürün adı</label>
-              <input
-                id="product-name"
-                className={errors.name ? "has-error" : ""}
-                value={name}
-                onChange={(event) => {
-                  setName(event.target.value);
-                  setErrors((current) => ({ ...current, name: undefined }));
-                }}
-                placeholder="Örn. Chivas 18"
-                autoFocus
-              />
-              {errors.name && <span className="field-error">{errors.name}</span>}
-            </div>
-
-            <div className="field-group">
-              <label htmlFor="product-category">2. Hangi kategoride görünsün?</label>
-              <div className={`select-wrap ${errors.category ? "has-error" : ""}`}>
-                <select
-                  id="product-category"
-                  value={categoryId}
+            {/* DİLE GÖRE ÜRÜN ADI GİRİŞİ */}
+            {lang === "tr" && (
+              <div className="field-group">
+                <label htmlFor="product-name-tr">1. Ürün adı (TR) <span style={{ color: "var(--danger)" }}>*</span></label>
+                <input
+                  id="product-name-tr"
+                  className={errors.name ? "has-error" : ""}
+                  value={nameTr}
                   onChange={(event) => {
-                    setCategoryId(event.target.value);
-                    setErrors((current) => ({ ...current, category: undefined }));
+                    setNameTr(event.target.value);
+                    setErrors((current) => ({ ...current, name: undefined }));
                   }}
-                >
-                  <option value="">Kategori seçin</option>
-                  {categories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown size={17} />
+                  placeholder="Örn. Yeni Rakı, Çoban Salata"
+                  autoFocus
+                />
+                {errors.name && <span className="field-error">{errors.name}</span>}
               </div>
-              {errors.category && <span className="field-error">{errors.category}</span>}
+            )}
+
+            {lang === "en" && (
+              <div className="field-group">
+                <label htmlFor="product-name-en">1. Product Name (EN)</label>
+                <input
+                  id="product-name-en"
+                  value={nameEn}
+                  onChange={(event) => setNameEn(event.target.value)}
+                  placeholder="English product name... (Optional)"
+                />
+                <span style={{ fontSize: "11px", color: "var(--muted)" }}>Boş bırakırsanız menüde Türkçe isim görünür.</span>
+              </div>
+            )}
+
+            {lang === "ar" && (
+              <div className="field-group">
+                <label htmlFor="product-name-ar">1. اسم المنتج (AR)</label>
+                <input
+                  id="product-name-ar"
+                  dir="rtl"
+                  value={nameAr}
+                  onChange={(event) => setNameAr(event.target.value)}
+                  placeholder="اسم المنتج باللغة العربية..."
+                />
+                <span style={{ fontSize: "11px", color: "var(--muted)" }}>Boş bırakırsanız menüde Türkçe isim görünür.</span>
+              </div>
+            )}
+
+            {lang === "ru" && (
+              <div className="field-group">
+                <label htmlFor="product-name-ru">1. Название (RU)</label>
+                <input
+                  id="product-name-ru"
+                  value={nameRu}
+                  onChange={(event) => setNameRu(event.target.value)}
+                  placeholder="Название продукта на русском..."
+                />
+                <span style={{ fontSize: "11px", color: "var(--muted)" }}>Boş bırakırsanız menüde Türkçe isim görünür.</span>
+              </div>
+            )}
+
+            <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "12px" }}>
+              <div className="field-group">
+                <label htmlFor="product-category">2. Hangi kategoride görünsün?</label>
+                <div className={`select-wrap ${errors.category ? "has-error" : ""}`}>
+                  <select
+                    id="product-category"
+                    value={categoryId}
+                    onChange={(event) => {
+                      setCategoryId(event.target.value);
+                      setErrors((current) => ({ ...current, category: undefined }));
+                    }}
+                  >
+                    <option value="">Kategori seçin</option>
+                    {categories.map((category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown size={17} />
+                </div>
+                {errors.category && <span className="field-error">{errors.category}</span>}
+              </div>
+
+              <div className="field-group">
+                <label htmlFor="product-sort-order">Sıralama</label>
+                <input
+                  id="product-sort-order"
+                  type="number"
+                  value={sortOrder}
+                  onChange={(event) => setSortOrder(parseInt(event.target.value) || 0)}
+                  placeholder="0"
+                />
+              </div>
             </div>
 
             <div className="field-group">
@@ -383,7 +497,7 @@ export default function ProductEditor({
                           setVariants((current) =>
                             current.length === 1
                               ? [{ id: createId("variant"), label: "", price: "" }]
-                              : current.filter((item) => item.id !== row.id),
+                              : current.filter((item) => item.id !== row.id)
                           )
                         }
                         aria-label="Bu boyutu sil"
@@ -439,6 +553,7 @@ export default function ProductEditor({
               </button>
             </div>
 
+            {/* DİLE GÖRE EKSTRALAR / ALT NOTLAR */}
             <div className={`optional-section ${extrasOpen ? "is-open" : ""}`}>
               <button
                 type="button"
@@ -447,8 +562,10 @@ export default function ProductEditor({
                 aria-expanded={extrasOpen}
               >
                 <span>
-                  <strong>Ekstra açıklama {extras.length > 0 ? `(${extras.length})` : ""}</strong>
-                  <small>Ürünün altında küçük not olarak görünür.</small>
+                  <strong>
+                    Ekstra açıklama ({lang.toUpperCase()}) {currentExtrasList().length > 0 ? `(${currentExtrasList().length})` : ""}
+                  </strong>
+                  <small>Seçili dilde ürünün altında not olarak görünür.</small>
                 </span>
                 <ChevronDown size={18} />
               </button>
@@ -463,15 +580,16 @@ export default function ProductEditor({
                     transition={{ duration: 0.2 }}
                   >
                     <div className="row-stack">
-                      {extras.map((row) => (
+                      {currentExtrasList().map((row) => (
                         <div className="editor-row" key={row.id}>
                           <input
                             className="row-label"
+                            dir={lang === "ar" ? "rtl" : "ltr"}
                             value={row.label}
                             onChange={(event) =>
-                              updateRow(setExtras, row.id, "label", event.target.value)
+                              updateRow(currentExtrasSetter(), row.id, "label", event.target.value)
                             }
-                            placeholder="Örn. Tek Viski"
+                            placeholder={lang === "en" ? "e.g. Single Portion" : lang === "ar" ? "مثال: وجبة واحدة" : "Örn. Duble Porsiyon"}
                             aria-label="Ekstra açıklama"
                           />
                           <div className="price-input row-price">
@@ -480,9 +598,9 @@ export default function ProductEditor({
                               inputMode="decimal"
                               value={row.price}
                               onChange={(event) =>
-                                updateRow(setExtras, row.id, "price", event.target.value)
+                                updateRow(currentExtrasSetter(), row.id, "price", event.target.value)
                               }
-                              placeholder="Boş bırakılabilir"
+                              placeholder="Fark yoksa boş"
                               aria-label="Ekstra fiyatı"
                             />
                           </div>
@@ -490,8 +608,8 @@ export default function ProductEditor({
                             type="button"
                             className="icon-button delete-button"
                             onClick={() =>
-                              setExtras((current) =>
-                                current.filter((item) => item.id !== row.id),
+                              currentExtrasSetter()((current) =>
+                                current.filter((item) => item.id !== row.id)
                               )
                             }
                             aria-label="Bu açıklamayı sil"
@@ -526,45 +644,6 @@ export default function ProductEditor({
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
-
-            <div className="live-preview">
-              <span className="live-preview-label">Müşteri bunu görecek</span>
-              <div className="menu-card">
-                {image && (
-                  <div className="menu-card-media">
-                    <img src={image} alt="" />
-                  </div>
-                )}
-                <div className="menu-card-body">
-                  <div className="menu-card-title">
-                    <h4>{name.trim() || "Ürün adı"}</h4>
-                    {priceMode === "single" && (
-                      <b>
-                        {parsePrice(price) !== null
-                          ? formatPrice(parsePrice(price) as number)
-                          : "₺0,00"}
-                      </b>
-                    )}
-                  </div>
-                  {priceMode === "variants" && (
-                    <ul className="menu-card-variants">
-                      {(previewVariants.length > 0
-                        ? previewVariants
-                        : [{ label: "Boyut", price: null }]
-                      ).map((variant, index) => (
-                        <li key={`${variant.label}-${index}`}>
-                          <span>{variant.label}</span>
-                          <b>{variant.price !== null ? formatPrice(variant.price) : "₺0,00"}</b>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {previewExtras.length > 0 && (
-                    <p className="menu-card-extras">{previewExtras.join(" · ")}</p>
-                  )}
-                </div>
-              </div>
             </div>
           </div>
 

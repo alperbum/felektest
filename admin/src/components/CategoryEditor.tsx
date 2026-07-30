@@ -4,6 +4,8 @@ import { FormEvent, useState } from "react";
 import { createId, uploadImageToStorage } from "../lib/data";
 import type { Category } from "../lib/types";
 
+type Lang = "tr" | "en" | "ar" | "ru";
+
 export default function CategoryEditor({
   category,
   onClose,
@@ -13,13 +15,21 @@ export default function CategoryEditor({
   onClose: () => void;
   onSave: (category: Category) => void;
 }) {
-  const [name, setName] = useState(category?.name ?? "");
+  const [lang, setLang] = useState<Lang>("tr");
+  const [nameTr, setNameTr] = useState(category?.name ?? "");
+  const [nameEn, setNameEn] = useState(category?.name_en ?? "");
+  const [nameAr, setNameAr] = useState(category?.name_ar ?? "");
+  const [nameRu, setNameRu] = useState(category?.name_ru ?? "");
+  const [sortOrder, setSortOrder] = useState<number>(category?.sort_order ?? 0);
   const [image, setImage] = useState(category?.image ?? "");
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState("");
 
   const handleImage = async (file?: File) => {
     if (!file || !file.type.startsWith("image/")) return;
+    setUploading(true);
     const uploadedUrl = await uploadImageToStorage(file, "categories");
+    setUploading(false);
     if (uploadedUrl) {
       setImage(uploadedUrl);
     } else {
@@ -31,14 +41,18 @@ export default function CategoryEditor({
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    if (!name.trim()) {
-      setError("Kategori adını yazın.");
+    if (!nameTr.trim()) {
+      setError("Türkçe kategori adını yazın.");
       return;
     }
     onSave({
       id: category?.id ?? createId("category"),
-      name: name.trim(),
+      name: nameTr.trim(),
+      name_en: nameEn.trim() || undefined,
+      name_ar: nameAr.trim() || undefined,
+      name_ru: nameRu.trim() || undefined,
       image,
+      sort_order: sortOrder,
     });
   };
 
@@ -79,6 +93,42 @@ export default function CategoryEditor({
             </button>
           </header>
 
+          {/* DİL SEKMELERİ */}
+          <div style={{ display: "flex", gap: "6px", background: "var(--sidebar)", padding: "8px 24px", borderBottom: "1px solid var(--line)" }}>
+            <button
+              type="button"
+              className={`button ${lang === "tr" ? "button-primary" : "button-secondary"}`}
+              onClick={() => setLang("tr")}
+              style={{ height: "34px", padding: "0 10px", fontSize: "11px" }}
+            >
+              🇹🇷 TR
+            </button>
+            <button
+              type="button"
+              className={`button ${lang === "en" ? "button-primary" : "button-secondary"}`}
+              onClick={() => setLang("en")}
+              style={{ height: "34px", padding: "0 10px", fontSize: "11px" }}
+            >
+              🇬🇧 EN {nameEn && "✓"}
+            </button>
+            <button
+              type="button"
+              className={`button ${lang === "ar" ? "button-primary" : "button-secondary"}`}
+              onClick={() => setLang("ar")}
+              style={{ height: "34px", padding: "0 10px", fontSize: "11px" }}
+            >
+              🇸🇦 AR {nameAr && "✓"}
+            </button>
+            <button
+              type="button"
+              className={`button ${lang === "ru" ? "button-primary" : "button-secondary"}`}
+              onClick={() => setLang("ru")}
+              style={{ height: "34px", padding: "0 10px", fontSize: "11px" }}
+            >
+              🇷🇺 RU {nameRu && "✓"}
+            </button>
+          </div>
+
           <div className="drawer-body">
             <div className="photo-field">
               <div className="photo-preview">
@@ -93,7 +143,7 @@ export default function CategoryEditor({
                 <span>İsteğe bağlı</span>
                 <label className="text-button file-button">
                   <ImagePlus size={15} />
-                  {image ? "Değiştir" : "Fotoğraf seç"}
+                  {uploading ? "Yükleniyor..." : image ? "Değiştir" : "Fotoğraf seç"}
                   <input
                     type="file"
                     accept="image/*"
@@ -113,26 +163,71 @@ export default function CategoryEditor({
               )}
             </div>
 
-            <div className="field-group">
-              <label htmlFor="category-name">Kategori adı</label>
-              <input
-                id="category-name"
-                value={name}
-                className={error ? "has-error" : ""}
-                onChange={(event) => {
-                  setName(event.target.value);
-                  setError("");
-                }}
-                placeholder="Örn. Mezeler"
-                autoFocus
-              />
-              {error && <span className="field-error">{error}</span>}
-            </div>
+            {lang === "tr" && (
+              <div className="field-group">
+                <label htmlFor="category-name-tr">Kategori adı (TR) <span style={{ color: "var(--danger)" }}>*</span></label>
+                <input
+                  id="category-name-tr"
+                  value={nameTr}
+                  className={error ? "has-error" : ""}
+                  onChange={(event) => {
+                    setNameTr(event.target.value);
+                    setError("");
+                  }}
+                  placeholder="Örn. Mezeler"
+                  autoFocus
+                />
+                {error && <span className="field-error">{error}</span>}
+              </div>
+            )}
 
-            <p className="form-note">
-              Müşteriler önce kategorileri görür, sonra içindeki ürünlere girer. Sıralamayı
-              kategori listesindeki yukarı/aşağı okları ile değiştirebilirsiniz.
-            </p>
+            {lang === "en" && (
+              <div className="field-group">
+                <label htmlFor="category-name-en">Category Name (EN)</label>
+                <input
+                  id="category-name-en"
+                  value={nameEn}
+                  onChange={(event) => setNameEn(event.target.value)}
+                  placeholder="e.g. Appetizers"
+                />
+              </div>
+            )}
+
+            {lang === "ar" && (
+              <div className="field-group">
+                <label htmlFor="category-name-ar">اسم الفئة (AR)</label>
+                <input
+                  id="category-name-ar"
+                  dir="rtl"
+                  value={nameAr}
+                  onChange={(event) => setNameAr(event.target.value)}
+                  placeholder="مثال: مقبلات"
+                />
+              </div>
+            )}
+
+            {lang === "ru" && (
+              <div className="field-group">
+                <label htmlFor="category-name-ru">Название категории (RU)</label>
+                <input
+                  id="category-name-ru"
+                  value={nameRu}
+                  onChange={(event) => setNameRu(event.target.value)}
+                  placeholder="например: Закуски"
+                />
+              </div>
+            )}
+
+            <div className="field-group">
+              <label htmlFor="category-sort-order">Sıralama (Sıra No)</label>
+              <input
+                id="category-sort-order"
+                type="number"
+                value={sortOrder}
+                onChange={(event) => setSortOrder(parseInt(event.target.value) || 0)}
+                placeholder="0"
+              />
+            </div>
           </div>
 
           <footer className="drawer-footer">

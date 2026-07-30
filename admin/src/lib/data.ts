@@ -30,7 +30,6 @@ export function formatPrice(value: number) {
   }).format(value);
 }
 
-/** Converts strings like "1.250,50" · "1250.5" · "1250" to float numbers */
 export function parsePrice(input: string): number | null {
   const cleaned = input.replace(/\s|₺/g, "").replace(/\./g, "").replace(",", ".");
   if (!cleaned) return null;
@@ -43,6 +42,17 @@ export function formatExtra(extra: Extra) {
   return extra.price !== null && extra.price > 0
     ? `${extra.label}: ${formatPrice(extra.price)}`
     : extra.label;
+}
+
+function parseExtrasString(str: string | null | undefined, prefix: string): Extra[] {
+  if (!str) return [];
+  const parts = str.split(",").map((s) => s.trim()).filter(Boolean);
+  return parts.map((p, idx) => {
+    const pPriceMatch = p.match(/\+?₺\s*([\d.,]+)/);
+    const pPrice = pPriceMatch ? parsePrice(pPriceMatch[1]) : null;
+    const pLabel = p.replace(/\+?₺\s*[\d.,]+/, "").trim() || p;
+    return { id: `ex-${prefix}-${idx}`, label: pLabel, price: pPrice };
+  });
 }
 
 // ─── IMAGE COMPRESSION & STORAGE ──────────────────────────────────────
@@ -134,7 +144,11 @@ export async function fetchCategoriesFromSupabase(): Promise<Category[]> {
   return data.map((c) => ({
     id: c.id,
     name: c.name_tr || c.id,
+    name_en: c.name_en || "",
+    name_ar: c.name_ar || "",
+    name_ru: c.name_ru || "",
     image: c.image || "",
+    sort_order: c.sort_order ?? 0,
   }));
 }
 
@@ -142,7 +156,11 @@ export async function saveCategoryToSupabase(category: Category): Promise<boolea
   const payload = {
     id: category.id,
     name_tr: category.name,
+    name_en: category.name_en || null,
+    name_ar: category.name_ar || null,
+    name_ru: category.name_ru || null,
     image: category.image || "",
+    sort_order: category.sort_order ?? 0,
   };
 
   const { error } = await supabase.from("categories").upsert(payload);
@@ -174,14 +192,20 @@ export async function fetchProductsFromSupabase(): Promise<Product[]> {
     return [];
   }
 
-  // Group items by base name if they are size variants (e.g. "Yeni Rakı 35 cl", "Yeni Rakı 50 cl")
   const groups: Record<string, {
     baseName: string;
+    name_en?: string;
+    name_ar?: string;
+    name_ru?: string;
     categoryId: string;
     image: string;
     active: boolean;
+    sort_order: number;
     variants: Variant[];
     extras: Extra[];
+    extras_en: Extra[];
+    extras_ar: Extra[];
+    extras_ru: Extra[];
   }> = {};
 
   const standaloneProducts: Product[] = [];
@@ -191,17 +215,10 @@ export async function fetchProductsFromSupabase(): Promise<Product[]> {
     const priceVal = parseFloat(row.price) || 0;
     const clMatch = rawName.match(/\s+(\d+(?:,\d+)?\s*(?:cl|kg)\.?)\b/i);
 
-    // Parse extras_tr if present
-    const extrasList: Extra[] = [];
-    if (row.extras_tr) {
-      const parts = row.extras_tr.split(",").map((s: string) => s.trim()).filter(Boolean);
-      parts.forEach((p: string, idx: number) => {
-        const pPriceMatch = p.match(/\+?₺\s*([\d.,]+)/);
-        const pPrice = pPriceMatch ? parsePrice(pPriceMatch[1]) : null;
-        const pLabel = p.replace(/\+?₺\s*[\d.,]+/, "").trim() || p;
-        extrasList.push({ id: `ex-${row.id}-${idx}`, label: pLabel, price: pPrice });
-      });
-    }
+    const extrasTrList = parseExtrasString(row.extras_tr, `tr-${row.id}`);
+    const extrasEnList = parseExtrasString(row.extras_en, `en-${row.id}`);
+    const extrasArList = parseExtrasString(row.extras_ar, `ar-${row.id}`);
+    const extrasRuList = parseExtrasString(row.extras_ru, `ru-${row.id}`);
 
     if (clMatch) {
       const sizeStr = clMatch[1].trim();
@@ -211,11 +228,18 @@ export async function fetchProductsFromSupabase(): Promise<Product[]> {
       if (!groups[groupKey]) {
         groups[groupKey] = {
           baseName,
+          name_en: row.name_en || "",
+          name_ar: row.name_ar || "",
+          name_ru: row.name_ru || "",
           categoryId: row.category_id,
           image: row.image || "",
           active: row.is_active ?? true,
+          sort_order: row.sort_order ?? 0,
           variants: [],
-          extras: extrasList,
+          extras: extrasTrList,
+          extras_en: extrasEnList,
+          extras_ar: extrasArList,
+          extras_ru: extrasRuList,
         };
       }
 
@@ -231,20 +255,26 @@ export async function fetchProductsFromSupabase(): Promise<Product[]> {
       standaloneProducts.push({
         id: row.id,
         name: rawName,
+        name_en: row.name_en || "",
+        name_ar: row.name_ar || "",
+        name_ru: row.name_ru || "",
         categoryId: row.category_id,
         image: row.image || "",
         active: row.is_active ?? true,
         priceMode: "single",
         price: priceVal,
         variants: [],
-        extras: extrasList,
+        extras: extrasTrList,
+        extras_en: extrasEnList,
+        extras_ar: extrasArList,
+        extras_ru: extrasRuList,
+        sort_order: row.sort_order ?? 0,
       });
     }
   });
 
   const groupedProducts: Product[] = Object.keys(groups).map((key) => {
     const g = groups[key];
-    // Sort variants by size float value
     g.variants.sort((a, b) => {
       const aVal = parseFloat(a.label.replace(",", "."));
       const bVal = parseFloat(b.label.replace(",", "."));
@@ -254,6 +284,9 @@ export async function fetchProductsFromSupabase(): Promise<Product[]> {
     return {
       id: `group_${key}`,
       name: g.baseName,
+      name_en: g.name_en,
+      name_ar: g.name_ar,
+      name_ru: g.name_ru,
       categoryId: g.categoryId,
       image: g.image,
       active: g.active,
@@ -261,6 +294,10 @@ export async function fetchProductsFromSupabase(): Promise<Product[]> {
       price: null,
       variants: g.variants,
       extras: g.extras,
+      extras_en: g.extras_en,
+      extras_ar: g.extras_ar,
+      extras_ru: g.extras_ru,
+      sort_order: g.sort_order,
     };
   });
 
@@ -269,8 +306,17 @@ export async function fetchProductsFromSupabase(): Promise<Product[]> {
 
 export async function saveProductToSupabase(product: Product): Promise<boolean> {
   try {
-    const extrasString = product.extras.length > 0
+    const extrasTrStr = product.extras && product.extras.length > 0
       ? product.extras.map((e) => formatExtra(e)).join(", ")
+      : null;
+    const extrasEnStr = product.extras_en && product.extras_en.length > 0
+      ? product.extras_en.map((e) => formatExtra(e)).join(", ")
+      : null;
+    const extrasArStr = product.extras_ar && product.extras_ar.length > 0
+      ? product.extras_ar.map((e) => formatExtra(e)).join(", ")
+      : null;
+    const extrasRuStr = product.extras_ru && product.extras_ru.length > 0
+      ? product.extras_ru.map((e) => formatExtra(e)).join(", ")
       : null;
 
     if (product.priceMode === "single") {
@@ -278,10 +324,17 @@ export async function saveProductToSupabase(product: Product): Promise<boolean> 
       const payload: any = {
         category_id: product.categoryId,
         name_tr: product.name,
+        name_en: product.name_en || null,
+        name_ar: product.name_ar || null,
+        name_ru: product.name_ru || null,
         price: product.price ?? 0,
         is_active: product.active,
         image: product.image || "",
-        extras_tr: extrasString,
+        extras_tr: extrasTrStr,
+        extras_en: extrasEnStr,
+        extras_ar: extrasArStr,
+        extras_ru: extrasRuStr,
+        sort_order: product.sort_order ?? 0,
       };
 
       if (isExistingUuid) {
@@ -293,18 +346,27 @@ export async function saveProductToSupabase(product: Product): Promise<boolean> 
         if (error) throw error;
       }
     } else {
-      // Variants mode (e.g. "Yeni Rakı" with 35 cl, 50 cl, 70 cl)
-      // Save each size as a distinct row in menu_items so frontend menu.html reads it seamlessly
       for (const v of product.variants) {
-        const sizeName = `${product.name} ${v.label}`.trim();
+        const sizeNameTr = `${product.name} ${v.label}`.trim();
+        const sizeNameEn = product.name_en ? `${product.name_en} ${v.label}`.trim() : null;
+        const sizeNameAr = product.name_ar ? `${product.name_ar} ${v.label}`.trim() : null;
+        const sizeNameRu = product.name_ru ? `${product.name_ru} ${v.label}`.trim() : null;
+
         const isExistingUuid = v.id && !v.id.startsWith("variant-") && !v.id.startsWith("v");
         const payload: any = {
           category_id: product.categoryId,
-          name_tr: sizeName,
+          name_tr: sizeNameTr,
+          name_en: sizeNameEn,
+          name_ar: sizeNameAr,
+          name_ru: sizeNameRu,
           price: v.price,
           is_active: product.active,
           image: product.image || "",
-          extras_tr: extrasString,
+          extras_tr: extrasTrStr,
+          extras_en: extrasEnStr,
+          extras_ar: extrasArStr,
+          extras_ru: extrasRuStr,
+          sort_order: product.sort_order ?? 0,
         };
 
         if (isExistingUuid) {
@@ -332,7 +394,6 @@ export async function toggleProductActiveInSupabase(product: Product): Promise<b
       const { error } = await supabase.from("menu_items").update({ is_active: nextStatus }).eq("id", product.id);
       if (error) throw error;
     } else {
-      // Toggle all variants in group
       const variantIds = product.variants.map((v) => v.id);
       const { error } = await supabase.from("menu_items").update({ is_active: nextStatus }).in("id", variantIds);
       if (error) throw error;
