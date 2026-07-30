@@ -39,18 +39,31 @@ export function parsePrice(input: string): number | null {
 }
 
 export function formatExtra(extra: Extra) {
-  return extra.price !== null && extra.price > 0
-    ? `${extra.label}: ${formatPrice(extra.price)}`
-    : extra.label;
+  if (extra.label.includes("₺")) {
+    return extra.label;
+  }
+  if (extra.price !== null && extra.price > 0) {
+    const priceStr = new Intl.NumberFormat("tr-TR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(extra.price);
+    return `+₺${priceStr} ${extra.label}`;
+  }
+  return extra.label;
 }
 
 function parseExtrasString(str: string | null | undefined, prefix: string): Extra[] {
   if (!str) return [];
   const parts = str.split(",").map((s) => s.trim()).filter(Boolean);
   return parts.map((p, idx) => {
-    const pPriceMatch = p.match(/\+?₺\s*([\d.,]+)/);
-    const pPrice = pPriceMatch ? parsePrice(pPriceMatch[1]) : null;
-    const pLabel = p.replace(/\+?₺\s*[\d.,]+/, "").trim() || p;
+    const match = p.match(/\+?\s*₺\s*([\d\.]+(?:,\d+)?)/);
+    let pPrice: number | null = null;
+    let pLabel = p;
+    if (match) {
+      pPrice = parsePrice(match[1]);
+      pLabel = p.replace(/\+?\s*₺\s*[\d\.]+(?:,\d+)?/, "").replace(/^:\s*/, "").replace(/:\s*$/, "").trim();
+    }
+    if (!pLabel) pLabel = p;
     return { id: `ex-${prefix}-${idx}`, label: pLabel, price: pPrice };
   });
 }
