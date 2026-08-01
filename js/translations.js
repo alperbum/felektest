@@ -1,7 +1,7 @@
 const translations = {
     tr: {
-        seo_title: "Felek Mangalbaşı | Rakı, Meze ve Deniz Manzaralı Mangal Keyfi",
-        seo_description: "Bakırköy sahilinde deniz manzaralı ferah bahçede, rakı ve taze meze eşliğinde masada mangal keyfi sunan modern meyhane.",
+        seo_title: "Felek Mangalbaşı | Bakırköy Sahilde Mangal & Meyhane · Gece 02:00'ye Kadar Açık",
+        seo_description: "Bakırköy Sahil'de deniz manzaralı ferah bahçede, rakı ve taze meze eşliğinde zahmetsiz masada mangalbaşı deneyimi sunan modern meyhane. Gece 02:00'ye kadar açık.",
         seo_menu_title: "Felek Mangalbaşı | Menü",
         nav_about: "Hakkımızda",
         nav_experience: "Deneyim",
@@ -18,8 +18,8 @@ const translations = {
         btn_menu: "Menüyü İnceleyin",
         about_label: "Mekan",
         about_title: "Modern Meyhane,<br>Ateşin Ritmi.",
-        about_p1: "Felek, geleneksel mangalbaşı (kendin pişir kendin ye) konseptini meyhane kültürüyle harmanlar. Masanızı zengin mezeler ve rakı donatırken, Balıkesir'den gelen etler ızgaranızda pişer.",
-        about_p2: "Siz sadece sevdiklerinizle anın tadını çıkarın; geriye kalan ateşin yönetimi ve içki servisi ekibimizin kusursuz hizmetiyle yorulmadan mangal keyfi yaşamanız içindir.",
+        about_p1: "Bakırköy'ün en köklü mangalbaşı ve ocakbaşı deneyimlerinden biri olan Felek, geleneksel kendin pişir kendin ye konseptini meyhane kültürüyle harmanlar. Masanızı zengin mezeler ve rakı donatırken, Balıkesir'den gelen etler ızgaranızda pişer.",
+        about_p2: "Siz sadece sevdiklerinizle anın tadını çıkarın; geriye kalan ateşin yönetimi ve içki servisi ekibimizin kusursuz hizmetiyle yorulmadan mangal keyfi yaşamanız içindir. Öğle yemeğinden gece 02:00'ye kadar, iş yemeğinden doğum günü kutlamasına her anınıza eşlik ediyoruz.",
         feat1_title: "Premium Etler",
         feat1_desc: "Balıkesir ve Trakya'dan özenle seçilmiş yöresel lezzetler.",
         feat2_title: "Taş Mimari",

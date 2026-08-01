@@ -375,11 +375,11 @@ export default function App() {
           )}
           <div className="field-group" style={{ marginBottom: "16px" }}>
             <label htmlFor="auth-email">E-Posta</label>
-            <input id="auth-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="admin@felek.com" />
+            <input id="auth-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className="field-group" style={{ marginBottom: "24px" }}>
             <label htmlFor="auth-password">Şifre</label>
-            <input id="auth-password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
+            <input id="auth-password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
           </div>
           <button type="submit" className="button button-primary" style={{ width: "100%", height: "46px", fontSize: "15px" }}>
             Giriş Yap
@@ -529,20 +529,82 @@ export default function App() {
                     <div
                       className="category-card"
                       key={category.id}
+                      style={{
+                        height: "250px",
+                        display: "flex",
+                        flexDirection: "column",
+                        overflow: "hidden",
+                        border: "1px solid var(--line)",
+                        borderRadius: "13px",
+                        background: "var(--paper)",
+                        cursor: "pointer",
+                      }}
                       onClick={() => openCategory(category.id)}
                     >
-                      <div className="card-media">
+                      <div
+                        className="card-media"
+                        style={{
+                          width: "100%",
+                          height: "140px",
+                          flex: "0 0 140px",
+                          overflow: "hidden",
+                          background: "#ebeae2",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          color: "var(--green)",
+                        }}
+                      >
                         {category.image ? (
-                          <img src={category.image} alt="" />
+                          <img
+                            src={category.image}
+                            alt=""
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                              objectPosition: "center",
+                              display: "block",
+                            }}
+                          />
                         ) : (
                           <Folder size={26} strokeWidth={1.5} />
                         )}
                       </div>
-                      <div className="card-body">
-                        <h3>{category.name}</h3>
-                        <span>{count} ürün</span>
+                      <div
+                        className="card-body"
+                        style={{
+                          padding: "12px 16px 4px",
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          flex: 1,
+                          minWidth: 0,
+                        }}
+                      >
+                        <h3
+                          style={{
+                            margin: 0,
+                            fontFamily: "Georgia, serif",
+                            fontSize: "16px",
+                            fontWeight: 500,
+                            color: "var(--ink)",
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
+                        >
+                          {category.name}
+                        </h3>
+                        <span style={{ marginTop: "2px", color: "var(--muted)", fontSize: "12px" }}>
+                          {count} ürün
+                        </span>
                       </div>
-                      <div className="card-actions" onClick={(e) => e.stopPropagation()}>
+                      <div
+                        className="card-actions"
+                        style={{ display: "flex", alignItems: "center", gap: "6px", padding: "4px 16px 12px" }}
+                        onClick={(e) => e.stopPropagation()}
+                      >
                         <button
                           type="button"
                           className="icon-button"

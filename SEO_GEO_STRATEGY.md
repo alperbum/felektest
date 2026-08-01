@@ -28,6 +28,9 @@ This file serves as the single source of truth for **Felek Mangalbaşı** (`http
 - **Server IP:** `94.73.146.49`
 - **FTP Username:** `u0298318`
 - **FTP Password:** `.bdhq=8@JK0S.6P8`
+- **Admin Panel URL:** `https://www.felekmangalbasi.com/admin/`
+- **Admin Email:** `test@test.com`
+- **Admin Password:** `123456`
 - **FTP Deployment Script:** `python gsc_tool.py` (Local automation) & `C:\Users\PC\.gemini\antigravity-ide\brain\da31ffd4-ebf3-477b-9b12-ff9d9fde6d7b\scratch\upload_all.ps1`.
 - **Supabase URL:** `https://efltjgimkjjtagfebmha.supabase.co`
 - **Supabase Anon Key:** `sb_publishable_qbZn4_rrYtoyhXEyJdIb3Q_ctEOMAgE`

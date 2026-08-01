@@ -61,7 +61,8 @@ export function formatExtra(extra: Extra) {
 
 function parseExtrasString(str: string | null | undefined, prefix: string): Extra[] {
   if (!str) return [];
-  const parts = str.split(",").map((s) => s.trim()).filter(Boolean);
+  // Split on commas that are NOT between digits (to preserve Turkish decimal like 120,00)
+  const parts = str.split(/,(?!\d)/).map((s) => s.trim()).filter(Boolean);
   return parts.map((p, idx) => {
     const match = p.match(/\+?\s*₺\s*([\d\.]+(?:,\d+)?)/);
     let pPrice: number | null = null;

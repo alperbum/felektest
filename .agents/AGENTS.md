@@ -21,3 +21,8 @@ Whenever working in this workspace (`c:\Users\PC\Desktop\felek-main`), always ad
 5. **Supabase Database Credentials:**
    - URL: `https://efltjgimkjjtagfebmha.supabase.co`
    - Secret Key: `sb_secret_GT4znfQp1qj02deGA3LS3w_biR2BQ3h` (Use for REST API administrative menu updates).
+
+6. **Admin Panel Credentials:**
+   - URL: `https://www.felekmangalbasi.com/admin/`
+   - Email: `test@test.com`
+   - Password: `123456`
