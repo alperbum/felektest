@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {"categoryId":"mezeler","title":{"tr":"Sarımsak","en":"Garlic (Portion)","ar":"ثوم","ru":"Чеснок (порция)"},"price":"₺75,00","image":"https://www.felekmangalbasi.com/images/mezeler/1779227493729_5foumyvk8.webp"},
     {"categoryId":"ana_yemekler","title":{"tr":"Bonfile (Kg)","en":"Beef Tenderloin (Kg)","ar":"فيليه البقر (كجم)","ru":"Говяжье филе (кг)"},"price":"₺3.750,00","image":"https://www.felekmangalbasi.com/images/ana_yemekler/1779227547438_jzw12uts3.webp"},
     {"categoryId":"ana_yemekler","title":{"tr":"Kırmızı Et Çeşitleri (Kg)","en":"Red Meat Varieties (Kg)","ar":"تشكيلة اللحوم الحمراء (كجم)","ru":"Ассорти из красного мяса (кг)"},"price":"₺2.950,00","image":"https://www.felekmangalbasi.com/images/ana_yemekler/kirmizi_et.webp"},
-    {"categoryId":"mezeler","title":{"tr":"Haydari","en":"Haydari (Thick Yogurt Dip with Herbs)","ar":"حيداري (زبادي بالأعشاب)","ru":"Хайдари (густой йогурт с зеленью)"},"price":"₺290,00","image":"https://www.felekmangalbasi.com/images/mezeler/1781181361729_ct0z394n3.png"},
+    {"categoryId":"mezeler","title":{"tr":"Haydari","en":"Haydari (Thick Yogurt Dip with Herbs)","ar":"حيداري (زبادي بالأعشاب)","ru":"Хайдари (густой йогурт с зеленью)"},"price":"₺290,00","image":"https://www.felekmangalbasi.com/images/mezeler/1781181361729_ct0z394n3.webp"},
     {"categoryId":"mezeler","title":{"tr":"Süzme yogurt","en":"Strained Yogurt","ar":"لبنة (زبادي مصفى)","ru":"Сузьме йогурт (процеженный йогурт)"},"price":"₺240,00","image":"https://www.felekmangalbasi.com/images/mezeler/suzme_yogurt.webp"},
     {"categoryId":"salatalar","title":{"tr":"İstanbul Salata","en":"Istanbul Salad","ar":"سلطة اسطنبول","ru":"Стамбульский салат"},"price":"₺350,00","image":"https://www.felekmangalbasi.com/images/salatalar/istanbul_salata.webp","extras":{"tr":"+₺100,00 Duble Porsiyon","en":"+₺100,00 Double Portion","ar":"+₺100,00 وجبة مزدوجة","ru":"+₺100,00 Двойная порция"}},
     {"categoryId":"salatalar","title":{"tr":"Mevsim Salata","en":"Seasonal Salad","ar":"سلطة موسمية","ru":"Сезонный салат"},"price":"₺350,00","image":"https://www.felekmangalbasi.com/images/salatalar/mevsim_salata.webp","extras":{"tr":"+₺100,00 Duble Porsiyon","en":"+₺100,00 Double Portion","ar":"+₺100,00 وجبة مزدوجة","ru":"+₺100,00 Двойная порция"}},
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {"categoryId":"alkolsuz","title":{"tr":"Soda","en":"Mineral Water / Soda","ar":"مياه معدنية / صودا","ru":"Минеральная вода"},"price":"₺75,00","image":"https://www.felekmangalbasi.com/images/alkolsuz/soda.webp"},
     {"categoryId":"mezeler","title":{"tr":"Zeytinyağlı Yaprak Sarma","en":"Stuffed Grape Leaves in Olive Oil (Sarma)","ar":"ورق عنب بالزيت","ru":"Сарма (фаршированные виноградные листья)"},"price":"₺340,00","image":"https://www.felekmangalbasi.com/images/mezeler/1779227457903_dh9v7oic7.webp"},
     {"categoryId":"raki","title":{"tr":"Beylerbeyi Göbek 35 cl","en":"Beylerbeyi Gobek Raki 35 cl","ar":"بيلربيي غوبيك راكي 35 سل","ru":"Бейlerbeyi Gobek Raki 35 cl"},"price":"₺1.950,00","image":"https://www.felekmangalbasi.com/images/raki/beylerbeyi_gobek.webp"},
-    {"categoryId":"mezeler","title":{"tr":"Kuru Domates","en":"Sun-Dried Tomatoes","ar":"طماطم مجففة","ru":"Вяленые томаты"},"price":"₺330,00","image":"https://www.felekmangalbasi.com/images/mezeler/1781181314329_aux5wmuu3.png"},
+    {"categoryId":"mezeler","title":{"tr":"Kuru Domates","en":"Sun-Dried Tomatoes","ar":"طماطم مجففة","ru":"Вяленые томаты"},"price":"₺330,00","image":"https://www.felekmangalbasi.com/images/mezeler/1781181314329_aux5wmuu3.webp"},
     {"categoryId":"biralar","title":{"tr":"Efes Pilsen 33 cl","en":"Efes Pilsen Beer 33 cl","ar":"بيرة إيفيس بيلسن 33 سل","ru":"Пиво Эфес Пилсен 33 сл"},"price":"₺250,00","image":"https://www.felekmangalbasi.com/images/biralar/64.webp"},
     {"categoryId":"raki","title":{"tr":"Altın Seri 70 cl","en":"Yeni Raki Altin Seri 70 cl","ar":"يني راكي ألتين سيري 70 سل","ru":"Йени Ракы Алтын Сери 70 сл"},"price":"₺3.600,00","image":"https://www.felekmangalbasi.com/images/raki/80.webp"},
     {"categoryId":"raki","title":{"tr":"Sarı Zeybek 70 cl","en":"Sari Zeybek Raki 70 cl","ar":"ساري زيبك راكي 70 سل","ru":"Сары Зейбек Ракы 70 сл"},"price":"₺3.800,00","image":"https://www.felekmangalbasi.com/images/raki/81.webp"},
@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {"categoryId":"mezeler","title":{"tr":"Acılı Ezme","en":"Spicy Turkish Tomato Dip (Acili Ezme)","ar":"سلطة حارة (إزمي)","ru":"Аджика по-турецки (Аджилы эзме)"},"price":"₺290,00","image":"https://www.felekmangalbasi.com/images/mezeler/1779227283165_jff5xuqx0.webp"},
     {"categoryId":"biralar","title":{"tr":"Patates Tava","en":"French Fries","ar":"بطاطس مقلية","ru":"Картофель фри"},"price":"₺240,00","image":"https://www.felekmangalbasi.com/images/biralar/patates_tava.webp"},
     {"categoryId":"alkolsuz","title":{"tr":"Acılı / Acısız Şalgam","en":"Turnip Juice (Spicy / Mild)","ar":"عصير اللفت (حار / بارد)","ru":"Шалгам (Острый / Мягкий)"},"price":"₺110,00","image":"https://www.felekmangalbasi.com/images/alkolsuz/salgam.webp","extras":{"tr":"+₺290,00 1 Litre","en":"+₺290,00 1 Liter","ar":"+₺290,00 1 لتر","ru":"+₺290,00 1 литр"}},
-    {"categoryId":"mezeler","title":{"tr":"Fesleğenli Enginar","en":"Artichoke with Basil","ar":"أرضي شوكي بالريحان","ru":"Артишоки с базиликом"},"price":"₺340,00","image":"https://www.felekmangalbasi.com/images/mezeler/1781181200251_zd9ee47pn.png"},
+    {"categoryId":"mezeler","title":{"tr":"Fesleğenli Enginar","en":"Artichoke with Basil","ar":"أرضي شوكي بالريحان","ru":"Артишоки с базиликом"},"price":"₺340,00","image":"https://www.felekmangalbasi.com/images/mezeler/1781181200251_zd9ee47pn.webp"},
     {"categoryId":"sarap","title":{"tr":"Versus Dedeçeşme 75 cl","en":"Kayra Versus Dedecesme Red Wine 75 cl","ar":"نبيذ كايرا فيرسوس ديديجيشمي أحمر 75 سل","ru":"Красное вино Kayra Versus Dedecesme 75 сл"},"price":"₺3.000,00","image":"https://www.felekmangalbasi.com/images/sarap/kayra_versus_kirmizi.webp"},
     {"categoryId":"sarap","title":{"tr":"Terra 75 cl (Öküzgözü/Kalecik Karası/Rose/Shiraz)","en":"Kayra Terra 75 cl (Okuzgozu/Kalecik Karasi/Rose/Shiraz)","ar":"نبيذ كايرا تيرا 75 سل (أوكوزغوزو/كاليجيك كاراسي/روز/شيراز)","ru":"Вино Kayra Terra 75 сл (Окюзгюзю/Каледжик Карасы/Розе/Шираз)"},"price":"₺2.300,00","image":"https://www.felekmangalbasi.com/images/sarap/terra_kirmizi.webp"},
     {"categoryId":"tatli_meyve","title":{"tr":"İrmik Helvası","en":"Semolina Halva","ar":"حلوى السميد","ru":"Халва из манной крупы"},"price":"₺250,00","image":"https://www.felekmangalbasi.com/images/tatli_meyve/31.webp","extras":{"tr":"+₺80,00 Dondurmalı","en":"+₺80,00 with Ice Cream","ar":"+₺80,00 مع الآيس كريم","ru":"+₺80,00 с мороженым"}},
@@ -577,7 +577,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.dataset.categoryId = cat.id;
                 card.innerHTML = `
                     ${imgHtml}
-                    <h3 class="qr-category-card-title">${escapeHtml(catName)}</h3>
+                    <h2 class="qr-category-card-title">${escapeHtml(catName)}</h2>
                 `;
 
                 // Prefetch first 4 item images on hover/touch (preloads before click)
@@ -924,41 +924,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Prefetch all remaining menu and category images when browser is idle
-        let prefetchTimer = null;
-        function triggerIdlePrefetch() {
-            if (prefetchTimer) clearTimeout(prefetchTimer);
-
-            const tier = getNetworkTier();
-            if (tier === 'save-data') return; // Respect user data-saver preferences
-
-            const idleCallback = window.requestIdleCallback || function(cb) { setTimeout(cb, 1000); };
-            
-            idleCallback(() => {
-                // Collect all unique image URLs from categories and menu items
-                const allUrls = new Set();
-                categories.forEach(c => { if (c.image) allUrls.add(c.image); });
-                menuData.forEach(item => { if (item.image) allUrls.add(item.image); });
-
-                const urlList = Array.from(allUrls);
-                let index = 0;
-                
-                // Fetch in small batches sequentially to avoid blocking the main thread or user interactions
-                function prefetchNextBatch() {
-                    if (index >= urlList.length) return;
-                    
-                    const batchSize = tier === 'slow' ? 2 : tier === 'medium' ? 4 : 6;
-                    const batch = urlList.slice(index, index + batchSize);
-                    prefetchImages(batch);
-                    index += batchSize;
-                    
-                    const delay = tier === 'slow' ? 3000 : tier === 'medium' ? 2000 : 1000;
-                    prefetchTimer = setTimeout(prefetchNextBatch, delay);
-                }
-
-                // Wait 3 seconds of calm before starting the background download
-                prefetchTimer = setTimeout(prefetchNextBatch, 3000);
-            });
-        }
+        function triggerIdlePrefetch() { /* on-demand only */ }
 
 
 
