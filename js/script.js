@@ -525,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
 
-                    if (img.complete && img.naturalWidth > 0) {
+                    if (img.complete) {
                         handleImgLoad();
                     } else {
                         img.addEventListener('load', handleImgLoad, { once: true });
@@ -967,7 +967,22 @@ document.addEventListener('DOMContentLoaded', () => {
             hideLoadingOverlay();
             triggerIdlePrefetch(); // Start prefetching cached images immediately
 
-            if (typeof supabase !== 'undefined' && window.SUPABASE_URL && window.SUPABASE_URL !== 'BURAYA_SUPABASE_URL_GELECEK') {
+            
+            async function ensureSupabaseLoaded() {
+                if (typeof supabase !== 'undefined') return true;
+                return new Promise((resolve) => {
+                    const s = document.createElement('script');
+                    s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+                    s.async = true;
+                    s.onload = () => resolve(true);
+                    s.onerror = () => resolve(false);
+                    document.body.appendChild(s);
+                });
+            }
+
+            if (window.SUPABASE_URL && window.SUPABASE_URL !== 'BURAYA_SUPABASE_URL_GELECEK') {
+                const loaded = await ensureSupabaseLoaded();
+                if (loaded && typeof supabase !== 'undefined') {
                 try {
                     const client = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
                     const [catResult, itemResult] = await Promise.all([
@@ -1037,6 +1052,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 } catch(e) {
                     console.error("Supabase bağlantı hatası:", e);
+                }
                 }
             }
         }
