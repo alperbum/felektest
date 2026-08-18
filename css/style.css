@@ -57,6 +57,15 @@
 }
 
 /* --- Card/Image Fade-in --- */
+.qr-category-card:first-child,
+.qr-category-card:nth-child(2) {
+  opacity: 1;
+  transform: none;
+}
+.qr-category-card:first-child img,
+.qr-category-card:nth-child(2) img {
+  opacity: 1;
+}
 .qr-category-card,
 .qr-card {
   opacity: 0;
