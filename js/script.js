@@ -4,6 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // iOS Safari active state CSS activation
     document.addEventListener('touchstart', () => {}, { passive: true });
 
+    
+    function normalizeImageUrl(url) {
+        if (!url) return '';
+        if (url.includes('supabase.co/storage/v1/object/public/images/')) {
+            return url.replace(/https?:\/\/.*\.supabase\.co\/storage\/v1\/object\/public\/images\//, 'https://www.felekmangalbasi.com/images/');
+        }
+        return url;
+    }
+
     // --- Language Switcher ---
     const langSwitcher = document.getElementById('lang-switcher');
     // Support ?lang= URL parameter for hreflang SEO (sitemap.xml)
@@ -541,7 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('has-sticky-back');
 
             // UX optimization: Reset scroll to top
-            window.scrollTo({ top: 0, behavior: 'instant' });
+            if (window.scrollY > 0) window.scrollTo({ top: 0, behavior: 'instant' });
 
             // Restore from cache for instant back-navigation (fixes iOS swipe-back flicker)
             if (categoriesDomCache) {
@@ -646,7 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuGrid.innerHTML = '';
 
             // UX optimization: Reset scroll to top
-            window.scrollTo({ top: 0, behavior: 'instant' });
+            if (window.scrollY > 0) window.scrollTo({ top: 0, behavior: 'instant' });
 
             // History state push: Safari swipe-back bu state'i poplatır
             if (!history.state || history.state.view !== 'items' || history.state.categoryId !== activeCategory) {
@@ -975,7 +984,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!catError && catData && !itemError && itemData) {
                         const newCategories = catData.map(c => ({
                             id: c.id,
-                            image: c.image || ''
+                            image: normalizeImageUrl(c.image)
                         }));
                         
                         const newMenuData = itemData.map(item => {
@@ -996,7 +1005,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 title: { tr: nameTr, en: nameEn, ar: nameAr, ru: nameRu },
                                 price: item.price ? new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(item.price) : '',
                                 extras: { tr: item.extras_tr, en: item.extras_en, ar: item.extras_ar, ru: item.extras_ru },
-                                image: item.image || ''
+                                image: normalizeImageUrl(item.image)
                             };
                         });
 
