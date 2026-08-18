@@ -810,6 +810,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 2rem;
+    min-height: 75vh;
 }
 
 .qr-category-card {

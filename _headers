@@ -9,6 +9,9 @@
 /*.html
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
@@ -19,5 +22,5 @@
   Cache-Control: public, max-age=86400
 
 /menu.html
-  Link: <https://efltjgimkjjtagfebmha.supabase.co>; rel=preconnect; crossorigin
+  Link: </images/mezeler/mezeler.webp>; rel=preload; as=image; fetchpriority=high
 
