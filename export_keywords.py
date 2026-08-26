@@ -10,13 +10,13 @@ def export_full_analytics_txt():
     service = build('searchconsole', 'v1', credentials=creds)
 
     # Date ranges
-    # 1. Total available period (July 20, 2026 to August 23, 2026)
+    # 1. Total available period (July 20, 2026 to August 24, 2026)
     start_total = "2026-07-20"
-    end_total = "2026-08-23"
+    end_total = "2026-08-24"
 
-    # 2. July (2026-07-20 - 2026-07-31) & August (2026-08-01 - 2026-08-23)
+    # 2. July (2026-07-20 - 2026-07-31) & August (2026-08-01 - 2026-08-24)
     start_july, end_july = "2026-07-20", "2026-07-31"
-    start_aug, end_aug = "2026-08-01", "2026-08-23"
+    start_aug, end_aug = "2026-08-01", "2026-08-24"
 
     # 3. Weekly periods (5 weeks)
     weeks = [
@@ -24,7 +24,7 @@ def export_full_analytics_txt():
         ("Hafta 2 (27 Tem - 02 Agu)", "2026-07-27", "2026-08-02"),
         ("Hafta 3 (03-09 Agustos)", "2026-08-03", "2026-08-09"),
         ("Hafta 4 (10-16 Agustos)", "2026-08-10", "2026-08-16"),
-        ("Hafta 5 (17-23 Agustos)", "2026-08-17", "2026-08-23"),
+        ("Hafta 5 (17-24 Agustos)", "2026-08-17", "2026-08-24"),
     ]
 
     print("[*] GSC verileri cekiliyor...")
