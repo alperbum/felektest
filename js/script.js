@@ -192,16 +192,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- QR Menu Data & Rendering ---
     let categories = [
-    { id: "mezeler", image: "https://www.felekmangalbasi.com/images/mezeler/mezeler.webp" },
-    { id: "salatalar", image: "https://www.felekmangalbasi.com/images/salatalar/salatalar.webp" },
-    { id: "ana_yemekler", image: "https://www.felekmangalbasi.com/images/ana_yemekler/kapak.webp" },
-    { id: "alkolsuz", image: "https://www.felekmangalbasi.com/images/alkolsuz/1779226637394_y3s3vj4wj.webp" },
-    { id: "raki", image: "https://www.felekmangalbasi.com/images/raki/raki_cover.webp" },
-    { id: "viski", image: "https://www.felekmangalbasi.com/images/viski/1779226891887_freb083ev.webp" },
-    { id: "sarap", image: "https://www.felekmangalbasi.com/images/sarap/1779226742783_hlawdmksh.webp" },
-    { id: "biralar", image: "https://www.felekmangalbasi.com/images/biralar/biralar.webp" },
-    { id: "votka_cin", image: "https://www.felekmangalbasi.com/images/votka_cin/votka_cin.webp" },
-    { id: "tatli_meyve", image: "https://www.felekmangalbasi.com/images/tatli_meyve/tatli_meyve.webp" }
+    { id: "mezeler", image: "https://www.felekmangalbasi.com/images/mezeler/mezeler.webp?v=2" },
+    { id: "salatalar", image: "https://www.felekmangalbasi.com/images/salatalar/salatalar.webp?v=2" },
+    { id: "ana_yemekler", image: "https://www.felekmangalbasi.com/images/ana_yemekler/kapak.webp?v=2" },
+    { id: "alkolsuz", image: "https://www.felekmangalbasi.com/images/alkolsuz/1779226637394_y3s3vj4wj.webp?v=2" },
+    { id: "raki", image: "https://www.felekmangalbasi.com/images/raki/raki_cover.webp?v=2" },
+    { id: "viski", image: "https://www.felekmangalbasi.com/images/viski/1779226891887_freb083ev.webp?v=2" },
+    { id: "sarap", image: "https://www.felekmangalbasi.com/images/sarap/1779226742783_hlawdmksh.webp?v=2" },
+    { id: "biralar", image: "https://www.felekmangalbasi.com/images/biralar/biralar.webp?v=2" },
+    { id: "votka_cin", image: "https://www.felekmangalbasi.com/images/votka_cin/votka_cin.webp?v=2" },
+    { id: "tatli_meyve", image: "https://www.felekmangalbasi.com/images/tatli_meyve/tatli_meyve.webp?v=2" }
 ];let menuData = [
     {"categoryId":"mezeler","title":{"tr":"Girit Ezmesi","en":"Cretan Cheese Dip (Girit Ezmesi)","ar":"سلطة جبنة كريتية (غريت إزمي)","ru":"Критская сырная закуска (Гирит Эзмеси)"},"price":"₺330,00","image":"https://www.felekmangalbasi.com/images/mezeler/1779227341191_qshkm9x2h.webp"},
     {"categoryId":"raki","title":{"tr":"Yeni Seri 20 cl","en":"Yeni Raki Yeni Seri 20 cl","ar":"يني راكي يني سيري 20 سل","ru":"Йени Ракы Йени Сери 20 сл"},"price":"₺950,00","image":"https://www.felekmangalbasi.com/images/raki/yeni_raki_yeni_seri.webp"},
@@ -956,8 +956,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Clean up legacy cache keys to prevent stale menu presentation
             ['felek_categories', 'felek_menu_items', 'felek_categories_v2', 'felek_menu_items_v2', 'felek_categories_v3', 'felek_menu_items_v3', 'felek_categories_v5', 'felek_menu_items_v5'].forEach(k => localStorage.removeItem(k));
 
-            const cachedCats = localStorage.getItem('felek_categories_v5');
-            const cachedItems = localStorage.getItem('felek_menu_items_v5');
+            const cachedCats = localStorage.getItem('felek_categories_v6');
+            const cachedItems = localStorage.getItem('felek_menu_items_v6');
             if (cachedCats && cachedItems) {
                 try {
                     categories = JSON.parse(cachedCats);
@@ -1039,8 +1039,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (catsStr !== cachedCats || itemsStr !== cachedItems) {
                             categories = newCategories;
                             menuData = newMenuData;
-                            localStorage.setItem('felek_categories_v5', catsStr);
-                            localStorage.setItem('felek_menu_items_v5', itemsStr);
+                            localStorage.setItem('felek_categories_v6', catsStr);
+                            localStorage.setItem('felek_menu_items_v6', itemsStr);
                             
                             if (window.translations) {
                                 catData.forEach(c => {
