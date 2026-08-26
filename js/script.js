@@ -581,10 +581,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.classList.add('loading');
                 }
                                 
-                // All 10 categories loaded eagerly; first 4 get high fetch priority
-                const priorityAttr = index < 4 ? ' fetchpriority="high"' : '';
+                // Above-the-fold: only first 2 categories load eagerly with high fetch priority; rest are lazy
+                const isAboveFold = index < 2;
+                const priorityAttr = isAboveFold ? ' fetchpriority="high"' : '';
+                const loadingAttr = isAboveFold ? 'loading="eager"' : 'loading="lazy"';
                 const imgHtml = hasImage 
-                                ? `<img src="${escapeHtml(cat.image)}" alt="${escapeHtml(catName)}" decoding="async" loading="eager" width="600" height="400"${priorityAttr}>` 
+                                ? `<img src="${escapeHtml(cat.image)}" alt="${escapeHtml(catName)}" decoding="async" ${loadingAttr} width="600" height="400"${priorityAttr}>` 
                                 : ``;
 
                 card.dataset.categoryId = cat.id;
