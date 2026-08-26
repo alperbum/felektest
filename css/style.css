@@ -1219,3 +1219,11 @@ footer {
     font-size: 16px !important; /* Prevents auto-zoom on iOS Safari when focusing form fields */
   }
 }
+
+/* Accessibility Touch Target Enhancement */
+.footer-text a,
+.footer-link {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+}
