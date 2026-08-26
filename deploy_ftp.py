@@ -26,6 +26,8 @@ def deploy():
         'kennedy-sahil-konum.html',
         'raki-mangal-meyhane.html',
         'zahmetsiz-mangal.html',
+        'suadiye.html',
+        '_headers',
         'favicon.png',
         'google815b56b5875fd4cb.html'
     ]

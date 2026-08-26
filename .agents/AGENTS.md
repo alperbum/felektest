@@ -7,17 +7,23 @@ Whenever working in this repository (c:\Users\PC\Desktop\felek-main), adhere to 
 
 ## 1. Fast Automation Commands (No Searching Needed)
 
+> [!CAUTION]
+> **CRITICAL DEPLOYMENT RULE:**
+> NEVER execute `deploy_ftp.py` or upload files to the FTP server without the user's explicit prior confirmation and approval! Always explain the proposed changes and ask for permission first.
+
+
 1. **1-Click Production FTP Deploy:**
    - Command: `python deploy_ftp.py`
    - Action: Uploads all core HTML, JS, CSS, config, and verification files to production server (`94.73.146.49`).
    - Credentials: User `u0298318`, Pass `.bdhq=8@JK0S.6P8`.
 
-2. **Google Search Console Analytics:**
-   - Command: `python gsc_tool.py`
-   - Action: Fetches 30-day GSC queries and landing page performance, writes UTF-8 report to `search_analytics_report.md`.
+2. **Google Search Console & GBP Unified Analytics:**
+   - Command: `python report_tool.py` (veya `python gsc_tool.py`)
+   - Action: Fetches 30-day GSC queries, comparison growth (% change), mobile/desktop split, SEO opportunity matrix, and GBP profile data. Writes to `search_analytics_report.md`.
+   - Telegram Digest: `python report_tool.py --telegram`
 
 3. **Google Indexing API Notification:**
-   - Command: `python gsc_tool.py --indexing`
+   - Command: `python report_tool.py --indexing` (veya `python gsc_tool.py --indexing`)
    - Action: Notifies Google Indexing API of updated landing pages using service account (`service_account.json`).
 
 4. **Bing Webmaster Indexing:**
@@ -57,6 +63,7 @@ Whenever working in this repository (c:\Users\PC\Desktop\felek-main), adhere to 
 - **Core Concept:** 
   - **Zahmetsiz Mangalbasi:** Smokeless hazelnut charcoal BBQ with full waiter service.
   - **Modern Meyhane:** Fresh mezes, rakı selections, historic 200-year stone building atmosphere.
+  - **Atmosphere Note:** No active live music / fasıl program. The building historically hosted the legendary "Felek Fasıl", now operating exclusively as Felek Mangalbaşı with calm background ambience.
   - **Night Venue:** Full kitchen, grill, and meze service active until 02:00 AM.
 - **Visual Design Identity:** Dark luxury mode (`#0e0c0a` background, `#d4a355` gold accent, `Cormorant Garamond` serif headers, `DM Sans` body text).
 
@@ -90,14 +97,15 @@ Whenever working in this repository (c:\Users\PC\Desktop\felek-main), adhere to 
 
 1. **index.html:** Homepage with LocalBusiness + 7x FAQPage schema, late-night 02:00 focus, and keyword-rich about section.
 2. **menu.html:** Dynamic QR menu integrated with Supabase + static SEO fallback in `<noscript>` + customer feedback form.
-3. **zahmetsiz-mangal.html:** Smokeless hazelnut charcoal concept & waiter service BBQ page.
-4. **raki-mangal-meyhane.html:** Modern meyhane, fresh mezes, and rakı selection landing page.
-5. **kennedy-sahil-konum.html:** Location guide, 200-year stone architecture, 10-15 min drive from Sultanahmet/Fatih/Yenikapi.
-6. **gurme-yorumlar.html:** Influencer and customer reviews + AggregateRating schema (4.2 / 500+ reviews).
-7. **llms.txt:** Exhaustive QA knowledge base for AI search crawlers (ChatGPT, Perplexity, ClaudeBot).
-8. **robots.txt & sitemap.xml:** Search engine and AI crawler index maps.
-9. **web.config:** IIS URL rewriting, 301 canonical redirects, WebP MIME types, and static cache controls.
-10. **_headers:** Cloudflare security and edge caching headers.
+3. **suadiye.html:** Dedicated landing bridge for Suadiye traffic explaining closure & directing to Bakirkoy flagship.
+4. **zahmetsiz-mangal.html:** Smokeless hazelnut charcoal concept, bakirkoy ocakbasi & kendin pisir consolidated landing page.
+5. **raki-mangal-meyhane.html:** Modern meyhane, fresh mezes, rakı selection, and late-night dining landing page.
+6. **kennedy-sahil-konum.html:** Location guide, 200-year stone architecture, 10-15 min drive from Sultanahmet/Fatih/Yenikapi.
+7. **gurme-yorumlar.html:** Influencer and customer reviews + AggregateRating schema (4.3 / 500+ reviews).
+8. **llms.txt:** Exhaustive QA knowledge base for AI search crawlers (ChatGPT, Perplexity, ClaudeBot).
+9. **robots.txt & sitemap.xml:** Search engine and AI crawler index maps.
+10. **web.config:** IIS URL rewriting, 301 canonical redirects, WebP MIME types, and static cache controls.
+11. **_headers:** Cloudflare security and edge caching headers.
 
 ---
 

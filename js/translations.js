@@ -1,6 +1,6 @@
 const translations = {
     tr: {
-        seo_title: "Felek Mangalbaşı | Bakırköy Sahilde Mangal & Meyhane · Gece 02:00'ye Kadar Açık",
+        seo_title: "Felek Mangalbaşı | Bakırköy Sahil Mangalbaşı & Meyhane",
         seo_description: "Bakırköy Sahil'de deniz manzaralı ferah bahçede, rakı ve taze meze eşliğinde zahmetsiz masada mangalbaşı deneyimi sunan modern meyhane. Gece 02:00'ye kadar açık.",
         seo_menu_title: "Felek Mangalbaşı | Menü",
         nav_about: "Hakkımızda",

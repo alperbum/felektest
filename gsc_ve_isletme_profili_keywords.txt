@@ -1,0 +1,663 @@
+===================================================================================================================
+  FELEK MANGALBASI — GOOGLE SEARCH CONSOLE & ISLETME PROFILI DETAYLI KEYWORD ANALIZ RAPORU
+  Raporlama Tarihi: 25.08.2026
+  Kapsanan Veri Donemi: 20.07.2026 — 23.08.2026 (Temmuz 2026 & Agustos 2026)
+  Toplam Benzersiz Anahtar Kelime Havuzu: 198 Adet
+  GSC'de Kaydedilen Canli Arama Sorgusu Sayisi: 151 Adet
+===================================================================================================================
+
+===================================================================================================================
+GENEL PERFORMANS & AYLIK BUYUME KIYASLAMASI (TEMMUZ 2026 vs AGUSTOS 2026)
+===================================================================================================================
+METRIK                    | TEMMUZ 2026 (12 Gun)   | AGUSTOS 2026 (23 Gun)  | DEGISIM / BUYUME     | TOPLAM DONEM   
+-------------------------------------------------------------------------------------------------------------------
+Toplam Tiklama            | 48                     | 167                    | +247.9%              | 215            
+Toplam Gosterim           | 1,412                  | 3,040                  | +115.3%              | 4,452          
+Ortalama CTR (%)          | %3.40                  | %5.49                  | +2.09% puan        | %4.83          
+Ortalama Pozisyon         | #5.5                   | #4.9                   |  +0.6 sira iyilesme  | #5.1           
+Benzersiz Arama Sayisi    | 82                     | 130                    | +48 yeni sorgu      | 151            
+
+
+===================================================================================================================
+BOLUM 1: ANAHTAR KELIME BAZLI AYLIK TIKLAMA, GOSTERIM & SIRA KIYASLAMA TABLOSU
+Aciklama: Her arama sorgusunun Temmuz ve Agustos aylarindaki tiklama, gosterim ve sira degisimleri karsilastirilmistir.
+===================================================================================================================
+#    | ARAMA SORGUSU                          | TEM TIK | AGU TIK | TIK FARK | TEM GOS | AGU GOS | GOS %    | TEM SIRA | AGU SIRA | DURUM
+-------------------------------------------------------------------------------------------------------------------
+1    | felek mangalbaşı                       | 15      | 50      | +35      | 174     | 361     | +107%    | #2.3     | #1.5     | ▲ ARTISTA
+2    | felek mangalbaşı menü                  | 5       | 9       | +4       | 9       | 18      | +100%    | #1.3     | #1.1     | ▲ ARTISTA
+3    | felek bakırköy                         | 3       | 4       | +1       | 45      | 64      | +42%     | #3.6     | #1.1     | ▲ ARTISTA
+4    | felek ocakbaşı                         | 0       | 4       | +4       | 20      | 47      | +135%    | #2.8     | #1.9     | ★ YENI HIT
+5    | felek mangalbaşı suadiye               | 2       | 1       | -1       | 53      | 84      | +58%     | #7.3     | #6.5     | ▼ DUSUSTE
+6    | bakırköy ocakbaşı mekanları            | 1       | 2       | +1       | 29      | 54      | +86%     | #6.6     | #5.1     | ▲ ARTISTA
+7    | bakırköy rakı mekanları                | 0       | 3       | +3       | 1       | 62      | +6100%   | #11.0    | #7.4     | ★ YENI HIT
+8    | felek suadiye                          | 1       | 2       | +1       | 16      | 19      | +19%     | #5.6     | #5.9     | ▲ ARTISTA
+9    | bakırköy ocakbaşı                      | 1       | 1       | =        | 70      | 135     | +93%     | #8.8     | #7.0     | ▲ GOS. ARTTI
+10   | bakırköy felek                         | 0       | 2       | +2       | 14      | 33      | +136%    | #3.5     | #1.2     | ★ YENI HIT
+11   | felek mangalbaşı bakırköy              | 0       | 2       | +2       | 19      | 23      | +21%     | #3.3     | #1.2     | ★ YENI HIT
+12   | ocakbaşı bakırköy                      | 0       | 2       | +2       | 10      | 26      | +160%    | #7.5     | #5.7     | ★ YENI HIT
+13   | bakırköy ocakbaşı kendin pişir         | 1       | 1       | =        | 11      | 21      | +91%     | #5.6     | #3.8     | ▲ GOS. ARTTI
+14   | felek mangalbaşı fiyat                 | 1       | 1       | =        | 17      | 13      | -24%     | #3.5     | #1.2     | ─ STABIL
+15   | felek mangalbaşı suadiye menü          | 1       | 1       | =        | 4       | 11      | +175%    | #2.5     | #2.1     | ▲ GOS. ARTTI
+16   | kendin pişir kendin ye                 | 0       | 2       | +2       | 2       | 7       | +250%    | #1.0     | #1.1     | ★ YENI HIT
+17   | bakırköy meyhane                       | 0       | 2       | +2       | 0       | 6       | YENI     | -        | #2.7     | ★ YENI HIT
+18   | mangal başı                            | 0       | 1       | +1       | 18      | 56      | +211%    | #10.5    | #9.0     | ★ YENI HIT
+19   | felek mangalbaşı yorumları             | 0       | 1       | +1       | 20      | 32      | +60%     | #5.0     | #4.6     | ★ YENI HIT
+20   | felek restaurant                       | 0       | 1       | +1       | 12      | 22      | +83%     | #3.4     | #3.8     | ★ YENI HIT
+21   | felek meyhanesi                        | 0       | 1       | +1       | 9       | 24      | +167%    | #5.3     | #5.2     | ★ YENI HIT
+22   | felek ocakbaşı bakırköy                | 0       | 1       | +1       | 10      | 22      | +120%    | #2.8     | #1.0     | ★ YENI HIT
+23   | felek mangalbaşı yorumlar              | 0       | 1       | +1       | 7       | 20      | +186%    | #5.9     | #5.0     | ★ YENI HIT
+24   | mangalbasi                             | 0       | 1       | +1       | 4       | 14      | +250%    | #7.8     | #6.8     | ★ YENI HIT
+25   | kendin pişir kendin ye istanbul        | 0       | 1       | +1       | 3       | 9       | +200%    | #1.0     | #3.6     | ★ YENI HIT
+26   | bakırköy felek mangalbaşı              | 0       | 1       | +1       | 4       | 7       | +75%     | #2.8     | #1.1     | ★ YENI HIT
+27   | kendin pişir kendin ye avrupa yakası   | 0       | 1       | +1       | 0       | 4       | YENI     | -        | #1.5     | ★ YENI HIT
+28   | kendin pişir kendin ye alkolsüz        | 0       | 1       | +1       | 1       | 1       | 0%       | #31.0    | #1.0     | ★ YENI HIT
+29   | fasıl mekanları avrupa yakası          | 0       | 1       | +1       | 0       | 1       | YENI     | -        | #1.0     | ★ YENI HIT
+30   | istanbul kendin pişir kendin ye alkolsüz | 0       | 1       | +1       | 0       | 1       | YENI     | -        | #1.0     | ★ YENI HIT
+31   | kendin pişir ye mangal                 | 0       | 1       | +1       | 0       | 1       | YENI     | -        | #1.0     | ★ YENI HIT
+32   | restoran                               | 0       | 1       | +1       | 0       | 1       | YENI     | -        | #2.0     | ★ YENI HIT
+33   | bakırköy kendin pişir kendin ye        | 0       | 0       | =        | 44      | 70      | +59%     | #5.5     | #4.5     | ▲ GOS. ARTTI
+34   | bakırköy mangalbaşı                    | 0       | 0       | =        | 41      | 65      | +59%     | #5.6     | #4.4     | ▲ GOS. ARTTI
+35   | bakırköy mangal yerleri                | 0       | 0       | =        | 19      | 21      | +11%     | #6.4     | #5.8     | ▲ GOS. ARTTI
+36   | mangalbaşı                             | 0       | 0       | =        | 9       | 25      | +178%    | #8.3     | #5.6     | ▲ GOS. ARTTI
+37   | kendin pişir kendin ye bakırköy        | 0       | 0       | =        | 8       | 20      | +150%    | #6.5     | #3.5     | ▲ GOS. ARTTI
+38   | felek mangalbaşı suadiye yorumları     | 0       | 0       | =        | 10      | 15      | +50%     | #8.7     | #8.3     | ▲ GOS. ARTTI
+39   | felek ocakbaşı suadiye                 | 0       | 0       | =        | 14      | 10      | -29%     | #5.1     | #6.5     | ─ STABIL
+40   | bakırköy sahil ocakbaşı                | 0       | 0       | =        | 10      | 12      | +20%     | #5.0     | #4.2     | ▲ GOS. ARTTI
+41   | felek mangalbaşı resimleri             | 0       | 0       | =        | 2       | 18      | +800%    | #3.0     | #3.2     | ▲ GOS. ARTTI
+42   | rakı mangal                            | 0       | 0       | =        | 8       | 12      | +50%     | #8.8     | #7.5     | ▲ GOS. ARTTI
+43   | bakırköy mangalbaşı yerleri            | 0       | 0       | =        | 6       | 12      | +100%    | #4.0     | #3.9     | ▲ GOS. ARTTI
+44   | bakırköy rakı                          | 0       | 0       | =        | 10      | 7       | -30%     | #5.7     | #7.3     | ─ STABIL
+45   | bakırköy sahil alkollü mekanlar        | 0       | 0       | =        | 1       | 16      | +1500%   | #7.0     | #7.4     | ▲ GOS. ARTTI
+46   | felek meyhane                          | 0       | 0       | =        | 4       | 13      | +225%    | #4.0     | #4.3     | ▲ GOS. ARTTI
+47   | felek mangalbaşı fotoğraflar           | 0       | 0       | =        | 1       | 15      | +1400%   | #3.0     | #2.1     | ▲ GOS. ARTTI
+48   | bakırköy sahil meyhane                 | 0       | 0       | =        | 4       | 11      | +175%    | #6.2     | #7.3     | ▲ GOS. ARTTI
+49   | florya mangalbaşı                      | 0       | 0       | =        | 1       | 14      | +1300%   | #7.0     | #6.5     | ▲ GOS. ARTTI
+50   | kadıköy mangalbaşı                     | 0       | 0       | =        | 8       | 6       | -25%     | #4.4     | #4.8     | ─ STABIL
+51   | mangalbaşı istanbul                    | 0       | 0       | =        | 0       | 13      | YENI     | -        | #8.2     | ● YENI SOGU
+52   | kadıköy kendin pişir kendin ye         | 0       | 0       | =        | 7       | 5       | -29%     | #10.0    | #8.4     | ─ STABIL
+53   | istanbul mangalbaşı                    | 0       | 0       | =        | 3       | 8       | +167%    | #8.0     | #7.1     | ▲ GOS. ARTTI
+54   | bakırköy et mangal                     | 0       | 0       | =        | 5       | 5       | 0%       | #6.4     | #7.8     | ─ STABIL
+55   | mangal basi                            | 0       | 0       | =        | 4       | 5       | +25%     | #11.2    | #11.4    | ▲ GOS. ARTTI
+56   | mangalbaşı bakırköy                    | 0       | 0       | =        | 2       | 7       | +250%    | #5.5     | #4.7     | ▲ GOS. ARTTI
+57   | mangalbası                             | 0       | 0       | =        | 2       | 4       | +100%    | #10.0    | #9.0     | ▲ GOS. ARTTI
+58   | masada mangal                          | 0       | 0       | =        | 1       | 5       | +400%    | #3.0     | #13.2    | ▲ GOS. ARTTI
+59   | rakı mangal mekanları                  | 0       | 0       | =        | 1       | 4       | +300%    | #10.0    | #9.0     | ▲ GOS. ARTTI
+60   | felek mangalbaşı suadiye yorumlar      | 0       | 0       | =        | 4       | 0       | -100%    | #7.8     | -        | ─ STABIL
+61   | firuze mangalbaşı                      | 0       | 0       | =        | 1       | 3       | +200%    | #8.0     | #10.3    | ▲ GOS. ARTTI
+62   | istanbul mangal başı                   | 0       | 0       | =        | 3       | 1       | -67%     | #8.0     | #8.0     | ─ STABIL
+63   | mangal rakı                            | 0       | 0       | =        | 2       | 2       | 0%       | #7.5     | #6.0     | ─ STABIL
+64   | yeşilköy mangalbaşı                    | 0       | 0       | =        | 0       | 4       | YENI     | -        | #13.0    | ● YENI SOGU
+65   | bakırköy gece açık mekanlar            | 0       | 0       | =        | 0       | 3       | YENI     | -        | #11.7    | ● YENI SOGU
+66   | bakırköy ocakbaşı restaurant           | 0       | 0       | =        | 0       | 3       | YENI     | -        | #7.3     | ● YENI SOGU
+67   | bakırköy sahildeki mekanlar            | 0       | 0       | =        | 0       | 3       | YENI     | -        | #11.7    | ● YENI SOGU
+68   | mangal                                 | 0       | 0       | =        | 0       | 3       | YENI     | -        | #2.3     | ● YENI SOGU
+69   | mangalbasi restaurant istanbul         | 0       | 0       | =        | 1       | 2       | +100%    | #10.0    | #5.5     | ▲ GOS. ARTTI
+70   | alkolsüz mangalbaşı                    | 0       | 0       | =        | 0       | 2       | YENI     | -        | #1.5     | ● YENI SOGU
+71   | avrupa yakası kendin pişir kendin ye   | 0       | 0       | =        | 0       | 2       | YENI     | -        | #2.5     | ● YENI SOGU
+72   | bakirkoy meyhane                       | 0       | 0       | =        | 0       | 2       | YENI     | -        | #6.5     | ● YENI SOGU
+73   | bakırköy meyhaneleri                   | 0       | 0       | =        | 1       | 1       | 0%       | #9.0     | #2.0     | ─ STABIL
+74   | bakırköy restoranlar                   | 0       | 0       | =        | 0       | 2       | YENI     | -        | #2.5     | ● YENI SOGU
+75   | dilek restaurant bakırköy              | 0       | 0       | =        | 1       | 1       | 0%       | #26.0    | #29.0    | ─ STABIL
+76   | florya kendin pişir kendin ye          | 0       | 0       | =        | 1       | 1       | 0%       | #1.0     | #9.0     | ─ STABIL
+77   | florya mangal                          | 0       | 0       | =        | 2       | 0       | -100%    | #9.0     | -        | ─ STABIL
+78   | istanbul kendin pişir kendin ye        | 0       | 0       | =        | 0       | 2       | YENI     | -        | #7.0     | ● YENI SOGU
+79   | istanbul mangalbaşı yerleri            | 0       | 0       | =        | 0       | 2       | YENI     | -        | #1.0     | ● YENI SOGU
+80   | istanbul ocakbaşı kendin pişir         | 0       | 0       | =        | 0       | 2       | YENI     | -        | #1.0     | ● YENI SOGU
+81   | kendin pişir kendin ye avcılar         | 0       | 0       | =        | 0       | 2       | YENI     | -        | #32.5    | ● YENI SOGU
+82   | kendin pişir kendin ye istanbul anadolu yakası | 0       | 0       | =        | 0       | 2       | YENI     | -        | #6.5     | ● YENI SOGU
+83   | kendin pişir kendin ye istanbul avrupa yakası | 0       | 0       | =        | 0       | 2       | YENI     | -        | #2.5     | ● YENI SOGU
+84   | mangal sefası                          | 0       | 0       | =        | 0       | 2       | YENI     | -        | #33.5    | ● YENI SOGU
+85   | mangalbaşi                             | 0       | 0       | =        | 0       | 2       | YENI     | -        | #10.0    | ● YENI SOGU
+86   | mangalbaşı yerler                      | 0       | 0       | =        | 0       | 2       | YENI     | -        | #10.0    | ● YENI SOGU
+87   | ocakbaşı kendin pişir kendin ye        | 0       | 0       | =        | 1       | 1       | 0%       | #1.0     | #7.0     | ─ STABIL
+88   | ocakbaşı mangal                        | 0       | 0       | =        | 1       | 1       | 0%       | #2.0     | #1.0     | ─ STABIL
+89   | alkollü ocakbaşı avrupa yakası         | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+90   | anadolu yakası kendin pişir kendin ye mekanları | 0       | 0       | =        | 1       | 0       | -100%    | #1.0     | -        | ─ STABIL
+91   | anadolu yakası mangalbaşı              | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+92   | anadolu yakası ocakbaşı kendin pişir kendin ye | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+93   | anadolu yakası ocakbaşı mekanlar       | 0       | 0       | =        | 0       | 1       | YENI     | -        | #2.0     | ● YENI SOGU
+94   | açık hava olsun                        | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+95   | bakırköy aile ocakbaşı                 | 0       | 0       | =        | 0       | 1       | YENI     | -        | #14.0    | ● YENI SOGU
+96   | bakırköy alkollü mekan                 | 0       | 0       | =        | 0       | 1       | YENI     | -        | #17.0    | ● YENI SOGU
+97   | bakırköy eğlence mekanları             | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+98   | bakırköy fasıl mekanları               | 0       | 0       | =        | 0       | 1       | YENI     | -        | #2.0     | ● YENI SOGU
+99   | bakırköy meze                          | 0       | 0       | =        | 1       | 0       | -100%    | #26.0    | -        | ─ STABIL
+100  | bakırköy restaurant                    | 0       | 0       | =        | 1       | 0       | -100%    | #3.0     | -        | ─ STABIL
+101  | bakırköy sahil restaurant              | 0       | 0       | =        | 0       | 1       | YENI     | -        | #21.0    | ● YENI SOGU
+102  | bakırköy sahil restoranları            | 0       | 0       | =        | 1       | 0       | -100%    | #31.0    | -        | ─ STABIL
+103  | deniz meyhanesi bakırköy               | 0       | 0       | =        | 0       | 1       | YENI     | -        | #7.0     | ● YENI SOGU
+104  | diyar ocakbaşı bakırköy                | 0       | 0       | =        | 0       | 1       | YENI     | -        | #14.0    | ● YENI SOGU
+105  | en yakın kendin pişir kendin ye        | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+106  | felej                                  | 0       | 0       | =        | 1       | 0       | -100%    | #1.0     | -        | ─ STABIL
+107  | felek                                  | 0       | 0       | =        | 0       | 1       | YENI     | -        | #5.0     | ● YENI SOGU
+108  | felek mangal başı                      | 0       | 0       | =        | 1       | 0       | -100%    | #3.0     | -        | ─ STABIL
+109  | felek ticaret                          | 0       | 0       | =        | 1       | 0       | -100%    | #16.0    | -        | ─ STABIL
+110  | feleke                                 | 0       | 0       | =        | 0       | 1       | YENI     | -        | #2.0     | ● YENI SOGU
+111  | firuzköy kendin pişir kendin ye        | 0       | 0       | =        | 0       | 1       | YENI     | -        | #17.0    | ● YENI SOGU
+112  | florya sahil                           | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+113  | florya yemek mekanları                 | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+114  | göktürk kebap                          | 0       | 0       | =        | 1       | 0       | -100%    | #2.0     | -        | ─ STABIL
+115  | gölbaşı et mangal                      | 0       | 0       | =        | 0       | 1       | YENI     | -        | #38.0    | ● YENI SOGU
+116  | istanbul avrupa yakası kendin pişir kendin ye mekanları | 0       | 0       | =        | 0       | 1       | YENI     | -        | #2.0     | ● YENI SOGU
+117  | istanbul avrupa yakasında              | 0       | 0       | =        | 1       | 0       | -100%    | #2.0     | -        | ─ STABIL
+118  | istanbul kendin pişir kendin ye mekanları | 0       | 0       | =        | 0       | 1       | YENI     | -        | #2.0     | ● YENI SOGU
+119  | istanbul mangal mekanları              | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+120  | istanbul rakı mekanları                | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+121  | istanbul'da kendin pişir kendin ye mekanları | 0       | 0       | =        | 0       | 1       | YENI     | -        | #2.0     | ● YENI SOGU
+122  | istanbulda kendin pişir kendin ye      | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+123  | kalamış ocakbaşı                       | 0       | 0       | =        | 1       | 0       | -100%    | #1.0     | -        | ─ STABIL
+124  | kendin pişir kendin ye anadolu yakası  | 0       | 0       | =        | 0       | 1       | YENI     | -        | #2.0     | ● YENI SOGU
+125  | kendin pişir kendin ye kadıköy         | 0       | 0       | =        | 0       | 1       | YENI     | -        | #9.0     | ● YENI SOGU
+126  | kendin pişir kendin ye mekanları       | 0       | 0       | =        | 0       | 1       | YENI     | -        | #2.0     | ● YENI SOGU
+127  | kendin pişir kendin ye ocakbaşı istanbul | 0       | 0       | =        | 1       | 0       | -100%    | #2.0     | -        | ─ STABIL
+128  | kendin ye kendin pişir                 | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+129  | kendin ye kendin pişir istanbul        | 0       | 0       | =        | 0       | 1       | YENI     | -        | #4.0     | ● YENI SOGU
+130  | kennedy caddesi sahil yolu             | 0       | 0       | =        | 0       | 1       | YENI     | -        | #11.0    | ● YENI SOGU
+131  | keyf mangalbaşı menü                   | 0       | 0       | =        | 0       | 1       | YENI     | -        | #32.0    | ● YENI SOGU
+132  | küçükçekmece kendin pişir kendin ye    | 0       | 0       | =        | 0       | 1       | YENI     | -        | #3.0     | ● YENI SOGU
+133  | leylek kadıköy                         | 0       | 0       | =        | 1       | 0       | -100%    | #27.0    | -        | ─ STABIL
+134  | mangal mekanı                          | 0       | 0       | =        | 1       | 0       | -100%    | #2.0     | -        | ─ STABIL
+135  | mangal restaurant near me              | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+136  | mangal yerleri                         | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+137  | mangalbasi istanbul                    | 0       | 0       | =        | 0       | 1       | YENI     | -        | #6.0     | ● YENI SOGU
+138  | mangalbaşı fiyat listesi               | 0       | 0       | =        | 1       | 0       | -100%    | #27.0    | -        | ─ STABIL
+139  | mangalbaşı kendin pişir kendin ye      | 0       | 0       | =        | 0       | 1       | YENI     | -        | #11.0    | ● YENI SOGU
+140  | ocakbaşı                               | 0       | 0       | =        | 1       | 0       | -100%    | #1.0     | -        | ─ STABIL
+141  | ocakbaşı kendin pişir kendin ye istanbul | 0       | 0       | =        | 1       | 0       | -100%    | #1.0     | -        | ─ STABIL
+142  | sahil kennedy caddesi                  | 0       | 0       | =        | 0       | 1       | YENI     | -        | #10.0    | ● YENI SOGU
+143  | shisha lounge istanbul                 | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+144  | suadiye mekanlar                       | 0       | 0       | =        | 1       | 0       | -100%    | #61.0    | -        | ─ STABIL
+145  | yeşilköy mangal yerleri                | 0       | 0       | =        | 0       | 1       | YENI     | -        | #12.0    | ● YENI SOGU
+146  | yeşilköy mekanlar                      | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+147  | yeşilköy ocakbaşı mekanları            | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+148  | çaşnigir bakırköy                      | 0       | 0       | =        | 1       | 0       | -100%    | #35.0    | -        | ─ STABIL
+149  | şahane mangalbaşı bakırköy yorumları   | 0       | 0       | =        | 0       | 1       | YENI     | -        | #9.0     | ● YENI SOGU
+150  | فيلك                                   | 0       | 0       | =        | 1       | 0       | -100%    | #10.0    | -        | ─ STABIL
+151  | مطاعم بالقرب من موقعي الحالي           | 0       | 0       | =        | 0       | 1       | YENI     | -        | #1.0     | ● YENI SOGU
+
+
+===================================================================================================================
+BOLUM 2: HAFTALIK TIKLAMA TRENDI & DAGILIMI (SON 5 HAFTA)
+H1: 20-26 Tem | H2: 27 Tem-02 Agu | H3: 03-09 Agu | H4: 10-16 Agu | H5: 17-23 Agu
+===================================================================================================================
+#    | ARAMA SORGUSU                              | H1 (TEM) | H2 (TEM/AGU) | H3 (AGU) | H4 (AGU) | H5 (AGU) | TOPLAM TIK
+-------------------------------------------------------------------------------------------------------------------
+1    | felek mangalbaşı                           | 6        | 12           | 11       | 23       | 13       | 65
+2    | felek mangalbaşı menü                      | 1        | 4            | 5        | 2        | 2        | 14
+3    | felek bakırköy                             | 1        | 3            | 0        | 1        | 2        | 7
+4    | felek ocakbaşı                             | 0        | 0            | 0        | 1        | 3        | 4
+5    | felek mangalbaşı suadiye                   | 1        | 2            | 0        | 0        | 0        | 3
+6    | bakırköy ocakbaşı mekanları                | 0        | 1            | 0        | 2        | 0        | 3
+7    | bakırköy rakı mekanları                    | 0        | 0            | 1        | 1        | 1        | 3
+8    | felek suadiye                              | 0        | 1            | 2        | 0        | 0        | 3
+9    | bakırköy ocakbaşı                          | 1        | 0            | 1        | 0        | 0        | 2
+10   | bakırköy felek                             | 0        | 0            | 0        | 1        | 1        | 2
+11   | felek mangalbaşı bakırköy                  | 0        | 0            | 1        | 0        | 1        | 2
+12   | ocakbaşı bakırköy                          | 0        | 1            | 0        | 0        | 1        | 2
+13   | bakırköy ocakbaşı kendin pişir             | 1        | 0            | 1        | 0        | 0        | 2
+14   | felek mangalbaşı fiyat                     | 0        | 1            | 0        | 1        | 0        | 2
+15   | felek mangalbaşı suadiye menü              | 1        | 0            | 0        | 1        | 0        | 2
+16   | kendin pişir kendin ye                     | 0        | 0            | 1        | 1        | 0        | 2
+17   | bakırköy meyhane                           | 0        | 0            | 2        | 0        | 0        | 2
+18   | mangal başı                                | 0        | 0            | 0        | 0        | 1        | 1
+19   | felek mangalbaşı yorumları                 | 0        | 1            | 0        | 0        | 0        | 1
+20   | felek restaurant                           | 0        | 0            | 1        | 0        | 0        | 1
+21   | felek meyhanesi                            | 0        | 0            | 0        | 1        | 0        | 1
+22   | felek ocakbaşı bakırköy                    | 0        | 0            | 1        | 0        | 0        | 1
+23   | felek mangalbaşı yorumlar                  | 0        | 0            | 0        | 0        | 1        | 1
+24   | mangalbasi                                 | 0        | 0            | 0        | 0        | 1        | 1
+25   | kendin pişir kendin ye istanbul            | 0        | 0            | 0        | 0        | 1        | 1
+26   | bakırköy felek mangalbaşı                  | 0        | 0            | 0        | 0        | 1        | 1
+27   | kendin pişir kendin ye avrupa yakası       | 0        | 1            | 0        | 0        | 0        | 1
+28   | kendin pişir kendin ye alkolsüz            | 0        | 0            | 0        | 1        | 0        | 1
+29   | fasıl mekanları avrupa yakası              | 0        | 0            | 1        | 0        | 0        | 1
+30   | istanbul kendin pişir kendin ye alkolsüz   | 0        | 0            | 0        | 0        | 1        | 1
+31   | kendin pişir ye mangal                     | 0        | 0            | 0        | 1        | 0        | 1
+32   | restoran                                   | 0        | 0            | 1        | 0        | 0        | 1
+
+
+===================================================================================================================
+BOLUM 3: CIHAZ KIRILIMI (MOBIL vs DESKTOP) & HEDEF SAYFA (LANDING PAGE) BAGLANTILARI
+===================================================================================================================
+#    | ARAMA SORGUSU                          | MOB TIK  | DSK TIK  | MOB GOS  | DSK GOS  | YONLENEN SAYFA (LANDING PAGE)
+-------------------------------------------------------------------------------------------------------------------
+1    | felek mangalbaşı                       | 50       | 15       | 473      | 61       | / (+10 sayfa)
+2    | felek mangalbaşı menü                  | 14       | 0        | 26       | 1        | /menu (+3 sayfa)
+3    | felek bakırköy                         | 4        | 3        | 96       | 13       | / (+2 sayfa)
+4    | felek ocakbaşı                         | 4        | 0        | 61       | 6        | /menu (+2 sayfa)
+5    | felek mangalbaşı suadiye               | 3        | 0        | 120      | 15       | / (+2 sayfa)
+6    | bakırköy ocakbaşı mekanları            | 2        | 1        | 79       | 4        | / (+1 sayfa)
+7    | bakırköy rakı mekanları                | 3        | 0        | 60       | 3        | / (+2 sayfa)
+8    | felek suadiye                          | 1        | 2        | 26       | 8        | / (+1 sayfa)
+9    | bakırköy ocakbaşı                      | 2        | 0        | 175      | 30       | / (+1 sayfa)
+10   | bakırköy felek                         | 0        | 2        | 42       | 5        | / (+1 sayfa)
+11   | felek mangalbaşı bakırköy              | 1        | 1        | 38       | 4        | / (+2 sayfa)
+12   | ocakbaşı bakırköy                      | 1        | 1        | 28       | 8        | /
+13   | bakırköy ocakbaşı kendin pişir         | 1        | 1        | 29       | 3        | / (+1 sayfa)
+14   | felek mangalbaşı fiyat                 | 2        | 0        | 29       | 1        | /menu (+1 sayfa)
+15   | felek mangalbaşı suadiye menü          | 2        | 0        | 13       | 2        | /menu (+1 sayfa)
+16   | kendin pişir kendin ye                 | 2        | 0        | 9        | 0        | /menu (+1 sayfa)
+17   | bakırköy meyhane                       | 2        | 0        | 6        | 0        | /menu (+1 sayfa)
+18   | mangal başı                            | 1        | 0        | 70       | 4        | / (+1 sayfa)
+19   | felek mangalbaşı yorumları             | 1        | 0        | 46       | 6        | / (+4 sayfa)
+20   | felek restaurant                       | 1        | 0        | 30       | 4        | / (+1 sayfa)
+21   | felek meyhanesi                        | 0        | 1        | 31       | 2        | / (+2 sayfa)
+22   | felek ocakbaşı bakırköy                | 1        | 0        | 32       | 0        | / (+1 sayfa)
+23   | felek mangalbaşı yorumlar              | 0        | 1        | 24       | 3        | /menu (+3 sayfa)
+24   | mangalbasi                             | 1        | 0        | 18       | 0        | / (+1 sayfa)
+25   | kendin pişir kendin ye istanbul        | 1        | 0        | 10       | 2        | /menu (+1 sayfa)
+26   | bakırköy felek mangalbaşı              | 1        | 0        | 11       | 0        | / (+2 sayfa)
+27   | kendin pişir kendin ye avrupa yakası   | 0        | 1        | 3        | 1        | /menu (+1 sayfa)
+28   | kendin pişir kendin ye alkolsüz        | 1        | 0        | 1        | 1        | /menu (+1 sayfa)
+29   | fasıl mekanları avrupa yakası          | 1        | 0        | 1        | 0        | /menu
+30   | istanbul kendin pişir kendin ye alkolsüz | 1        | 0        | 1        | 0        | /menu
+31   | kendin pişir ye mangal                 | 1        | 0        | 1        | 0        | /menu
+32   | restoran                               | 0        | 0        | 0        | 0        | / (+1 sayfa)
+33   | bakırköy kendin pişir kendin ye        | 0        | 0        | 105      | 9        | / (+1 sayfa)
+34   | bakırköy mangalbaşı                    | 0        | 0        | 101      | 5        | / (+1 sayfa)
+35   | bakırköy mangal yerleri                | 0        | 0        | 40       | 0        | / (+1 sayfa)
+36   | mangalbaşı                             | 0        | 0        | 24       | 10       | / (+1 sayfa)
+37   | kendin pişir kendin ye bakırköy        | 0        | 0        | 28       | 0        | / (+1 sayfa)
+38   | felek mangalbaşı suadiye yorumları     | 0        | 0        | 18       | 7        | / (+1 sayfa)
+39   | felek ocakbaşı suadiye                 | 0        | 0        | 22       | 2        | / (+1 sayfa)
+40   | bakırköy sahil ocakbaşı                | 0        | 0        | 21       | 1        | / (+1 sayfa)
+41   | felek mangalbaşı resimleri             | 0        | 0        | 20       | 0        | / (+4 sayfa)
+42   | rakı mangal                            | 0        | 0        | 17       | 3        | / (+1 sayfa)
+43   | bakırköy mangalbaşı yerleri            | 0        | 0        | 13       | 5        | / (+1 sayfa)
+44   | bakırköy rakı                          | 0        | 0        | 13       | 3        | / (+1 sayfa)
+45   | bakırköy sahil alkollü mekanlar        | 0        | 0        | 16       | 1        | / (+1 sayfa)
+46   | felek meyhane                          | 0        | 0        | 17       | 0        | / (+1 sayfa)
+47   | felek mangalbaşı fotoğraflar           | 0        | 0        | 15       | 1        | / (+1 sayfa)
+48   | bakırköy sahil meyhane                 | 0        | 0        | 13       | 2        | /
+49   | florya mangalbaşı                      | 0        | 0        | 15       | 0        | / (+1 sayfa)
+50   | kadıköy mangalbaşı                     | 0        | 0        | 14       | 0        | /
+51   | mangalbaşı istanbul                    | 0        | 0        | 10       | 3        | / (+1 sayfa)
+52   | kadıköy kendin pişir kendin ye         | 0        | 0        | 12       | 0        | /
+53   | istanbul mangalbaşı                    | 0        | 0        | 11       | 0        | / (+1 sayfa)
+54   | bakırköy et mangal                     | 0        | 0        | 10       | 0        | /
+55   | mangal basi                            | 0        | 0        | 9        | 0        | /
+56   | mangalbaşı bakırköy                    | 0        | 0        | 9        | 0        | /
+57   | mangalbası                             | 0        | 0        | 5        | 1        | /
+58   | masada mangal                          | 0        | 0        | 4        | 2        | /
+59   | rakı mangal mekanları                  | 0        | 0        | 4        | 1        | /
+60   | felek mangalbaşı suadiye yorumlar      | 0        | 0        | 3        | 1        | /
+61   | firuze mangalbaşı                      | 0        | 0        | 0        | 4        | /
+62   | istanbul mangal başı                   | 0        | 0        | 4        | 0        | /
+63   | mangal rakı                            | 0        | 0        | 3        | 1        | / (+2 sayfa)
+64   | yeşilköy mangalbaşı                    | 0        | 0        | 4        | 0        | /
+65   | bakırköy gece açık mekanlar            | 0        | 0        | 3        | 0        | /
+66   | bakırköy ocakbaşı restaurant           | 0        | 0        | 2        | 1        | /
+67   | bakırköy sahildeki mekanlar            | 0        | 0        | 2        | 1        | /
+68   | mangal                                 | 0        | 0        | 3        | 0        | /menu
+69   | mangalbasi restaurant istanbul         | 0        | 0        | 3        | 0        | / (+1 sayfa)
+70   | alkolsüz mangalbaşı                    | 0        | 0        | 2        | 0        | /menu
+71   | avrupa yakası kendin pişir kendin ye   | 0        | 0        | 2        | 0        | /menu
+72   | bakirkoy meyhane                       | 0        | 0        | 2        | 0        | / (+1 sayfa)
+73   | bakırköy meyhaneleri                   | 0        | 0        | 1        | 1        | / (+1 sayfa)
+74   | bakırköy restoranlar                   | 0        | 0        | 2        | 0        | /menu
+75   | dilek restaurant bakırköy              | 0        | 0        | 0        | 2        | /
+
+
+===================================================================================================================
+BOLUM 4: SEO BUYUME FIRSATLARI (YUKSEK GOSTERIMLI, 3. - 15. SIRA ARASI FIRSAT KELIMELERI)
+Bu kelimeler arama hacmi yuksek olup sayfa ici optimizasyon ile aninda 1. siraya tasinabilir.
+===================================================================================================================
+#    | FIRSAT KELIMESI                          | GOSTERIM   | TIKLAMA  | CTR (%)    | MEVCUT SIRA  | HEDEF
+-------------------------------------------------------------------------------------------------------------------
+1    | bakırköy ocakbaşı                        | 205        | 2        | %1.0       | #7.7         | Top 1 Hedef
+2    | felek mangalbaşı suadiye                 | 137        | 3        | %2.2       | #6.8         | Top 1 Hedef
+3    | bakırköy kendin pişir kendin ye          | 114        | 0        | %0.0       | #4.9         | Top 1 Hedef
+4    | bakırköy mangalbaşı                      | 106        | 0        | %0.0       | #4.8         | Top 1 Hedef
+5    | bakırköy ocakbaşı mekanları              | 83         | 3        | %3.6       | #5.6         | Top 1 Hedef
+6    | mangal başı                              | 74         | 1        | %1.4       | #9.4         | Top 1 Hedef
+7    | bakırköy rakı mekanları                  | 63         | 3        | %4.8       | #7.4         | Top 1 Hedef
+8    | felek mangalbaşı yorumları               | 52         | 1        | %1.9       | #4.7         | Top 1 Hedef
+9    | bakırköy mangal yerleri                  | 40         | 0        | %0.0       | #6.1         | Top 1 Hedef
+10   | ocakbaşı bakırköy                        | 36         | 2        | %5.6       | #6.2         | Top 1 Hedef
+11   | felek suadiye                            | 35         | 3        | %8.6       | #5.7         | Top 1 Hedef
+12   | felek restaurant                         | 34         | 1        | %2.9       | #3.7         | Top 1 Hedef
+13   | mangalbaşı                               | 34         | 0        | %0.0       | #6.3         | Top 1 Hedef
+14   | felek meyhanesi                          | 33         | 1        | %3.0       | #5.3         | Top 1 Hedef
+15   | bakırköy ocakbaşı kendin pişir           | 32         | 2        | %6.2       | #4.4         | Top 1 Hedef
+16   | felek mangalbaşı fiyat                   | 30         | 2        | %6.7       | #2.5         | Top 1 Hedef
+17   | kendin pişir kendin ye bakırköy          | 28         | 0        | %0.0       | #4.4         | Top 1 Hedef
+18   | felek mangalbaşı yorumlar                | 27         | 1        | %3.7       | #5.2         | Top 1 Hedef
+19   | felek mangalbaşı suadiye yorumları       | 25         | 0        | %0.0       | #8.4         | Top 1 Hedef
+20   | felek ocakbaşı suadiye                   | 24         | 0        | %0.0       | #5.7         | Top 1 Hedef
+21   | bakırköy sahil ocakbaşı                  | 22         | 0        | %0.0       | #4.6         | Top 1 Hedef
+22   | felek mangalbaşı resimleri               | 20         | 0        | %0.0       | #3.2         | Top 1 Hedef
+23   | rakı mangal                              | 20         | 0        | %0.0       | #8.0         | Top 1 Hedef
+24   | mangalbasi                               | 18         | 1        | %5.6       | #7.0         | Top 1 Hedef
+25   | bakırköy mangalbaşı yerleri              | 18         | 0        | %0.0       | #3.9         | Top 1 Hedef
+26   | bakırköy rakı                            | 17         | 0        | %0.0       | #6.4         | Top 1 Hedef
+27   | bakırköy sahil alkollü mekanlar          | 17         | 0        | %0.0       | #7.4         | Top 1 Hedef
+28   | felek meyhane                            | 17         | 0        | %0.0       | #4.2         | Top 1 Hedef
+29   | bakırköy sahil meyhane                   | 15         | 0        | %0.0       | #7.0         | Top 1 Hedef
+30   | florya mangalbaşı                        | 15         | 0        | %0.0       | #6.5         | Top 1 Hedef
+31   | kadıköy mangalbaşı                       | 14         | 0        | %0.0       | #4.6         | Top 1 Hedef
+32   | mangalbaşı istanbul                      | 13         | 0        | %0.0       | #8.2         | Top 1 Hedef
+33   | kendin pişir kendin ye istanbul          | 12         | 1        | %8.3       | #2.9         | Top 1 Hedef
+34   | kadıköy kendin pişir kendin ye           | 12         | 0        | %0.0       | #9.3         | Top 1 Hedef
+35   | istanbul mangalbaşı                      | 11         | 0        | %0.0       | #7.4         | Top 1 Hedef
+36   | bakırköy et mangal                       | 10         | 0        | %0.0       | #7.1         | Top 1 Hedef
+37   | mangal basi                              | 9          | 0        | %0.0       | #11.3        | Top 1 Hedef
+38   | mangalbaşı bakırköy                      | 9          | 0        | %0.0       | #4.9         | Top 1 Hedef
+39   | bakırköy meyhane                         | 6          | 2        | %33.3      | #2.7         | Top 1 Hedef
+40   | mangalbası                               | 6          | 0        | %0.0       | #9.3         | Top 1 Hedef
+41   | masada mangal                            | 6          | 0        | %0.0       | #11.5        | Top 1 Hedef
+42   | rakı mangal mekanları                    | 5          | 0        | %0.0       | #9.2         | Top 1 Hedef
+
+
+===================================================================================================================
+BOLUM 5: GOOGLE ISLETME PROFILI (GBP) & HARITALAR YEREL SEO KELIME MATRISI
+Harita aramalarinda 'Yakınımda', 'Bakırköy', 'Sahil' filtrelerinde one cikarilacak kelimeler.
+===================================================================================================================
+
+--- 1. MARKA & RESTORAN ARAMALARI (Dogrudan Arama) (21 Adet) ---
+  [CANLI GSC VAR] • felek mangalbaşı                       -> Tiklama: 65  | Gosterim: 535  | Sira: #1.8
+  [CANLI GSC VAR] • felek mangalbaşı bakırköy              -> Tiklama: 2   | Gosterim: 42   | Sira: #2.1
+  [CANLI GSC VAR] • felek mangalbaşı menü                  -> Tiklama: 14  | Gosterim: 27   | Sira: #1.1
+  [CANLI GSC VAR] • felek mangalbaşı fiyat                 -> Tiklama: 2   | Gosterim: 30   | Sira: #2.5
+  [HEDEF KELIME]  • felek mangalbaşı fiyatları             -> Haritalar / GBP Optimizasyon Hedefi
+  [CANLI GSC VAR] • felek mangalbaşı yorumlar              -> Tiklama: 1   | Gosterim: 27   | Sira: #5.2
+  [CANLI GSC VAR] • felek mangalbaşı yorumları             -> Tiklama: 1   | Gosterim: 52   | Sira: #4.7
+  [HEDEF KELIME]  • felek mangalbaşı iletişim              -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • felek mangalbaşı telefon               -> Haritalar / GBP Optimizasyon Hedefi
+  [CANLI GSC VAR] • felek ocakbaşı                         -> Tiklama: 4   | Gosterim: 67   | Sira: #2.1
+  [CANLI GSC VAR] • felek ocakbaşı bakırköy                -> Tiklama: 1   | Gosterim: 32   | Sira: #1.6
+  [CANLI GSC VAR] • felek meyhane                          -> Tiklama: 0   | Gosterim: 17   | Sira: #4.2
+  [CANLI GSC VAR] • felek meyhanesi                        -> Tiklama: 1   | Gosterim: 33   | Sira: #5.3
+  [HEDEF KELIME]  • felek meyhanesi bakırköy               -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • felek kendin pişir kendin ye           -> Haritalar / GBP Optimizasyon Hedefi
+  [CANLI GSC VAR] • felek restaurant                       -> Tiklama: 1   | Gosterim: 34   | Sira: #3.7
+  [HEDEF KELIME]  • felek restoran bakırköy                -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • felek sahil bakırköy                   -> Haritalar / GBP Optimizasyon Hedefi
+  [CANLI GSC VAR] • felek mangalbaşı suadiye               -> Tiklama: 3   | Gosterim: 137  | Sira: #6.8
+  [CANLI GSC VAR] • felek suadiye                          -> Tiklama: 3   | Gosterim: 35   | Sira: #5.7
+  [HEDEF KELIME]  • felek suadiye menü                     -> Haritalar / GBP Optimizasyon Hedefi
+
+--- 2. BAKIRKOY & SAHIL YEREL ODAK KELIMELERI (Yerel Kesif) (31 Adet) ---
+  [CANLI GSC VAR] • felek mangalbaşı bakırköy              -> Tiklama: 2   | Gosterim: 42   | Sira: #2.1
+  [CANLI GSC VAR] • felek ocakbaşı bakırköy                -> Tiklama: 1   | Gosterim: 32   | Sira: #1.6
+  [HEDEF KELIME]  • felek meyhanesi bakırköy               -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • felek restoran bakırköy                -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • felek sahil bakırköy                   -> Haritalar / GBP Optimizasyon Hedefi
+  [CANLI GSC VAR] • bakırköy mangalbaşı                    -> Tiklama: 0   | Gosterim: 106  | Sira: #4.8
+  [CANLI GSC VAR] • bakırköy ocakbaşı                      -> Tiklama: 2   | Gosterim: 205  | Sira: #7.7
+  [CANLI GSC VAR] • bakırköy kendin pişir kendin ye        -> Tiklama: 0   | Gosterim: 114  | Sira: #4.9
+  [CANLI GSC VAR] • bakırköy meyhane                       -> Tiklama: 2   | Gosterim: 6    | Sira: #2.7
+  [CANLI GSC VAR] • bakırköy meyhaneleri                   -> Tiklama: 0   | Gosterim: 2    | Sira: #5.5
+  [CANLI GSC VAR] • bakırköy sahil ocakbaşı                -> Tiklama: 0   | Gosterim: 22   | Sira: #4.6
+  [HEDEF KELIME]  • bakırköy sahil mangalbaşı              -> Haritalar / GBP Optimizasyon Hedefi
+  [CANLI GSC VAR] • bakırköy sahil restoranları            -> Tiklama: 0   | Gosterim: 1    | Sira: #31.0
+  [CANLI GSC VAR] • bakırköy et mangal                     -> Tiklama: 0   | Gosterim: 10   | Sira: #7.1
+  [CANLI GSC VAR] • bakırköy mangal yerleri                -> Tiklama: 0   | Gosterim: 40   | Sira: #6.1
+  [CANLI GSC VAR] • bakırköy ocakbaşı mekanları            -> Tiklama: 3   | Gosterim: 83   | Sira: #5.6
+  [CANLI GSC VAR] • bakırköy ocakbaşı kendin pişir         -> Tiklama: 2   | Gosterim: 32   | Sira: #4.4
+  [CANLI GSC VAR] • bakırköy rakı mekanları                -> Tiklama: 3   | Gosterim: 63   | Sira: #7.4
+  [CANLI GSC VAR] • bakırköy fasıl mekanları               -> Tiklama: 0   | Gosterim: 1    | Sira: #2.0
+  [HEDEF KELIME]  • bakırköy canlı müzik meyhane           -> Haritalar / GBP Optimizasyon Hedefi
+  [CANLI GSC VAR] • bakırköy aile ocakbaşı                 -> Tiklama: 0   | Gosterim: 1    | Sira: #14.0
+  [CANLI GSC VAR] • bakırköy alkollü mekan                 -> Tiklama: 0   | Gosterim: 1    | Sira: #17.0
+  [HEDEF KELIME]  • bakırköy alkollü ocakbaşı              -> Haritalar / GBP Optimizasyon Hedefi
+  [CANLI GSC VAR] • bakırköy gece açık mekanlar            -> Tiklama: 0   | Gosterim: 3    | Sira: #11.7
+  [HEDEF KELIME]  • bakırköy gece açık restoran            -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • gece açık restoran bakırköy            -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • gece açık ocakbaşı bakırköy            -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • bakırköy sahilde ocakbaşı              -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • kennedy caddesi restoranlar            -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • sakızağacı restoranları                -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • bakırköy sahil balıkçılar yanı ocakbaşı -> Haritalar / GBP Optimizasyon Hedefi
+
+--- 3. CEVRE ILCELER & SAHIL GUZERGAHI KELIMELERI (Cevre Trafik) (23 Adet) ---
+  [HEDEF KELIME]  • ataköy mangalbaşı                      -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • ataköy ocakbaşı                        -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • ataköy kendin pişir kendin ye          -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • ataköy meyhane                         -> Haritalar / GBP Optimizasyon Hedefi
+  [CANLI GSC VAR] • yeşilköy mangalbaşı                    -> Tiklama: 0   | Gosterim: 4    | Sira: #13.0
+  [HEDEF KELIME]  • yeşilköy ocakbaşı                      -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • yeşilköy meyhane                       -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • yeşilyurt meyhane                      -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • yeşilyurt mangalbaşı                   -> Haritalar / GBP Optimizasyon Hedefi
+  [CANLI GSC VAR] • florya mangalbaşı                      -> Tiklama: 0   | Gosterim: 15   | Sira: #6.5
+  [HEDEF KELIME]  • florya ocakbaşı                        -> Haritalar / GBP Optimizasyon Hedefi
+  [CANLI GSC VAR] • florya kendin pişir kendin ye          -> Tiklama: 0   | Gosterim: 2    | Sira: #5.0
+  [HEDEF KELIME]  • zeytinburnu mangalbaşı                 -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • zeytinburnu ocakbaşı                   -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • bahçelievler mangalbaşı                -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • bahçelievler ocakbaşı                  -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • bahçelievler kendin pişir kendin ye    -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • yenikapı mangalbaşı                    -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • yenikapı meyhane                       -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • fatih ocakbaşı                         -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • fatih mangalbaşı                       -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • sultanahmet mangalbaşı                 -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • eminönü ocakbaşı                       -> Haritalar / GBP Optimizasyon Hedefi
+
+--- 4. KONSEPT & GENEL YEME-ICME ARAMALARI (Nis Aramalar) (22 Adet) ---
+  [HEDEF KELIME]  • kennedy caddesi restoranlar            -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • sakızağacı restoranları                -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • zahmetsiz mangalbaşı                   -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • dumansız mangalbaşı                    -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • dumansız fındık kabuğu mangal          -> Haritalar / GBP Optimizasyon Hedefi
+  [CANLI GSC VAR] • masada mangal                          -> Tiklama: 0   | Gosterim: 6    | Sira: #11.5
+  [HEDEF KELIME]  • masada mangal istanbul                 -> Haritalar / GBP Optimizasyon Hedefi
+  [CANLI GSC VAR] • kendin pişir kendin ye                 -> Tiklama: 2   | Gosterim: 9    | Sira: #1.1
+  [CANLI GSC VAR] • kendin pişir kendin ye istanbul        -> Tiklama: 1   | Gosterim: 12   | Sira: #2.9
+  [CANLI GSC VAR] • kendin pişir kendin ye avrupa yakası   -> Tiklama: 1   | Gosterim: 4    | Sira: #1.5
+  [CANLI GSC VAR] • kendin pişir kendin ye alkolsüz        -> Tiklama: 1   | Gosterim: 2    | Sira: #16.0
+  [CANLI GSC VAR] • istanbul kendin pişir kendin ye alkolsüz -> Tiklama: 1   | Gosterim: 1    | Sira: #1.0
+  [CANLI GSC VAR] • kendin pişir ye mangal                 -> Tiklama: 1   | Gosterim: 1    | Sira: #1.0
+  [CANLI GSC VAR] • mangal başı                            -> Tiklama: 1   | Gosterim: 74   | Sira: #9.4
+  [CANLI GSC VAR] • mangalbasi                             -> Tiklama: 1   | Gosterim: 18   | Sira: #7.0
+  [HEDEF KELIME]  • mangalbaşı mekanları istanbul          -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • ocakbaşı istanbul avrupa               -> Haritalar / GBP Optimizasyon Hedefi
+  [CANLI GSC VAR] • alkollü ocakbaşı avrupa yakası         -> Tiklama: 0   | Gosterim: 1    | Sira: #1.0
+  [CANLI GSC VAR] • alkolsüz mangalbaşı                    -> Tiklama: 0   | Gosterim: 2    | Sira: #1.5
+  [HEDEF KELIME]  • gece 02:00 açık restoran istanbul      -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • tarihi taş bina meyhane istanbul       -> Haritalar / GBP Optimizasyon Hedefi
+  [HEDEF KELIME]  • deniz manzaralı ocakbaşı istanbul      -> Haritalar / GBP Optimizasyon Hedefi
+
+
+===================================================================================================================
+BOLUM 6: TUM BENZERSIZ KEYWORDS LISTESI (KOPYALAMAYA HAZIR DUZ METIN - 198 ADET)
+===================================================================================================================
+alkollü ocakbaşı avrupa yakası
+alkolsüz mangalbaşı
+anadolu yakası kendin pişir kendin ye mekanları
+anadolu yakası mangalbaşı
+anadolu yakası ocakbaşı kendin pişir kendin ye
+anadolu yakası ocakbaşı mekanlar
+ataköy kendin pişir kendin ye
+ataköy mangalbaşı
+ataköy meyhane
+ataköy ocakbaşı
+avrupa yakası kendin pişir kendin ye
+açık hava olsun
+bahçelievler kendin pişir kendin ye
+bahçelievler mangalbaşı
+bahçelievler ocakbaşı
+bakirkoy meyhane
+bakırköy aile ocakbaşı
+bakırköy alkollü mekan
+bakırköy alkollü ocakbaşı
+bakırköy canlı müzik meyhane
+bakırköy et mangal
+bakırköy eğlence mekanları
+bakırköy fasıl mekanları
+bakırköy felek
+bakırköy felek mangalbaşı
+bakırköy gece açık mekanlar
+bakırköy gece açık restoran
+bakırköy kendin pişir kendin ye
+bakırköy mangal yerleri
+bakırköy mangalbaşı
+bakırköy mangalbaşı yerleri
+bakırköy meyhane
+bakırköy meyhaneleri
+bakırköy meze
+bakırköy ocakbaşı
+bakırköy ocakbaşı kendin pişir
+bakırköy ocakbaşı mekanları
+bakırköy ocakbaşı restaurant
+bakırköy rakı
+bakırköy rakı mekanları
+bakırköy restaurant
+bakırköy restoranlar
+bakırköy sahil alkollü mekanlar
+bakırköy sahil balıkçılar yanı ocakbaşı
+bakırköy sahil mangalbaşı
+bakırköy sahil meyhane
+bakırköy sahil ocakbaşı
+bakırköy sahil restaurant
+bakırköy sahil restoranları
+bakırköy sahilde ocakbaşı
+bakırköy sahildeki mekanlar
+deniz manzaralı ocakbaşı istanbul
+deniz meyhanesi bakırköy
+dilek restaurant bakırköy
+diyar ocakbaşı bakırköy
+dumansız fındık kabuğu mangal
+dumansız mangalbaşı
+eminönü ocakbaşı
+en yakın kendin pişir kendin ye
+fasıl mekanları avrupa yakası
+fatih mangalbaşı
+fatih ocakbaşı
+felej
+felek
+felek bakırköy
+felek kendin pişir kendin ye
+felek mangal başı
+felek mangalbaşı
+felek mangalbaşı bakırköy
+felek mangalbaşı fiyat
+felek mangalbaşı fiyatları
+felek mangalbaşı fotoğraflar
+felek mangalbaşı iletişim
+felek mangalbaşı menü
+felek mangalbaşı resimleri
+felek mangalbaşı suadiye
+felek mangalbaşı suadiye menü
+felek mangalbaşı suadiye yorumlar
+felek mangalbaşı suadiye yorumları
+felek mangalbaşı telefon
+felek mangalbaşı yorumlar
+felek mangalbaşı yorumları
+felek meyhane
+felek meyhanesi
+felek meyhanesi bakırköy
+felek ocakbaşı
+felek ocakbaşı bakırköy
+felek ocakbaşı suadiye
+felek restaurant
+felek restoran bakırköy
+felek sahil bakırköy
+felek suadiye
+felek suadiye menü
+felek ticaret
+feleke
+firuze mangalbaşı
+firuzköy kendin pişir kendin ye
+florya kendin pişir kendin ye
+florya mangal
+florya mangalbaşı
+florya ocakbaşı
+florya sahil
+florya yemek mekanları
+gece 02:00 açık restoran istanbul
+gece açık ocakbaşı bakırköy
+gece açık restoran bakırköy
+göktürk kebap
+gölbaşı et mangal
+istanbul avrupa yakası kendin pişir kendin ye mekanları
+istanbul avrupa yakasında
+istanbul kendin pişir kendin ye
+istanbul kendin pişir kendin ye alkolsüz
+istanbul kendin pişir kendin ye mekanları
+istanbul mangal başı
+istanbul mangal mekanları
+istanbul mangalbaşı
+istanbul mangalbaşı yerleri
+istanbul ocakbaşı kendin pişir
+istanbul rakı mekanları
+istanbul'da kendin pişir kendin ye mekanları
+istanbulda kendin pişir kendin ye
+kadıköy kendin pişir kendin ye
+kadıköy mangalbaşı
+kalamış ocakbaşı
+kendin pişir kendin ye
+kendin pişir kendin ye alkolsüz
+kendin pişir kendin ye anadolu yakası
+kendin pişir kendin ye avcılar
+kendin pişir kendin ye avrupa yakası
+kendin pişir kendin ye bakırköy
+kendin pişir kendin ye istanbul
+kendin pişir kendin ye istanbul anadolu yakası
+kendin pişir kendin ye istanbul avrupa yakası
+kendin pişir kendin ye kadıköy
+kendin pişir kendin ye mekanları
+kendin pişir kendin ye ocakbaşı istanbul
+kendin pişir ye mangal
+kendin ye kendin pişir
+kendin ye kendin pişir istanbul
+kennedy caddesi restoranlar
+kennedy caddesi sahil yolu
+keyf mangalbaşı menü
+küçükçekmece kendin pişir kendin ye
+leylek kadıköy
+mangal
+mangal basi
+mangal başı
+mangal mekanı
+mangal rakı
+mangal restaurant near me
+mangal sefası
+mangal yerleri
+mangalbasi
+mangalbasi istanbul
+mangalbasi restaurant istanbul
+mangalbası
+mangalbaşi
+mangalbaşı
+mangalbaşı bakırköy
+mangalbaşı fiyat listesi
+mangalbaşı istanbul
+mangalbaşı kendin pişir kendin ye
+mangalbaşı mekanları istanbul
+mangalbaşı yerler
+masada mangal
+masada mangal istanbul
+ocakbaşı
+ocakbaşı bakırköy
+ocakbaşı istanbul avrupa
+ocakbaşı kendin pişir kendin ye
+ocakbaşı kendin pişir kendin ye istanbul
+ocakbaşı mangal
+rakı mangal
+rakı mangal mekanları
+restoran
+sahil kennedy caddesi
+sakızağacı restoranları
+shisha lounge istanbul
+suadiye mekanlar
+sultanahmet mangalbaşı
+tarihi taş bina meyhane istanbul
+yenikapı mangalbaşı
+yenikapı meyhane
+yeşilköy mangal yerleri
+yeşilköy mangalbaşı
+yeşilköy mekanlar
+yeşilköy meyhane
+yeşilköy ocakbaşı
+yeşilköy ocakbaşı mekanları
+yeşilyurt mangalbaşı
+yeşilyurt meyhane
+zahmetsiz mangalbaşı
+zeytinburnu mangalbaşı
+zeytinburnu ocakbaşı
+çaşnigir bakırköy
+şahane mangalbaşı bakırköy yorumları
+فيلك
+مطاعم بالقرب من موقعي الحالي

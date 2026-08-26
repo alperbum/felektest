@@ -3,8 +3,12 @@ Allow: /
 Disallow: /admin/
 Disallow: /functions/
 
-# LLM Crawler and Agent Access
+# LLM Crawler and Search Engine Agent Access
 User-agent: GPTBot
+Allow: /llms.txt
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /llms.txt
 Allow: /
 
@@ -24,8 +28,19 @@ User-agent: PerplexityBot
 Allow: /llms.txt
 Allow: /
 
+User-agent: Perplexity-User
+Allow: /llms.txt
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /llms.txt
+Allow: /
+
 User-agent: Bytespider
 Allow: /llms.txt
+Allow: /
+
+User-agent: bingbot
 Allow: /
 
 Sitemap: https://www.felekmangalbasi.com/sitemap.xml
