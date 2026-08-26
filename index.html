@@ -111,15 +111,16 @@
     }
     </script>
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts (Non-blocking & Instant Swap) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://efltjgimkjjtagfebmha.supabase.co">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500&display=swap"></noscript>
 
     <!-- Preload critical CSS -->
-    <link rel="preload" href="css/style.css?v=4.1" as="style">
-    <link rel="stylesheet" href="css/style.css?v=4.1">
+    <link rel="preload" href="css/style.css?v=4.2" as="style">
+    <link rel="stylesheet" href="css/style.css?v=4.2">
 </head>
 
 <body>
@@ -153,8 +154,9 @@
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
+    <main id="main-content">
+        <!-- HERO -->
+        <section class="hero" id="home">
         <div class="hero-bg"></div>
         <div class="hero-texture"></div>
 
@@ -347,6 +349,7 @@
         </p>
         <a href="https://wa.me/905397776067" target="_blank" rel="noopener noreferrer" class="btn reveal reveal-delay-2" data-i18n="btn_whatsapp">WhatsApp ile Ayırtın</a>
     </section>
+    </main>
 
     <!-- FOOTER -->
     <footer>
@@ -382,9 +385,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/translations.js?v=4.1"></script>
-    <script src="js/config.js"></script>
-    <script src="js/script.js?v=4.1"></script>
+    <script src="js/translations.js?v=4.2" defer></script>
+    <script src="js/config.js" defer></script>
+    <script src="js/script.js?v=4.2" defer></script>
 
     <!-- Cloudflare Web Analytics -->
     <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a651b2f264914f7bb022a4a79dff8e55"}'></script>
