@@ -565,6 +565,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // If already rendered in static HTML (SSR / instant paint), reveal cards immediately without wipe
+            if (menuGrid.children.length >= 10 && !categoriesDomCache && (typeof currentLang === 'undefined' || currentLang === 'tr')) {
+                revealCardsWhenReady(menuGrid, '.qr-category-card img');
+                return;
+            }
+
             menuGrid.innerHTML = '';
             const fragment = document.createDocumentFragment();
             
