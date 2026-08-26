@@ -549,8 +549,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (stickyBar) stickyBar.remove();
             document.body.classList.remove('has-sticky-back');
 
-            // UX optimization: Reset scroll to top
-            if (window.scrollY > 0) window.scrollTo({ top: 0, behavior: 'instant' });
+            // UX optimization: Reset scroll to top asynchronously to avoid forced reflow
+            if (window.scrollY > 0) {
+                requestAnimationFrame(() => {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                });
+            }
 
             // Restore from cache for instant back-navigation (fixes iOS swipe-back flicker)
             if (categoriesDomCache) {
@@ -597,8 +601,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.addEventListener('mouseenter', prefetchHandler, { once: true });
                 card.addEventListener('touchstart', prefetchHandler, { once: true, passive: true });
 
-                menuGrid.appendChild(card);
+                fragment.appendChild(card);
             });
+
+            menuGrid.appendChild(fragment);
 
             // Görseller hazır olunca kartları göster
             revealCardsWhenReady(menuGrid, '.qr-category-card img');
@@ -654,8 +660,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (lazyImageObserver) lazyImageObserver.disconnect();
             menuGrid.innerHTML = '';
 
-            // UX optimization: Reset scroll to top
-            if (window.scrollY > 0) window.scrollTo({ top: 0, behavior: 'instant' });
+            // UX optimization: Reset scroll to top asynchronously to avoid forced reflow
+            if (window.scrollY > 0) {
+                requestAnimationFrame(() => {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                });
+            }
 
             // History state push: Safari swipe-back bu state'i poplatır
             if (!history.state || history.state.view !== 'items' || history.state.categoryId !== activeCategory) {
@@ -879,8 +889,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `;
                 }
-                menuGrid.appendChild(card);
+                fragment.appendChild(card);
             });
+
+            menuGrid.appendChild(fragment);
 
             // Görseller hazır olunca kartları göster
             revealCardsWhenReady(menuGrid, '.qr-card-img');
@@ -968,35 +980,30 @@ document.addEventListener('DOMContentLoaded', () => {
             triggerIdlePrefetch(); // Start prefetching cached images immediately
 
             
-            async function ensureSupabaseLoaded() {
-                if (typeof supabase !== 'undefined') return true;
-                return new Promise((resolve) => {
-                    const s = document.createElement('script');
-                    s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
-                    s.async = true;
-                    s.onload = () => resolve(true);
-                    s.onerror = () => resolve(false);
-                    document.body.appendChild(s);
-                });
-            }
+            async function fetchSupabaseViaRest() {
+                if (!window.SUPABASE_URL || window.SUPABASE_URL === 'BURAYA_SUPABASE_URL_GELECEK') return;
+                
+                const headers = {
+                    'apikey': window.SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${window.SUPABASE_ANON_KEY}`
+                };
+                const baseUrl = `${window.SUPABASE_URL}/rest/v1`;
 
-            if (window.SUPABASE_URL && window.SUPABASE_URL !== 'BURAYA_SUPABASE_URL_GELECEK') {
-                const loaded = await ensureSupabaseLoaded();
-                if (loaded && typeof supabase !== 'undefined') {
                 try {
-                    const client = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
-                    const [catResult, itemResult] = await Promise.all([
-                        client.from('categories').select('*').order('sort_order', { ascending: true }),
-                        client.from('menu_items').select('*').eq('is_active', true).order('sort_order', { ascending: true })
+                    const [catRes, itemRes] = await Promise.all([
+                        fetch(`${baseUrl}/categories?select=*&order=sort_order.asc`, { headers }),
+                        fetch(`${baseUrl}/menu_items?select=*&is_active=eq.true&order=sort_order.asc`, { headers })
                     ]);
-                    
-                    const { data: catData, error: catError } = catResult;
-                    const { data: itemData, error: itemError } = itemResult;
-                    
-                    if (catError || itemError) {
-                        console.error('Supabase veri hatası:', catError || itemError);
+
+                    if (!catRes.ok || !itemRes.ok) {
+                        console.error('Supabase REST Hatası');
+                        return;
                     }
-                    if (!catError && catData && !itemError && itemData) {
+
+                    const catData = await catRes.json();
+                    const itemData = await itemRes.json();
+
+                    if (catData && itemData) {
                         const newCategories = catData.map(c => ({
                             id: c.id,
                             image: normalizeImageUrl(c.image)
@@ -1051,8 +1058,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
                 } catch(e) {
-                    console.error("Supabase bağlantı hatası:", e);
+                    console.error("Supabase REST bağlantı hatası:", e);
                 }
+            }
+
+            if (window.SUPABASE_URL && window.SUPABASE_URL !== 'BURAYA_SUPABASE_URL_GELECEK') {
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(fetchSupabaseViaRest);
+                } else {
+                    setTimeout(fetchSupabaseViaRest, 1000);
                 }
             }
         }

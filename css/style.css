@@ -1,3 +1,22 @@
+/* --- Font Metric Matching to Prevent CLS (Layout Shift) --- */
+@font-face {
+  font-family: 'DM Sans Fallback';
+  src: local('Arial');
+  ascent-override: 105%;
+  descent-override: 28%;
+  line-gap-override: 0%;
+  size-adjust: 102%;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond Fallback';
+  src: local('Times New Roman');
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+  size-adjust: 112%;
+}
+
 /* --- CSS Variables (From felek.html) --- */
 :root {
   --bg: #0e0c0a;
@@ -6,8 +25,8 @@
   --muted: #a69c90;
   --accent: #d4a355;
   --border: rgba(200,146,58,0.18);
-  --serif: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
-  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --serif: 'Cormorant Garamond', 'Cormorant Garamond Fallback', 'Times New Roman', Georgia, serif;
+  --sans: 'DM Sans', 'DM Sans Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --transition-speed: 0.3s ease;
 }
 
@@ -232,6 +251,8 @@ nav.scrolled {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  min-width: 140px;
+  justify-content: flex-end;
 }
 
 .lang-select {
