@@ -389,8 +389,23 @@
     <script src="js/config.js" defer></script>
     <script src="js/script.js?v=4.3" defer></script>
 
-    <!-- Cloudflare Web Analytics -->
-    <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a651b2f264914f7bb022a4a79dff8e55"}'></script>
+    <!-- Cloudflare Web Analytics (Deferred to idle) -->
+    <script>
+        window.addEventListener('load', function() {
+            var loadBeacon = function() {
+                var s = document.createElement('script');
+                s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+                s.setAttribute('data-cf-beacon', '{"token": "a651b2f264914f7bb022a4a79dff8e55"}');
+                s.defer = true;
+                document.body.appendChild(s);
+            };
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(loadBeacon, { timeout: 3000 });
+            } else {
+                setTimeout(loadBeacon, 2500);
+            }
+        });
+    </script>
     <!-- End Cloudflare Web Analytics -->
 
 </body>
