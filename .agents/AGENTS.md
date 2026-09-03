@@ -22,15 +22,21 @@ Whenever working in this repository (c:\Users\PC\Desktop\felek-main), adhere to 
    - Action: Fetches 30-day GSC queries, comparison growth (% change), mobile/desktop split, SEO opportunity matrix, and GBP profile data. Writes to `search_analytics_report.md`.
    - Telegram Digest: `python report_tool.py --telegram`
 
-3. **Google Indexing API Notification:**
+3. **Google Analytics 4 (GA4) Analytics & Realtime:**
+   - Command: `python ga4_tool.py`
+   - Action: Fetches 30-day GA4 sessions, active/new users, top pages, traffic channels, device/city stats, and conversion events. Writes to `ga4_analytics_report.md`.
+   - Realtime Active Users: `python ga4_tool.py --realtime`
+   - Telegram Digest: `python ga4_tool.py --telegram`
+
+4. **Google Indexing API Notification:**
    - Command: `python report_tool.py --indexing` (veya `python gsc_tool.py --indexing`)
    - Action: Notifies Google Indexing API of updated landing pages using service account (`service_account.json`).
 
-4. **Bing Webmaster Indexing:**
+5. **Bing Webmaster Indexing:**
    - Command: `python bing_index_tool.py`
    - Action: Submits landing page URLs to Bing Webmaster API.
 
-5. **Git Version Control:**
+6. **Git Version Control:**
    - Command: `git add .`, `git commit -m '...'`, `git push origin main`
    - Repository: `alperbum/felek`
 
@@ -83,8 +89,10 @@ Whenever working in this repository (c:\Users\PC\Desktop\felek-main), adhere to 
   - URL: `https://efltjgimkjjtagfebmha.supabase.co`
   - Anon Key: `sb_publishable_qbZn4_rrYtoyhXEyJdIb3Q_ctEOMAgE`
   - Secret Key: `sb_secret_GT4znfQp1qj02deGA3LS3w_biR2BQ3h`
-- **Google Search Console & Service Account:**
+- **Google Search Console & GA4 & Service Account:**
   - Service Account: `felekbakirkoy@felekbakirkoy.iam.gserviceaccount.com` (`service_account.json`)
+  - GA4 Property ID: `534404937`
+  - GA4 Measurement ID: `G-E3588HSCF5`
   - GBP Place ID: `ChIJLS7LIaO8yhQRGOEl-LNOajE` | CID: `3560744990259142936`
   - GBP API Case ID: `5-5681000040911`
 - **Telegram Customer Feedback Bot:**
