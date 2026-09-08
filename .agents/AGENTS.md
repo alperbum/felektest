@@ -61,6 +61,8 @@ Whenever working in this repository (c:\Users\PC\Desktop\felek-main), adhere to 
 ## 3. Business Identity, Location and Differentiators
 
 - **Brand Name:** Felek Mangalbasi (Felek Meyhane / Felek Kendin Pisir Kendin Ye)
+- **Legal Entity:** Atak İnşaat Turizm Otomotiv Tic. Ltd. Şti. (Bulurum / Ticaret Sicili Kayıtlı)
+- **Historical Heritage:** Formerly "Felek Fasıl" (2004–2018), historic 200-year stone building (Pırlanta Hanım Konağı).
 - **Address (NAP):** Sakizagaci Mah., Kennedy Cad. No:29, 34142 Bakirkoy / Istanbul (Coastal Highway)
 - **Coordinates:** 40.9791 N, 28.8726 E
 - **Phone:** +90 (212) 543 92 48 | **WhatsApp:** +90 539 777 60 67
@@ -105,15 +107,17 @@ Whenever working in this repository (c:\Users\PC\Desktop\felek-main), adhere to 
 
 1. **index.html:** Homepage with LocalBusiness + 7x FAQPage schema, late-night 02:00 focus, and keyword-rich about section.
 2. **menu.html:** Dynamic QR menu integrated with Supabase + static SEO fallback in `<noscript>` + customer feedback form.
-3. **suadiye.html:** Dedicated landing bridge for Suadiye traffic explaining closure & directing to Bakirkoy flagship.
-4. **zahmetsiz-mangal.html:** Smokeless hazelnut charcoal concept, bakirkoy ocakbasi & kendin pisir consolidated landing page.
-5. **raki-mangal-meyhane.html:** Modern meyhane, fresh mezes, rakı selection, and late-night dining landing page.
-6. **kennedy-sahil-konum.html:** Location guide, 200-year stone architecture, 10-15 min drive from Sultanahmet/Fatih/Yenikapi.
-7. **gurme-yorumlar.html:** Influencer and customer reviews + AggregateRating schema (4.3 / 500+ reviews).
-8. **llms.txt:** Exhaustive QA knowledge base for AI search crawlers (ChatGPT, Perplexity, ClaudeBot).
-9. **robots.txt & sitemap.xml:** Search engine and AI crawler index maps.
-10. **web.config:** IIS URL rewriting, 301 canonical redirects, WebP MIME types, and static cache controls.
-11. **_headers:** Cloudflare security and edge caching headers.
+3. **tarihce.html:** 200-year stone mansion heritage, Felek Fasıl to Felek Mangalbaşı evolution, and verified entity continuity proofs (Bulurum, Infobel, mekan.com).
+4. **basinda-felek.html:** 20+ year national press wall (İstanbul Times 2025, Hürriyet 2008, Milliyet 2004, Posta Müslüm Gürses, Magazinkolik) and stage heritage.
+5. **suadiye.html:** Dedicated landing bridge for Suadiye traffic explaining closure & directing to Bakirkoy flagship.
+6. **zahmetsiz-mangal.html:** Smokeless hazelnut charcoal concept, bakirkoy ocakbasi & kendin pisir consolidated landing page.
+7. **raki-mangal-meyhane.html:** Modern meyhane, fresh mezes, rakı selection, and late-night dining landing page.
+8. **kennedy-sahil-konum.html:** Location guide, 200-year stone architecture, 10-15 min drive from Sultanahmet/Fatih/Yenikapi.
+9. **gurme-yorumlar.html:** Influencer and customer reviews + AggregateRating schema (4.3 / 500+ reviews).
+10. **llms.txt:** Exhaustive QA knowledge base for AI search crawlers (ChatGPT, Perplexity, ClaudeBot).
+11. **robots.txt & sitemap.xml:** Search engine and AI crawler index maps.
+12. **web.config:** IIS URL rewriting, 301 canonical redirects, WebP MIME types, and static cache controls.
+13. **_headers:** Cloudflare security and edge caching headers.
 
 ---
 

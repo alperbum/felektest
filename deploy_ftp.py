@@ -79,6 +79,8 @@ def deploy():
         'sitemap.xml',
         'llms.txt',
         'gurme-yorumlar.html',
+        'tarihce.html',
+        'basinda-felek.html',
         'kennedy-sahil-konum.html',
         'raki-mangal-meyhane.html',
         'zahmetsiz-mangal.html',

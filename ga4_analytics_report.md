@@ -1,54 +1,57 @@
 # Felek Mangalbaşı — GA4 Analitik & Kullanıcı Davranış Raporu
 
 > **Mülk ID:** `534404937` | **Ölçüm ID:** `G-E3588HSCF5`  
-> **Tarih Aralığı:** 2026-08-04 — 2026-09-02 (30 Gün) | **Oluşturulma:** 03.09.2026 03:31
+> **Tarih Aralığı:** 2026-08-09 — 2026-09-07 (30 Gün) | **Oluşturulma:** 08.09.2026 04:40
 
 ## 1. Temel Performans Özeti (Önceki Dönem Kıyaslamalı)
 
 | Metrik | Güncel Dönem | Önceki Dönem | Değişim |
 | :--- | :--- | :--- | :--- |
-| **Aktif Kullanıcı** | 62 | 0 | **+100%** |
-| **Yeni Kullanıcı** | 77 | 0 | **+100%** |
-| **Toplam Oturum** | 65 | 1 | **+6400.0%** |
-| **Sayfa Görüntüleme** | 130 | 1 | **+12900.0%** |
-| **Ortalama Oturum Süresi** | 1dk 24sn | 0sn | - |
-| **Etkileşim Oranı** | %24.6 | %0.0 | - |
+| **Aktif Kullanıcı** | 330 | 0 | **+100%** |
+| **Yeni Kullanıcı** | 324 | 0 | **+100%** |
+| **Toplam Oturum** | 345 | 0 | **+100%** |
+| **Sayfa Görüntüleme** | 575 | 0 | **+100%** |
+| **Ortalama Oturum Süresi** | 1dk 22sn | 0sn | - |
+| **Etkileşim Oranı** | %61.4 | %0.0 | - |
 
 ## 2. Ziyaretçi Kaynakları & Kanallar
 
 | Kanal / Kaynak | Oturum | Kullanıcı | Etkileşim Oranı |
 | :--- | :--- | :--- | :--- |
-| Unassigned ((not set)) | 19 | 19 | %0.0 |
-| Organic Social (ig / social) | 17 | 16 | %17.6 |
-| Direct ((direct) / (none)) | 16 | 14 | %25.0 |
-| Organic Search (google / organic) | 13 | 13 | %61.5 |
-| Cross-network ((data not available | 11 | 11 | %9.1 |
+| Organic Social (ig / social) | 205 | 201 | %66.8 |
+| Organic Search (google / organic) | 73 | 66 | %67.1 |
+| Direct ((direct) / (none)) | 43 | 40 | %34.9 |
+| Unassigned ((not set)) | 16 | 16 | %0.0 |
+| AI Assistant (chatgpt.com / ai-ass | 10 | 10 | %80.0 |
+| Cross-network ((data not available | 3 | 3 | %0.0 |
+| Organic Social (l.instagram.com /  | 2 | 2 | %100.0 |
 | Referral (restaurantguru / referra | 2 | 2 | %0.0 |
+| Organic Social (facebook.com / ref | 1 | 1 | %100.0 |
 
 ## 3. En Popüler Sayfalar
 
 | Sayfa | Görüntülenme | Tekil Kullanıcı | Ort. Süre |
 | :--- | :--- | :--- | :--- |
-| `/menu` | 87 | 45 | 1dk 11sn |
-| `/` | 30 | 23 | 1dk 17sn |
-| `/zahmetsiz-mangal` | 5 | 3 | 16sn |
-| `/index` | 3 | 3 | 32sn |
-| `/raki-mangal-meyhane` | 2 | 2 | 36sn |
-| `/suadiye` | 2 | 2 | 2sn |
+| `/menu` | 441 | 272 | 1dk 15sn |
+| `/` | 90 | 77 | 1dk 0sn |
+| `/index` | 26 | 21 | 32sn |
+| `/raki-mangal-meyhane` | 8 | 5 | 3dk 52sn |
+| `/zahmetsiz-mangal` | 5 | 3 | 47sn |
+| `/suadiye` | 4 | 4 | 18sn |
 | `/kennedy-sahil-konum` | 1 | 1 | 0sn |
 
 ## 4. Kullanıcı Etkileşimleri & Dönüşümler
 
 | Etkinlik | Tetiklenme | Kullanıcı |
 | :--- | :--- | :--- |
-| `page_view` | 130 | 57 |
-| `session_start` | 80 | 54 |
-| `first_visit` | 77 | 54 |
-| `user_engagement` | 63 | 34 |
-| `scroll` | 29 | 24 |
-| `click_whatsapp_reservation` | 3 | 2 |
-| `change_language` | 2 | 1 |
-| `click` | 1 | 1 |
+| `page_view` | 575 | 327 |
+| `session_start` | 340 | 324 |
+| `user_engagement` | 337 | 178 |
+| `first_visit` | 324 | 324 |
+| `scroll` | 158 | 138 |
+| `change_language` | 6 | 5 |
+| `click_whatsapp_reservation` | 4 | 3 |
+| `click` | 2 | 2 |
 | `click_google_maps_direction` | 1 | 1 |
 | `click_phone_call` | 1 | 1 |
 
@@ -56,12 +59,12 @@
 
 | Şehir | Cihaz Türü | Kullanıcı | Oturum |
 | :--- | :--- | :--- | :--- |
-| Istanbul | mobile | 34 | 36 |
-| Istanbul | desktop | 5 | 6 |
-| Bilinmiyor | desktop | 5 | 5 |
-| (not set) | mobile | 4 | 4 |
-| Ankara | mobile | 3 | 3 |
-| Bursa | desktop | 2 | 2 |
-| Bilinmiyor | mobile | 1 | 1 |
-| Adana | mobile | 1 | 1 |
+| Istanbul | mobile | 251 | 259 |
+| Istanbul | desktop | 12 | 14 |
+| (not set) | mobile | 11 | 13 |
+| Ankara | mobile | 9 | 9 |
+| Izmir | mobile | 6 | 6 |
+| (not set) | desktop | 5 | 5 |
+| Bursa | mobile | 4 | 4 |
+| Bilinmiyor | mobile | 2 | 3 |
 
