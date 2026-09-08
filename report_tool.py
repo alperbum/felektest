@@ -294,6 +294,8 @@ def send_indexing_requests():
         "https://www.felekmangalbasi.com/raki-mangal-meyhane.html",
         "https://www.felekmangalbasi.com/kennedy-sahil-konum.html",
         "https://www.felekmangalbasi.com/gurme-yorumlar.html",
+        "https://www.felekmangalbasi.com/tarihce.html",
+        "https://www.felekmangalbasi.com/basinda-felek.html",
         "https://www.felekmangalbasi.com/menu.html"
     ]
     
