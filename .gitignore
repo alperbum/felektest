@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Dev/migration files (not needed in production)
+_dev/
+
+# Large video files
+*.mp4
+
+# Build output
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Log files
+*.log
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+.env.local
+.env.production
+.dev.vars
+
+# Cloudflare Wrangler
+.wrangler/

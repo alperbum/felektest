@@ -1,0 +1,46 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /functions/
+
+# LLM Crawler and Search Engine Agent Access
+User-agent: GPTBot
+Allow: /llms.txt
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /llms.txt
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /llms.txt
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /llms.txt
+Allow: /
+
+User-agent: Google-Extended
+Allow: /llms.txt
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /llms.txt
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /llms.txt
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /llms.txt
+Allow: /
+
+User-agent: Bytespider
+Allow: /llms.txt
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+Sitemap: https://www.felekmangalbasi.com/sitemap.xml
