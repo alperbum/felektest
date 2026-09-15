@@ -119,9 +119,9 @@
     <!-- Google Fonts (Non-blocking & Instant Swap) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500&display=swap"></noscript>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300..700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300..700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300..700&display=swap"></noscript>
 
     <!-- Local LCP Image Preloads (Above the fold only) -->
     <link rel="preload" as="image" href="https://www.felekmangalbasi.com/images/mezeler/mezeler.webp?v=2" type="image/webp" fetchpriority="high">
@@ -150,6 +150,8 @@
 </head>
 <body>
 
+    <a class="skip-link" href="#main-content">İçeriğe geç</a>
+
     <!-- LOADING OVERLAY -->
     <div class="page-loading-overlay" id="page-loading-overlay">
         <div class="page-loader-spinner"></div>
@@ -157,7 +159,7 @@
     </div>
 
     <!-- NAV -->
-    <nav id="header" style="background-color: rgba(14, 12, 10, 0.95); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);">
+    <nav id="header" class="nav--solid">
         <div class="nav-left">
             <a href="index.html" class="nav-logo">Felek</a>
             <ul class="nav-links" id="nav">
@@ -185,17 +187,14 @@
         </div>
     </nav>
 
-    <main class="menu-page">
+    <main class="menu-page" id="main-content">
         <div class="menu-container">
             <div class="qr-menu-header">
-                <h1 class="cta-title" data-i18n="menu_title" style="margin-bottom: 0.5rem;">Menü</h1>
-                <p class="cta-eyebrow" data-i18n="menu_subtitle" style="margin-bottom: 2rem;">Ateşin lezzetle buluştuğu nokta</p>
-                <a href="#feedback" onclick="document.getElementById('feedback').scrollIntoView({behavior:'smooth'}); return false;" style="display:inline-block; font-size:12px; color:var(--muted); letter-spacing:0.15em; text-transform:uppercase; text-decoration:none; border-bottom: 1px solid var(--muted); padding-bottom: 2px;" data-i18n="feedback_hint">İstek &amp; önerileriniz için ↓</a>
+                <h1 class="cta-title menu-hero-title" data-i18n="menu_title">Menü</h1>
+                <p class="cta-eyebrow menu-hero-sub" data-i18n="menu_subtitle">Ateşin lezzetle buluştuğu nokta</p>
+                <a href="#feedback" onclick="document.getElementById('feedback').scrollIntoView({behavior:'smooth'}); return false;" class="menu-jump" data-i18n="feedback_hint">İstek &amp; önerileriniz için ↓</a>
             </div>
             
-            <div class="qr-category-nav" id="category-nav">
-                <!-- Kategoriler JS ile yüklenecek (Eğer eski nav sistemi kalırsa) -->
-            </div>
 
             <div class="qr-menu-grid" id="qr-menu-grid">
                 <div class="qr-category-card visible" data-category-id="mezeler">
@@ -242,7 +241,7 @@
 
             <!-- SEO: Statik Menü Fallback (JS olmadan Google indekslemesi için) -->
             <noscript>
-            <div class="ai-seo-content" style="padding: 2rem 0;">
+            <div class="ai-seo-content">
                 <h2>Felek Mangalbaşı Menü</h2>
 
                 <h3>Mezeler</h3>
@@ -273,7 +272,7 @@
             <!-- Görüş ve Öneriler Section -->
             <div id="feedback" class="feedback-section reveal reveal-delay-2">
                 <h2 class="events-title text-center" data-i18n="feedback_section_title">İstek ve Önerileriniz</h2>
-                <p class="events-body text-center" style="margin: 0 auto 3rem auto; max-width: 500px;" data-i18n="feedback_section_desc">Felek Mangalbaşı deneyiminizi ve görüşlerinizi paylaşın. Mesajınız doğrudan işletme sahibine iletilir.</p>
+                <p class="events-body events-body--center text-center" data-i18n="feedback_section_desc">Felek Mangalbaşı deneyiminizi ve görüşlerinizi paylaşın. Mesajınız doğrudan işletme sahibine iletilir.</p>
                 <form id="feedback-form" class="feedback-form">
                     <input
                         id="feedback-name"
@@ -310,7 +309,7 @@
     <footer>
         <div>
             <div class="footer-logo">Felek Mangalbaşı</div>
-            <p class="footer-text" style="margin-top: 1rem;" data-i18n="footer_brand">Modern Mangalbaşı Deneyimi. Bakırköy'de deniz havasıyla birinci sınıf et keyfi.</p>
+            <p class="footer-text footer-brand" data-i18n="footer_brand">Modern Mangalbaşı Deneyimi. Bakırköy'de deniz havasıyla birinci sınıf et keyfi.</p>
         </div>
         <div>
             <p class="footer-label" data-i18n="footer_contact_title">İletişim & Saatler</p>
@@ -318,21 +317,27 @@
                 Sakızağacı, Kennedy Cad. No:29<br>
                 34142 Bakırköy / İstanbul
             </p>
-            <p class="footer-text" style="margin-top:0.5rem;" data-i18n="res_hours">Her gün 12:00 – 02:00</p>
+            <p class="footer-text footer-meta" data-i18n="res_hours">Her gün 12:00 – 02:00</p>
             <a href="tel:+902125439248" class="footer-link">+90 (212) 543 92 48</a>
         </div>
         <div>
-            <p class="footer-label" data-i18n="res_serv_title">Hizmetler</p>
-            <p class="footer-text" data-i18n="res_serv">
-                Otopark · Vale hizmeti<br>Ferah açık hava bahçesi<br>Rakı · Meze · Mangal<br>Gece 02:00'ye kadar açık
-            </p>
-            <a href="https://www.instagram.com/felekmangalbasi/" target="_blank" rel="noopener noreferrer" class="footer-link" style="margin-top: 0.75rem; display: inline-block;">📸 Instagram</a>
+            <p class="footer-label">Keşfet & Rehber</p>
+            <div class="footer-text footer-links">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="tarihce.html">Tarihçe (200 Yıllık Konak)</a>
+                <a href="basinda-felek.html">Basında Felek (Ulusal Arşiv)</a>
+                <a href="zahmetsiz-mangal.html">Zahmetsiz Mangalbaşı</a>
+                <a href="raki-mangal-meyhane.html">Modern Meyhane & Meze</a>
+                <a href="kennedy-sahil-konum.html">Konum & Ulaşım</a>
+                <a href="gurme-yorumlar.html">Gurme Yorumları</a>
+            </div>
+            <a href="https://www.instagram.com/felekmangalbasi/" target="_blank" rel="noopener noreferrer" class="footer-link footer-social">Instagram</a>
         </div>
     </footer>
 
     <div class="footer-bottom">
-        <span class="footer-copy">&copy; 2026 Felek Mangalbaşı. <span data-i18n="footer_rights">Tüm hakları saklıdır.</span></span>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Felek+Mangalbaşı+Bakırköy+İstanbul" target="_blank" rel="noopener noreferrer" class="footer-copy" style="color: var(--accent);" data-i18n="view_on_map">Haritada Gör</a>
+        <span class="footer-copy">&copy; <span id="year">2026</span> Felek Mangalbaşı. <span data-i18n="footer_rights">Tüm hakları saklıdır.</span></span>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Felek+Mangalbaşı+Bakırköy+İstanbul" target="_blank" rel="noopener noreferrer" class="footer-copy footer-copy--accent" data-i18n="view_on_map">Haritada Gör</a>
     </div>
 
     <!-- Scripts -->
@@ -414,7 +419,7 @@
     </script>
 
     <!-- AI / SEO Static Menu Block (Hidden from humans, visible to bots) -->
-    <div id="ai-seo-menu" style="display:none;" aria-hidden="true">
+    <div id="ai-seo-menu" class="sr-only">
         <h2>Felek Mangalbaşı Menüsü (Rakı, Meze, Et)</h2>
         <h3>Mezeler (Rakı Yanına Önerilenler)</h3>
         <ul>

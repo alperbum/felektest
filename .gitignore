@@ -38,3 +38,16 @@ __pycache__/
 
 # Cloudflare Wrangler
 .wrangler/
+
+# --- Credentials & local analytics data (never commit) ---
+service_account.json
+gsc_compare.json
+keywords.txt
+gsc_ve_isletme_profili_keywords.txt
+non_brand_report.txt
+search_analytics_report.md
+ga4_analytics_report.md
+scratch_non_brand.py
+
+# --- Local PHP probe ---
+test.php
