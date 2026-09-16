@@ -7,8 +7,8 @@ creds = get_credentials()
 service = build('searchconsole', 'v1', credentials=creds)
 
 # 30-day range
-start_date = "2026-07-25"
-end_date = "2026-08-24"
+start_date = "2026-08-11"
+end_date = "2026-09-10"
 
 res = service.searchanalytics().query(siteUrl=SITE_URL, body={
     'startDate': start_date,

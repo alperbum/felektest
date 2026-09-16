@@ -154,6 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Footer year (kept in sync with js/site.js used on the landing pages) ---
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
     // --- Sticky Header ---
     const header = document.getElementById('header');
     
