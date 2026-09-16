@@ -1,8 +1,8 @@
 const translations = {
     tr: {
-        seo_title: "Felek Mangalbaşı | Bakırköy Sahil Mangalbaşı & Meyhane",
-        seo_description: "Bakırköy Kennedy Caddesi'nde, deniz manzaralı bahçede masada mangal, günlük meze ve rakı seçkisi. Her gün 12:00 – 02:00 açık.",
-        seo_menu_title: "Felek Mangalbaşı | Menü",
+        seo_title: "Felek Mangalbaşı | Bakırköy Mangalbaşı & Sahil Ocakbaşı",
+        seo_description: "Bakırköy sahilinde ocakbaşı ve kendin pişir kendin ye: 200 yıllık taş bina, deniz manzaralı bahçe, dumansız masa mangalı, günlük meze ve rakı. 12:00 – 02:00.",
+        seo_menu_title: "Felek Mangalbaşı Menü ve Fiyatlar | Bakırköy Ocakbaşı",
         nav_about: "Hakkında",
         nav_experience: "Deneyim",
         nav_venue: "Etkinlikler",
@@ -10,7 +10,7 @@ const translations = {
         nav_reservation: "Rezervasyon",
         scroll_down: "Aşağı Kaydır",
         hero_subtitle: "Bakırköy · Kennedy Caddesi",
-        hero_title: "Rakı, Meze,<br><em>Zahmetsiz Mangal.</em>",
+        hero_title: "Bakırköy Sahilde<br><em>Mangalbaşı ve Ocakbaşı.</em>",
         hero_desc: "Bakırköy sahilinde, deniz manzaralı bahçede meyhane düzeni ile masada mangal servisini bir arada sunan restoran.",
         hero_meta_loc: "Bakırköy · Deniz kıyısı",
         hero_meta_vale: "Vale hizmeti",
@@ -30,7 +30,7 @@ const translations = {
         stat_3_label: "Deniz havası eşliğinde",
         stat_4_num: "20+ Yıl",
         stat_4_label: "4.2 puan,<br>500+ değerlendirme.",
-        exp_title: "Rakı, Meze<br>ve Mangal.",
+        exp_title: "İstanbul’da Mangalbaşı<br>Deneyimi",
         exp_subtitle: "Mangalın ateşi ve servisi ekip tarafından yönetilir.",
         exp1_title: "Zahmetsiz Mangal",
         exp1_desc: "Et masada pişer; ateşin kurulması, kömür takviyesi ve servis ekibe aittir.",
@@ -60,7 +60,7 @@ const translations = {
         footer_contact_title: "Adres & Saat",
         footer_phone: "Telefon:",
         footer_rights: "Tüm hakları saklıdır.",
-        menu_title: "Menü",
+        menu_title: "Menü ve Fiyatlar",
         menu_subtitle: "Güncel menü ve fiyatlar",
         feedback_title: "Görüş ve Önerileriniz",
         feedback_desc: "Servis ve menüye ilişkin görüşlerinizi iletebilirsiniz.",
@@ -97,9 +97,9 @@ const translations = {
         aria_menu_toggle_close: "Menüyü kapat"
     },
     en: {
-        seo_title: "Felek Mangalbaşı | Rakı, Meze & Seaside BBQ Experience",
-        seo_description: "Tabletop grill, daily meze and a rakı selection in a sea-view garden on Kennedy Avenue, Bakırköy. Open daily 12:00 – 02:00.",
-        seo_menu_title: "Felek Mangalbaşı | Digital Menu",
+        seo_title: "Felek Mangalbaşı | Seaside Rakı, Meze & BBQ in Istanbul",
+        seo_description: "Authentic Turkish rakı, meze and smokeless tabletop BBQ in a sea-view garden in Bakırköy, Istanbul. 15 minutes from the Old City, free valet, open until 02:00.",
+        seo_menu_title: "Felek Mangalbaşı Menu & Prices | Bakırköy Ocakbaşı",
         nav_about: "About Us",
         nav_experience: "Experience",
         nav_venue: "Venue & Events",
@@ -194,9 +194,9 @@ const translations = {
         aria_menu_toggle_close: "Close menu"
     },
     ar: {
-        seo_title: "فيلك مانجالباشي | تجربة لحوم وشواء ممتازة",
-        seo_description: "مطعم شرائح لحم فاخر على شاطئ البحر في باكيركوي، اسطنبول. ثقافة المانجال التقليدية بخدمة مطاعم حديثة.",
-        seo_menu_title: "فيلك مانجالباشي | القائمة الرقمية",
+        seo_title: "فيلك مانجالباشي | مشاوي ومزة تركية على شاطئ باكيركوي",
+        seo_description: "مشاوي تركية على الطاولة بدون دخان مع مزة طازجة يومياً في حديقة بإطلالة بحرية في باكيركوي، اسطنبول. خدمة صف مجانية ومفتوح حتى الساعة 2:00 صباحاً.",
+        seo_menu_title: "فيلك مانجالباشي | القائمة والأسعار",
         nav_about: "معلومات عنا",
         nav_experience: "تجربة",
         nav_venue: "المكان والفعاليات",
@@ -291,9 +291,9 @@ const translations = {
         aria_menu_toggle_close: "أغلق القائمة"
     },
     ru: {
-        seo_title: "Felek Mangalbaşı | Премиальный Стейк и Мангал",
-        seo_description: "Премиальный стейкхаус на морском побережье в Бакыркее, Стамбул. Традиционная культура мангала с современным обслуживанием.",
-        seo_menu_title: "Felek Mangalbaşı | Цифровое Меню",
+        seo_title: "Felek Mangalbaşı | Мангал, мезе и раки на берегу моря",
+        seo_description: "Турецкий мангал без дыма за столом, свежие мезе и раки в саду с видом на море в Бакыркее, Стамбул. Бесплатный валет, открыто до 02:00.",
+        seo_menu_title: "Felek Mangalbaşı | Меню и цены",
         nav_about: "О Нас",
         nav_experience: "Опыт",
         nav_venue: "Место и Мероприятия",
