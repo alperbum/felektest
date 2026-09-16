@@ -1,0 +1,831 @@
+/* ==========================================================================
+   FELEK MANGALBAŞI — Editorial / Landing Design System
+   -------------------------------------------------------------------------
+   Shared skin for the SEO & GEO landing pages (tarihce, basinda-felek,
+   zahmetsiz-mangal, raki-mangal-meyhane, kennedy-sahil-konum,
+   gurme-yorumlar, suadiye).
+
+   Rules:
+   1. Never redeclare the design tokens — they come from css/style.css.
+   2. Never reuse a class name that style.css already styles for the
+      homepage/menu chrome (.nav-links, .container, .btn, nav, footer).
+      Every component here is namespaced with `.land-`.
+   3. Only weights 300 / 400 are used for type, exactly like the homepage.
+   ========================================================================== */
+
+/* --- Progressive enhancement: never hide content when JS is unavailable --- */
+html:not(.js) .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+
+.land-page {
+  padding-top: 6.5rem; /* clears the fixed nav */
+}
+
+.land-wrap {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.land-wrap--narrow {
+  max-width: 780px;
+}
+
+.land-section {
+  padding: 5.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.land-section--first {
+  border-top: none;
+}
+
+.land-section--alt {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+}
+
+/* ==========================================================================
+   BREADCRUMB
+   ========================================================================== */
+
+.land-crumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+}
+
+.land-crumb a {
+  color: var(--muted);
+}
+
+.land-crumb a:hover {
+  color: var(--accent);
+}
+
+.land-crumb span[aria-hidden] {
+  color: var(--border);
+}
+
+.land-crumb [aria-current="page"] {
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.land-hero {
+  padding: 3rem 0 5.5rem;
+  position: relative;
+}
+
+.land-hero::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 620px;
+  height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 146, 58, 0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.land-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.land-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  max-width: 15ch;
+  margin-bottom: 2rem;
+}
+
+.land-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.land-lede {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 56ch;
+}
+
+.land-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.5rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.land-meta-item {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   SECTION HEADERS
+   ========================================================================== */
+
+.land-label {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.75rem;
+}
+
+.land-h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  line-height: 1.15;
+  max-width: 22ch;
+  margin-bottom: 1.5rem;
+}
+
+.land-h2 em {
+  font-style: italic;
+}
+
+.land-h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.land-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  gap: 3rem;
+  align-items: end;
+  margin-bottom: 3.5rem;
+}
+
+.land-head-intro {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  font-weight: 300;
+  padding-bottom: 0.35rem;
+}
+
+.land-head--stack {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ==========================================================================
+   PROSE
+   ========================================================================== */
+
+.land-prose {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.85;
+  font-weight: 300;
+  max-width: 68ch;
+}
+
+.land-prose + .land-prose {
+  margin-top: 1.25rem;
+}
+
+.land-prose strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.land-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ==========================================================================
+   ANSWER BOX — the GEO/AI snippet block
+   ========================================================================== */
+
+.land-answer {
+  border-left: 1px solid var(--accent);
+  padding: 0.25rem 0 0.25rem 2rem;
+  margin: 2.5rem 0;
+  max-width: 70ch;
+}
+
+.land-answer p {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.15rem, 1.9vw, 1.45rem);
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.land-answer strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   NUMBERED CARD GRID  (mirrors .features / .feature-item on the homepage)
+   ========================================================================== */
+
+.land-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+.land-card {
+  padding: 2.5rem 2.5rem 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.land-card:nth-child(n + 2) {
+  padding-left: 2.5rem;
+  border-left: 1px solid var(--border);
+}
+
+.land-card-num {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.land-card .land-h3 {
+  font-size: 1.3rem;
+}
+
+.land-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.land-card-link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   DATA TABLE — hairline, no card chrome, matches the site's restraint
+   ========================================================================== */
+
+.land-table-wrap {
+  overflow-x: auto;
+  margin: 2.5rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  -webkit-overflow-scrolling: touch;
+}
+
+.land-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+}
+
+.land-table caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 1rem;
+}
+
+.land-table th,
+.land-table td {
+  text-align: left;
+  padding: 1.1rem 1.5rem 1.1rem 0;
+  vertical-align: top;
+  font-size: 14px;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+.land-table thead th {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 400;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.land-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s ease;
+}
+
+.land-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.land-table tbody tr:hover {
+  background: rgba(200, 146, 58, 0.04);
+}
+
+.land-table td {
+  color: var(--muted);
+}
+
+.land-table td:first-child {
+  color: var(--text);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* Highlight the "Felek" column in comparison tables */
+.land-table .is-felek {
+  color: var(--text);
+  font-weight: 400;
+  border-left: 1px solid var(--border);
+  padding-left: 1.5rem;
+}
+
+.land-table thead .is-felek {
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   QUOTE / REVIEW
+   ========================================================================== */
+
+.land-quote {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 3rem 0;
+  margin: 3rem 0;
+  max-width: 68ch;
+}
+
+.land-quote-body {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.land-quote-by {
+  margin-top: 1.75rem;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.land-quote-src {
+  display: block;
+  margin-top: 0.5rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: none;
+  font-size: 12px;
+}
+
+/* Review rows (guest reviews) */
+.land-review {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+}
+
+.land-review:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.land-review q {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text);
+  quotes: '“' '”';
+}
+
+.land-review-src {
+  display: block;
+  margin-top: 0.9rem;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   STATS
+   ========================================================================== */
+
+.land-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2.5rem 2rem;
+  margin: 3rem 0;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.land-stat-num {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  line-height: 1;
+  color: var(--text);
+}
+
+.land-stat-label {
+  margin-top: 0.6rem;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   NOTE / CALLOUT
+   ========================================================================== */
+
+.land-note {
+  border: 1px solid var(--border);
+  border-left: 1px solid var(--accent);
+  padding: 1.75rem 2rem;
+  margin: 2.5rem 0;
+  background: rgba(200, 146, 58, 0.03);
+}
+
+.land-note p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.land-note strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   FAQ — native <details>, so the answers stay in the DOM for crawlers
+   ========================================================================== */
+
+.land-faq {
+  border-top: 1px solid var(--border);
+  margin-top: 2.5rem;
+}
+
+.land-faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.land-faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.75rem 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.35;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.land-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.land-faq-item summary:hover {
+  color: var(--accent);
+}
+
+.land-faq-item summary::after {
+  content: '+';
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--accent);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.land-faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.land-faq-a {
+  padding: 0 3rem 2rem 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.85;
+  font-weight: 300;
+  max-width: 68ch;
+}
+
+.land-faq-a a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ==========================================================================
+   BUTTONS — extends .btn from style.css instead of redefining it
+   ========================================================================== */
+
+.land-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.land-actions--center {
+  justify-content: center;
+}
+
+/* Filled variant; the outline variant is plain `.btn` from style.css */
+.btn--solid {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+@media (hover: hover) {
+  .btn--solid:hover {
+    background: var(--text);
+    border-color: var(--text);
+    color: var(--bg);
+  }
+}
+
+.btn--solid:active {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* Text link with an arrow, used inside grids */
+.land-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.land-more:hover {
+  color: var(--text);
+}
+
+/* ==========================================================================
+   INTERNAL LINK HUB — replaces the old one-line landing footer
+   ========================================================================== */
+
+.land-hub {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+.land-hub a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--muted);
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.land-hub a:hover {
+  color: var(--accent);
+  padding-left: 0.5rem;
+}
+
+.land-hub a span[aria-hidden] {
+  font-family: var(--serif);
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   CTA — reuses .cta-section from style.css, adds the landing flavour
+   ========================================================================== */
+
+.land-cta {
+  padding: 7rem 0 8rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.land-cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 146, 58, 0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.land-cta-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.land-cta-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.land-cta-sub {
+  color: var(--muted);
+  max-width: 46ch;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .land-wrap {
+    padding: 0 1.5rem;
+  }
+
+  .land-page {
+    padding-top: 5rem;
+  }
+
+  .land-section {
+    padding: 3.5rem 0;
+  }
+
+  .land-head {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+    margin-bottom: 2.5rem;
+  }
+
+  .land-title {
+    max-width: none;
+  }
+
+  .land-card,
+  .land-card:nth-child(n + 2) {
+    padding: 2rem 0;
+    border-left: none;
+  }
+
+  .land-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .land-answer {
+    padding-left: 1.25rem;
+  }
+
+  .land-faq-item summary {
+    font-size: 1.1rem;
+    gap: 1rem;
+  }
+
+  .land-faq-a {
+    padding-right: 0;
+  }
+
+  .land-actions .btn {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+
+  .land-cta {
+    padding: 4.5rem 0 5.5rem;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .land-faq-item summary::after,
+  .land-hub a,
+  .land-table tbody tr {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   IN-CARD QUOTE + ARCHIVE LIST (press wall)
+   ========================================================================== */
+
+.land-card-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin-top: 1rem;
+  border-left: 1px solid var(--border);
+  padding-left: 1rem;
+}
+
+.land-archive {
+  list-style: none;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.land-archive li {
+  font-size: 14px;
+  line-height: 1.75;
+  font-weight: 300;
+  color: var(--muted);
+  padding-left: 1rem;
+  border-left: 1px solid var(--border);
+}
+
+.land-archive strong {
+  color: var(--text);
+  font-weight: 400;
+  display: block;
+}
+
+.land-archive a {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.land-archive a:hover { color: var(--text); }

@@ -1,7 +1,24 @@
+# Felek Mangalbasi - robots.txt
+# https://www.felekmangalbasi.com/
+
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /functions/
+Disallow: /api/
+
+# Site kokunde duran arac/veri dosyalari (web sayfasi degildir, taranmasin)
+Disallow: /*.py$
+Disallow: /*.json$
+Disallow: /service_account.json
+Disallow: /gsc_compare.json
+Disallow: /keywords.txt
+Disallow: /gsc_ve_isletme_profili_keywords.txt
+Disallow: /non_brand_report.txt
+Disallow: /search_analytics_report.md
+Disallow: /ga4_analytics_report.md
+Disallow: /SEO_GEO_STRATEGY.md
+Disallow: /.agents/
 
 # LLM Crawler and Search Engine Agent Access
 User-agent: GPTBot
