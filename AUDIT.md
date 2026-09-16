@@ -18,7 +18,7 @@ Denetimde **3 tanesi görünür bozukluk üreten** toplam 24 yapısal sorun tesp
 
 ## 2. GÖRÜNÜR TASARIM BOZUKLUKLARI (düzeltildi)
 
-### 2.1 — 7 sayfanın mobilde navigasyonu tamamen kayboluyordu ⚠️ (en kritik)
+### 2.1 — 7 sayfanın mobilde navigasyonu tamamen kayboluyordu Dikkat:  (en kritik)
 
 `css/style.css` içindeki `@media (max-width: 900px)` bloğu:
 
@@ -109,7 +109,7 @@ Tümü kaldırıldı; test `no emoji in markup` ile doğrulanıyor.
 | 11 | **Engellenen Google fontları** | 7 sayfada render'ı bloklayan `<link href=… rel="stylesheet">` | Ana sayfadaki non-blocking desen: `preload` + `media="print" onload` + `<noscript>` fallback |
 | 12 | **Tutarsız cache-busting** | 3 sayfada `style.css?v=4.5`, 4 sayfada versiyonsuz → bayat CSS riski | Tümü `?v=5.0` |
 | 13 | **Ölü legacy dosyalar** | `ai-*.html` (3 dosya) `web.config`'te zaten 301'leniyordu ama hâlâ depoda; `test.php` debug artığı | Silindi |
-| 14 | **`admin/` prod'da çalışmıyor** | `admin/index.html` → `<script type="module" src="/src/main.tsx">` (Vite dev girişi, build çıktısı yok) | ⚠️ Değiştirilmedi — Bölüm 5 |
+| 14 | **`admin/` prod'da çalışmıyor** | `admin/index.html` → `<script type="module" src="/src/main.tsx">` (Vite dev girişi, build çıktısı yok) | Dikkat:  Değiştirilmedi — Bölüm 5 |
 | 15 | **Skip link yoktu** | `index.html`'de `<main id="main-content">` var ama skip link yok; `menu.html`'de `main`'in id'si bile yoktu | `.skip-link` `style.css`'e eklendi; 9 sayfaya da kondu; `menu.html`'e `id="main-content"` verildi |
 | 16 | **`display:none` ile gizlenmiş SEO içeriği** | `menu.html`'de `#ai-seo-menu` → `display:none; aria-hidden="true"` (Google bu içeriği değersizleştirebilir, ekran okuyucu hiç görmez) | `.sr-only`'e çevrildi: görsel olarak gizli, hem tarayıcı hem ekran okuyucu için erişilebilir |
 | 17 | **Ölü CSS sınıfları** | `features-title-wrapper`, `qr-category-nav` (boş placeholder, hiçbir JS referansı yok) | Kaldırıldı. Şu an **9 sayfada tanımsız sınıf sayısı: 0** |
@@ -145,7 +145,7 @@ Tümü kaldırıldı; test `no emoji in markup` ile doğrulanıyor.
 
 ---
 
-## 5. ⚠️ DEĞİŞTİRİLMEDİ — sizin kararınız gerekiyor
+## 5. DEĞİŞTİRİLMEDİ — sizin kararınız gerekiyor
 
 ### 5.1 — Telegram bot token'ı herkese açık (KRİTİK)
 
@@ -247,3 +247,121 @@ Deploy sonrası kontrol listesi:
 2. `/zahmetsiz-mangal.html` mobil görünümde hamburger menü açılmalı.
 3. Google Search Console → sitemap'i yeniden gönderin (`llms.txt` çıkarıldı, `lastmod` güncellendi).
 4. Indexing API: `python report_tool.py --indexing`
+
+---
+
+# EK — GEÇİŞ 2: DİL VE ÜSLUP (profesyonelleştirme)
+
+Talep: "Dil de yeterince profesyonel değil sanki. Onu biraz profesyonel ve
+sadeleştirelim. Emoji falan kullanımı da olmasın."
+
+## 1. NE DEĞİŞTİ
+
+**Emoji ve piktograf: 9 sayfada 0.** Kaldırılanlar ve yerine konanlar:
+
+| Eski | Yeni |
+|---|---|
+| `📋 Mesaj:` / `👤` / `💬` (Telegram bildirimi) | etiketsiz düz metin |
+| `⚠️ Alerjen uyarısı` | `Alerjen uyarısı` |
+| `💬 Bize Yazın` | `WhatsApp ile Rezervasyon` |
+| `← Geri Dön` | `Kategorilere Dön` |
+| `✦ İstanbul Times 2025…` | `İstanbul Times 2025 Editör Seçimi · 20+ yıllık servis geçmişi` |
+| `.land-hub` satır sonundaki `<span aria-hidden>&rarr;</span>` (63 adet) | kaldırıldı |
+| Kart/bağlantı etiketlerindeki ` →` (20 adet) | kaldırıldı |
+| `llms.txt` içindeki `✅` ×6, `⚠` ×1 | kaldırıldı |
+
+**Korunan `→`:** `kennedy-sahil-konum.html` ve `suadiye.html` ulaşım tablolarında
+("Yeşilköy Rauf Orbay Cad. → Kennedy Cad.") ve `llms.txt` sipariş sıralarında
+("Meze → Ana yemek → Rakı → Tatlı"). Bunlar süs değil, yön/sıra verisi.
+Kaldırmamı isterseniz söyleyin.
+
+**Üslup:** ünlem ve seslenişli cümleler beyan cümlesine çevrildi.
+
+| Eski | Yeni |
+|---|---|
+| `Masanız hazır mı?` | `Masa Rezervasyonu` |
+| `Kadehler hazır mı?` | `Meyhane Sofrası İçin Rezervasyon` |
+| `Siz de deneyin.` | `Rezervasyon ve Değerlendirme` |
+| `Haberlerdeki lezzeti yerinde tadın.` | `Rezervasyon ve İletişim` |
+| `Modern Meyhane, Masada Mangal Keyfi!` | `Modern Meyhane, Masada Mangal.` |
+| `Masada ateş hazır mı?` | `Masada Mangal İçin Rezervasyon` |
+| `Sıfır Yorgunluk` | `Servis ve Temizlik` |
+| `Ateş Masanıza Gelir` | `Ateşin Kurulması` |
+| `Rakı & Meze Eşleştirme Rehberi` (doğru kipiyle sofra keyfinizi katlayın) | `Rakı ve Meze Eşleştirme Rehberi` (karakter önerisi) |
+| `Kesinlikle evet. …sohbetinize eşlik eder.` | `Evet. Alkol servisi masaya zorunlu tutulmaz; …` |
+| `tam not almıştır` / `en beğenilen` | `ortalamaya sahiptir` / sıralama iddiası kaldırıldı |
+
+Abartı sözcükleri site metninden çıkarıldı: `efsanevi` (8 → 0), `kusursuz` (1 → 0),
+`iddialı` (kendi metnimizde 1 → 0).
+
+## 2. BİLEREK DOKUNULMAYANLAR
+
+- **Birebir basın alıntıları:** `basinda-felek.html` içindeki İstanbul Times
+  ("eşsiz"), Milliyet başlığı ("17 yaşında assolist oldu!") ve Posta haber
+  özetleri. Alıntıyı yeniden yazmak tahrifat olur.
+- **İmzalı misafir yorumları:** `gurme-yorumlar.html` ("harika", "ayrı bir
+  seviye"). Yorum sahibinin sözü, bizim metnimiz değil.
+- **SEO anahtar kelimeleri:** bakırköy ocakbaşı, kendin pişir kendin ye,
+  gece açık restoran, bakırköy meyhane — hepsi metinde duruyor.
+
+## 3. `js/translations.js`
+
+`index.html` ve `menu.html`'in görünen metni buradan gelir (`applyTranslations`,
+`DOMContentLoaded`). Bu yüzden metin düzenlemesi önce bu dosyaya yazıldı:
+**100 anahtar** yeniden yazıldı (tr 36, en 34, ar 15, ru 15). Her dil bloğu
+94 anahtar, `node --check` hatasız.
+
+JS kapalıyken görünen statik metin de aynı TR değerlerine senkronlandı
+(28 öğe). Artık JS'li/JS'siz iki farklı metin yok.
+
+**AR/RU için not:** bu iki dilde hedefli sadeleştirme yapıldı, tam yeniden yazım
+yapılmadı. Ana dili konuşan biri tarafından gözden geçirilmesini öneririm.
+
+## 4. YAN BULGU: `&` kaçışı
+
+9 sayfada **226 adet çıplak `&`** (`Rakı & Meze`, `Adres & Saat`, URL query'leri)
+`&amp;` yapıldı. Geçersiz HTML'di, tarayıcılar tolere ediyordu ama W3C
+doğrulayıcısında hata veriyordu. `<script>` blokları korundu, JS kodu bozulmadı.
+
+## 5. YAN BULGU: FAQ şema uyuşmazlığı
+
+`zahmetsiz-mangal.html` içinde görünür soru `Bakırköy’de` (eğik apostrof),
+`FAQPage` şeması ise `Bakırköy'de` (düz) yazıyordu. Google bunu iki farklı
+soru sayar. Şema, görünür metne eşitlendi. **Şu an 7 sayfada 14/14 FAQ girişi
+birebir aynı.**
+
+## 6. YENİ: `tests/check-pages.js`
+
+Doğrulamayı tekrar çalıştırılabilir hale getirdim:
+
+```bash
+npm i jsdom --no-save
+node tests/check-pages.js
+```
+
+9 sayfa × 24 kontrol = **212 kontrol, hepsi geçti.** Kapsanan kod yolları:
+`#year`, IntersectionObserver yokken reveal fallback, hamburger aç/kapa
+(aria-expanded dahil), nav linki ve Escape ile kapanma, `aria-current`
+eşleşmesi, FAQ akordeonunun tek açık kalması (`toggle`), tek `<h1>`,
+3 sütunlu footer, satır içi stil ve `<style>` yokluğu, emoji yokluğu,
+çıplak `&` yokluğu, JSON-LD varlığı.
+
+## 7. DOĞRULAMA
+
+```
+node tests/check-pages.js          → 212 kontrol, TUM KONTROLLER GECTI
+node --check js/translations.js    → hatasız
+JSON-LD                            → 9/9 blok geçerli
+FAQ görünür metin == FAQPage       → 7/7 sayfa, 14/14 giriş birebir
+Tanımsız CSS sınıfı                → 9 sayfada 0
+Emoji/piktograf                    → 9 sayfada 0
+Çıplak &                           → 9 sayfada 0
+Yerel sunucu (port 8080)           → 17 kaynak 200, olmayan sayfa 404
+```
+
+`menu.html` görsel URL'leri `?v=2` olarak **bilerek** korundu: `js/script.js`
+içindeki sabit listeyle birebir eşleşmek zorundalar, aksi halde preload boşa
+gider. CSS/JS varlıkları `?v=5.1`'e yükseltildi (çeviriler değişti, eski
+önbelleğin temizlenmesi gerekiyor).
+
+**Deploy edilmedi.** `deploy_ftp.py` çalıştırılmadı.
