@@ -1,8 +1,10 @@
 const translations = {
     tr: {
+        hub_ifm_title: "İFM & Kurumsal Fuar Grubu",
+        hub_ifm_desc: "İstanbul Fuar Merkezi'ne (İFM) sahil yolundan 10-12 dakika: fuar sonrası ekip yemekleri, 20-50 kişilik grup kapasitesi, şirket kredi kartı ve vale.",
         seo_title: "Felek Mangalbaşı | Bakırköy Mangalbaşı & Sahil Ocakbaşı",
         seo_description: "Bakırköy sahilinde ocakbaşı ve kendin pişir kendin ye: 200 yıllık taş bina, deniz manzaralı bahçe, dumansız masa mangalı, günlük meze ve rakı. 12:00 – 02:00.",
-        seo_menu_title: "Felek Mangalbaşı Menü ve Fiyatlar | Bakırköy Ocakbaşı",
+        seo_menu_title: "Felek Mangalbaşı Menü ve Fiyatlar | Bakırköy Sahil",
         nav_about: "Hakkında",
         nav_experience: "Deneyim",
         nav_venue: "Etkinlikler",
@@ -97,9 +99,11 @@ const translations = {
         aria_menu_toggle_close: "Menüyü kapat"
     },
     en: {
+        hub_ifm_title: "IFM & Corporate Fair Groups",
+        hub_ifm_desc: "10-12 minutes from Istanbul Expo Center (IFM) via the coastal road: post-fair team dinners, 20-50 guest capacity, corporate credit cards and valet.",
         seo_title: "Felek Mangalbaşı | Seaside Rakı, Meze & BBQ in Istanbul",
         seo_description: "Authentic Turkish rakı, meze and smokeless tabletop BBQ in a sea-view garden in Bakırköy, Istanbul. 15 minutes from the Old City, free valet, open until 02:00.",
-        seo_menu_title: "Felek Mangalbaşı Menu & Prices | Bakırköy Ocakbaşı",
+        seo_menu_title: "Felek Mangalbaşı Menu & Prices | Bakırköy Seaside",
         nav_about: "About Us",
         nav_experience: "Experience",
         nav_venue: "Venue & Events",
@@ -194,6 +198,8 @@ const translations = {
         aria_menu_toggle_close: "Close menu"
     },
     ar: {
+        hub_ifm_title: "مجموعات المعارض والشركات (IFM)",
+        hub_ifm_desc: "على بعد 10-12 دقيقة من مركز معارض إسطنبول (IFM) عبر طريق الشاطئ: عشاء جماعي بعد المعارض، سعة 20-50 شخصًا، بطاقات ائتمان الشركات وصف مجاني.",
         seo_title: "فيلك مانجالباشي | مشاوي ومزة تركية على شاطئ باكيركوي",
         seo_description: "مشاوي تركية على الطاولة بدون دخان مع مزة طازجة يومياً في حديقة بإطلالة بحرية في باكيركوي، اسطنبول. خدمة صف مجانية ومفتوح حتى الساعة 2:00 صباحاً.",
         seo_menu_title: "فيلك مانجالباشي | القائمة والأسعار",
@@ -291,6 +297,8 @@ const translations = {
         aria_menu_toggle_close: "أغلق القائمة"
     },
     ru: {
+        hub_ifm_title: "IFM и корпоративные делегации",
+        hub_ifm_desc: "В 10-12 минутах от Выставочного центра Стамбула (IFM) по береговой дороге: ужины команд после выставок, вместимость 20-50 персон, корпоративные карты и паркинг.",
         seo_title: "Felek Mangalbaşı | Мангал, мезе и раки на берегу моря",
         seo_description: "Турецкий мангал без дыма за столом, свежие мезе и раки в саду с видом на море в Бакыркее, Стамбул. Бесплатный валет, открыто до 02:00.",
         seo_menu_title: "Felek Mangalbaşı | Меню и цены",
