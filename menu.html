@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title data-i18n="seo_menu_title">Felek Mangalbaşı Menü ve Fiyatlar | Bakırköy Ocakbaşı</title>
+    <title data-i18n="seo_menu_title">Felek Mangalbaşı Menü ve Fiyatlar | Bakırköy Sahil</title>
     <meta name="description" id="meta-description" content="Felek Mangalbaşı güncel menü ve fiyatları: küşleme, kuzu pirzola, lokum bonfile, günlük meze dolabı ve rakı seçkisi. Bakırköy sahil, her gün 12:00 – 02:00.">
     <link rel="canonical" href="https://www.felekmangalbasi.com/menu.html">
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Felek Mangalbaşı Menü ve Fiyatlar | Bakırköy Ocakbaşı">
+    <meta property="og:title" content="Felek Mangalbaşı Menü ve Fiyatlar | Bakırköy Sahil">
     <meta property="og:description" content="Küşleme, kuzu pirzola, lokum bonfile, günlük meze dolabı ve rakı seçkisi. Bakırköy sahil, her gün 12:00 – 02:00.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.felekmangalbasi.com/menu.html">
@@ -299,7 +299,7 @@
                     >
                         Gönder
                     </button>
-                    <p id="feedback-status" class="feedback-status"></p>
+                    <p id="feedback-status" class="feedback-status" role="status" aria-live="polite"></p>
                 </form>
             </div>
         </div>
@@ -341,79 +341,7 @@
     <script src="js/translations.js?v=5.1" defer></script>
     <script src="js/config.js" defer></script>
     <script src="js/script.js?v=5.1" defer></script>
-    <script>
-        // ─── Feedback Formu ─────────────────────────
-        const msgInput = document.getElementById('feedback-msg');
-        const charCount = document.getElementById('feedback-char-count');
-        if (msgInput && charCount) {
-            msgInput.addEventListener('input', () => {
-                const remaining = 2000 - msgInput.value.length;
-                charCount.textContent = `${remaining} / 2000`;
-            });
-        }
-
-        document.getElementById('feedback-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const name   = document.getElementById('feedback-name').value.trim();
-            const msg    = document.getElementById('feedback-msg').value.trim();
-            const status = document.getElementById('feedback-status');
-            const btn    = document.getElementById('feedback-submit');
-
-            if (!msg) return;
-
-            const lang = localStorage.getItem('siteLang') || 'tr';
-            const getTranslation = (key) => (typeof translations !== 'undefined' && translations[lang] && translations[lang][key]) ? translations[lang][key] : key;
-
-            btn.disabled = true;
-            btn.textContent = getTranslation('feedback_sending');
-            status.style.color = 'var(--muted)';
-            status.textContent = '';
-
-            try {
-                // Doğrudan tarayıcıdan Telegram API'sine gönderim (PHP gerektirmez)
-                const token = '8721886347:AAHWTqfUt9AnfJbmIZGeQVkltIrSQ9bo6O4';
-                const chatId = '1585282829';
-                
-                // HTML karakterlerini kaçır
-                const escapeHtml = (text) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-                const escapedName = name ? escapeHtml(name) : '';
-                const escapedMsg = escapeHtml(msg);
-
-                const textMsg = escapedName
-                    ? `<b>Felek Mangalbasi - Yeni Geri Bildirim</b>\n\nAd: ${escapedName}\nMesaj:\n${escapedMsg}`
-                    : `<b>Felek Mangalbasi - Yeni Geri Bildirim</b>\n\nMesaj:\n${escapedMsg}`;
-
-                const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: chatId,
-                        text: textMsg,
-                        parse_mode: 'HTML'
-                    })
-                });
-
-                const data = await res.json();
-                if (data.ok) {
-                    status.style.color = '#c8923a'; // Accent color for success
-                    status.textContent = getTranslation('feedback_success');
-                    this.reset();
-                    if (charCount) {
-                        charCount.textContent = '2000 / 2000';
-                    }
-                } else {
-                    throw new Error(data.description || 'Gönderim hatası');
-                }
-            } catch (err) {
-                status.style.color = '#ff6b6b'; // Redish for error
-                status.textContent = getTranslation('feedback_error');
-                console.error(err);
-            } finally {
-                btn.disabled = false;
-                btn.textContent = getTranslation('feedback_btn');
-            }
-        });
-    </script>
+    <script src="js/feedback.js?v=5.1" defer></script>
 
     <!-- AI / SEO Static Menu Block (Hidden from humans, visible to bots) -->
     <div id="ai-seo-menu" class="sr-only">
