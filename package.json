@@ -1,0 +1,22 @@
+{
+  "name": "felekmangalbasi-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "felekmangalbasi.com — statik site + test/derleme araçları",
+  "scripts": {
+    "build": "node tools/build.js && node tools/build-pages.js",
+    "build:js": "node tools/build.js",
+    "build:pages": "node tools/build-pages.js",
+    "build:check": "node tools/build.js --check && node tools/build-pages.js --check",
+    "test": "node tests/run-all.js",
+    "test:build": "node tests/check-build.js",
+    "test:faq": "node tests/check-faq.js",
+    "verify:pages": "node tools/verify-pages.js",
+    "test:pages": "node tests/check-pages.js",
+    "test:menu": "node tests/check-menu.js",
+    "test:security": "node tests/check-security.js"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.0"
+  }
+}

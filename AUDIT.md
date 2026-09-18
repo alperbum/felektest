@@ -153,11 +153,17 @@ Tümü kaldırıldı; test `no emoji in markup` ile doğrulanıyor.
 doğrudan Telegram API'sine istek atıyor:
 
 ```js
-const token = '8721886347:AAHWTqfUt9AnfJbmIZGeQVkltIrSQ9bo6O4';
-const chatId = '1585282829';
+const token = '<BOT_TOKEN_BURADA_ACIK_METIN>';
+const chatId = '<CHAT_ID>';
 ```
 
-Aynı token `api/feedback.php` içinde ve `.agents/AGENTS.md` / `SEO_GEO_STRATEGY.md` dosyalarında da var.
+Aynı token `api/feedback.php`, `ga4_tool.py`, `report_tool.py` içinde ve
+`.agents/AGENTS.md` / `SEO_GEO_STRATEGY.md` dosyalarında da vardı.
+
+> **DURUM (güncel):** Bu bulgu kapatıldı. Token tüm dosyalardan çıkarıldı;
+> sunucu tarafı `api/feedback.php` artık ortam değişkeninden okuyor, istemci
+> yalnızca aynı kaynaktaki uca POST ediyor. Değerler `.env` (git dışı) içinde.
+> **Token git geçmişinde açıkta kaldığı için yine de yenilenmelidir.**
 Herhangi biri sayfa kaynağından alıp işletme sahibinin Telegram'ına sınırsız mesaj atabilir.
 
 **Doğru çözüm zaten depoda duruyor:** `functions/api/feedback.js` — token'ı ortam değişkeninden

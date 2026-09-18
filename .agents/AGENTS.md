@@ -14,8 +14,35 @@ Whenever working in this repository (c:\Users\PC\Desktop\felek-main), adhere to 
 
 1. **1-Click Production FTP Deploy:**
    - Command: `python deploy_ftp.py`
-   - Action: Uploads all core HTML, JS, CSS, config, and verification files to production server (`94.73.146.49`).
-   - Credentials: User `u0298318`, Pass `.bdhq=8@JK0S.6P8`.
+   - Dry run / config check: `python deploy_ftp.py --check` (connects to nothing)
+   - Action: Uploads `CORE_FILES` (HTML, JS, CSS, `api/feedback.php`, config, verification files) to production.
+   - Credentials: read from environment variables or the git-ignored `.env` file (see `.env.example`).
+     **Never hardcode them in the script again.** The script aborts with a clear error if they are missing.
+
+2. **Build Step (REQUIRED after editing sources):**
+   - Command: `npm run build` (= `node tools/build.js && node tools/build-pages.js`)
+   - Verify: `npm run build:check` — fails if any generated file is out of date.
+   - **`js/script.js` is GENERATED. Never edit it by hand.** Edit the fragments under `src/js/`
+     (order is defined in `src/js/manifest.json`) and rebuild. All fragments share one
+     `DOMContentLoaded` closure, so scope and order are preserved by the build.
+   - **The 7 landing pages are GENERATED. Never edit `zahmetsiz-mangal.html` etc. by hand.**
+     Edit `src/pages/<slug>.html` (front matter JSON + page body) or the shared shell
+     `src/layouts/landing.html`, then rebuild. The build emits the same root-level
+     `.html` paths, so `web.config`, `sitemap.xml`, the FTP allowlist and every internal
+     link keep working unchanged.
+     - `BreadcrumbList` JSON-LD is GENERATED from `pageName` + canonical URL.
+     - `FAQPage` JSON-LD is stored verbatim and must stay byte-equal to the visible
+       `<details>` text — `tests/check-faq.js` enforces this.
+     - `twitter:title` / `og:title` default to `title` (single source).
+
+3. **Test Suite (run before every commit):**
+   - Command: `npm test`  (= `node tests/run-all.js`)
+   - Suites: `check-build` (source/bundle consistency), `check-pages` (7 SEO pages + index),
+     `check-faq` (visible FAQ text vs FAQPage schema), `check-menu` (jsdom behaviour: menu
+     render, i18n, JSON-LD, feedback form), `check-security` (secret scan, credential
+     tracking, deploy allowlist).
+   - After a template refactor, prove losslessness with `npm run verify:pages`
+     (compares generated pages against a git ref structurally).
 
 2. **Google Search Console & GBP Unified Analytics:**
    - Command: `python report_tool.py` (veya `python gsc_tool.py`)
@@ -79,18 +106,17 @@ Whenever working in this repository (c:\Users\PC\Desktop\felek-main), adhere to 
 
 ## 4. Credentials and Infrastructure Matrix
 
-- **Production FTP Server:**
-  - Host / IP: `94.73.146.49`
-  - User: `u0298318`
-  - Pass: `.bdhq=8@JK0S.6P8`
-- **Admin Panel:**
-  - URL: `https://www.felekmangalbasi.com/admin/`
-  - Email: `test@test.com`
-  - Pass: `123456`
+- **Production FTP Server:** values live in `.env` (git-ignored) — keys `FTP_HOST`, `FTP_USER`, `FTP_PASS`.
+- **Admin Panel:** URL `https://www.felekmangalbasi.com/admin/` — credentials in `.env`
+  (`ADMIN_URL`, `ADMIN_EMAIL`, `ADMIN_PASS`).
+  > [!WARNING]
+  > The admin panel still uses the default weak credentials. Rotate them.
+  > The `admin/` app is also not deployable as-is (separate Vite project).
 - **Supabase Database:**
-  - URL: `https://efltjgimkjjtagfebmha.supabase.co`
-  - Anon Key: `sb_publishable_qbZn4_rrYtoyhXEyJdIb3Q_ctEOMAgE`
-  - Secret Key: `sb_secret_GT4znfQp1qj02deGA3LS3w_biR2BQ3h`
+  - URL / publishable key: `js/config.js` (public by design, protected by RLS) and `.env`.
+  - Secret key: **removed from this file.** If it is still valid, rotate it in the
+    Supabase dashboard and store the new value in `.env` (`SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`).
+    A secret/service-role key must never be committed or shipped to the browser.
 - **Google Search Console & GA4 & Service Account:**
   - Service Account: `felekbakirkoy@felekbakirkoy.iam.gserviceaccount.com` (`service_account.json`)
   - GA4 Property ID: `534404937`
@@ -98,8 +124,12 @@ Whenever working in this repository (c:\Users\PC\Desktop\felek-main), adhere to 
   - GBP Place ID: `ChIJLS7LIaO8yhQRGOEl-LNOajE` | CID: `3560744990259142936`
   - GBP API Case ID: `5-5681000040911`
 - **Telegram Customer Feedback Bot:**
-  - Bot Token: `8721886347:AAHWTqfUt9AnfJbmIZGeQVkltIrSQ9bo6O4`
-  - Chat ID: `1585282829`
+  - Token / chat id: `.env` (`TG_BOT_TOKEN`, `TG_CHAT_ID`). Server-side only — the browser
+    never talks to `api.telegram.org`; `js/feedback.js` POSTs to `api/feedback.php`, which
+    reads the token from the environment.
+  > [!CAUTION]
+  > This token was committed in plaintext in git history and shipped to browsers. Treat it as
+  > compromised: rotate it via BotFather (`/revoke`) and put the new value in `.env`.
 
 ---
 
@@ -115,6 +145,10 @@ Whenever working in this repository (c:\Users\PC\Desktop\felek-main), adhere to 
 8. **kennedy-sahil-konum.html:** Location guide, 200-year stone architecture, 10-15 min drive from Sultanahmet/Fatih/Yenikapi.
 9. **gurme-yorumlar.html:** Influencer and customer reviews + AggregateRating schema (4.3 / 500+ reviews).
 10. **llms.txt:** Exhaustive QA knowledge base for AI search crawlers (ChatGPT, Perplexity, ClaudeBot).
+
+> **Note on landing pages 1–9:** items 1–9 are generated at the repository root. Their
+> sources live in `src/pages/` (one file per page) and share `src/layouts/landing.html`.
+> See the Build Step section above before editing them.
 11. **robots.txt & sitemap.xml:** Search engine and AI crawler index maps.
 12. **web.config:** IIS URL rewriting, 301 canonical redirects, WebP MIME types, and static cache controls.
 13. **_headers:** Cloudflare security and edge caching headers.

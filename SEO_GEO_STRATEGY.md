@@ -28,16 +28,14 @@ This file serves as the single source of truth for **Felek Mangalbaşı** (`http
 ---
 
 ## 🖥️ 3. Technical Infrastructure & FTP Server
-- **Server IP:** `94.73.146.49`
-- **FTP Username:** `u0298318`
-- **FTP Password:** `.bdhq=8@JK0S.6P8`
-- **Admin Panel URL:** `https://www.felekmangalbasi.com/admin/`
-- **Admin Email:** `test@test.com`
-- **Admin Password:** `123456`
+- **Server IP / FTP / Admin:** kimlik bilgileri `.env` dosyasinda (git disi).
+  Anahtarlar: `FTP_HOST`, `FTP_USER`, `FTP_PASS`, `ADMIN_URL`, `ADMIN_EMAIL`, `ADMIN_PASS`.
+  Ornek icin bkz. `.env.example`. Bu belgede duz metin tutulmaz.
 - **FTP Deployment Script:** `python gsc_tool.py` (Local automation) & `C:\Users\PC\.gemini\antigravity-ide\brain\da31ffd4-ebf3-477b-9b12-ff9d9fde6d7b\scratch\upload_all.ps1`.
 - **Supabase URL:** `https://efltjgimkjjtagfebmha.supabase.co`
 - **Supabase Anon Key:** `sb_publishable_qbZn4_rrYtoyhXEyJdIb3Q_ctEOMAgE`
-- **Supabase Secret Key:** `sb_secret_GT4znfQp1qj02deGA3LS3w_biR2BQ3h`
+- **Supabase Secret Key:** bu belgeden kaldirildi (`.env` + panel uzerinden yonetilir).
+  Git gecmisinde acikta kaldigi icin Supabase panelinden **yenilenmelidir**.
 
 ---
 
