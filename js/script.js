@@ -1,4 +1,10 @@
-// Supabase ayarları artık config.js dosyasından geliyor.
+/* ==========================================================================
+   js/script.js — OTOMATİK ÜRETİLMİŞ DOSYA, ELLE DÜZENLEMEYİN.
+   --------------------------------------------------------------------------
+   Kaynak : src/js/parça dosyaları (sıra: src/js/manifest.json)
+   Derle  : node tools/build.js
+   Kontrol: node tools/build.js --check
+   ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
 
     // iOS Safari active state CSS activation
@@ -1055,12 +1061,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             localStorage.setItem('felek_categories_v6', catsStr);
                             localStorage.setItem('felek_menu_items_v6', itemsStr);
                             
-                            if (window.translations) {
+                            // translations.js top-level `const` ile tanimli oldugu icin
+                            // window.translations HER ZAMAN undefined'dir; sozluge ancak
+                            // bare identifier ile erisilebilir (bkz. menu.html inline script).
+                            if (typeof translations !== 'undefined') {
                                 catData.forEach(c => {
-                                    if (window.translations.tr && c.name_tr) window.translations.tr['cat_' + c.id] = c.name_tr;
-                                    if (window.translations.en && c.name_en) window.translations.en['cat_' + c.id] = c.name_en;
-                                    if (window.translations.ar && c.name_ar) window.translations.ar['cat_' + c.id] = c.name_ar;
-                                    if (window.translations.ru && c.name_ru) window.translations.ru['cat_' + c.id] = c.name_ru;
+                                    if (translations.tr && c.name_tr) translations.tr['cat_' + c.id] = c.name_tr;
+                                    if (translations.en && c.name_en) translations.en['cat_' + c.id] = c.name_en;
+                                    if (translations.ar && c.name_ar) translations.ar['cat_' + c.id] = c.name_ar;
+                                    if (translations.ru && c.name_ru) translations.ru['cat_' + c.id] = c.name_ru;
                                 });
                             }
                             
@@ -1100,7 +1109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (typeof gtag === 'function') {
                 gtag('event', 'click_whatsapp_reservation', {
                     event_category: 'conversion',
-                    event_label: link.innerText.trim() || 'WhatsApp Rezervasyon',
+                    event_label: (link.innerText || link.textContent || '').trim() || 'WhatsApp Rezervasyon',
                     page_location: window.location.href
                 });
             }
