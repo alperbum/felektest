@@ -16,6 +16,7 @@ import json
 import argparse
 import datetime
 import requests
+from tools_config import get
 from google.oauth2 import service_account
 import google.auth.transport.requests
 
@@ -28,8 +29,11 @@ if hasattr(sys.stderr, 'reconfigure'):
 # Configuration
 KEY_FILE = "service_account.json"
 PROPERTY_ID = "534404937"
-TELEGRAM_BOT_TOKEN = "8721886347:AAHWTqfUt9AnfJbmIZGeQVkltIrSQ9bo6O4"
-TELEGRAM_CHAT_ID = "1585282829"
+# Kimlik bilgileri ortam degiskeni veya .env'den okunur (bkz. .env.example).
+# Onceden buraya duz metin yaziliyordu; token depo gecmisinde acikta kaldigi
+# icin BotFather > /revoke ile yenilenmelidir.
+TELEGRAM_BOT_TOKEN = get('TG_BOT_TOKEN')
+TELEGRAM_CHAT_ID = get('TG_CHAT_ID')
 
 SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"]
 
@@ -283,6 +287,9 @@ def fetch_analytics(days=30, send_telegram=False):
         for chan, sess, _, _ in channels_data[:3]:
             msg += f"• {chan}: {sess} oturum\n"
 
+        if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+            print("[-] Telegram bildirimi atlandi: TG_BOT_TOKEN / TG_CHAT_ID tanimli degil.")
+            return
         t_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
         t_res = requests.post(t_url, json={"chat_id": TELEGRAM_CHAT_ID, "text": msg, "parse_mode": "Markdown"}, timeout=10)
         if t_res.status_code == 200:

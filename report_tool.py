@@ -16,6 +16,7 @@ import json
 import argparse
 import datetime
 import requests
+from tools_config import get
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 import google.auth.transport.requests
@@ -29,8 +30,9 @@ if hasattr(sys.stderr, 'reconfigure'):
 # Configuration
 KEY_FILE = "service_account.json"
 SITE_URL = "https://www.felekmangalbasi.com/"
-TELEGRAM_BOT_TOKEN = "8721886347:AAHWTqfUt9AnfJbmIZGeQVkltIrSQ9bo6O4"
-TELEGRAM_CHAT_ID = "1585282829"
+# Kimlik bilgileri ortam degiskeni veya .env'den okunur (bkz. .env.example).
+TELEGRAM_BOT_TOKEN = get('TG_BOT_TOKEN')
+TELEGRAM_CHAT_ID = get('TG_CHAT_ID')
 PLACE_ID = "ChIJLS7LIaO8yhQRGOEl-LNOajE"
 
 SCOPES = [
@@ -269,6 +271,9 @@ def send_telegram_summary(clicks, clicks_diff, impr, impr_diff, ctr, pos, top_qu
             
     msg += f"\n🌐 [Web Sitesi](https://www.felekmangalbasi.com) | 📍 [Haritalar](https://maps.google.com/maps?cid=3560744990259142936)"
 
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        print("[!] Telegram bildirimi atlandi: TG_BOT_TOKEN / TG_CHAT_ID tanimli degil.")
+        return
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {
         "chat_id": TELEGRAM_CHAT_ID,

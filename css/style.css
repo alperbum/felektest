@@ -1419,3 +1419,12 @@ footer {
   margin: 0 auto 3rem auto;
   max-width: 500px;
 }
+
+/* ---------------------------------------------------------------------------
+   Geri bildirim formu durum mesajlari (js/feedback.js)
+   Onceden satir ici stil ile veriliyordu (status.style.color). Renkler
+   birebir korundu; artik sinif uzerinden yonetiliyor.
+   --------------------------------------------------------------------------- */
+.feedback-status.is-pending { color: var(--muted); }
+.feedback-status.is-success { color: #c8923a; }
+.feedback-status.is-error   { color: #ff6b6b; }

@@ -51,3 +51,9 @@ scratch_non_brand.py
 
 # --- Local PHP probe ---
 test.php
+# --- Sunucu tarafi yerel yapilandirma (token icerir) ---
+api/config.php
+.env.example haric .env*
+
+# --- Git'e tasima paketi (eski sirleri iceren diff'ler; asla commit edilmez) ---
+handoff/

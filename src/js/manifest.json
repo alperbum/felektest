@@ -1,0 +1,15 @@
+{
+  "not": "js/script.js parça sırası. Dosyalar TEK bir DOMContentLoaded closure'ını paylaşır; bu yüzden sıra ve kapsam korunmalıdır.",
+  "fragments": [
+    "00-bootstrap.js",
+    "01-media-url.js",
+    "02-i18n.js",
+    "03-ui.js",
+    "04-menu-data.js",
+    "05-menu-schema.js",
+    "06-menu-state.js",
+    "07-menu-render.js",
+    "08-menu-boot.js",
+    "09-analytics.js"
+  ]
+}
