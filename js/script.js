@@ -722,6 +722,17 @@ document.addEventListener('DOMContentLoaded', () => {
             backBtnContainer.innerHTML = `<button class="qr-back-btn" onclick="renderCategories()">${backBtnText}</button>`;
             fragment.appendChild(backBtnContainer);
 
+            // Mezeler için paylaşım porsiyonu bilgilendirmesi
+            if (activeCategory === 'mezeler') {
+                const noteContainer = document.createElement('div');
+                noteContainer.className = 'qr-category-note-wrapper';
+                const noteText = (typeof currentLang !== 'undefined' && translations[currentLang] && translations[currentLang].meze_portion_note)
+                    ? translations[currentLang].meze_portion_note
+                    : 'Paylaşımlık servis · 2–3 kişilik';
+                noteContainer.innerHTML = `<p class="qr-category-note">${escapeHtml(noteText)}</p>`;
+                fragment.appendChild(noteContainer);
+            }
+
             const filteredItems = menuData.filter(item => item.categoryId === activeCategory);
             
             if (filteredItems.length === 0) {
