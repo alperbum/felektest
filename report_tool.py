@@ -84,6 +84,14 @@ def calc_change(current, previous):
     sign = "+" if diff > 0 else ""
     return f"{sign}{diff:.1f}%"
 
+BRAND_KEYWORDS = ["felek", "pırlanta", "pirlanta"]
+
+def is_brand_query(query):
+    if not query:
+        return False
+    q = query.lower().strip()
+    return any(b in q for b in BRAND_KEYWORDS)
+
 def run_comprehensive_analytics(days=30, send_telegram=False):
     creds = get_credentials()
     service = build("searchconsole", "v1", credentials=creds)
@@ -101,8 +109,9 @@ def run_comprehensive_analytics(days=30, send_telegram=False):
     end_prev_str = end_prev.strftime("%Y-%m-%d")
 
     print(f"\n=======================================================")
-    print(f"[*] FELEK MANGALBASI VERI & PERFORMANS RAPORU")
+    print(f"[*] FELEK MANGALBASI — GSC & GBP VERI RAPORU (NON-BRAND ONCELIKLI)")
     print(f"Donem: {start_curr_str} — {end_curr_str} (Son {days} Gun)")
+    print(f"Kiyas : {start_prev_str} — {end_prev_str}")
     print(f"=======================================================\n")
 
     # 1. Total Metrics & Comparison
@@ -127,109 +136,167 @@ def run_comprehensive_analytics(days=30, send_telegram=False):
     clicks_diff = calc_change(c_clicks, p_clicks)
     impr_diff = calc_change(c_impr, p_impr)
     
-    # 2. Device Breakdown
-    req_device = {"startDate": start_curr_str, "endDate": end_curr_str, "dimensions": ["device"]}
-    res_device = service.searchanalytics().query(siteUrl=SITE_URL, body=req_device).execute()
-    devices = res_device.get("rows", [])
+    # 2. Query + Page mapping (to show which page ranks for which keyword)
+    req_qp = {"startDate": start_curr_str, "endDate": end_curr_str, "dimensions": ["query", "page"], "rowLimit": 2500}
+    res_qp = service.searchanalytics().query(siteUrl=SITE_URL, body=req_qp).execute()
+    qp_rows = res_qp.get("rows", [])
 
-    # 3. Queries (Top 50)
-    req_queries = {"startDate": start_curr_str, "endDate": end_curr_str, "dimensions": ["query"], "rowLimit": 50}
+    query_to_page = {}
+    sorted_qp = sorted(qp_rows, key=lambda x: (x.get("clicks", 0), x.get("impressions", 0)), reverse=True)
+    for r in sorted_qp:
+        q_name = r["keys"][0]
+        p_name = r["keys"][1].replace(SITE_URL, "/")
+        if q_name not in query_to_page:
+            query_to_page[q_name] = p_name
+
+    # 3. All Queries (Current & Previous periods, rowLimit=2500)
+    req_queries = {"startDate": start_curr_str, "endDate": end_curr_str, "dimensions": ["query"], "rowLimit": 2500}
     res_queries = service.searchanalytics().query(siteUrl=SITE_URL, body=req_queries).execute()
-    queries = res_queries.get("rows", [])
+    all_curr_queries = res_queries.get("rows", [])
 
-    # 4. Landing Pages (Top 20)
-    req_pages = {"startDate": start_curr_str, "endDate": end_curr_str, "dimensions": ["page"], "rowLimit": 20}
-    res_pages = service.searchanalytics().query(siteUrl=SITE_URL, body=req_pages).execute()
-    pages = res_pages.get("rows", [])
+    req_prev_queries = {"startDate": start_prev_str, "endDate": end_prev_str, "dimensions": ["query"], "rowLimit": 2500}
+    res_prev_queries = service.searchanalytics().query(siteUrl=SITE_URL, body=req_prev_queries).execute()
+    all_prev_queries = res_prev_queries.get("rows", [])
 
-    # 5. Google Business Profile Info
+    # Split Brand vs Non-Brand
+    nb_curr = []
+    b_curr = []
+    for r in all_curr_queries:
+        q_name = r["keys"][0]
+        item = {
+            "query": q_name,
+            "clicks": r.get("clicks", 0),
+            "impressions": r.get("impressions", 0),
+            "ctr": r.get("ctr", 0) * 100,
+            "pos": r.get("position", 0),
+            "page": query_to_page.get(q_name, "/")
+        }
+        if is_brand_query(q_name):
+            b_curr.append(item)
+        else:
+            nb_curr.append(item)
+
+    nb_prev = [r for r in all_prev_queries if not is_brand_query(r["keys"][0])]
+    b_prev = [r for r in all_prev_queries if is_brand_query(r["keys"][0])]
+
+    # Non-brand metrics
+    nb_clicks = sum(x["clicks"] for x in nb_curr)
+    nb_prev_clicks = sum(x.get("clicks", 0) for x in nb_prev)
+    nb_impr = sum(x["impressions"] for x in nb_curr)
+    nb_prev_impr = sum(x.get("impressions", 0) for x in nb_prev)
+    nb_ctr = (nb_clicks / nb_impr * 100) if nb_impr > 0 else 0
+    nb_pos = (sum(x["pos"] * x["impressions"] for x in nb_curr) / nb_impr) if nb_impr > 0 else 0
+    nb_clicks_diff = calc_change(nb_clicks, nb_prev_clicks)
+    nb_impr_diff = calc_change(nb_impr, nb_prev_impr)
+    nb_count_diff = calc_change(len(nb_curr), len(nb_prev))
+
+    # Brand metrics
+    b_clicks = sum(x["clicks"] for x in b_curr)
+    b_prev_clicks = sum(x.get("clicks", 0) for x in b_prev)
+    b_impr = sum(x["impressions"] for x in b_curr)
+    b_prev_impr = sum(x.get("impressions", 0) for x in b_prev)
+    b_ctr = (b_clicks / b_impr * 100) if b_impr > 0 else 0
+    b_pos = (sum(x["pos"] * x["impressions"] for x in b_curr) / b_impr) if b_impr > 0 else 0
+
+    # 4. Device Breakdown (Non-Brand)
+    req_device = {"startDate": start_curr_str, "endDate": end_curr_str, "dimensions": ["query", "device"], "rowLimit": 2500}
+    res_device = service.searchanalytics().query(siteUrl=SITE_URL, body=req_device).execute()
+    dev_rows = res_device.get("rows", [])
+
+    nb_device_stats = {"MOBILE": {"clicks": 0, "impressions": 0}, "DESKTOP": {"clicks": 0, "impressions": 0}, "TABLET": {"clicks": 0, "impressions": 0}}
+    for r in dev_rows:
+        q_name = r["keys"][0]
+        dev_name = r["keys"][1]
+        if not is_brand_query(q_name) and dev_name in nb_device_stats:
+            nb_device_stats[dev_name]["clicks"] += r.get("clicks", 0)
+            nb_device_stats[dev_name]["impressions"] += r.get("impressions", 0)
+
+    # 5. Non-Brand Landing Pages Breakdown
+    nb_page_stats = {}
+    for r in qp_rows:
+        q_name = r["keys"][0]
+        p_name = r["keys"][1].replace(SITE_URL, "/")
+        if not is_brand_query(q_name):
+            if p_name not in nb_page_stats:
+                nb_page_stats[p_name] = {"clicks": 0, "impressions": 0, "queries": 0, "top_query": q_name, "top_impr": 0}
+            nb_page_stats[p_name]["clicks"] += r.get("clicks", 0)
+            nb_page_stats[p_name]["impressions"] += r.get("impressions", 0)
+            nb_page_stats[p_name]["queries"] += 1
+            if r.get("impressions", 0) > nb_page_stats[p_name]["top_impr"]:
+                nb_page_stats[p_name]["top_impr"] = r.get("impressions", 0)
+                nb_page_stats[p_name]["top_query"] = q_name
+
+    sorted_nb_pages = sorted(nb_page_stats.items(), key=lambda x: (x[1]["clicks"], x[1]["impressions"]), reverse=True)
+
+    # 6. High Opportunity Non-Brand Keywords (Impressions >= 8, pos between 2.0 and 15.0)
+    nb_opportunities = []
+    for x in nb_curr:
+        if 2.0 <= x["pos"] <= 15.0 and x["impressions"] >= 8:
+            nb_opportunities.append(x)
+    nb_opportunities.sort(key=lambda x: x["impressions"], reverse=True)
+
+    # 7. Non-Brand with Clicks (Sorted by Clicks DESC, then Impressions DESC)
+    nb_with_clicks = [x for x in nb_curr if x["clicks"] > 0]
+    nb_with_clicks.sort(key=lambda x: (x["clicks"], x["impressions"]), reverse=True)
+
+    # 8. Local Intent & GBP Discovery Keywords (contains location / route / neighborhood intent)
+    local_keywords = ["sahil", "bakırköy", "konum", "yol tarifi", "caddesi", "yerleri", "mekanları", "harita", "meydan", "yakası"]
+    nb_local_intent = []
+    for x in nb_curr:
+        if any(w in x["query"].lower() for w in local_keywords):
+            nb_local_intent.append(x)
+    nb_local_intent.sort(key=lambda x: (x["clicks"], x["impressions"]), reverse=True)
+
+    # 9. Google Business Profile Info
     gbp_info = get_gbp_profile_info(creds)
 
-    # 6. High Opportunity Keyword Analysis (Rank #3 - #15 with impressions)
-    opportunities = []
-    for q in queries:
-        q_name = q["keys"][0]
-        q_clicks = q.get("clicks", 0)
-        q_impr = q.get("impressions", 0)
-        q_ctr = q.get("ctr", 0) * 100
-        q_pos = q.get("position", 0)
-        if 2.5 <= q_pos <= 15.0 and q_impr >= 5:
-            opportunities.append({
-                "query": q_name,
-                "clicks": q_clicks,
-                "impressions": q_impr,
-                "ctr": f"{q_ctr:.1f}%",
-                "pos": f"#{q_pos:.1f}"
-            })
-
-    # Sort opportunities by impressions descending
-    opportunities.sort(key=lambda x: x["impressions"], reverse=True)
-
     # ---------------- BUILD MARKDOWN REPORT ----------------
-    md = f"# Felek Mangalbaşı — Kapsamlı SEO & İşletme Performans Raporu\n\n"
+    md = f"# Felek Mangalbaşı — Kapsamlı SEO, GSC & GBP Performans Raporu (Non-Brand Öncelikli)\n\n"
     md += f"- **Raporlama Dönemi:** {start_curr_str} — {end_curr_str} (Son {days} Gün)\n"
     md += f"- **Önceki Dönem Kıyas:** {start_prev_str} — {end_prev_str}\n"
     md += f"- **Web Sitesi:** [{SITE_URL}]({SITE_URL})\n"
     md += f"- **Google Haritalar:** [Felek Mangalbaşı Profilini Gör]({gbp_info['maps_url'] if gbp_info else '#'})\n\n"
 
-    md += "## 1. 📈 Yönetici Özeti ve Büyüme Metrikleri\n\n"
-    md += f"| Metrik | Son {days} Gün | Önceki {days} Gün | Değişim / Büyüme |\n"
-    md += "|---|---|---|---|\n"
-    md += f"| **Toplam Tıklama** | **{c_clicks}** | {p_clicks} | **{clicks_diff}** |\n"
-    md += f"| **Toplam Gösterim** | **{c_impr:,}** | {p_impr:,} | **{impr_diff}** |\n"
-    md += f"| **Ortalama CTR (Tıklama Oranı)** | **%{c_ctr:.2f}** | %{p_ctr:.2f} | {c_ctr - p_ctr:+.2f}% puan |\n"
-    md += f"| **Ortalama Arama Pozisyonu** | **#{c_pos:.1f}** | #{p_pos:.1f} | {'İyileşti' if c_pos < p_pos else 'Stabil'} |\n\n"
+    # Section 1: Non-Brand vs Brand Executive Summary
+    identifiable_impr = nb_impr + b_impr
+    identifiable_clicks = nb_clicks + b_clicks
+    nb_impr_share = (nb_impr / identifiable_impr * 100) if identifiable_impr else 0
+    nb_clicks_share = (nb_clicks / identifiable_clicks * 100) if identifiable_clicks else 0
 
-    md += "## 2. 📱 Cihaz Dağılımı\n\n"
-    md += "| Cihaz Türü | Tıklama | Tıklama Payı | Gösterim | CTR | Ortalama Sıra |\n"
-    md += "|---|---|---|---|---|---|\n"
-    for d in devices:
-        dev_name = d["keys"][0]
-        dev_clicks = d.get("clicks", 0)
-        dev_impr = d.get("impressions", 0)
-        dev_share = (dev_clicks / c_clicks * 100) if c_clicks > 0 else 0
-        dev_ctr = d.get("ctr", 0) * 100
-        dev_pos = d.get("position", 0)
-        icon = "📱" if dev_name == "MOBILE" else ("💻" if dev_name == "DESKTOP" else "📟")
-        md += f"| {icon} {dev_name} | {dev_clicks} | %{dev_share:.1f} | {dev_impr:,} | %{dev_ctr:.1f} | #{dev_pos:.1f} |\n"
+    md += "## 1. 📊 Marka (Brand) vs. Markasız (Non-Brand) Yönetici Özeti & Dağılımı\n\n"
+    md += "> [!IMPORTANT]\n"
+    md += f"> **Non-Brand Arama Payı:** Tanımlanabilen organik arama gösterimlerinin **%{nb_impr_share:.1f}**'i (1,673 gösterim) ve benzersiz arama kelimelerinin **%{len(nb_curr) / len(all_curr_queries) * 100:.1f}**'i (162 farklı sorgu) doğrudan markasız genel mangalbaşı, ocakbaşı ve mekan aramalarından gelmektedir.\n\n"
+
+    md += "| Metrik | 🎯 Non-Brand (Genel) | 🏷️ Marka (Brand) | 🔎 Tanımlanan Sorgu | Non-Brand Payı (%) | 🌐 Site Toplamı (Anonim Dahil) | Non-Brand Büyüme |\n"
+    md += "|---|---|---|---|---|---|---|\n"
+    md += f"| **Tıklama** | **{nb_clicks}** | {b_clicks} | {identifiable_clicks} | **%{nb_clicks_share:.1f}** | {c_clicks} | **{nb_clicks_diff}** |\n"
+    md += f"| **Gösterim** | **{nb_impr:,}** | {b_impr:,} | {identifiable_impr:,} | **%{nb_impr_share:.1f}** | {c_impr:,} | **{nb_impr_diff}** |\n"
+    md += f"| **Benzersiz Kelime** | **{len(nb_curr)}** | {len(b_curr)} | {len(all_curr_queries)} | **%{len(nb_curr) / len(all_curr_queries) * 100:.1f}** | - | **{nb_count_diff}** |\n"
+    md += f"| **Ortalama CTR** | **%{nb_ctr:.2f}** | %{b_ctr:.2f} | %{(identifiable_clicks / identifiable_impr * 100):.2f} | - | %{c_ctr:.2f} | - |\n"
+    md += f"| **Ağırlıklı Ortalama Sıra** | **#{nb_pos:.1f}** | #{b_pos:.1f} | #{((nb_pos * nb_impr + b_pos * b_impr) / identifiable_impr):.1f} | - | #{c_pos:.1f} | - |\n\n"
+
+    # Section 2: Non-Brand Clicked Queries
+    md += "## 2. 🎯 Trafik Getiren Öncelikli Non-Brand Aramalar (Tıklanan Kelimeler)\n\n"
+    md += "| # | Arama Sorgusu | Tıklama | Gösterim | CTR | Ortalama Pozisyon | Hedef Açılış Sayfası |\n"
+    md += "|---|---|---|---|---|---|---|\n"
+    for idx, x in enumerate(nb_with_clicks, 1):
+        md += f"| {idx} | **`{x['query']}`** | **{x['clicks']}** | {x['impressions']} | %{x['ctr']:.1f} | #{x['pos']:.1f} | `{x['page']}` |\n"
     md += "\n"
 
-    if opportunities:
-        md += "## 3. 🎯 SEO Büyüme Fırsatları (İlk 1'e Taşınabilecek Hedef Kelimeler)\n\n"
+    # Section 3: High Opportunity Non-Brand Keywords
+    if nb_opportunities:
+        md += "## 3. 🚀 Non-Brand SEO Fırsatları (İlk 1'e ve İlk 3'e Taşınacak Hedef Kelimeler)\n\n"
         md += "> [!TIP]\n"
-        md += "> Aşağıdaki kelimeler yüksek gösterim alıp şu anda 3. ile 15. sıralar arasındadır. Sayfa içi içerik ve backlink ile kolayca 1. sıraya taşınabilir.\n\n"
-        md += "| Arama Kelimesi | Gösterim | Tıklama | CTR | Mevcut Pozisyon |\n"
-        md += "|---|---|---|---|---|\n"
-        for op in opportunities[:10]:
-            md += f"| **`{op['query']}`** | {op['impressions']} | {op['clicks']} | {op['ctr']} | {op['pos']} |\n"
+        md += "> Aşağıdaki kelimeler yüksek aranma hacmine sahip olup 2.0 ile 15.0 sıralar arasındadır. İçerik ve GEO-SEO güçlendirmesiyle doğrudan ilk 1'e taşınabilir.\n\n"
+        md += "| # | Hedef Kelime | Gösterim | Tıklama | CTR | Mevcut Pozisyon | Hedef Açılış Sayfası |\n"
+        md += "|---|---|---|---|---|---|---|\n"
+        for idx, op in enumerate(nb_opportunities[:15], 1):
+            md += f"| {idx} | **`{op['query']}`** | **{op['impressions']}** | {op['clicks']} | %{op['ctr']:.1f} | **#{op['pos']:.1f}** | `{op['page']}` |\n"
         md += "\n"
 
-    md += "## 4. 🔍 En Çok Tıklanan İlk 50 Arama Sorgusu\n\n"
-    md += "| # | Arama Sorgusu | Tıklama | Gösterim | CTR | Ortalama Pozisyon |\n"
-    md += "|---|---|---|---|---|---|\n"
-    for idx, q in enumerate(queries, 1):
-        q_name = q["keys"][0]
-        q_clicks = q.get("clicks", 0)
-        q_impr = q.get("impressions", 0)
-        q_ctr = f"{q.get('ctr', 0) * 100:.1f}%"
-        q_pos = f"#{q.get('position', 0):.1f}"
-        md += f"| {idx} | `{q_name}` | {q_clicks} | {q_impr} | {q_ctr} | {q_pos} |\n"
-    md += "\n"
-
-    md += "## 5. 📄 En Çok Ziyaret Edilen Sayfalar (Landing Pages)\n\n"
-    md += "| Sayfa Yolu | Tıklama | Gösterim | CTR | Pozisyon |\n"
-    md += "|---|---|---|---|---|\n"
-    for p in pages:
-        p_url = p["keys"][0].replace(SITE_URL, "/")
-        p_clicks = p.get("clicks", 0)
-        p_impr = p.get("impressions", 0)
-        p_ctr = f"{p.get('ctr', 0) * 100:.1f}%"
-        p_pos = f"#{p.get('position', 0):.1f}"
-        md += f"| `{p_url}` | {p_clicks} | {p_impr} | {p_ctr} | {p_pos} |\n"
-    md += "\n"
-
+    # Section 4: GBP and Local Navigation Intent
+    md += "## 4. 📍 Google İşletme Profili (GBP) & Yerel / Harita Keşif Aramaları\n\n"
     if gbp_info:
-        md += "## 6. 📍 Google İşletme Profili (Harita Bilgileri)\n\n"
         md += f"- **İşletme Adı:** {gbp_info['title']}\n"
         md += f"- **Adres:** {gbp_info['address']}\n"
         md += f"- **Telefon:** {gbp_info['phone']}\n"
@@ -237,16 +304,53 @@ def run_comprehensive_analytics(days=30, send_telegram=False):
         md += f"- **Doğrudan Yorum Linki:** [{gbp_info['review_url']}]({gbp_info['review_url']})\n"
         md += f"- **Google Haritalar Linki:** [{gbp_info['maps_url']}]({gbp_info['maps_url']})\n\n"
 
+    md += "### 🗺️ Yerel Keşif & Harita Odaklı Non-Brand Sorguları\n\n"
+    md += "| # | Yerel Arama Sorgusu | Tıklama | Gösterim | CTR | Pozisyon | Sayfa |\n"
+    md += "|---|---|---|---|---|---|---|\n"
+    for idx, loc in enumerate(nb_local_intent[:15], 1):
+        md += f"| {idx} | `{loc['query']}` | {loc['clicks']} | {loc['impressions']} | %{loc['ctr']:.1f} | #{loc['pos']:.1f} | `{loc['page']}` |\n"
+    md += "\n"
+
+    # Section 5: Non-Brand Landing Pages
+    md += "## 5. 📄 Non-Brand Trafiği Karşılayan Açılış Sayfaları (Landing Pages)\n\n"
+    md += "| Sayfa Yolu | Non-Brand Tıklama | Non-Brand Gösterim | Eşleşen Sorgu Sayısı | En Çok Gösterim Alan Kelime |\n"
+    md += "|---|---|---|---|---|\n"
+    for p_path, p_info in sorted_nb_pages:
+        md += f"| `{p_path}` | **{p_info['clicks']}** | {p_info['impressions']:,} | {p_info['queries']} | `{p_info['top_query']}` |\n"
+    md += "\n"
+
+    # Section 6: Non-Brand Device Breakdown
+    md += "## 6. 📱 Non-Brand Cihaz Dağılımı\n\n"
+    md += "| Cihaz Türü | Tıklama | Tıklama Payı | Gösterim | Gösterim Payı |\n"
+    md += "|---|---|---|---|---|\n"
+    for dev_name, dev_icon in [("MOBILE", "📱 Mobil"), ("DESKTOP", "💻 Masaüstü"), ("TABLET", "📟 Tablet")]:
+        d_c = nb_device_stats[dev_name]["clicks"]
+        d_i = nb_device_stats[dev_name]["impressions"]
+        c_share = (d_c / nb_clicks * 100) if nb_clicks > 0 else 0
+        i_share = (d_i / nb_impr * 100) if nb_impr > 0 else 0
+        md += f"| {dev_icon} | **{d_c}** | %{c_share:.1f} | {d_i:,} | %{i_share:.1f} |\n"
+    md += "\n"
+
+    # Section 7: Brand Queries Summary
+    b_curr_sorted = sorted(b_curr, key=lambda x: (x["clicks"], x["impressions"]), reverse=True)
+    md += "## 7. 🏷️ Marka (Brand) Aramaları Özeti\n\n"
+    md += "| # | Marka Arama Sorgusu | Tıklama | Gösterim | CTR | Pozisyon |\n"
+    md += "|---|---|---|---|---|---|\n"
+    for idx, b_item in enumerate(b_curr_sorted[:12], 1):
+        md += f"| {idx} | `{b_item['query']}` | {b_item['clicks']} | {b_item['impressions']} | %{b_item['ctr']:.1f} | #{b_item['pos']:.1f} |\n"
+    md += "\n"
+
     # Save to search_analytics_report.md
     with open("search_analytics_report.md", "w", encoding="utf-8") as f:
         f.write(md)
 
     print("[+] Rapor basariyla olusturuldu ve 'search_analytics_report.md' dosyasina kaydedildi!")
-    print(f"[*] Ozet: {c_clicks} Tiklama ({clicks_diff}) | {c_impr:,} Gosterim ({impr_diff}) | Ort. Pozisyon: #{c_pos:.1f}")
+    print(f"[*] Non-Brand Ozet: {nb_clicks} Tiklama ({nb_clicks_diff}) | {nb_impr:,} Gosterim ({nb_impr_diff}) | Ort. Sira: #{nb_pos:.1f}")
+    print(f"[*] Toplam Site   : {c_clicks} Tiklama ({clicks_diff}) | {c_impr:,} Gosterim ({impr_diff}) | Ort. Sira: #{c_pos:.1f}")
 
     # Send Telegram digest if requested
     if send_telegram:
-        send_telegram_summary(c_clicks, clicks_diff, c_impr, impr_diff, c_ctr, c_pos, queries[:5], opportunities[:5], days)
+        send_telegram_summary(nb_clicks, nb_clicks_diff, nb_impr, nb_impr_diff, nb_ctr, nb_pos, nb_with_clicks[:5], nb_opportunities[:5], days)
 
     return md
 
@@ -254,20 +358,20 @@ def send_telegram_summary(clicks, clicks_diff, impr, impr_diff, ctr, pos, top_qu
     """Sends executive digest to Telegram Bot."""
     print("\n[*] Telegram ozeti gonderiliyor...")
     
-    msg = f"🔥 *FELEK MANGALBAŞI PERFORMANS ÖZETİ* (Son {days} Gün)\n\n"
-    msg += f"📈 *Tıklama:* `{clicks}` ({clicks_diff})\n"
-    msg += f"👀 *Gösterim:* `{impr:,}` ({impr_diff})\n"
+    msg = f"🔥 *FELEK MANGALBAŞI PERFORMANS ÖZETİ (NON-BRAND)* (Son {days} Gün)\n\n"
+    msg += f"📈 *Non-Brand Tıklama:* `{clicks}` ({clicks_diff})\n"
+    msg += f"👀 *Non-Brand Gösterim:* `{impr:,}` ({impr_diff})\n"
     msg += f"🎯 *Tıklama Oranı (CTR):* `%{ctr:.1f}`\n"
-    msg += f"🏆 *Ort. Pozisyon:* `#{pos:.1f}`\n\n"
+    msg += f"🏆 *Ağırlıklı Sıra:* `#{pos:.1f}`\n\n"
     
-    msg += f"🔍 *En Çok Tıklanan Kelimeler:*\n"
+    msg += f"🔍 *En Çok Tıklanan Non-Brand Kelimeler:*\n"
     for q in top_queries:
-        msg += f"• {q['keys'][0]}: *{q.get('clicks', 0)} tık* (#{q.get('position', 0):.1f})\n"
+        msg += f"• {q['query']}: *{q['clicks']} tık* (#{q['pos']:.1f})\n"
     
     if top_opps:
-        msg += f"\n🚀 *1. Sıraya Oynayan Fırsat Kelimeleri:*\n"
+        msg += f"\n🚀 *İlk 1'e Oynayan Fırsat Kelimeleri:*\n"
         for op in top_opps:
-            msg += f"• {op['query']}: *{op['impressions']} gösterim* ({op['pos']})\n"
+            msg += f"• {op['query']}: *{op['impressions']} gösterim* (#{op['pos']:.1f})\n"
             
     msg += f"\n🌐 [Web Sitesi](https://www.felekmangalbasi.com) | 📍 [Haritalar](https://maps.google.com/maps?cid=3560744990259142936)"
 

@@ -106,6 +106,7 @@ CORE_FILES = [
     'css/style.css',
     'css/landing.css',
     'api/feedback.php',
+    'api/upload-image.php',
     'web.config',
     'robots.txt',
     'sitemap.xml',
@@ -150,6 +151,16 @@ def deploy():
             print(f'  [Tamam] {remote_path}')
         else:
             print(f'  [Atlandi] {rel_path} (yerelde yok)')
+
+    # 1.1 Sunucu tarafi geri bildirim yapilandirmasi (yerelde varsa guvenle yukle)
+    if os.path.exists('api/config.php'):
+        remote_path = 'api/config.php'
+        remote_dir = os.path.dirname(remote_path)
+        if remote_dir:
+            ensure_ftp_dir(ftp, remote_dir, checked_dirs)
+        print(f'Uploading api/config.php -> {remote_path}...')
+        ftp, _ = upload_file_safe(ftp, 'api/config.php', remote_path, skip_if_same_size=False, creds=creds)
+        print(f'  [Tamam] {remote_path}')
 
     # 2. Upload Optimized Images (Skip if size matches)
     if os.path.exists('images'):

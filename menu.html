@@ -132,7 +132,7 @@
     <link rel="dns-prefetch" href="https://efltjgimkjjtagfebmha.supabase.co">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=5.1">
+    <link rel="stylesheet" href="css/style.css?v=5.2">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E3588HSCF5"></script>
@@ -177,7 +177,7 @@
                 <option value="ar">AR</option>
                 <option value="ru">RU</option>
             </select>
-            <a href="https://wa.me/905397776067" target="_blank" rel="noopener noreferrer" class="nav-reserve" data-i18n="nav_reservation">Rezervasyon</a>
+            <a href="https://wa.me/905397776067?text=Merhaba%2C%20Felek%20Mangalba%C5%9F%C4%B1%20i%C3%A7in%20masa%20rezervasyonu%20yapmak%20istiyorum." target="_blank" rel="noopener noreferrer" class="nav-reserve" data-i18n="nav_reservation">Rezervasyon</a>
             
             <button class="menu-toggle" id="menu-toggle" aria-label="Menüyü aç" aria-expanded="false">
                 <span></span>
@@ -192,7 +192,10 @@
             <div class="qr-menu-header">
                 <h1 class="cta-title menu-hero-title" data-i18n="menu_title">Menü ve Fiyatlar</h1>
                 <p class="cta-eyebrow menu-hero-sub" data-i18n="menu_subtitle">Güncel menü ve fiyatlar</p>
-                <a href="#feedback" onclick="document.getElementById('feedback').scrollIntoView({behavior:'smooth'}); return false;" class="menu-jump" data-i18n="feedback_hint">İstek ve önerilerinizi iletin</a>
+                <div class="menu-hero-actions">
+                    <a href="https://wa.me/905397776067?text=Merhaba%2C%20Felek%20Mangalba%C5%9F%C4%B1%20i%C3%A7in%20masa%20rezervasyonu%20yapmak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn btn--primary" data-i18n="btn_whatsapp">WhatsApp ile Rezervasyon</a>
+                    <a href="#feedback" onclick="document.getElementById('feedback').scrollIntoView({behavior:'smooth'}); return false;" class="menu-jump" data-i18n="feedback_hint">İstek ve önerilerinizi iletin</a>
+                </div>
             </div>
             
 
@@ -264,13 +267,18 @@
                     <li>Adres: Sakızağacı, Kennedy Cad. No:29, 34142 Bakırköy / İstanbul</li>
                     <li>Çalışma Saatleri: Her gün 12:00 – 02:00</li>
                     <li>Telefon: +90 (212) 543 92 48</li>
-                    <li>Rezervasyon: <a href="https://wa.me/905397776067">WhatsApp ile Masa Ayırtın</a></li>
+                    <li>Rezervasyon: <a href="https://wa.me/905397776067?text=Merhaba%2C%20Felek%20Mangalba%C5%9F%C4%B1%20i%C3%A7in%20masa%20rezervasyonu%20yapmak%20istiyorum.">WhatsApp ile Masa Ayırtın</a></li>
                 </ul>
             </div>
             </noscript>
             
             <!-- Görüş ve Öneriler Section -->
             <div id="feedback" class="feedback-section reveal reveal-delay-2">
+                <div class="feedback-review-card">
+                    <p class="feedback-review-title" data-i18n="feedback_review_title">Bizi Değerlendirin</p>
+                    <p class="feedback-review-desc" data-i18n="feedback_review_desc">Deneyiminizi Google Haritalar üzerinde paylaşarak bize destek olabilirsiniz.</p>
+                    <a href="https://search.google.com/local/writereview?placeid=ChIJLS7LIaO8yhQRGOEl-LNOajE" target="_blank" rel="noopener noreferrer" class="feedback-google-btn" data-i18n="feedback_review_btn">Google'da Yorum Yazın</a>
+                </div>
                 <h2 class="events-title text-center" data-i18n="feedback_section_title">İstek ve Önerileriniz</h2>
                 <p class="events-body events-body--center text-center" data-i18n="feedback_section_desc">Görüşlerinizi yazın; mesajınız doğrudan işletme yönetimine iletilir.</p>
                 <form id="feedback-form" class="feedback-form">
@@ -338,10 +346,10 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/translations.js?v=5.1" defer></script>
+    <script src="js/translations.js?v=5.2" defer></script>
     <script src="js/config.js" defer></script>
-    <script src="js/script.js?v=5.1" defer></script>
-    <script src="js/feedback.js?v=5.1" defer></script>
+    <script src="js/script.js?v=5.2" defer></script>
+    <script src="js/feedback.js?v=5.2" defer></script>
 
     <!-- AI / SEO Static Menu Block (Hidden from humans, visible to bots) -->
     <div id="ai-seo-menu" class="sr-only">
@@ -366,6 +374,12 @@
             <li>Yerli ve Yabancı Kırmızı/Beyaz Şaraplar</li>
             <li>Geleneksel Şalgam ve Meşrubatlar</li>
         </ul>
+    </div>
+
+    <!-- Mobil Sabit Rezervasyon ve Arama Bari -->
+    <div class="mobile-cta-bar" aria-label="Hızlı iletişim">
+        <a href="tel:+902125439248" class="mobile-cta-btn mobile-cta-btn--call">Hemen Ara</a>
+        <a href="https://wa.me/905397776067?text=Merhaba%2C%20Felek%20Mangalba%C5%9F%C4%B1%20i%C3%A7in%20masa%20rezervasyonu%20yapmak%20istiyorum." target="_blank" rel="noopener noreferrer" class="mobile-cta-btn mobile-cta-btn--primary" data-i18n="nav_reservation">Rezervasyon</a>
     </div>
 </body>
 </html>

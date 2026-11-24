@@ -423,7 +423,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentView = 'categories';
         let activeCategory = null;
         let categoriesDomCache = null; // HTML cache for instant back-navigation
-        window._invalidateCategoryCache = function() { categoriesDomCache = null; };
+        let renderedCategoriesLang = 'tr'; // menu.html SSR baslangicta Turkce basilir
+        window._invalidateCategoryCache = function() {
+            categoriesDomCache = null;
+            renderedCategoriesLang = null;
+        };
 
         // Network-aware loading tier detection
         function getNetworkTier() {
@@ -578,8 +582,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // If already rendered in static HTML (SSR / instant paint), reveal cards immediately without wipe
-            if (menuGrid.children.length >= 10 && !categoriesDomCache && (typeof currentLang === 'undefined' || currentLang === 'tr')) {
+            // If already rendered in target language (SSR / instant paint), reveal cards immediately without wipe
+            if (menuGrid.children.length >= 10 && !categoriesDomCache && renderedCategoriesLang === currentLang) {
                 revealCardsWhenReady(menuGrid, '.qr-category-card img');
                 return;
             }
@@ -626,6 +630,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             menuGrid.appendChild(fragment);
+            renderedCategoriesLang = (typeof currentLang !== 'undefined') ? currentLang : 'tr';
 
             // Görseller hazır olunca kartları göster
             revealCardsWhenReady(menuGrid, '.qr-category-card img');
@@ -703,7 +708,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const stickyBar = document.createElement('div');
                 stickyBar.id = 'qr-sticky-back';
                 stickyBar.className = 'qr-sticky-back';
-                stickyBar.innerHTML = `<button class="qr-back-btn" onclick="renderCategories()">${backBtnText}</button>`;
+                const waBtnText = (typeof currentLang !== 'undefined' && translations[currentLang] && translations[currentLang].nav_reservation) || 'Rezervasyon';
+                stickyBar.innerHTML = `<button class="qr-back-btn" onclick="renderCategories()">${backBtnText}</button><a href="https://wa.me/905397776067?text=Merhaba%2C%20Felek%20Mangalba%C5%9F%C4%B1%20i%C3%A7in%20masa%20rezervasyonu%20yapmak%20istiyorum." target="_blank" rel="noopener noreferrer" class="qr-sticky-wa">${waBtnText}</a>`;
                 document.body.appendChild(stickyBar);
                 document.body.classList.add('has-sticky-back');
             }
@@ -715,6 +721,17 @@ document.addEventListener('DOMContentLoaded', () => {
             backBtnContainer.className = 'qr-back-desktop';
             backBtnContainer.innerHTML = `<button class="qr-back-btn" onclick="renderCategories()">${backBtnText}</button>`;
             fragment.appendChild(backBtnContainer);
+
+            // Mezeler için paylaşım porsiyonu bilgilendirmesi
+            if (activeCategory === 'mezeler') {
+                const noteContainer = document.createElement('div');
+                noteContainer.className = 'qr-category-note-wrapper';
+                const noteText = (typeof currentLang !== 'undefined' && translations[currentLang] && translations[currentLang].meze_portion_note)
+                    ? translations[currentLang].meze_portion_note
+                    : 'Paylaşımlık servis · 2–3 kişilik';
+                noteContainer.innerHTML = `<p class="qr-category-note">${escapeHtml(noteText)}</p>`;
+                fragment.appendChild(noteContainer);
+            }
 
             const filteredItems = menuData.filter(item => item.categoryId === activeCategory);
             
@@ -958,7 +975,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const stickyBar = document.createElement('div');
                     stickyBar.id = 'qr-sticky-back';
                     stickyBar.className = 'qr-sticky-back';
-                    stickyBar.innerHTML = `<button class="qr-back-btn" onclick="renderCategories()">${backBtnText}</button>`;
+                    const waBtnText = (typeof currentLang !== 'undefined' && translations[currentLang] && translations[currentLang].nav_reservation) || 'Rezervasyon';
+                    stickyBar.innerHTML = `<button class="qr-back-btn" onclick="renderCategories()">${backBtnText}</button><a href="https://wa.me/905397776067?text=Merhaba%2C%20Felek%20Mangalba%C5%9F%C4%B1%20i%C3%A7in%20masa%20rezervasyonu%20yapmak%20istiyorum." target="_blank" rel="noopener noreferrer" class="qr-sticky-wa">${waBtnText}</a>`;
                     document.body.appendChild(stickyBar);
                     document.body.classList.add('has-sticky-back');
                 }

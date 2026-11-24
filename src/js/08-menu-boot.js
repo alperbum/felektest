@@ -48,7 +48,8 @@
                     const stickyBar = document.createElement('div');
                     stickyBar.id = 'qr-sticky-back';
                     stickyBar.className = 'qr-sticky-back';
-                    stickyBar.innerHTML = `<button class="qr-back-btn" onclick="renderCategories()">${backBtnText}</button>`;
+                    const waBtnText = (typeof currentLang !== 'undefined' && translations[currentLang] && translations[currentLang].nav_reservation) || 'Rezervasyon';
+                    stickyBar.innerHTML = `<button class="qr-back-btn" onclick="renderCategories()">${backBtnText}</button><a href="https://wa.me/905397776067?text=Merhaba%2C%20Felek%20Mangalba%C5%9F%C4%B1%20i%C3%A7in%20masa%20rezervasyonu%20yapmak%20istiyorum." target="_blank" rel="noopener noreferrer" class="qr-sticky-wa">${waBtnText}</a>`;
                     document.body.appendChild(stickyBar);
                     document.body.classList.add('has-sticky-back');
                 }

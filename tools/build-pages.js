@@ -33,7 +33,8 @@ const PAGES_DIR = path.join(ROOT, 'src', 'pages');
 const SITE = 'https://www.felekmangalbasi.com/';
 const MACRO_RE = /\{\{[A-Z_]+\}\}/g;
 
-const readFrontMatter = (text, file) => {
+const readFrontMatter = (raw, file) => {
+  const text = raw.replace(/\r\n/g, '\n');
   if (!text.startsWith('---\n')) throw new Error(file + ': front matter (---) ile başlamıyor');
   const end = text.indexOf('\n---\n', 3);
   if (end < 0) throw new Error(file + ': front matter kapanışı (---) yok');
@@ -124,7 +125,7 @@ function checkHtml(html, slug) {
 }
 
 function buildAll() {
-  const layout = fs.readFileSync(LAYOUT, 'utf8');
+  const layout = fs.readFileSync(LAYOUT, 'utf8').replace(/\r\n/g, '\n');
   const slugs = fs.readdirSync(PAGES_DIR)
     .filter(f => f.endsWith('.html'))
     .map(f => f.replace(/\.html$/, ''))
@@ -148,7 +149,7 @@ function main() {
   const names = Object.keys(pages);
   for (const slug of names) {
     const target = path.join(ROOT, slug + '.html');
-    const current = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : null;
+    const current = fs.existsSync(target) ? fs.readFileSync(target, 'utf8').replace(/\r\n/g, '\n') : null;
     if (checkOnly) {
       if (current !== pages[slug]) {
         stale++;

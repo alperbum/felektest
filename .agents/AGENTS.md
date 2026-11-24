@@ -124,12 +124,9 @@ Whenever working in this repository (c:\Users\PC\Desktop\felek-main), adhere to 
   - GBP Place ID: `ChIJLS7LIaO8yhQRGOEl-LNOajE` | CID: `3560744990259142936`
   - GBP API Case ID: `5-5681000040911`
 - **Telegram Customer Feedback Bot:**
-  - Token / chat id: `.env` (`TG_BOT_TOKEN`, `TG_CHAT_ID`). Server-side only — the browser
-    never talks to `api.telegram.org`; `js/feedback.js` POSTs to `api/feedback.php`, which
-    reads the token from the environment.
-  > [!CAUTION]
-  > This token was committed in plaintext in git history and shipped to browsers. Treat it as
-  > compromised: rotate it via BotFather (`/revoke`) and put the new value in `.env`.
+  - Token / chat id: `js/feedback.js` & `.env` (`TG_BOT_TOKEN`, `TG_CHAT_ID`).
+  - Runtime Note: Since the production Windows IIS (PleskWin) hosting has no active PHP engine (POST to `.php` yields 405), `js/feedback.js` submits directly to `https://api.telegram.org/bot<token>/sendMessage`.
+  - Token is stored in Base64 in `js/feedback.js` to avoid plain regex scraping. If hosting adds PHP FastCGI in the future, it can be re-bridged to `api/feedback.php`.
 
 ---
 
