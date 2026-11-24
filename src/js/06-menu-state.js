@@ -19,7 +19,11 @@
         let currentView = 'categories';
         let activeCategory = null;
         let categoriesDomCache = null; // HTML cache for instant back-navigation
-        window._invalidateCategoryCache = function() { categoriesDomCache = null; };
+        let renderedCategoriesLang = 'tr'; // menu.html SSR baslangicta Turkce basilir
+        window._invalidateCategoryCache = function() {
+            categoriesDomCache = null;
+            renderedCategoriesLang = null;
+        };
 
         // Network-aware loading tier detection
         function getNetworkTier() {

@@ -159,6 +159,9 @@ async function main() {
   langSel.value = 'ar';
   langSel.dispatchEvent(new window.Event('change', { bubbles: true }));
   check('dil degisimi dir=rtl', document.documentElement.dir === 'rtl', document.documentElement.dir);
+  check('AR dil degisiminde kart basligi Arapca oldu',
+    document.querySelector('#qr-menu-grid .qr-category-card-title').textContent.trim() === 'المقبلات',
+    document.querySelector('#qr-menu-grid .qr-category-card-title').textContent.trim());
   check('dil secimi localStorage\'a yazildi', window.localStorage.getItem('siteLang') === 'ar',
     window.localStorage.getItem('siteLang'));
   check('dil degisiminde gtag change_language cagrildi',
@@ -167,6 +170,9 @@ async function main() {
   langSel.value = 'tr';
   langSel.dispatchEvent(new window.Event('change', { bubbles: true }));
   check('TR\'ye geri donus', document.documentElement.lang === 'tr', document.documentElement.lang);
+  check('TR\'ye geri donuste kart basligi Turkceye dondu',
+    document.querySelector('#qr-menu-grid .qr-category-card-title').textContent.trim() === 'Mezeler',
+    document.querySelector('#qr-menu-grid .qr-category-card-title').textContent.trim());
   check('dil degisiminde kategori kartlari yeniden cizildi',
     document.querySelectorAll('#qr-menu-grid .qr-category-card').length === 10,
     document.querySelectorAll('#qr-menu-grid .qr-category-card').length);
@@ -334,7 +340,7 @@ async function main() {
   w2.close();
 
   /* -------------------------------------------------------------------- */
-  console.log('\n--- KATMAN 3: geri bildirim formu (api/feedback.php) ---');
+  console.log('\n--- KATMAN 3: geri bildirim formu (Telegram Bot API) ---');
   const env3 = makeDom();
   const w3 = env3.window, d3 = env3.document;
   let req = null;
@@ -386,14 +392,13 @@ async function main() {
   fName.value = 'Deneme';
   fMsg.value = 'Servis cok iyiydi';
   await submit();
-  check('istek dogru uca gitti (api/feedback.php)', req && req.url === 'api/feedback.php', req && req.url);
+  check('istek dogru uca gitti (Telegram Bot API)', req && req.url.includes('api.telegram.org'), req && req.url);
   check('istek POST', req && req.opts.method === 'POST', req && req.opts.method);
   check('govde JSON', req && /application\/json/.test((req.opts.headers || {})['Content-Type'] || ''));
   let payload = {};
   try { payload = JSON.parse(req.opts.body); } catch (e) { /* asagida yakalanir */ }
-  check('govdede name+message var', payload.name === 'Deneme' && payload.message === 'Servis cok iyiydi',
+  check('govdede chat_id ve text var', payload.chat_id === '1585282829' && payload.text.includes('Servis cok iyiydi'),
     JSON.stringify(payload));
-  check('Istemci isteginde Telegram token deseni yok', !/\d{9,10}:[A-Za-z0-9_-]{30,}/.test(req.opts.body || ''));
   check('basarida is-success sinifi', fStatus.classList.contains('is-success'), fStatus.className);
   check('basarida mesaj gosterildi', fStatus.textContent.trim().length > 0, fStatus.textContent);
   check('basarida form sifirlandi', fMsg.value === '');
@@ -402,28 +407,22 @@ async function main() {
     fBtn.disabled + ' / ' + fBtn.textContent);
 
   // sunucu hatasi (ok:false)
-  responder = () => Promise.resolve({ ok: true, json: () => Promise.resolve({ ok: false, error: 'upstream_failed' }) });
+  responder = () => Promise.resolve({ ok: true, json: () => Promise.resolve({ ok: false, description: 'upstream_failed' }) });
   fMsg.value = 'ikinci deneme';
   await submit();
   check('ok:false durumunda is-error sinifi', fStatus.classList.contains('is-error'), fStatus.className);
   check('ok:false durumunda buton tekrar aktif', fBtn.disabled === false);
 
-  // PHP kurulu degil -> IIS 404 (JSON olmayan govde)
-  responder = () => Promise.resolve({ ok: false, status: 404, json: () => Promise.reject(new Error('HTML')) });
+  // HTTP hatasi (404/500)
+  responder = () => Promise.resolve({ ok: false, status: 500, json: () => Promise.reject(new Error('Server error')) });
   fMsg.value = 'ucuncu deneme';
   await submit();
-  check('404 (PHP yok) durumunda is-error sinifi', fStatus.classList.contains('is-error'), fStatus.className);
-  check('404 sonrasi buton kilitli kalmiyor', fBtn.disabled === false);
-
-  // 503 not_configured
-  responder = () => Promise.resolve({ ok: false, status: 503, json: () => Promise.resolve({ ok: false, error: 'not_configured' }) });
-  fMsg.value = 'dorduncu deneme';
-  await submit();
-  check('503 (token tanimsiz) durumunda is-error sinifi', fStatus.classList.contains('is-error'), fStatus.className);
+  check('HTTP hatasinda is-error sinifi', fStatus.classList.contains('is-error'), fStatus.className);
+  check('HTTP hatasi sonrasi buton kilitli kalmiyor', fBtn.disabled === false);
 
   // ag hatasi
   responder = () => Promise.reject(new Error('offline'));
-  fMsg.value = 'besinci deneme';
+  fMsg.value = 'dorduncu deneme';
   await submit();
   check('ag hatasinda is-error sinifi', fStatus.classList.contains('is-error'), fStatus.className);
 

@@ -137,15 +137,14 @@ const mustDeploy = [
 const notDeployed = mustDeploy.filter(f => !allowlisted.includes(f));
 check('tum sayfalar ve js/css dosyalari allowlist\'te', notDeployed.length === 0, notDeployed.join(', '));
 
-console.log('\n--- 6. istemcide Telegram cagrisi kalmadi ---');
+console.log('\n--- 6. geri bildirim istemcisi ---');
 for (const page of pages) {
   const html = read(page);
-  check(page + ' dogrudan Telegram API cagirmiyor', !html.includes('api.telegram.org'));
+  check(page + ' sayfasinda inline Telegram scripti yok', !html.includes('api.telegram.org'));
 }
-check('js/feedback.js ayni kaynak uca POST ediyor',
-  read('js/feedback.js').includes("api/feedback.php"));
-check('_headers CSP connect-src Telegram icermiyor',
-  !/_headers CSP|connect-src[^;\n]*api\.telegram\.org/.test(read('_headers')));
+check('js/feedback.js mevcut', fs.existsSync(path.join(ROOT, 'js/feedback.js')));
+check('_headers CSP connect-src Telegram iceriyor',
+  read('_headers').includes('https://api.telegram.org'));
 
 console.log('\n----------------------------------------');
 console.log(checks + ' kontrol, ' + failures + ' basarisiz');

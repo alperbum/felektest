@@ -106,6 +106,7 @@ CORE_FILES = [
     'css/style.css',
     'css/landing.css',
     'api/feedback.php',
+    'api/upload-image.php',
     'web.config',
     'robots.txt',
     'sitemap.xml',

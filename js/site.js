@@ -108,5 +108,38 @@
     /* --- Footer year ----------------------------------------------------- */
     var yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+    /* --- GA4 conversion tracking (landing pages) ------------------------- */
+    document.addEventListener('click', function (e) {
+      var link = e.target && e.target.closest ? e.target.closest('a') : null;
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      if (typeof window.gtag !== 'function') return;
+
+      if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1) {
+        window.gtag('event', 'click_whatsapp_reservation', {
+          event_category: 'conversion',
+          event_label: (link.textContent || '').trim() || 'WhatsApp Rezervasyon',
+          page_location: window.location.href
+        });
+      } else if (href.indexOf('tel:') === 0) {
+        window.gtag('event', 'click_phone_call', {
+          event_category: 'conversion',
+          event_label: href.replace('tel:', ''),
+          page_location: window.location.href
+        });
+      } else if (
+        href.indexOf('maps.google') !== -1 ||
+        href.indexOf('goo.gl/maps') !== -1 ||
+        href.indexOf('maps.app.goo.gl') !== -1 ||
+        href.indexOf('google.com/maps') !== -1
+      ) {
+        window.gtag('event', 'click_google_maps_direction', {
+          event_category: 'engagement',
+          event_label: 'Google Maps Yol Tarifi',
+          page_location: window.location.href
+        });
+      }
+    }, { passive: true });
   });
 })();
+

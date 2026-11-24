@@ -89,20 +89,38 @@ html:not(.js) .reveal {
    ========================================================================== */
 
 .land-hero {
-  padding: 3rem 0 5.5rem;
+  padding: 3.5rem 0 5.5rem;
   position: relative;
+  overflow: hidden;
+}
+
+.land-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../assets/images/SnapInsta.to_613647466_18491576731072243_8360769828246837946_n.webp') center / cover no-repeat;
+  opacity: 0.2;
+  filter: brightness(0.75) contrast(1.08);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.5) 68%, transparent 100%);
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.5) 68%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .land-hero::after {
   content: '';
   position: absolute;
-  top: -30%;
-  right: -10%;
-  width: 620px;
-  height: 620px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(200, 146, 58, 0.07) 0%, transparent 65%);
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 65% 35%, rgba(180, 90, 20, 0.16) 0%, transparent 62%),
+    linear-gradient(180deg, rgba(14, 12, 10, 0.25) 0%, rgba(14, 12, 10, 0.94) 100%);
   pointer-events: none;
+  z-index: 1;
+}
+
+.land-hero .land-wrap {
+  position: relative;
+  z-index: 2;
 }
 
 .land-eyebrow {
@@ -829,3 +847,119 @@ html:not(.js) .reveal {
 }
 
 .land-archive a:hover { color: var(--text); }
+
+/* ==========================================================================
+   HERO ACTIONS & VISUAL MENU SHOWCASE (Ana sayfa ve menu ile gorsel butunluk)
+   ========================================================================== */
+
+.land-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.25rem;
+  margin-top: 2.25rem;
+}
+
+.land-hero-actions .land-more {
+  margin-left: 0.25rem;
+}
+
+.land-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.land-showcase-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.land-showcase-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--bg2);
+}
+
+.land-showcase-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.84) contrast(1.04);
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.land-showcase-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex: 1;
+}
+
+.land-showcase-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.land-showcase-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.land-showcase-desc {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+@media (hover: hover) {
+  .land-showcase-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  .land-showcase-card:hover .land-showcase-media img {
+    transform: scale(1.04);
+    filter: brightness(0.95) contrast(1.06);
+  }
+}
+
+@media (max-width: 900px) {
+  .land-hero-actions .btn {
+    flex: 1 1 calc(50% - 0.5rem);
+    text-align: center;
+    padding: 0.9rem 1rem;
+  }
+
+  .land-hero-actions .land-more {
+    flex: 1 1 100%;
+    margin-left: 0;
+    padding-top: 0.35rem;
+  }
+
+  .land-showcase-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .land-showcase-card,
+  .land-showcase-media img {
+    transition: none;
+  }
+}

@@ -1,121 +1,73 @@
-# Felek Mangalbaşı — Kapsamlı SEO & İşletme Performans Raporu
+# Felek Mangalbaşı — Kapsamlı SEO, GSC & GBP Performans Raporu (Non-Brand Öncelikli)
 
-- **Raporlama Dönemi:** 2026-08-11 — 2026-09-10 (Son 30 Gün)
-- **Önceki Dönem Kıyas:** 2026-07-11 — 2026-08-10
+- **Raporlama Dönemi:** 2026-10-23 — 2026-11-22 (Son 30 Gün)
+- **Önceki Dönem Kıyas:** 2026-09-22 — 2026-10-22
 - **Web Sitesi:** [https://www.felekmangalbasi.com/](https://www.felekmangalbasi.com/)
 - **Google Haritalar:** [Felek Mangalbaşı Profilini Gör](https://maps.google.com/maps?cid=3560744990259142936)
 
-## 1. 📈 Yönetici Özeti ve Büyüme Metrikleri
+## 1. 📊 Marka (Brand) vs. Markasız (Non-Brand) Yönetici Özeti & Dağılımı
 
-| Metrik | Son 30 Gün | Önceki 30 Gün | Değişim / Büyüme |
-|---|---|---|---|
-| **Toplam Tıklama** | **219** | 124 | **+76.6%** |
-| **Toplam Gösterim** | **4,598** | 2,770 | **+66.0%** |
-| **Ortalama CTR (Tıklama Oranı)** | **%4.76** | %4.48 | +0.29% puan |
-| **Ortalama Arama Pozisyonu** | **#5.1** | #5.1 | Stabil |
+> [!IMPORTANT]
+> **Non-Brand Arama Payı:** Tanımlanabilen organik arama gösterimlerinin **%64.3**'i (1,673 gösterim) ve benzersiz arama kelimelerinin **%85.4**'i (162 farklı sorgu) doğrudan markasız genel mangalbaşı, ocakbaşı ve mekan aramalarından gelmektedir.
 
-## 2. 📱 Cihaz Dağılımı
+| Metrik | 🎯 Non-Brand (Genel) | 🏷️ Marka (Brand) | 🔎 Tanımlanan Sorgu | Non-Brand Payı (%) | 🌐 Site Toplamı (Anonim Dahil) | Non-Brand Büyüme |
+|---|---|---|---|---|---|---|
+| **Tıklama** | **45** | 98 | 143 | **%31.5** | 246 | **+21.6%** |
+| **Gösterim** | **2,093** | 1,160 | 3,253 | **%64.3** | 6,086 | **+9.0%** |
+| **Benzersiz Kelime** | **146** | 25 | 171 | **%85.4** | - | **-9.3%** |
+| **Ortalama CTR** | **%2.15** | %8.45 | %4.40 | - | %4.04 | - |
+| **Ağırlıklı Ortalama Sıra** | **#7.5** | #1.6 | #5.4 | - | #5.9 | - |
 
-| Cihaz Türü | Tıklama | Tıklama Payı | Gösterim | CTR | Ortalama Sıra |
-|---|---|---|---|---|---|
-| 📱 MOBILE | 173 | %79.0 | 3,939 | %4.4 | #4.9 |
-| 💻 DESKTOP | 46 | %21.0 | 654 | %7.0 | #6.5 |
-| 📟 TABLET | 0 | %0.0 | 5 | %0.0 | #4.6 |
+## 2. 🎯 Trafik Getiren Öncelikli Non-Brand Aramalar (Tıklanan Kelimeler)
 
-## 3. 🎯 SEO Büyüme Fırsatları (İlk 1'e Taşınabilecek Hedef Kelimeler)
+| # | Arama Sorgusu | Tıklama | Gösterim | CTR | Ortalama Pozisyon | Hedef Açılış Sayfası |
+|---|---|---|---|---|---|---|
+| 1 | **`bakırköy rakı mekanları`** | **9** | 137 | %6.6 | #4.8 | `/raki-mangal-meyhane.html` |
+| 2 | **`bakırköy kendin pişir kendin ye`** | **8** | 117 | %6.8 | #4.0 | `/zahmetsiz-mangal.html` |
+| 3 | **`bakırköy ocakbaşı`** | **4** | 240 | %1.7 | #5.0 | `/` |
+| 4 | **`bakırköy mangalbaşı`** | **3** | 94 | %3.2 | #4.8 | `/` |
+| 5 | **`bakırköy meyhane`** | **2** | 274 | %0.7 | #9.6 | `/raki-mangal-meyhane.html` |
+| 6 | **`bakırköy ocakbaşı mekanları`** | **2** | 63 | %3.2 | #5.2 | `/` |
+| 7 | **`bakırköy rakı balık mekanları`** | **2** | 28 | %7.1 | #7.4 | `/raki-mangal-meyhane.html` |
+| 8 | **`ocakbaşı`** | **2** | 5 | %40.0 | #3.0 | `/menu` |
+| 9 | **`mangalbaşı`** | **1** | 98 | %1.0 | #8.5 | `/menu` |
+| 10 | **`bakırköy fasıl mekanları`** | **1** | 31 | %3.2 | #9.6 | `/` |
+| 11 | **`mangalbaşı istanbul`** | **1** | 30 | %3.3 | #9.1 | `/menu` |
+| 12 | **`mangalbasi`** | **1** | 27 | %3.7 | #8.6 | `/` |
+| 13 | **`bakirkoy meyhane`** | **1** | 25 | %4.0 | #10.3 | `/raki-mangal-meyhane.html` |
+| 14 | **`istanbul mangalbaşı`** | **1** | 25 | %4.0 | #6.7 | `/menu` |
+| 15 | **`bakırköy meyhaneler`** | **1** | 22 | %4.5 | #11.0 | `/raki-mangal-meyhane.html` |
+| 16 | **`kendin pişir kendin ye bakırköy`** | **1** | 15 | %6.7 | #3.3 | `/` |
+| 17 | **`bakırköy mekanlar alkollü`** | **1** | 10 | %10.0 | #7.3 | `/raki-mangal-meyhane.html` |
+| 18 | **`bakırköy mangal yerleri`** | **1** | 5 | %20.0 | #5.2 | `/` |
+| 19 | **`yeşilköy meyhane`** | **1** | 2 | %50.0 | #4.5 | `/raki-mangal-meyhane.html` |
+| 20 | **`bakırköy restoranlar`** | **1** | 1 | %100.0 | #1.0 | `/menu.html` |
+| 21 | **`kendin ye kendin pişir`** | **1** | 1 | %100.0 | #1.0 | `/menu` |
+
+## 3. 🚀 Non-Brand SEO Fırsatları (İlk 1'e ve İlk 3'e Taşınacak Hedef Kelimeler)
 
 > [!TIP]
-> Aşağıdaki kelimeler yüksek gösterim alıp şu anda 3. ile 15. sıralar arasındadır. Sayfa içi içerik ve backlink ile kolayca 1. sıraya taşınabilir.
+> Aşağıdaki kelimeler yüksek aranma hacmine sahip olup 2.0 ile 15.0 sıralar arasındadır. İçerik ve GEO-SEO güçlendirmesiyle doğrudan ilk 1'e taşınabilir.
 
-| Arama Kelimesi | Gösterim | Tıklama | CTR | Mevcut Pozisyon |
-|---|---|---|---|---|
-| **`bakırköy ocakbaşı`** | 174 | 4 | 2.3% | #6.4 |
-| **`bakırköy rakı mekanları`** | 123 | 7 | 5.7% | #6.8 |
-| **`felek mangalbaşı suadiye`** | 112 | 1 | 0.9% | #5.9 |
-| **`bakırköy mangalbaşı`** | 107 | 1 | 0.9% | #5.1 |
-| **`bakırköy kendin pişir kendin ye`** | 106 | 1 | 0.9% | #4.3 |
-| **`felek ocakbaşı`** | 84 | 8 | 9.5% | #3.1 |
-| **`bakırköy ocakbaşı mekanları`** | 59 | 1 | 1.7% | #4.4 |
-| **`mangal başı`** | 46 | 1 | 2.2% | #8.2 |
-| **`mangalbaşı`** | 39 | 1 | 2.6% | #7.2 |
-| **`felek mangalbaşı yorumlar`** | 36 | 1 | 2.8% | #6.6 |
+| # | Hedef Kelime | Gösterim | Tıklama | CTR | Mevcut Pozisyon | Hedef Açılış Sayfası |
+|---|---|---|---|---|---|---|
+| 1 | **`bakırköy meyhane`** | **274** | 2 | %0.7 | **#9.6** | `/raki-mangal-meyhane.html` |
+| 2 | **`bakırköy ocakbaşı`** | **240** | 4 | %1.7 | **#5.0** | `/` |
+| 3 | **`bakırköy rakı mekanları`** | **137** | 9 | %6.6 | **#4.8** | `/raki-mangal-meyhane.html` |
+| 4 | **`bakırköy kendin pişir kendin ye`** | **117** | 8 | %6.8 | **#4.0** | `/zahmetsiz-mangal.html` |
+| 5 | **`rakı mekanları`** | **103** | 0 | %0.0 | **#11.9** | `/raki-mangal-meyhane.html` |
+| 6 | **`mangalbaşı`** | **98** | 1 | %1.0 | **#8.5** | `/menu` |
+| 7 | **`bakırköy mangalbaşı`** | **94** | 3 | %3.2 | **#4.8** | `/` |
+| 8 | **`bakırköy ocakbaşı mekanları`** | **63** | 2 | %3.2 | **#5.2** | `/` |
+| 9 | **`mangal başı`** | **61** | 0 | %0.0 | **#8.9** | `/` |
+| 10 | **`bakırköy meyhaneleri`** | **46** | 0 | %0.0 | **#9.6** | `/raki-mangal-meyhane.html` |
+| 11 | **`bakırköy fasıl mekanları`** | **31** | 1 | %3.2 | **#9.6** | `/` |
+| 12 | **`mangalbaşı istanbul`** | **30** | 1 | %3.3 | **#9.1** | `/menu` |
+| 13 | **`bakırköy ocakbaşı kendin pişir`** | **30** | 0 | %0.0 | **#4.0** | `/zahmetsiz-mangal.html` |
+| 14 | **`ocakbaşı bakırköy`** | **29** | 0 | %0.0 | **#4.2** | `/` |
+| 15 | **`bakırköy rakı balık mekanları`** | **28** | 2 | %7.1 | **#7.4** | `/raki-mangal-meyhane.html` |
 
-## 4. 🔍 En Çok Tıklanan İlk 50 Arama Sorgusu
-
-| # | Arama Sorgusu | Tıklama | Gösterim | CTR | Ortalama Pozisyon |
-|---|---|---|---|---|---|
-| 1 | `felek mangalbaşı` | 58 | 474 | 12.2% | #1.5 |
-| 2 | `felek mangalbaşı bakırköy` | 11 | 43 | 25.6% | #1.1 |
-| 3 | `felek bakırköy` | 8 | 86 | 9.3% | #2.0 |
-| 4 | `felek ocakbaşı` | 8 | 84 | 9.5% | #3.1 |
-| 5 | `bakırköy rakı mekanları` | 7 | 123 | 5.7% | #6.8 |
-| 6 | `felek mangalbaşı menü` | 7 | 16 | 43.8% | #1.0 |
-| 7 | `bakırköy felek mangalbaşı` | 4 | 15 | 26.7% | #1.0 |
-| 8 | `bakırköy ocakbaşı` | 4 | 174 | 2.3% | #6.4 |
-| 9 | `bakırköy felek` | 2 | 42 | 4.8% | #1.1 |
-| 10 | `bakırköy kendin pişir kendin ye` | 1 | 106 | 0.9% | #4.3 |
-| 11 | `bakırköy mangalbaşı` | 1 | 107 | 0.9% | #5.1 |
-| 12 | `bakırköy ocakbaşı mekanları` | 1 | 59 | 1.7% | #4.4 |
-| 13 | `felek` | 1 | 3 | 33.3% | #5.3 |
-| 14 | `felek mangalbaşı fiyat` | 1 | 10 | 10.0% | #1.1 |
-| 15 | `felek mangalbaşı resimleri` | 1 | 26 | 3.8% | #2.8 |
-| 16 | `felek mangalbaşı suadiye` | 1 | 112 | 0.9% | #5.9 |
-| 17 | `felek mangalbaşı suadiye menü` | 1 | 5 | 20.0% | #2.0 |
-| 18 | `felek mangalbaşı yorumlar` | 1 | 36 | 2.8% | #6.6 |
-| 19 | `felek meyhanesi` | 1 | 27 | 3.7% | #4.5 |
-| 20 | `felek ocakbaşı bakırköy` | 1 | 27 | 3.7% | #1.0 |
-| 21 | `istanbul kendin pişir kendin ye alkolsüz` | 1 | 1 | 100.0% | #1.0 |
-| 22 | `istanbulda kendin pişir kendin ye` | 1 | 2 | 50.0% | #1.0 |
-| 23 | `kendin pişir kendin ye` | 1 | 12 | 8.3% | #1.7 |
-| 24 | `kendin pişir kendin ye alkollü` | 1 | 1 | 100.0% | #1.0 |
-| 25 | `kendin pişir kendin ye alkolsüz` | 1 | 2 | 50.0% | #2.0 |
-| 26 | `kendin pişir kendin ye avrupa yakası` | 1 | 7 | 14.3% | #1.6 |
-| 27 | `kendin pişir kendin ye istanbul` | 1 | 14 | 7.1% | #2.6 |
-| 28 | `mangal başı` | 1 | 46 | 2.2% | #8.2 |
-| 29 | `mangal ocakbaşı` | 1 | 1 | 100.0% | #1.0 |
-| 30 | `mangalbasi` | 1 | 25 | 4.0% | #7.8 |
-| 31 | `mangalbaşı` | 1 | 39 | 2.6% | #7.2 |
-| 32 | `mangalbaşı restaurant` | 1 | 2 | 50.0% | #1.5 |
-| 33 | `ocakbaşı bakırköy` | 1 | 28 | 3.6% | #4.5 |
-| 34 | `rakı mangal mekanları` | 1 | 6 | 16.7% | #8.3 |
-| 35 | `yeşilköy rakı` | 1 | 1 | 100.0% | #1.0 |
-| 36 | `02 mangal` | 0 | 1 | 0.0% | #11.0 |
-| 37 | `aile mangal yerleri` | 0 | 1 | 0.0% | #4.0 |
-| 38 | `aile ocakbaşı bakırköy` | 0 | 1 | 0.0% | #14.0 |
-| 39 | `alkolsüz mangalbaşı` | 0 | 1 | 0.0% | #2.0 |
-| 40 | `anadolu yakası mangalbaşı` | 0 | 1 | 0.0% | #1.0 |
-| 41 | `anadolu yakası ocakbaşı kendin pişir kendin ye` | 0 | 1 | 0.0% | #25.0 |
-| 42 | `ataköy rakı mekanları` | 0 | 1 | 0.0% | #25.0 |
-| 43 | `avrupa yakası kendin pişir kendin ye` | 0 | 2 | 0.0% | #2.5 |
-| 44 | `bakirkoy meyhane` | 0 | 2 | 0.0% | #7.0 |
-| 45 | `bakırköy alkollü mekan` | 0 | 1 | 0.0% | #17.0 |
-| 46 | `bakırköy alkollü restoranlar` | 0 | 2 | 0.0% | #6.5 |
-| 47 | `bakırköy et mangal` | 0 | 2 | 0.0% | #5.0 |
-| 48 | `bakırköy et restoranları` | 0 | 1 | 0.0% | #2.0 |
-| 49 | `bakırköy eğlence mekanları` | 0 | 1 | 0.0% | #1.0 |
-| 50 | `bakırköy fasıl mekanları` | 0 | 6 | 0.0% | #10.8 |
-
-## 5. 📄 En Çok Ziyaret Edilen Sayfalar (Landing Pages)
-
-| Sayfa Yolu | Tıklama | Gösterim | CTR | Pozisyon |
-|---|---|---|---|---|
-| `/` | 112 | 3946 | 2.8% | #5.3 |
-| `/menu` | 101 | 1669 | 6.1% | #2.9 |
-| `/raki-mangal-meyhane` | 6 | 242 | 2.5% | #8.8 |
-| `/kennedy-sahil-konum` | 1 | 291 | 0.3% | #10.1 |
-| `/tarihce` | 1 | 2 | 50.0% | #5.0 |
-| `/zahmetsiz-mangal` | 1 | 284 | 0.4% | #8.7 |
-| `/?lang=ar` | 0 | 2 | 0.0% | #5.5 |
-| `/?lang=en` | 0 | 4 | 0.0% | #10.0 |
-| `/?lang=ru` | 0 | 2 | 0.0% | #5.5 |
-| `/basinda-felek` | 0 | 5 | 0.0% | #9.0 |
-| `/gurme-yorumlar` | 0 | 122 | 0.0% | #6.7 |
-| `/gurme-yorumlar.html` | 0 | 9 | 0.0% | #4.9 |
-| `/menu?lang=en` | 0 | 13 | 0.0% | #6.3 |
-| `/menu?lang=ru` | 0 | 3 | 0.0% | #21.7 |
-| `/zahmetsiz-mangal.html` | 0 | 1 | 0.0% | #2.0 |
-
-## 6. 📍 Google İşletme Profili (Harita Bilgileri)
+## 4. 📍 Google İşletme Profili (GBP) & Yerel / Harita Keşif Aramaları
 
 - **İşletme Adı:** Felek Mangalbaşı
 - **Adres:** Sakızağacı, Kennedy Caddesi No:29, Bakırköy
@@ -123,4 +75,64 @@
 - **Place ID:** `ChIJLS7LIaO8yhQRGOEl-LNOajE`
 - **Doğrudan Yorum Linki:** [https://search.google.com/local/writereview?placeid=ChIJLS7LIaO8yhQRGOEl-LNOajE](https://search.google.com/local/writereview?placeid=ChIJLS7LIaO8yhQRGOEl-LNOajE)
 - **Google Haritalar Linki:** [https://maps.google.com/maps?cid=3560744990259142936](https://maps.google.com/maps?cid=3560744990259142936)
+
+### 🗺️ Yerel Keşif & Harita Odaklı Non-Brand Sorguları
+
+| # | Yerel Arama Sorgusu | Tıklama | Gösterim | CTR | Pozisyon | Sayfa |
+|---|---|---|---|---|---|---|
+| 1 | `bakırköy rakı mekanları` | 9 | 137 | %6.6 | #4.8 | `/raki-mangal-meyhane.html` |
+| 2 | `bakırköy kendin pişir kendin ye` | 8 | 117 | %6.8 | #4.0 | `/zahmetsiz-mangal.html` |
+| 3 | `bakırköy ocakbaşı` | 4 | 240 | %1.7 | #5.0 | `/` |
+| 4 | `bakırköy mangalbaşı` | 3 | 94 | %3.2 | #4.8 | `/` |
+| 5 | `bakırköy meyhane` | 2 | 274 | %0.7 | #9.6 | `/raki-mangal-meyhane.html` |
+| 6 | `bakırköy ocakbaşı mekanları` | 2 | 63 | %3.2 | #5.2 | `/` |
+| 7 | `bakırköy rakı balık mekanları` | 2 | 28 | %7.1 | #7.4 | `/raki-mangal-meyhane.html` |
+| 8 | `bakırköy fasıl mekanları` | 1 | 31 | %3.2 | #9.6 | `/` |
+| 9 | `bakırköy meyhaneler` | 1 | 22 | %4.5 | #11.0 | `/raki-mangal-meyhane.html` |
+| 10 | `kendin pişir kendin ye bakırköy` | 1 | 15 | %6.7 | #3.3 | `/` |
+| 11 | `bakırköy mekanlar alkollü` | 1 | 10 | %10.0 | #7.3 | `/raki-mangal-meyhane.html` |
+| 12 | `bakırköy mangal yerleri` | 1 | 5 | %20.0 | #5.2 | `/` |
+| 13 | `bakırköy restoranlar` | 1 | 1 | %100.0 | #1.0 | `/menu.html` |
+| 14 | `rakı mekanları` | 0 | 103 | %0.0 | #11.9 | `/raki-mangal-meyhane.html` |
+| 15 | `bakırköy meyhaneleri` | 0 | 46 | %0.0 | #9.6 | `/raki-mangal-meyhane.html` |
+
+## 5. 📄 Non-Brand Trafiği Karşılayan Açılış Sayfaları (Landing Pages)
+
+| Sayfa Yolu | Non-Brand Tıklama | Non-Brand Gösterim | Eşleşen Sorgu Sayısı | En Çok Gösterim Alan Kelime |
+|---|---|---|---|---|
+| `/raki-mangal-meyhane.html` | **17** | 907 | 47 | `bakırköy meyhane` |
+| `/` | **13** | 992 | 79 | `bakırköy ocakbaşı` |
+| `/zahmetsiz-mangal.html` | **8** | 489 | 21 | `bakırköy ocakbaşı` |
+| `/menu` | **7** | 109 | 48 | `bakırköy ocakbaşı` |
+| `/menu.html` | **2** | 63 | 30 | `mangalbaşı` |
+| `/kennedy-sahil-konum.html` | **0** | 40 | 10 | `florya mangalbaşı` |
+| `/?lang=ru` | **0** | 3 | 1 | `раки стамбул` |
+| `/gurme-yorumlar.html` | **0** | 1 | 1 | `marka mangalbaşı yorumları` |
+| `/suadiye.html` | **0** | 1 | 1 | `suadiye restoranlar` |
+| `/basinda-felek.html` | **0** | 1 | 1 | `taş bina menü` |
+
+## 6. 📱 Non-Brand Cihaz Dağılımı
+
+| Cihaz Türü | Tıklama | Tıklama Payı | Gösterim | Gösterim Payı |
+|---|---|---|---|---|
+| 📱 Mobil | **41** | %91.1 | 1,898 | %90.7 |
+| 💻 Masaüstü | **4** | %8.9 | 189 | %9.0 |
+| 📟 Tablet | **0** | %0.0 | 6 | %0.3 |
+
+## 7. 🏷️ Marka (Brand) Aramaları Özeti
+
+| # | Marka Arama Sorgusu | Tıklama | Gösterim | CTR | Pozisyon |
+|---|---|---|---|---|---|
+| 1 | `felek mangalbaşı` | 54 | 548 | %9.9 | #1.1 |
+| 2 | `felek ocakbaşı` | 10 | 85 | %11.8 | #1.6 |
+| 3 | `felek bakırköy` | 9 | 109 | %8.3 | #1.2 |
+| 4 | `felek mangalbaşı bakırköy` | 7 | 46 | %15.2 | #1.1 |
+| 5 | `felek mangalbaşı menü` | 5 | 13 | %38.5 | #1.0 |
+| 6 | `felek mangalbaşı suadiye` | 3 | 71 | %4.2 | #3.1 |
+| 7 | `felek ocakbaşı bakırköy` | 3 | 36 | %8.3 | #1.1 |
+| 8 | `bakırköy felek mangalbaşı` | 2 | 29 | %6.9 | #1.0 |
+| 9 | `felek suadiye` | 2 | 26 | %7.7 | #3.6 |
+| 10 | `felek mangalbaşı fiyat` | 2 | 8 | %25.0 | #1.0 |
+| 11 | `bakırköy felek` | 1 | 37 | %2.7 | #1.1 |
+| 12 | `felek mangalbaşı yorumları` | 0 | 54 | %0.0 | #3.0 |
 

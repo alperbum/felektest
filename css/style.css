@@ -1428,3 +1428,123 @@ footer {
 .feedback-status.is-pending { color: var(--muted); }
 .feedback-status.is-success { color: #c8923a; }
 .feedback-status.is-error   { color: #ff6b6b; }
+
+/* ---------------------------------------------------------------------------
+   Donusum iyilestirmeleri: Hero CTA, paylasim porsiyon notu, mobil sabit bar
+   --------------------------------------------------------------------------- */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+@media (hover: hover) {
+  .btn--primary:hover {
+    background: transparent;
+    color: var(--accent);
+  }
+}
+
+.menu-portion-note {
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  margin: -1rem auto 1.5rem auto;
+  max-width: 460px;
+}
+
+.menu-hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.qr-sticky-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.25rem;
+  background: var(--accent);
+  color: var(--bg);
+  border: 1px solid var(--accent);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  touch-action: manipulation;
+}
+
+.mobile-cta-bar {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mobile-cta-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 450;
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+    background: rgba(14, 12, 10, 0.96);
+    border-top: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+  }
+
+  body.has-sticky-back .mobile-cta-bar {
+    display: none;
+  }
+
+  body {
+    padding-bottom: calc(74px + env(safe-area-inset-bottom));
+  }
+
+  .mobile-cta-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 0.75rem;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    border: 1px solid var(--accent);
+    touch-action: manipulation;
+  }
+
+  .mobile-cta-btn--call {
+    background: transparent;
+    color: var(--accent);
+  }
+
+  .mobile-cta-btn--primary {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.9rem 1.25rem;
+  }
+}

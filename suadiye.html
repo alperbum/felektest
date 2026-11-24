@@ -49,7 +49,7 @@
     <!-- Styles: shared site skin + shared landing skin -->
     <link rel="preload" href="css/style.css?v=5.1" as="style">
     <link rel="stylesheet" href="css/style.css?v=5.1">
-    <link rel="stylesheet" href="css/landing.css?v=5.1">
+    <link rel="stylesheet" href="css/landing.css?v=5.2">
     <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="nav-right">
-            <a href="https://wa.me/905397776067" target="_blank" rel="noopener noreferrer" class="nav-reserve">Rezervasyon</a>
+            <a href="https://wa.me/905397776067?text=Merhaba%2C%20Felek%20Mangalba%C5%9F%C4%B1%20i%C3%A7in%20masa%20rezervasyonu%20yapmak%20istiyorum." target="_blank" rel="noopener noreferrer" class="nav-reserve">Rezervasyon</a>
             <button class="menu-toggle" id="menu-toggle" aria-label="Menüyü aç" aria-expanded="false">
                 <span></span>
                 <span></span>
@@ -94,6 +94,11 @@
                     <span class="land-meta-item">Kennedy Cad. No:29, Bakırköy</span>
                     <span class="land-meta-item">Aynı usta kadro</span>
                     <span class="land-meta-item">Her gün 12:00 – 02:00</span>
+                </div>
+                <div class="land-hero-actions reveal reveal-delay-2">
+                    <a href="https://wa.me/905397776067?text=Merhaba%2C%20Suadiye%20m%C3%BCdaviminizim%2C%20Bak%C4%B1rk%C3%B6y%20%C5%9Fubenizde%20rezervasyon%20yapt%C4%B1rmak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn btn--solid">WhatsApp ile Rezervasyon</a>
+                    <a href="menu.html" class="btn">Menü ve Fiyatlar</a>
+                    <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Felek+Mangalba%C5%9F%C4%B1+Bak%C4%B1rk%C3%B6y+%C4%B0stanbul" target="_blank" rel="noopener noreferrer" class="land-more">Bakırköy Yol Tarifi &rarr;</a>
                 </div>
             </div>
         </section>
@@ -247,6 +252,53 @@
             </div>
         </section>
 
+        <section class="land-section land-section--alt land-showcase">
+            <div class="land-wrap">
+                <div class="land-head reveal">
+                    <div>
+                        <p class="land-label">Sofradan Kareler</p>
+                        <h2 class="land-h2">Menüye ve Fiyatlara <em>Hızlı Bakış</em></h2>
+                    </div>
+                    <p class="land-head-intro">Günlük taze meze dolabı, kilo ile masada dumansız mangal ve geniş rakı seçkisinin güncel fiyatlarını menü sayfamızdan inceleyebilirsiniz.</p>
+                </div>
+                <div class="land-showcase-grid">
+                    <a href="menu.html" class="land-showcase-card reveal">
+                        <div class="land-showcase-media">
+                            <img src="images/mezeler/mezeler.webp?v=2" alt="Felek Mangalbaşı günlük meze dolabı" loading="lazy" decoding="async" width="600" height="400">
+                        </div>
+                        <div class="land-showcase-body">
+                            <span class="land-showcase-eyebrow">Paylaşım Porsiyonu</span>
+                            <h3 class="land-showcase-title">Günlük Mezeler</h3>
+                            <p class="land-showcase-desc">Mezelerimiz 2–3 kişilik paylaşım porsiyonu olarak günlük hazırlanır.</p>
+                            <span class="land-more">Menüyü İncele &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="menu.html" class="land-showcase-card reveal reveal-delay-1">
+                        <div class="land-showcase-media">
+                            <img src="images/ana_yemekler/kapak.webp?v=2" alt="Felek Mangalbaşı masada dumansız et mangalı" loading="lazy" decoding="async" width="600" height="400">
+                        </div>
+                        <div class="land-showcase-body">
+                            <span class="land-showcase-eyebrow">Kilo İle Pişirim</span>
+                            <h3 class="land-showcase-title">Mangal Etleri</h3>
+                            <p class="land-showcase-desc">Balıkesir ve Trakya kesimi kırmızı et ve tavuk çeşitleri, masada dumansız kömürle.</p>
+                            <span class="land-more">Fiyatları Gör &rarr;</span>
+                        </div>
+                    </a>
+                    <a href="menu.html" class="land-showcase-card reveal reveal-delay-2">
+                        <div class="land-showcase-media">
+                            <img src="images/raki/raki_cover.webp?v=2" alt="Felek Mangalbaşı rakı seçkisi ve sahil sofrası" loading="lazy" decoding="async" width="600" height="400">
+                        </div>
+                        <div class="land-showcase-body">
+                            <span class="land-showcase-eyebrow">Her Gün 12:00 – 02:00</span>
+                            <h3 class="land-showcase-title">Rakı &amp; İçecek Seçkisi</h3>
+                            <p class="land-showcase-desc">Geniş rakı, yerli şarap ve içecek seçkisiyle deniz kıyısında sakin akşamlar.</p>
+                            <span class="land-more">Seçkiyi İncele &rarr;</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <section class="land-cta" id="rezervasyon">
             <div class="land-wrap">
                 <p class="land-eyebrow reveal">Rezervasyon</p>
@@ -298,5 +350,11 @@
     </div>
 
     <script src="js/site.js?v=5.1" defer></script>
+
+    <!-- Mobil Sabit Rezervasyon ve Arama Bari -->
+    <div class="mobile-cta-bar" aria-label="Hızlı iletişim">
+        <a href="tel:+902125439248" class="mobile-cta-btn mobile-cta-btn--call">Hemen Ara</a>
+        <a href="https://wa.me/905397776067?text=Merhaba%2C%20Felek%20Mangalba%C5%9F%C4%B1%20i%C3%A7in%20masa%20rezervasyonu%20yapmak%20istiyorum." target="_blank" rel="noopener noreferrer" class="mobile-cta-btn mobile-cta-btn--primary">Rezervasyon</a>
+    </div>
 </body>
 </html>
